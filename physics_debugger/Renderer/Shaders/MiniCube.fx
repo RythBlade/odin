@@ -1,22 +1,30 @@
 ﻿struct VS_IN
 {
     float4 pos : POSITION;
-    float4 col : COLOR;
+    float4 col : NORMAL;
 };
 
 struct PS_IN
 {
     float4 pos : SV_POSITION;
-    float4 col : COLOR;
+    float4 col : NORMAL;
 };
 
-float4x4 worldViewProj;
+cbuffer PerRenderConstantBuffer : register( b0 )
+{
+    matrix ViewProjection;
+}
+
+cbuffer PerObjectConstantBuffer : register( b1 )
+{
+    matrix World;
+}
 
 PS_IN VS( VS_IN input )
 {
     PS_IN output = ( PS_IN ) 0;
 
-    output.pos = mul( input.pos, worldViewProj );
+    output.pos = mul( input.pos, mul( World, ViewProjection ) );
     output.col = input.col;
 
     return output;

@@ -8,7 +8,7 @@ namespace Renderer
     {
         //Renderer2 newRenderer = new Renderer2();
 
-        Renderer renderer = new Renderer();
+        MainRenderer renderer = new MainRenderer();
 
         
 
