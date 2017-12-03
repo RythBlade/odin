@@ -15,8 +15,7 @@ C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\Renderer\bin\Debug\S
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\Renderer\bin\Debug\SharpDX.Direct3D11.Effects.xml
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\Renderer\bin\Debug\SharpDX.DXGI.xml
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\Renderer\bin\Debug\SharpDX.Mathematics.xml
-C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\Renderer\obj\Debug\Renderer.csprojResolveAssemblyReference.cache
-C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\Renderer\obj\Debug\Renderer.Form1.resources
+C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\Renderer\obj\Debug\Renderer.DirectXControl.resources
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\Renderer\obj\Debug\Renderer.csproj.GenerateResource.Cache
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\Renderer\obj\Debug\Renderer.csproj.CoreCompileInputs.cache
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\Renderer\obj\Debug\Renderer.dll

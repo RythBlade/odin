@@ -3,14 +3,12 @@ C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\physics_debugger.exe
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\physics_debugger.pdb
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\Renderer.dll
-C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\SharpDX.Desktop.dll
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\SharpDX.Direct3D11.dll
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\SharpDX.DXGI.dll
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\SharpDX.Mathematics.dll
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\SharpDX.D3DCompiler.dll
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\SharpDX.dll
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\Renderer.pdb
-C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\SharpDX.Desktop.xml
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\SharpDX.Direct3D11.xml
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\SharpDX.DXGI.xml
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\bin\Debug\SharpDX.Mathematics.xml
@@ -22,3 +20,4 @@ C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\obj
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\obj\Debug\Physics_Debugger.csproj.CoreCompileInputs.cache
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\obj\Debug\physics_debugger.exe
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\obj\Debug\physics_debugger.pdb
+C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\obj\Debug\physics_debugger.Main.resources

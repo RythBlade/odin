@@ -68,11 +68,11 @@
     <Compile Include="Buffers\PerRenderConstantBuffer.cs" />
     <Compile Include="Cameras\FirstPersonCamera.cs" />
     <Compile Include="Cameras\ICamera.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
+    <Compile Include="DirectXControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="DirectXControl.Designer.cs">
+      <DependentUpon>DirectXControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Geometry\MeshManager.cs" />
     <Compile Include="Geometry\MeshVertices.cs" />
@@ -91,8 +91,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="DirectXControl.resx">
+      <DependentUpon>DirectXControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

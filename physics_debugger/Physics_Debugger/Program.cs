@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace physics_debugger
@@ -16,14 +13,7 @@ namespace physics_debugger
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Main());
-            Application.Run(new Renderer.Form1());
-
-            //Renderer.Renderer newRenderer = new Renderer.Renderer();
-
-            //newRenderer.Initialise(null, IntPtr.Zero, 0, 0);
-
-            //Renderer.Form1 form = new Renderer.Form1();
+            Application.Run(new Main());
         }
     }
 }
