@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharpDX;
+﻿using SharpDX;
 
 namespace Renderer.Cameras
 {
@@ -117,11 +112,11 @@ namespace Renderer.Cameras
 
         public void SetMatrices()
         {
-            setViewMatrix();
-            setProjectionMatrix();
+            SetViewMatrix();
+            SetProjectionMatrix();
         }
 
-        void setViewMatrix()
+        private void SetViewMatrix()
         {
             Vector3 cameraTarget = cameraPosition + cameraLongitudinal;
 
@@ -131,12 +126,12 @@ namespace Renderer.Cameras
         /*
           Sets the projection transformation matrix.
           */
-        void setProjectionMatrix()
+        private void SetProjectionMatrix()
         {
             projectionMatrix = Matrix.PerspectiveFovLH(fieldOfView, backBufferResolution.X / backBufferResolution.Y, nearPlane, farPlane);
         }
 
-        void UpdateCameraVectors()
+        private void UpdateCameraVectors()
         {
             Matrix pitchYawRoll = Matrix.RotationYawPitchRoll(yaw, pitch, roll);
 
@@ -157,7 +152,7 @@ namespace Renderer.Cameras
             cameraLateral = new Vector3(cameraRight.X, cameraRight.Y, cameraRight.Z);
         }
 
-        void MoveCameraLongitudinal(float distance)
+        public void MoveCameraLongitudinal(float distance)
         {
             if (distance != 0.0f)
             {
@@ -165,7 +160,7 @@ namespace Renderer.Cameras
             }
         }
 
-        void MoveCameraLateral(float distance)
+        public void MoveCameraLateral(float distance)
         {
             if (distance != 0.0f)
             {
@@ -173,7 +168,7 @@ namespace Renderer.Cameras
             }
         }
 
-        void MoveCameraUp(float distance)
+        public void MoveCameraUp(float distance)
         {
             if (distance != 0.0f)
             {

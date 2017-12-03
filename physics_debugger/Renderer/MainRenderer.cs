@@ -6,7 +6,6 @@ using SharpDX.Direct3D11;
 using SharpDX.DXGI;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Renderer
 {
@@ -20,12 +19,9 @@ namespace Renderer
 
         InputLayout inputLayout = null;
 
-        SharpDX.Direct3D11.Buffer vertexBuffer = null;
         SharpDX.Direct3D11.Buffer perObjectConstantBuffer = null;
         SharpDX.Direct3D11.Buffer perRenderConstantBuffer = null;
-
-        Stopwatch clock = new Stopwatch();
-
+        
         MeshManager meshManager = new MeshManager();
         List<RenderInstance> renderInstanceList = new List<RenderInstance>();
 
@@ -36,13 +32,23 @@ namespace Renderer
             get { return camera; }
         }
 
+        public List<RenderInstance> InstanceList
+        {
+            get { return renderInstanceList; }
+        }
+
+        public MeshManager Meshes
+        {
+            get { return meshManager; }
+        }
+
         public MainRenderer()
         {
             state.FillMode = FillMode.Solid;
             state.CullMode = CullMode.Back;
 
             // Setup new projection matrix with correct aspect ratio
-            camera.CameraPosition = new Vector3(0.0f, 10.0f, 15.0f);
+            camera.CameraPosition = new Vector3(0.0f, 0.0f, 15.0f);
             camera.NearClipPlane = 0.1f;
             camera.FarClipPlane = 100.0f;
             camera.FieldOfView = (float)Math.PI / 4.0f;
@@ -53,8 +59,6 @@ namespace Renderer
 
         public void Initialise()
         {
-            clock.Start();
-
             DeviceContext deviceContext = GraphicsDevice.Instance.Context;
             rasterizerState = new RasterizerState(GraphicsDevice.Instance.Device, state);
 
@@ -73,21 +77,7 @@ namespace Renderer
             };
 
             inputLayout = new InputLayout(GraphicsDevice.Instance.Device, signature, inputElements);
-
-            int meshInstance = meshManager.AddCubeMesh();
-
-            renderInstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), meshInstance));
-            renderInstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, -5.0f), meshInstance));
-            renderInstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, 5.0f), meshInstance));
-            renderInstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, -5.0f), meshInstance));
-            renderInstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, -5.0f), meshInstance));
-            renderInstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, 0.0f), meshInstance));
-            renderInstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 0.0f), meshInstance));
-            renderInstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, 5.0f), meshInstance));
-            renderInstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, 0.0f), meshInstance));
-
-            vertexBuffer = SharpDX.Direct3D11.Buffer.Create(GraphicsDevice.Instance.Device, BindFlags.VertexBuffer, MeshVertices.s_cube);
-
+            
             perObjectConstantBuffer = new SharpDX.Direct3D11.Buffer(
                 GraphicsDevice.Instance.Device
                 , Utilities.SizeOf<Renderer.Buffers.PerObjectConstantbuffer>()
@@ -109,32 +99,6 @@ namespace Renderer
 
         public void Render()
         {
-            var time = clock.ElapsedMilliseconds / 1000.0f;
-
-            for(int i = 0; i < renderInstanceList.Count; ++i)
-            {
-                Matrix translationMatrix = Matrix.Translation(
-                    renderInstanceList[i].WorldMatrix.Row4.X
-                    , renderInstanceList[i].WorldMatrix.Row4.Y
-                    , renderInstanceList[i].WorldMatrix.Row4.Z);
-
-                // Update world matrix
-                renderInstanceList[i].WorldMatrix = Matrix.RotationX(time) * Matrix.RotationY(time * 2) * Matrix.RotationZ(time * .7f) * translationMatrix;
-            }
-            
-            long duration = (1000 * 3);
-            long animFrameTime = clock.ElapsedMilliseconds % duration;
-
-            float ratio = (float)animFrameTime / (float)duration;
-
-            camera.Pitch = (MathUtil.Pi / 8.0f) * ratio - (MathUtil.Pi / 4.0f);
-            camera.Roll =  (MathUtil.Pi / 8.0f) * ratio;
-            camera.Yaw =   (MathUtil.Pi / 8.0f) * ratio;
-
-
-
-
-
             // Clear the views
             GraphicsDevice.Instance.ClearAndSetMainRenderTarget();
             
