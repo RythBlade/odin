@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.propertiesRichTextBox = new System.Windows.Forms.RichTextBox();
@@ -36,7 +37,7 @@
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.directXControl1 = new Renderer.DirectXControl();
+            this.mainViewport = new Renderer.DirectXControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.frameDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.settingsTabControl = new System.Windows.Forms.TabControl();
@@ -45,6 +46,7 @@
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -168,23 +170,23 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.directXControl1);
+            this.tabPage1.Controls.Add(this.mainViewport);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(599, 472);
+            this.tabPage1.Size = new System.Drawing.Size(599, 456);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // directXControl1
+            // mainViewport
             // 
-            this.directXControl1.BackColor = System.Drawing.Color.SpringGreen;
-            this.directXControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.directXControl1.Location = new System.Drawing.Point(3, 3);
-            this.directXControl1.Name = "directXControl1";
-            this.directXControl1.Size = new System.Drawing.Size(593, 466);
-            this.directXControl1.TabIndex = 0;
+            this.mainViewport.BackColor = System.Drawing.Color.SpringGreen;
+            this.mainViewport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainViewport.Location = new System.Drawing.Point(3, 3);
+            this.mainViewport.Name = "mainViewport";
+            this.mainViewport.Size = new System.Drawing.Size(593, 450);
+            this.mainViewport.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -221,7 +223,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(193, 703);
+            this.tabPage3.Size = new System.Drawing.Size(193, 679);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -257,8 +259,13 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // updateTimer
+            // 
+            this.updateTimer.Interval = 16;
+            this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
             // 
             // Main
             // 
@@ -306,7 +313,7 @@
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage tabPage1;
-        private Renderer.DirectXControl directXControl1;
+        private Renderer.DirectXControl mainViewport;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.RichTextBox frameDetailsRichTextBox;
         private System.Windows.Forms.TabControl settingsTabControl;
@@ -315,6 +322,7 @@
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Timer updateTimer;
     }
 }
 
