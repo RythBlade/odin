@@ -1,6 +1,7 @@
 ﻿using Renderer;
 using SharpDX;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -16,6 +17,10 @@ namespace physics_debugger
         private System.Drawing.Point lastMousePosition = new System.Drawing.Point(0, 0);
         private Stopwatch clock = new Stopwatch();
 
+        private DataStream dataStream = null;
+
+        private Particle[] testParticleBuffer = new Particle[10];
+
         public Main()
         {
             InitializeComponent();
@@ -24,15 +29,22 @@ namespace physics_debugger
 
             int cubeMesh = mainViewport.Renderer.Meshes.AddCubeMesh();
 
-            mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), cubeMesh));
-            mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, -5.0f), cubeMesh));
-            mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, 5.0f), cubeMesh));
-            mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, -5.0f), cubeMesh));
-            mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, -5.0f), cubeMesh));
-            mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, 0.0f), cubeMesh));
-            mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 0.0f), cubeMesh));
-            mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, 5.0f), cubeMesh));
-            mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, 0.0f), cubeMesh));
+            for(int i = 0; i < testParticleBuffer.Length; ++i)
+            {
+                testParticleBuffer[i] = new Particle();
+                mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), cubeMesh));
+            }
+
+//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), cubeMesh));
+//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, -5.0f), cubeMesh));
+//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, 5.0f), cubeMesh));
+//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, -5.0f), cubeMesh));
+//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, -5.0f), cubeMesh));
+//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, 0.0f), cubeMesh));
+//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 0.0f), cubeMesh));
+//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, 5.0f), cubeMesh));
+//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, 0.0f), cubeMesh));
+//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, 0.0f), cubeMesh));
 
             clock.Start();
             updateTimer.Start();
@@ -47,17 +59,44 @@ namespace physics_debugger
         {
             UpdateInput();
 
+            UpdateTelemetry();
+
             float time = clock.ElapsedMilliseconds / 1000.0f;
 
             for (int i = 0; i < mainViewport.Renderer.InstanceList.Count; ++i)
             {
                 Matrix translationMatrix = Matrix.Translation(
-                    mainViewport.Renderer.InstanceList[i].WorldMatrix.Row4.X
-                    , mainViewport.Renderer.InstanceList[i].WorldMatrix.Row4.Y
-                    , mainViewport.Renderer.InstanceList[i].WorldMatrix.Row4.Z);
+                      testParticleBuffer[i].position.X
+                    , testParticleBuffer[i].position.Y
+                    , testParticleBuffer[i].position.Z);
 
                 // Update world matrix
                 mainViewport.Renderer.InstanceList[i].WorldMatrix = Matrix.RotationX(time) * Matrix.RotationY(time * 2.0f) * Matrix.RotationZ(time * 0.7f) * translationMatrix;
+            }
+        }
+
+        private void UpdateTelemetry()
+        {
+            if(dataStream != null)
+            {
+                Byte[] readData = new Byte[512];
+                int numberOfReadBytes = 0;
+                dataStream.ReadBytes(out readData, out numberOfReadBytes);
+                Console.WriteLine($"numberOfBytes: {numberOfReadBytes}");
+
+                if(numberOfReadBytes > 0)
+                {
+                    int byteIndex = 0;
+                    for (int i = 0; i < testParticleBuffer.Length; ++i)
+                    {
+                        testParticleBuffer[i].position.X = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
+                        testParticleBuffer[i].position.Y = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
+                        testParticleBuffer[i].position.Z = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
+                        testParticleBuffer[i].velocity.X = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
+                        testParticleBuffer[i].velocity.Y = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
+                        testParticleBuffer[i].velocity.Z = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
+                    }
+                }
             }
         }
 
@@ -105,6 +144,16 @@ namespace physics_debugger
             {
                 mainViewport.Renderer.Camera.MoveCameraUp(-cameraSpeed);
             }
+        }
+
+        private void connectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataStream != null)
+            {
+                dataStream.Dispose();
+            }
+
+            dataStream = new DataStream();
         }
     }
 }

@@ -1,32 +1,15 @@
 #include <stdio.h>
 #include <iostream>
+
+#include "Particle.h"
+#include "DataServer.h"
+
 #include <Windows.h>
-
-struct Particle
-{
-public:
-    Particle() 
-    { 
-        reset();
-    }
-
-    void reset()
-    {
-        for ( int i = 0; i < 3; ++i )
-        {
-            m_position[ i ] = 0.0f;
-            m_velocity[ i ] = 0.0f;
-        }
-    }
-
-    float m_position[ 3 ];
-    float m_velocity[ 3 ];
-};
 
 void updateParticles( Particle* particles, float timeStep );
 unsigned int getNextTimeStep();
 
-int const numberOfParticles = 1;
+int const numberOfParticles = 10;
 Particle particles[ numberOfParticles ];
 
 float const worldAABB[] = { 10.0f, 10.0f, 10.0f };
@@ -50,9 +33,14 @@ void main()
     {
         for ( int comp = 0; comp < 3; ++comp )
         {
-            particles[ i ].m_position[ comp ] = -worldAABB[ comp ] + particleRadius + ( rand() / RAND_MAX ) * ( worldAABB[ comp ] * 2.0f - 2.0f * particleRadius );
+            float random = static_cast<float>( rand() ) / static_cast<float>(RAND_MAX);
+            particles[ i ].m_position[ comp ] = -worldAABB[ comp ] + particleRadius + random * ( worldAABB[ comp ] * 2.0f - 2.0f * particleRadius );
         }
     }
+
+    DataServer server;
+
+    server.initialiseServer();
 
     unsigned int currentTime = getNextTimeStep();
     
@@ -73,10 +61,14 @@ void main()
             timeAccumulator -= frameTime;
 
             updateParticles( particles, frameTime );
+
+            server.sendData( reinterpret_cast< char* >( &particles[0] ), sizeof( Particle ) * numberOfParticles );
         }
                 
         currentTime = nextTimeStep;
     }
+
+    server.closeServer();
 
     return;
 }
@@ -92,9 +84,11 @@ void updateParticles( Particle* particles, float timeStep )
 
         for ( int i = 0; i < numberOfParticles; ++i )
         {
+            particles[ i ].m_velocity[ 1 ] += 1.0f;
+
             for ( int comp = 0; comp < 3; ++comp )
             {
-                particles[ i ].m_velocity[ comp ] += ( rand() / RAND_MAX ) * 4.0f - 1.0f;
+                //particles[ i ].m_velocity[ comp ] += ( rand() / RAND_MAX ) * 4.0f - 1.0f;
             }
         }
     }
@@ -104,7 +98,7 @@ void updateParticles( Particle* particles, float timeStep )
     {
         for ( int comp = 0; comp < 3; ++comp )
         {
-            particles[ i ].m_velocity[ comp ] *= dampingConstant * timeStep;
+            particles[ i ].m_velocity[ comp ] *= dampingConstant;
 
             // integrate
             particles[ i ].m_position[ comp ] += particles[ i ].m_velocity[ comp ] * timeStep;
