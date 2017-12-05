@@ -130,10 +130,15 @@ int DataServer::sendData( char* dataToSend, unsigned int lengthOfData )
     int iSendResult = send( ClientSocket, dataToSend, lengthOfData, 0 );
     if ( iSendResult == SOCKET_ERROR )
     {
-        printf( "send failed with error: %d\n", WSAGetLastError() );
-        closesocket( ClientSocket );
-        WSACleanup();
-        return 1;
+        int returnedError = WSAGetLastError();
+
+        if ( returnedError != WSAEWOULDBLOCK )
+        {
+            printf( "send failed with error: %d\n", WSAGetLastError() );
+            closesocket( ClientSocket );
+            WSACleanup();
+            return 1;
+        }
     }
     //printf( "Bytes sent: %d\n", iSendResult );
     return 0;
