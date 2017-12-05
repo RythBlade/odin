@@ -17,7 +17,7 @@ namespace physics_debugger
         private System.Drawing.Point lastMousePosition = new System.Drawing.Point(0, 0);
         private Stopwatch clock = new Stopwatch();
 
-        private DataStream dataStream = null;
+        private DataStream dataStream = new DataStream();
 
         private Particle[] testParticleBuffer = new Particle[10];
 
@@ -77,16 +77,26 @@ namespace physics_debugger
 
         private void UpdateTelemetry()
         {
-            if(dataStream != null)
+            if(dataStream.Connected)
             {
                 Byte[] readData = new Byte[512];
                 int numberOfReadBytes = 0;
                 dataStream.ReadBytes(out readData, out numberOfReadBytes);
-                Console.WriteLine($"numberOfBytes: {numberOfReadBytes}");
+                //Console.WriteLine($"numberOfBytes: {numberOfReadBytes}");
 
                 if(numberOfReadBytes > 0)
                 {
+                    Console.WriteLine($"bytes, {readData[0]}, {readData[1]}, {readData[2]}, {readData[3]}, {readData[4]}, {readData[5]}, {readData[6]}, {readData[7]}");
+
                     int byteIndex = 0;
+
+                    int startBytes = BitConverter.ToInt32(readData, byteIndex); byteIndex += 4;
+
+                    if(startBytes == 999999)
+                    {
+                        //Console.WriteLine("Found the start");
+                    }
+
                     for (int i = 0; i < testParticleBuffer.Length; ++i)
                     {
                         testParticleBuffer[i].position.X = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
@@ -95,6 +105,13 @@ namespace physics_debugger
                         testParticleBuffer[i].velocity.X = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
                         testParticleBuffer[i].velocity.Y = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
                         testParticleBuffer[i].velocity.Z = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
+                    }
+
+                    int endBytes = BitConverter.ToInt32(readData, byteIndex); byteIndex += 4;
+
+                    if (endBytes == -999999)
+                    {
+                        //Console.WriteLine("Found the end");
                     }
                 }
             }
@@ -148,12 +165,17 @@ namespace physics_debugger
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dataStream != null)
-            {
-                dataStream.Dispose();
-            }
+            ConnectionDialogue connectionDialogue = new ConnectionDialogue(dataStream.HostName, dataStream.Port);
 
-            dataStream = new DataStream();
+            if (connectionDialogue.ShowDialog(this) == DialogResult.OK)
+            {
+                dataStream.Disconnect();
+
+                dataStream.HostName = connectionDialogue.HostName;
+                dataStream.Port = connectionDialogue.Port;
+
+                dataStream.Connect();
+            }
         }
     }
 }
