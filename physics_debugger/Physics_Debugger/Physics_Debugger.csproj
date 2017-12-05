@@ -54,6 +54,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionDialogue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionDialogue.Designer.cs">
+      <DependentUpon>ConnectionDialogue.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataStream.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -64,6 +70,9 @@
     <Compile Include="Particle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConnectionDialogue.resx">
+      <DependentUpon>ConnectionDialogue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
