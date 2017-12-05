@@ -6,17 +6,33 @@
 
 #include <Windows.h>
 
-void updateParticles( Particle* particles, float timeStep );
-unsigned int getNextTimeStep();
-
 int const numberOfParticles = 10;
-Particle particles[ numberOfParticles ];
+
+struct ParticlePacket
+{
+    int packetStart;
+    Particle particles[ numberOfParticles ];
+    int  packetEnd;
+
+public:
+    ParticlePacket()
+    {
+        packetStart = 999999;
+        packetEnd = -999999;
+    }
+};
+
+void updateParticles( ParticlePacket* particles, float timeStep );
+unsigned int getNextTimeStep();
 
 float const worldAABB[] = { 10.0f, 10.0f, 10.0f };
 float const particleRadius = 0.5f;
 
+ParticlePacket particles;
+
 float const nextNudge = 5.0f;
 float const dampingConstant = 1.0f;
+float const restitution = 0.8f;
 float const frameTime = 1.0f / 60.0f;
 
 // frame parameters
@@ -34,7 +50,7 @@ void main()
         for ( int comp = 0; comp < 3; ++comp )
         {
             float random = static_cast<float>( rand() ) / static_cast<float>(RAND_MAX);
-            particles[ i ].m_position[ comp ] = -worldAABB[ comp ] + particleRadius + random * ( worldAABB[ comp ] * 2.0f - 2.0f * particleRadius );
+            particles.particles[ i ].m_position[ comp ] = -worldAABB[ comp ] + particleRadius + random * ( worldAABB[ comp ] * 2.0f - 2.0f * particleRadius );
         }
     }
 
@@ -60,9 +76,9 @@ void main()
         {
             timeAccumulator -= frameTime;
 
-            updateParticles( particles, frameTime );
+            updateParticles( &particles, frameTime );
 
-            server.sendData( reinterpret_cast< char* >( &particles[0] ), sizeof( Particle ) * numberOfParticles );
+            server.sendData( reinterpret_cast< char* >( &particles ), sizeof( ParticlePacket ) );
         }
                 
         currentTime = nextTimeStep;
@@ -73,7 +89,7 @@ void main()
     return;
 }
 
-void updateParticles( Particle* particles, float timeStep )
+void updateParticles( ParticlePacket* particles, float timeStep )
 {
     nextNudgeTimer -= timeStep;
 
@@ -84,11 +100,11 @@ void updateParticles( Particle* particles, float timeStep )
 
         for ( int i = 0; i < numberOfParticles; ++i )
         {
-            particles[ i ].m_velocity[ 1 ] += 1.0f;
+            particles->particles[ i ].m_velocity[ 1 ] += 200.0f;
 
             for ( int comp = 0; comp < 3; ++comp )
             {
-                //particles[ i ].m_velocity[ comp ] += ( rand() / RAND_MAX ) * 4.0f - 1.0f;
+                particles->particles[ i ].m_velocity[ comp ] += ( rand() / RAND_MAX ) * 20.0f - 10.0f;
             }
         }
     }
@@ -96,36 +112,38 @@ void updateParticles( Particle* particles, float timeStep )
     // particle updates!
     for ( int i = 0; i < numberOfParticles; ++i )
     {
+        particles->particles[ i ].m_velocity[ 1 ] -= 9.81f;
+
         for ( int comp = 0; comp < 3; ++comp )
         {
-            particles[ i ].m_velocity[ comp ] *= dampingConstant;
+            particles->particles[ i ].m_velocity[ comp ] *= dampingConstant;
 
             // integrate
-            particles[ i ].m_position[ comp ] += particles[ i ].m_velocity[ comp ] * timeStep;
+            particles->particles[ i ].m_position[ comp ] += particles->particles[ i ].m_velocity[ comp ] * timeStep;
 
             // bounds check
-            if ( particles[ i ].m_position[ comp ] > worldAABB[ comp ] )
+            if ( particles->particles[ i ].m_position[ comp ] > worldAABB[ comp ] )
             {
-                particles[ i ].m_position[ comp ] = worldAABB[ comp ];
-                particles[ i ].m_velocity[ comp ] *= -1.0f;
+                particles->particles[ i ].m_position[ comp ] = worldAABB[ comp ];
+                particles->particles[ i ].m_velocity[ comp ] *= -1.0f * restitution;
             }
-            else if ( particles[ i ].m_position[ comp ] < -worldAABB[ comp ] )
+            else if ( particles->particles[ i ].m_position[ comp ] < -worldAABB[ comp ] )
             {
-                particles[ i ].m_position[ comp ] = -worldAABB[ comp ];
-                particles[ i ].m_velocity[ comp ] *= -1.0f;
+                particles->particles[ i ].m_position[ comp ] = -worldAABB[ comp ];
+                particles->particles[ i ].m_velocity[ comp ] *= -1.0f * restitution;
             }
         }
     }
 
-    if ( particles[ 0 ].m_velocity[ 0 ] != 0.0f || particles[ 0 ].m_velocity[ 1 ] != 0.0f || particles[ 0 ].m_velocity[ 2 ] != 0.0f )
+    if ( particles->particles[ 0 ].m_velocity[ 0 ] != 0.0f || particles->particles[ 0 ].m_velocity[ 1 ] != 0.0f || particles->particles[ 0 ].m_velocity[ 2 ] != 0.0f )
     {
         printf( "particle position: %.2f, %.2f, %.2f     Velocity: %.2f, %.2f, %.2f\n"
-            , particles[ 0 ].m_position[ 0 ]
-            , particles[ 0 ].m_position[ 1 ]
-            , particles[ 0 ].m_position[ 2 ]
-            , particles[ 0 ].m_velocity[ 0 ]
-            , particles[ 0 ].m_velocity[ 1 ]
-            , particles[ 0 ].m_velocity[ 2 ] );
+            , particles->particles[ 0 ].m_position[ 0 ]
+            , particles->particles[ 0 ].m_position[ 1 ]
+            , particles->particles[ 0 ].m_position[ 2 ]
+            , particles->particles[ 0 ].m_velocity[ 0 ]
+            , particles->particles[ 0 ].m_velocity[ 1 ]
+            , particles->particles[ 0 ].m_velocity[ 2 ] );
     }
 }
 

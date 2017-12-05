@@ -126,14 +126,30 @@ int DataServer::closeServer()
 
 int DataServer::sendData( char* dataToSend, unsigned int lengthOfData )
 {
+    printf( 
+        "bytes, %d, %d, %d, %d, %d, %d, %d, %d\n"
+        , dataToSend[ 0 ]
+        , dataToSend[ 1 ] 
+        , dataToSend[ 2 ] 
+        , dataToSend[ 3 ] 
+        , dataToSend[ 4 ] 
+        , dataToSend[ 5 ] 
+        , dataToSend[ 6 ] 
+        , dataToSend[ 7 ] );
+
     // Echo the buffer back to the sender
     int iSendResult = send( ClientSocket, dataToSend, lengthOfData, 0 );
     if ( iSendResult == SOCKET_ERROR )
     {
-        printf( "send failed with error: %d\n", WSAGetLastError() );
-        closesocket( ClientSocket );
-        WSACleanup();
-        return 1;
+        int returnedError = WSAGetLastError();
+
+        if ( returnedError != WSAEWOULDBLOCK )
+        {
+            printf( "send failed with error: %d\n", WSAGetLastError() );
+            closesocket( ClientSocket );
+            WSACleanup();
+            return 1;
+        }
     }
     //printf( "Bytes sent: %d\n", iSendResult );
     return 0;

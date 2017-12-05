@@ -21,4 +21,3 @@ C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\obj
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\obj\Debug\Physics_Debugger.csproj.CoreCompileInputs.cache
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\obj\Debug\physics_debugger.exe
 C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\obj\Debug\physics_debugger.pdb
-C:\Users\CJ\Documents\GitHub\project_probe\physics_debugger\physics_debugger\obj\Debug\physics_debugger.ConnectionDialogue.resources
