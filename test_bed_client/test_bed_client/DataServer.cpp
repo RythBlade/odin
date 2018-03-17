@@ -30,8 +30,8 @@ int DataServer::initialiseServer()
 
     ZeroMemory( &hints, sizeof( hints ) );
     hints.ai_family = AF_INET;
-    hints.ai_socktype = SOCK_STREAM;
-    hints.ai_protocol = IPPROTO_TCP;
+    hints.ai_socktype = SOCK_STREAM; // tcp
+    hints.ai_protocol = IPPROTO_TCP; //tcp
     hints.ai_flags = AI_PASSIVE;
 
     // Resolve the server address and port

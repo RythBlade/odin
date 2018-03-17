@@ -3,6 +3,7 @@ using SharpDX;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Net.Sockets;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -17,9 +18,17 @@ namespace physics_debugger
         private System.Drawing.Point lastMousePosition = new System.Drawing.Point(0, 0);
         private Stopwatch clock = new Stopwatch();
 
-        private DataStream dataStream = new DataStream();
+        //private DataStream dataStream = new DataStream();
 
         private Particle[] testParticleBuffer = new Particle[10];
+
+
+
+        //TcpClient clientSocket = new TcpClient();
+
+        Socket clientSocket = null;
+
+
 
         public Main()
         {
@@ -77,11 +86,16 @@ namespace physics_debugger
 
         private void UpdateTelemetry()
         {
-            if(dataStream.Connected)
+            //if(dataStream.Connected)
+            //if( clientSocket.Connected )
+            if(clientSocket != null && clientSocket.Connected)
             {
                 Byte[] readData = new Byte[512];
                 int numberOfReadBytes = 0;
-                dataStream.ReadBytes(out readData, out numberOfReadBytes);
+
+                clientSocket.Receive(readData);
+
+                //dataStream.ReadBytes(out readData, out numberOfReadBytes);
                 //Console.WriteLine($"numberOfBytes: {numberOfReadBytes}");
 
                 if(numberOfReadBytes > 0)
@@ -165,16 +179,29 @@ namespace physics_debugger
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConnectionDialogue connectionDialogue = new ConnectionDialogue(dataStream.HostName, dataStream.Port);
+            //ConnectionDialogue connectionDialogue = new ConnectionDialogue(dataStream.HostName, dataStream.Port);
+            ConnectionDialogue connectionDialogue = new ConnectionDialogue(string.Empty, 0);
 
             if (connectionDialogue.ShowDialog(this) == DialogResult.OK)
             {
-                dataStream.Disconnect();
+                //dataStream.Disconnect();
 
-                dataStream.HostName = connectionDialogue.HostName;
-                dataStream.Port = connectionDialogue.Port;
+                //dataStream.HostName = connectionDialogue.HostName;
+                //dataStream.Port = connectionDialogue.Port;
 
-                dataStream.Connect();
+                //dataStream.Connect();
+
+                if( clientSocket == null)
+                {
+                    clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                }
+
+                if (clientSocket.Connected)
+                {
+                    clientSocket.Disconnect(true);
+                }
+
+                clientSocket.Connect(connectionDialogue.HostName, connectionDialogue.Port);
             }
         }
     }
