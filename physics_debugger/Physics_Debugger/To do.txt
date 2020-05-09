@@ -1,0 +1,36 @@
+﻿- Proper error handling in the network layer
+- Packets broken into chunks
+- Cope with fixed packet size, and breaking down the data into multiple packets for transmission - and reconstruct them on the other end
+- Errors for packets that were missed/lost
+- Cope with packets arriving out of order in the primary frame data object (needs to sort the frame data based on frame id)
+- Conduit to send data back to the physics engine?
+	- Mouse clicks so you can interact with physics objects from the physics debugger and drag them around in the physics engine side world
+- Read generic properties
+- Send debug render commands
+- Profile markers
+- Memory usage
+- Formalise the physics engine side code so it can be included in other projects
+	- send/receive data from the debugger application
+	- save data to a file
+	- load data from a file and playback?
+	- Rigid body ID's
+- playback modes
+	- play/pause
+	- Scrub through the telemetry we've been sent
+- Save telemetry to file
+- Open telemetry from file
+- Display object properties in the debugger
+- Scene explorer tree view in the debugger?
+- Clickable objects in the viewport to select them to display their data in the debugger
+- Send more data types
+	- Shape information
+	- Compount shapes
+	- Contacts
+	- Forces added
+	- Physics engine function calls?
+	- Origin rebase?
+- Make render instances 1:1 with their rigid body, so they're directly ascociated?
+
+----Notes----
+Packets are prescriptive now, but the version when we can generate the serialisation/deserialisation code, I'm thinking about using shader style Semantics, to infer/retrieve what I NEED to render the scene. You can mark the 
+properties that should be interpretted as semantic values so I know what they are so can use them for rendering purposes - e.g. position/orientation/velocity etc.
