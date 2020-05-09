@@ -30,6 +30,7 @@
 	- Physics engine function calls?
 	- Origin rebase?
 - Make render instances 1:1 with their rigid body, so they're directly ascociated?
+- Thread network communication in the client and visual debugger.
 
 ----Notes----
 Packets are prescriptive now, but the version when we can generate the serialisation/deserialisation code, I'm thinking about using shader style Semantics, to infer/retrieve what I NEED to render the scene. You can mark the 
