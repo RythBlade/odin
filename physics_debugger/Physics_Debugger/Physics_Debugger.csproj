@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,13 +61,22 @@
     <Compile Include="ConnectionDialogue.Designer.cs">
       <DependentUpon>ConnectionDialogue.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataStream.cs" />
+    <Compile Include="DataStream1.cs" />
+    <Compile Include="FrameData\FrameData.cs" />
+    <Compile Include="FrameData\FrameSnapshot.cs" />
+    <Compile Include="FrameData\Properties\FloatProperty.cs" />
+    <Compile Include="FrameData\Properties\IBaseProperty.cs" />
+    <Compile Include="FrameData\RigidBody.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Network\BasePacketHeader.cs" />
+    <Compile Include="Network\DataStream.cs" />
+    <Compile Include="Network\GenericPropertiesPacket.cs" />
+    <Compile Include="Network\PacketTranslator.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,5 +115,6 @@
       <Name>Renderer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace physics_debugger
 {
-    public class DataStream : IDisposable
+    public class DataStream1 : IDisposable
     {
         private TcpClient client = null;
         private NetworkStream stream = null;
@@ -16,7 +16,7 @@ namespace physics_debugger
         public int Port { get; set; }
         public bool Connected { get { return stream != null; } }
 
-        public DataStream()
+        public DataStream1()
         {
             HostName = "192.168.1.8";
             Port = 27015;

@@ -6,7 +6,7 @@
 
 #include <Windows.h>
 
-int const numberOfParticles = 10;
+unsigned int const numberOfParticles = 10;
 
 struct ParticlePacket
 {
@@ -39,6 +39,8 @@ float const frameTime = 1.0f / 60.0f;
 float nextNudgeTimer = 0.0f;
 
 float timeAccumulator = 0.0f;
+
+int frameCounter = 0;
 
 void main()
 {
@@ -78,7 +80,57 @@ void main()
 
             updateParticles( &particles, frameTime );
 
-            server.sendData( reinterpret_cast< char* >( &particles ), sizeof( ParticlePacket ) );
+            int const sizeOfNetworkPacket = 1024;
+            char networkPacket[sizeOfNetworkPacket];
+            char* bufferPointer = networkPacket;
+
+            enum class PacketType : int
+            {
+                eRigidBodies
+            };
+
+            PacketType type = PacketType::eRigidBodies;
+
+            int dataSize = 12 + 4 + (4 + 16 * sizeof(float)) * numberOfParticles;
+
+            // base packet
+            memcpy(bufferPointer, &frameCounter, sizeof(float)); bufferPointer += sizeof(float);
+            memcpy(bufferPointer, &type, sizeof(PacketType)); bufferPointer += sizeof(PacketType);
+            memcpy(bufferPointer, &dataSize, sizeof(int)); bufferPointer += sizeof(int);
+
+            // rigid body packet
+            memcpy(bufferPointer, &numberOfParticles, sizeof(unsigned int)); bufferPointer += sizeof(unsigned int);
+
+            for (int i = 0; i < numberOfParticles; ++i)
+            {
+                memcpy(bufferPointer, &i, sizeof(int)); bufferPointer += sizeof(int);
+                
+                float dummy = 1.0f;
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+                
+                memcpy(bufferPointer, &particles.particles[i].m_position[0], sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &particles.particles[i].m_position[1], sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &particles.particles[i].m_position[2], sizeof(float)); bufferPointer += sizeof(float);
+                memcpy(bufferPointer, &dummy, sizeof(float)); bufferPointer += sizeof(float);
+            }
+
+            //server.sendData( reinterpret_cast< char* >( &particles ), sizeof( ParticlePacket ) );
+            server.sendData( reinterpret_cast< char* >( &networkPacket), sizeOfNetworkPacket);
+
+            ++frameCounter;
         }
                 
         currentTime = nextTimeStep;

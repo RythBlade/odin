@@ -1,4 +1,5 @@
-﻿using Renderer;
+﻿using physics_debugger.FrameData;
+using Renderer;
 using SharpDX;
 using System;
 using System.ComponentModel;
@@ -18,17 +19,15 @@ namespace physics_debugger
         private System.Drawing.Point lastMousePosition = new System.Drawing.Point(0, 0);
         private Stopwatch clock = new Stopwatch();
 
-        //private DataStream dataStream = new DataStream();
-
         private Particle[] testParticleBuffer = new Particle[10];
 
+        private Network.DataStream dataStream = new Network.DataStream("localhost", 27015);
 
+        private Network.PacketTranslator translator = new Network.PacketTranslator();
 
-        //TcpClient clientSocket = new TcpClient();
+        private FrameData.FrameData frameData = new FrameData.FrameData();
 
-        Socket clientSocket = null;
-
-
+        private int CubeMeshId = 0;
 
         public Main()
         {
@@ -36,12 +35,12 @@ namespace physics_debugger
 
             lastMousePosition = Control.MousePosition;
 
-            int cubeMesh = mainViewport.Renderer.Meshes.AddCubeMesh();
+            CubeMeshId = mainViewport.Renderer.Meshes.AddCubeMesh();
 
             for(int i = 0; i < testParticleBuffer.Length; ++i)
             {
                 testParticleBuffer[i] = new Particle();
-                mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), cubeMesh));
+                mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), CubeMeshId));
             }
 
 //             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), cubeMesh));
@@ -70,65 +69,14 @@ namespace physics_debugger
 
             UpdateTelemetry();
 
-            float time = clock.ElapsedMilliseconds / 1000.0f;
+            int frameIndexToRender = 0;
 
-            for (int i = 0; i < mainViewport.Renderer.InstanceList.Count; ++i)
+            if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0 )
             {
-                Matrix translationMatrix = Matrix.Translation(
-                      testParticleBuffer[i].position.X
-                    , testParticleBuffer[i].position.Y
-                    , testParticleBuffer[i].position.Z);
-
-                // Update world matrix
-                mainViewport.Renderer.InstanceList[i].WorldMatrix = Matrix.RotationX(time) * Matrix.RotationY(time * 2.0f) * Matrix.RotationZ(time * 0.7f) * translationMatrix;
+                frameIndexToRender = frameData.Frames.Count - 1;
             }
-        }
 
-        private void UpdateTelemetry()
-        {
-            //if(dataStream.Connected)
-            //if( clientSocket.Connected )
-            if(clientSocket != null && clientSocket.Connected)
-            {
-                Byte[] readData = new Byte[512];
-                int numberOfReadBytes = 0;
-
-                clientSocket.Receive(readData);
-
-                //dataStream.ReadBytes(out readData, out numberOfReadBytes);
-                //Console.WriteLine($"numberOfBytes: {numberOfReadBytes}");
-
-                if(numberOfReadBytes > 0)
-                {
-                    Console.WriteLine($"bytes, {readData[0]}, {readData[1]}, {readData[2]}, {readData[3]}, {readData[4]}, {readData[5]}, {readData[6]}, {readData[7]}");
-
-                    int byteIndex = 0;
-
-                    int startBytes = BitConverter.ToInt32(readData, byteIndex); byteIndex += 4;
-
-                    if(startBytes == 999999)
-                    {
-                        //Console.WriteLine("Found the start");
-                    }
-
-                    for (int i = 0; i < testParticleBuffer.Length; ++i)
-                    {
-                        testParticleBuffer[i].position.X = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
-                        testParticleBuffer[i].position.Y = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
-                        testParticleBuffer[i].position.Z = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
-                        testParticleBuffer[i].velocity.X = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
-                        testParticleBuffer[i].velocity.Y = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
-                        testParticleBuffer[i].velocity.Z = BitConverter.ToSingle(readData, byteIndex); byteIndex += 4;
-                    }
-
-                    int endBytes = BitConverter.ToInt32(readData, byteIndex); byteIndex += 4;
-
-                    if (endBytes == -999999)
-                    {
-                        //Console.WriteLine("Found the end");
-                    }
-                }
-            }
+            RenderFrame(frameIndexToRender);
         }
 
         private void UpdateInput()
@@ -167,41 +115,86 @@ namespace physics_debugger
                 mainViewport.Renderer.Camera.MoveCameraLateral(cameraSpeed);
             }
 
-            if (Keyboard.IsKeyDown(Key.Q))
+            if (Keyboard.IsKeyDown(Key.E))
             {
                 mainViewport.Renderer.Camera.MoveCameraUp(cameraSpeed);
             }
-            else if (Keyboard.IsKeyDown(Key.Z))
+            else if (Keyboard.IsKeyDown(Key.Q))
             {
                 mainViewport.Renderer.Camera.MoveCameraUp(-cameraSpeed);
             }
         }
 
+        private void UpdateTelemetry()
+        {
+            if (dataStream.Connected)
+            {
+                Network.BasePacketHeader basePacket = dataStream.ReceiveData();
+
+                if (translator.TranslatePacket(basePacket))
+                {
+                    // todo: error - don't pull out packets that aren't complete
+                    foreach (Tuple<bool, FrameSnapshot> snapshot in translator.ConstructedSnapehots.Values)
+                    {
+                        frameData.Frames.Add(snapshot.Item2);
+                    }
+
+                    translator.ConstructedSnapehots.Clear();
+                }
+                else
+                {
+                    Console.WriteLine($"Error: read unknown packet type: {basePacket.PacketType}");
+                }
+            }
+        }
+
+        private void RenderFrame(int frameIndex)
+        {
+            float time = clock.ElapsedMilliseconds / 1000.0f;
+
+            FrameSnapshot latestFrame = frameData.Frames != null && frameData.Frames.Count > 0 ? frameData.Frames[frameIndex] : null;
+
+            if (latestFrame != null)
+            {
+                int differenceInRenderInstances = mainViewport.Renderer.InstanceList.Count - latestFrame.RigidBodies.Count;
+
+                if (differenceInRenderInstances > 0)
+                {
+                    mainViewport.Renderer.InstanceList.RemoveRange(0, differenceInRenderInstances);
+                }
+                else if (differenceInRenderInstances < 0)
+                {
+                    for (int i = 0; i < -differenceInRenderInstances; ++i)
+                    {
+                        mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), CubeMeshId));
+                    }
+                }
+
+                int instance = 0;
+
+                foreach (RigidBody rigidBody in latestFrame.RigidBodies.Values)
+                {
+                    Matrix translationMatrix = Matrix.Translation(
+                        rigidBody.WorldMatrix.Translation.X
+                        , rigidBody.WorldMatrix.Translation.Y
+                        , rigidBody.WorldMatrix.Translation.Z);
+
+                    mainViewport.Renderer.InstanceList[instance].WorldMatrix = Matrix.RotationX(time) * Matrix.RotationY(time * 2.0f) * Matrix.RotationZ(time * 0.7f) * translationMatrix;
+                    ++instance;
+                }
+            }
+        }
+
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //ConnectionDialogue connectionDialogue = new ConnectionDialogue(dataStream.HostName, dataStream.Port);
-            ConnectionDialogue connectionDialogue = new ConnectionDialogue(string.Empty, 0);
+            ConnectionDialogue connectionDialogue = new ConnectionDialogue(dataStream.HostName, dataStream.Port);
 
             if (connectionDialogue.ShowDialog(this) == DialogResult.OK)
             {
-                //dataStream.Disconnect();
+                dataStream.HostName = connectionDialogue.HostName;
+                dataStream.Port = connectionDialogue.Port;
 
-                //dataStream.HostName = connectionDialogue.HostName;
-                //dataStream.Port = connectionDialogue.Port;
-
-                //dataStream.Connect();
-
-                if( clientSocket == null)
-                {
-                    clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                }
-
-                if (clientSocket.Connected)
-                {
-                    clientSocket.Disconnect(true);
-                }
-
-                clientSocket.Connect(connectionDialogue.HostName, connectionDialogue.Port);
+                dataStream.Reconnect();                
             }
         }
     }
