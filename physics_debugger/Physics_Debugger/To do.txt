@@ -31,7 +31,12 @@
 	- Origin rebase?
 - Make render instances 1:1 with their rigid body, so they're directly ascociated?
 - Thread network communication in the client and visual debugger.
+- Proper frame scrubbing controls
+- Disconnect option and handling a forced disconnection if the "game" drops out
 
 ----Notes----
 Packets are prescriptive now, but the version when we can generate the serialisation/deserialisation code, I'm thinking about using shader style Semantics, to infer/retrieve what I NEED to render the scene. You can mark the 
 properties that should be interpretted as semantic values so I know what they are so can use them for rendering purposes - e.g. position/orientation/velocity etc.
+
+----Bugs----
+Drag the splitters to make the DirectX control have zero height causes an assert - likely the same thing happens if you do it to the width too.
