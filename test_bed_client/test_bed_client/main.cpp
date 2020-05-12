@@ -42,6 +42,8 @@ float timeAccumulator = 0.0f;
 
 int frameCounter = 0;
 
+float totalTime = 0.0f;
+
 void main()
 {
     printf( "I'm just testing\n" );
@@ -77,6 +79,7 @@ void main()
         while ( timeAccumulator > frameTime )
         {
             timeAccumulator -= frameTime;
+            totalTime += frameTime;
 
             updateParticles( &particles, frameTime );
 
@@ -168,7 +171,21 @@ void updateParticles( ParticlePacket* particles, float timeStep )
 
         for ( int comp = 0; comp < 3; ++comp )
         {
-            particles->particles[ i ].m_velocity[ comp ] *= dampingConstant;
+            if (i == 0)
+            {
+                if (comp == 1)
+                {
+                    particles->particles[i].m_velocity[comp] = sinf(totalTime) * 10.0f;
+                }
+                else
+                {
+                    particles->particles[i].m_velocity[comp] = 0.0f;
+                }
+            }
+            else
+            {
+                particles->particles[i].m_velocity[comp] *= dampingConstant;
+            }
 
             // integrate
             particles->particles[ i ].m_position[ comp ] += particles->particles[ i ].m_velocity[ comp ] * timeStep;
