@@ -29,6 +29,9 @@ namespace physics_debugger
 
         private int CubeMeshId = 0;
 
+        private int m_frameToDisplay = 0;
+        private bool m_playLiveData = true;
+
         public Main()
         {
             InitializeComponent();
@@ -69,14 +72,19 @@ namespace physics_debugger
 
             UpdateTelemetry();
 
-            int frameIndexToRender = 0;
-
-            if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0 )
+            if (m_playLiveData)
             {
-                frameIndexToRender = frameData.Frames.Count - 1;
+                int frameIndexToRender = m_frameToDisplay;
+
+                if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0)
+                {
+                    frameIndexToRender = frameData.Frames.Count - 1;
+                }
+
+                goToFrame(frameIndexToRender);
             }
 
-            RenderFrame(frameIndexToRender);
+            RenderFrame(m_frameToDisplay);
         }
 
         private void UpdateInput()
@@ -145,6 +153,9 @@ namespace physics_debugger
                 {
                     Console.WriteLine($"Error: read unknown packet type: {basePacket.PacketType}");
                 }
+
+                frameTrackBar.Maximum = frameData.Frames.Count;
+                frameTrackBar.TickFrequency = frameData.Frames.Count / 10;
             }
         }
 
@@ -196,6 +207,58 @@ namespace physics_debugger
 
                 dataStream.Reconnect();                
             }
+        }
+
+        private void frameTrackBar_Scroll(object sender, EventArgs e)
+        {
+            goToFrame(frameTrackBar.Value);
+        }
+
+        void goToFrame(int frameIndex)
+        {
+            int firstFrame = 0;
+            int lastFrame = frameData.Frames.Count - 1;
+
+            // going to any other frame than the last one cancels tracking the live data
+            m_playLiveData = false;
+
+            if (frameIndex >= lastFrame)
+            {
+                frameIndex = lastFrame;
+
+                // are we going to the last frame - resume playing live data
+                m_playLiveData = true;
+            }
+
+            if (frameIndex <= firstFrame)
+            {
+                frameIndex = firstFrame;
+            }
+            
+            m_frameToDisplay = frameIndex;
+
+            frameCounterTextBox.Text = m_frameToDisplay.ToString();
+            frameTrackBar.Value = m_frameToDisplay;
+        }
+
+        private void goToFirstFrameButton_Click(object sender, EventArgs e)
+        {
+            goToFrame(0);
+        }
+
+        private void previousFrameButton_Click(object sender, EventArgs e)
+        {
+            goToFrame(m_frameToDisplay - 1);
+        }
+
+        private void nextFrameButton_Click(object sender, EventArgs e)
+        {
+            goToFrame(m_frameToDisplay + 1);
+        }
+
+        private void goToLastFrameButton_Click(object sender, EventArgs e)
+        {
+            goToFrame(frameData.Frames.Count - 1);
         }
     }
 }

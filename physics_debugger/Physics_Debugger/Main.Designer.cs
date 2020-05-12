@@ -48,6 +48,14 @@
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.frameCounterTextBox = new System.Windows.Forms.TextBox();
+            this.goToLastFrameButton = new System.Windows.Forms.Button();
+            this.nextFrameButton = new System.Windows.Forms.Button();
+            this.frameTrackBar = new System.Windows.Forms.TrackBar();
+            this.previousFrameButton = new System.Windows.Forms.Button();
+            this.goToFirstFrameButton = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -68,12 +76,16 @@
             this.tabPage1.SuspendLayout();
             this.settingsTabControl.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.frameTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // mainSplitContainer
             // 
-            this.mainSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainSplitContainer.Location = new System.Drawing.Point(0, 30);
+            this.mainSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSplitContainer.Location = new System.Drawing.Point(13, 93);
             this.mainSplitContainer.Margin = new System.Windows.Forms.Padding(4);
             this.mainSplitContainer.Name = "mainSplitContainer";
             // 
@@ -84,8 +96,8 @@
             // mainSplitContainer.Panel2
             // 
             this.mainSplitContainer.Panel2.Controls.Add(this.splitContainer2);
-            this.mainSplitContainer.Size = new System.Drawing.Size(1344, 867);
-            this.mainSplitContainer.SplitterDistance = 256;
+            this.mainSplitContainer.Size = new System.Drawing.Size(1318, 778);
+            this.mainSplitContainer.SplitterDistance = 250;
             this.mainSplitContainer.SplitterWidth = 5;
             this.mainSplitContainer.TabIndex = 0;
             // 
@@ -104,8 +116,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.propertiesRichTextBox2);
-            this.splitContainer3.Size = new System.Drawing.Size(256, 867);
-            this.splitContainer3.SplitterDistance = 455;
+            this.splitContainer3.Size = new System.Drawing.Size(250, 778);
+            this.splitContainer3.SplitterDistance = 406;
             this.splitContainer3.SplitterWidth = 5;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -115,7 +127,7 @@
             this.propertiesRichTextBox.Location = new System.Drawing.Point(0, 0);
             this.propertiesRichTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.propertiesRichTextBox.Name = "propertiesRichTextBox";
-            this.propertiesRichTextBox.Size = new System.Drawing.Size(256, 455);
+            this.propertiesRichTextBox.Size = new System.Drawing.Size(250, 406);
             this.propertiesRichTextBox.TabIndex = 0;
             this.propertiesRichTextBox.Text = "Prototype properties panel";
             // 
@@ -125,7 +137,7 @@
             this.propertiesRichTextBox2.Location = new System.Drawing.Point(0, 0);
             this.propertiesRichTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.propertiesRichTextBox2.Name = "propertiesRichTextBox2";
-            this.propertiesRichTextBox2.Size = new System.Drawing.Size(256, 407);
+            this.propertiesRichTextBox2.Size = new System.Drawing.Size(250, 367);
             this.propertiesRichTextBox2.TabIndex = 0;
             this.propertiesRichTextBox2.Text = "Prototype properties panel 2";
             // 
@@ -143,8 +155,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.settingsTabControl);
-            this.splitContainer2.Size = new System.Drawing.Size(1083, 867);
-            this.splitContainer2.SplitterDistance = 809;
+            this.splitContainer2.Size = new System.Drawing.Size(1063, 778);
+            this.splitContainer2.SplitterDistance = 793;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -163,8 +175,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.frameDetailsRichTextBox);
-            this.splitContainer4.Size = new System.Drawing.Size(809, 867);
-            this.splitContainer4.SplitterDistance = 592;
+            this.splitContainer4.Size = new System.Drawing.Size(793, 778);
+            this.splitContainer4.SplitterDistance = 530;
             this.splitContainer4.SplitterWidth = 5;
             this.splitContainer4.TabIndex = 0;
             // 
@@ -177,7 +189,7 @@
             this.mainTabControl.Margin = new System.Windows.Forms.Padding(4);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(809, 592);
+            this.mainTabControl.Size = new System.Drawing.Size(793, 530);
             this.mainTabControl.TabIndex = 0;
             // 
             // tabPage1
@@ -187,7 +199,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(801, 563);
+            this.tabPage1.Size = new System.Drawing.Size(785, 501);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -199,7 +211,7 @@
             this.mainViewport.Location = new System.Drawing.Point(4, 4);
             this.mainViewport.Margin = new System.Windows.Forms.Padding(5);
             this.mainViewport.Name = "mainViewport";
-            this.mainViewport.Size = new System.Drawing.Size(793, 555);
+            this.mainViewport.Size = new System.Drawing.Size(777, 493);
             this.mainViewport.TabIndex = 0;
             // 
             // tabPage2
@@ -208,7 +220,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(801, 563);
+            this.tabPage2.Size = new System.Drawing.Size(785, 501);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -219,7 +231,7 @@
             this.frameDetailsRichTextBox.Location = new System.Drawing.Point(0, 0);
             this.frameDetailsRichTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.frameDetailsRichTextBox.Name = "frameDetailsRichTextBox";
-            this.frameDetailsRichTextBox.Size = new System.Drawing.Size(809, 270);
+            this.frameDetailsRichTextBox.Size = new System.Drawing.Size(793, 243);
             this.frameDetailsRichTextBox.TabIndex = 0;
             this.frameDetailsRichTextBox.Text = "Frame properties prototype";
             // 
@@ -232,7 +244,7 @@
             this.settingsTabControl.Margin = new System.Windows.Forms.Padding(4);
             this.settingsTabControl.Name = "settingsTabControl";
             this.settingsTabControl.SelectedIndex = 0;
-            this.settingsTabControl.Size = new System.Drawing.Size(269, 867);
+            this.settingsTabControl.Size = new System.Drawing.Size(265, 778);
             this.settingsTabControl.TabIndex = 0;
             // 
             // tabPage3
@@ -241,7 +253,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Size = new System.Drawing.Size(261, 838);
+            this.tabPage3.Size = new System.Drawing.Size(257, 749);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -252,7 +264,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage4.Size = new System.Drawing.Size(261, 838);
+            this.tabPage4.Size = new System.Drawing.Size(257, 749);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -264,7 +276,7 @@
             this.fileToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(1344, 30);
+            this.mainMenuStrip.Size = new System.Drawing.Size(1344, 28);
             this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -274,20 +286,20 @@
             this.connectToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
             this.connectToolStripMenuItem.Text = "Connect...";
             this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // updateTimer
@@ -295,11 +307,100 @@
             this.updateTimer.Interval = 16;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.frameCounterTextBox);
+            this.panel1.Controls.Add(this.goToLastFrameButton);
+            this.panel1.Controls.Add(this.nextFrameButton);
+            this.panel1.Controls.Add(this.frameTrackBar);
+            this.panel1.Controls.Add(this.previousFrameButton);
+            this.panel1.Controls.Add(this.goToFirstFrameButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1344, 64);
+            this.panel1.TabIndex = 2;
+            // 
+            // frameCounterTextBox
+            // 
+            this.frameCounterTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.frameCounterTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frameCounterTextBox.Location = new System.Drawing.Point(1206, 3);
+            this.frameCounterTextBox.Name = "frameCounterTextBox";
+            this.frameCounterTextBox.ReadOnly = true;
+            this.frameCounterTextBox.Size = new System.Drawing.Size(135, 42);
+            this.frameCounterTextBox.TabIndex = 3;
+            this.frameCounterTextBox.Text = "000000";
+            this.frameCounterTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // goToLastFrameButton
+            // 
+            this.goToLastFrameButton.Location = new System.Drawing.Point(147, 0);
+            this.goToLastFrameButton.Name = "goToLastFrameButton";
+            this.goToLastFrameButton.Size = new System.Drawing.Size(42, 52);
+            this.goToLastFrameButton.TabIndex = 6;
+            this.goToLastFrameButton.Text = ">>l";
+            this.goToLastFrameButton.UseVisualStyleBackColor = true;
+            this.goToLastFrameButton.Click += new System.EventHandler(this.goToLastFrameButton_Click);
+            // 
+            // nextFrameButton
+            // 
+            this.nextFrameButton.Location = new System.Drawing.Point(99, 0);
+            this.nextFrameButton.Name = "nextFrameButton";
+            this.nextFrameButton.Size = new System.Drawing.Size(42, 52);
+            this.nextFrameButton.TabIndex = 5;
+            this.nextFrameButton.Text = ">";
+            this.nextFrameButton.UseVisualStyleBackColor = true;
+            this.nextFrameButton.Click += new System.EventHandler(this.nextFrameButton_Click);
+            // 
+            // frameTrackBar
+            // 
+            this.frameTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.frameTrackBar.Location = new System.Drawing.Point(195, 0);
+            this.frameTrackBar.Maximum = 0;
+            this.frameTrackBar.Name = "frameTrackBar";
+            this.frameTrackBar.Size = new System.Drawing.Size(1005, 56);
+            this.frameTrackBar.TabIndex = 2;
+            this.frameTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.frameTrackBar.Scroll += new System.EventHandler(this.frameTrackBar_Scroll);
+            // 
+            // previousFrameButton
+            // 
+            this.previousFrameButton.Location = new System.Drawing.Point(51, 0);
+            this.previousFrameButton.Name = "previousFrameButton";
+            this.previousFrameButton.Size = new System.Drawing.Size(42, 52);
+            this.previousFrameButton.TabIndex = 1;
+            this.previousFrameButton.Text = "<";
+            this.previousFrameButton.UseVisualStyleBackColor = true;
+            this.previousFrameButton.Click += new System.EventHandler(this.previousFrameButton_Click);
+            // 
+            // goToFirstFrameButton
+            // 
+            this.goToFirstFrameButton.Location = new System.Drawing.Point(3, 0);
+            this.goToFirstFrameButton.Name = "goToFirstFrameButton";
+            this.goToFirstFrameButton.Size = new System.Drawing.Size(42, 52);
+            this.goToFirstFrameButton.TabIndex = 0;
+            this.goToFirstFrameButton.Text = "l<<";
+            this.goToFirstFrameButton.UseVisualStyleBackColor = true;
+            this.goToFirstFrameButton.Click += new System.EventHandler(this.goToFirstFrameButton_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 875);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1344, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 897);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.mainSplitContainer);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
@@ -327,6 +428,9 @@
             this.settingsTabControl.ResumeLayout(false);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.frameTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,6 +457,14 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Timer updateTimer;
         private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TrackBar frameTrackBar;
+        private System.Windows.Forms.Button previousFrameButton;
+        private System.Windows.Forms.Button goToFirstFrameButton;
+        private System.Windows.Forms.Button goToLastFrameButton;
+        private System.Windows.Forms.Button nextFrameButton;
+        private System.Windows.Forms.TextBox frameCounterTextBox;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
 
