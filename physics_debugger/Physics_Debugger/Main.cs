@@ -19,17 +19,15 @@ namespace physics_debugger
         private System.Drawing.Point lastMousePosition = new System.Drawing.Point(0, 0);
         private Stopwatch clock = new Stopwatch();
 
-        private Particle[] testParticleBuffer = new Particle[10];
-
         private Network.DataStream dataStream = new Network.DataStream("localhost", 27015);
-
         private Network.PacketTranslator translator = new Network.PacketTranslator();
 
         private FrameData.FrameData frameData = new FrameData.FrameData();
+        private FrameController controller = new FrameController();
 
         private int CubeMeshId = 0;
 
-        private FrameController controller = new FrameController();
+
 
         public Main()
         {
@@ -38,23 +36,6 @@ namespace physics_debugger
             lastMousePosition = Control.MousePosition;
 
             CubeMeshId = mainViewport.Renderer.Meshes.AddCubeMesh();
-
-            for(int i = 0; i < testParticleBuffer.Length; ++i)
-            {
-                testParticleBuffer[i] = new Particle();
-                mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), CubeMeshId));
-            }
-
-//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), cubeMesh));
-//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, -5.0f), cubeMesh));
-//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, 5.0f), cubeMesh));
-//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, -5.0f), cubeMesh));
-//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, -5.0f), cubeMesh));
-//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(-5.0f, 0.0f, 0.0f), cubeMesh));
-//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 0.0f), cubeMesh));
-//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, 5.0f), cubeMesh));
-//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, 0.0f), cubeMesh));
-//             mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(0.0f, 0.0f, 0.0f), cubeMesh));
 
             clock.Start();
             updateTimer.Start();
