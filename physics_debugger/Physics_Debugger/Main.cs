@@ -283,5 +283,10 @@ namespace physics_debugger
         {
             dataStream.Disconnect();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
