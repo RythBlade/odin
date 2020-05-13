@@ -15,9 +15,6 @@
 	- save data to a file
 	- load data from a file and playback?
 	- Rigid body ID's
-- playback modes
-	- play/pause
-	- Scrub through the telemetry we've been sent
 - Save telemetry to file
 - Open telemetry from file
 - Display object properties in the debugger
@@ -36,6 +33,9 @@
 
 ---- DONE ----
 - Proper frame scrubbing controls
+- playback modes
+	- play/pause
+	- Scrub through the telemetry we've been sent
 
 ----Notes----
 Packets are prescriptive now, but the version when we can generate the serialisation/deserialisation code, I'm thinking about using shader style Semantics, to infer/retrieve what I NEED to render the scene. You can mark the 
