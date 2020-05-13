@@ -38,6 +38,13 @@
 - Proper error handling in the file handling (common exceptions)
 - Align network transmission format and file save/load so they're the same format?
 - Export a subset of frames to file? If you have a big run, but only need a bit of it? Or you want to share a snapshot.
+- Does telemetry need to be broken up into multiple files, so after recording n frames, it's dumped to file and the editor is reset, so memory usage doesn't get out of hand,
+but also so you could record a really long run! Would need some special logic in the loading to put segments together.
+- Adjust playback speed
+	- Configurable step size on the frame scrubber?
+- Camera Speed adjuster
+- Draw a wireframe ground plane to help with orientation
+- Allow "game" to send an idea camera position to the viewer so it can mirror the game play camera
 
 ---- DONE ----
 - Proper frame scrubbing controls
