@@ -34,6 +34,7 @@
 - Make render instances 1:1 with their rigid body, so they're directly ascociated?
 - Thread network communication in the client and visual debugger.
 - Disconnect option and handling a forced disconnection if the "game" drops out
+- Swap telemetry data source to protobuff?
 
 ---- DONE ----
 - Proper frame scrubbing controls
