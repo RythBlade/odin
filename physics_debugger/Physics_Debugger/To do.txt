@@ -1,4 +1,5 @@
-﻿- Proper error handling in the network layer
+﻿---- TO DO ----
+- Proper error handling in the network layer
 - Packets broken into chunks
 - Cope with fixed packet size, and breaking down the data into multiple packets for transmission - and reconstruct them on the other end
 - Errors for packets that were missed/lost
@@ -31,8 +32,10 @@
 	- Origin rebase?
 - Make render instances 1:1 with their rigid body, so they're directly ascociated?
 - Thread network communication in the client and visual debugger.
-- Proper frame scrubbing controls
 - Disconnect option and handling a forced disconnection if the "game" drops out
+
+---- DONE ----
+- Proper frame scrubbing controls
 
 ----Notes----
 Packets are prescriptive now, but the version when we can generate the serialisation/deserialisation code, I'm thinking about using shader style Semantics, to infer/retrieve what I NEED to render the scene. You can mark the 
