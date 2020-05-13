@@ -35,6 +35,9 @@
 - Thread network communication in the client and visual debugger.
 - Disconnect option and handling a forced disconnection if the "game" drops out
 - Swap telemetry data source to protobuff?
+- Proper error handling in the file handling (common exceptions)
+- Align network transmission format and file save/load so they're the same format?
+- Export a subset of frames to file? If you have a big run, but only need a bit of it? Or you want to share a snapshot.
 
 ---- DONE ----
 - Proper frame scrubbing controls
