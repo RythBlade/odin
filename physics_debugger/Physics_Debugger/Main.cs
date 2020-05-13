@@ -53,7 +53,7 @@ namespace physics_debugger
         private void Controller_MaxFrameChanged(object sender, EventArgs e)
         {
             frameTrackBar.Maximum = controller.MaxFrameId;
-            frameTrackBar.TickFrequency = controller.MaxFrameId / 10;
+            frameTrackBar.TickFrequency = controller.MaxFrameId;
         }
 
         private void Controller_FrameChanged(object sender, EventArgs e)
@@ -205,6 +205,7 @@ namespace physics_debugger
 
         private void frameTrackBar_Scroll(object sender, EventArgs e)
         {
+            controller.State = PlayBackState.eStaticFrame;
             controller.CurrentFrameId = frameTrackBar.Value;
         }
 
