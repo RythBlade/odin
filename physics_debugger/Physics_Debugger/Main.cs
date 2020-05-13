@@ -27,8 +27,6 @@ namespace physics_debugger
 
         private int CubeMeshId = 0;
 
-
-
         public Main()
         {
             InitializeComponent();
