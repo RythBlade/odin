@@ -58,11 +58,23 @@ namespace physics_debugger
 
             clock.Start();
             updateTimer.Start();
+
+            controller.State = PlayBackState.eStaticFrame;
+            UpdateButtonText();
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
         {
             MainLoop();
+        }
+
+        private void UpdateFrameController()
+        {
+            controller.Update();
+
+            frameCounterTextBox.Text = controller.CurrentFrameId.ToString();
+
+            frameTrackBar.Value = controller.CurrentFrameId;
         }
 
         private void MainLoop()
@@ -71,16 +83,8 @@ namespace physics_debugger
 
             UpdateTelemetry();
 
-            if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0)
-            {
-                controller.MaxFrameId = frameData.Frames.Count - 1;
-            }
+            UpdateFrameController();
 
-            controller.Update();
-
-            frameCounterTextBox.Text = controller.CurrentFrameId.ToString();
-
-            frameTrackBar.Value = controller.CurrentFrameId;
 
             RenderFrame(controller.CurrentFrameId);
         }
@@ -152,8 +156,7 @@ namespace physics_debugger
                     Console.WriteLine($"Error: read unknown packet type: {basePacket.PacketType}");
                 }
 
-                frameTrackBar.Maximum = frameData.Frames.Count;
-                frameTrackBar.TickFrequency = frameData.Frames.Count / 10;
+                FramesAdded();
             }
         }
 
@@ -289,8 +292,17 @@ namespace physics_debugger
                 default:
                     break;
             }
+        }
 
-            
+        private void FramesAdded()
+        {
+            if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0)
+            {
+                frameTrackBar.Maximum = frameData.Frames.Count;
+                frameTrackBar.TickFrequency = frameData.Frames.Count / 10;
+
+                controller.MaxFrameId = frameData.Frames.Count - 1;
+            }
         }
     }
 }
