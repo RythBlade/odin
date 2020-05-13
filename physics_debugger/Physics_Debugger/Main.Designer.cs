@@ -60,6 +60,9 @@
             this.previousFrameButton = new System.Windows.Forms.Button();
             this.goToFirstFrameButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.openTelemetryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveTelemetryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -288,6 +291,9 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openTelemetryToolStripMenuItem,
+            this.saveTelemetryToolStripMenuItem,
+            this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
@@ -438,6 +444,25 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // openTelemetryToolStripMenuItem
+            // 
+            this.openTelemetryToolStripMenuItem.Name = "openTelemetryToolStripMenuItem";
+            this.openTelemetryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openTelemetryToolStripMenuItem.Text = "Open Telemetry...";
+            this.openTelemetryToolStripMenuItem.Click += new System.EventHandler(this.openTelemetryToolStripMenuItem_Click);
+            // 
+            // saveTelemetryToolStripMenuItem
+            // 
+            this.saveTelemetryToolStripMenuItem.Name = "saveTelemetryToolStripMenuItem";
+            this.saveTelemetryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveTelemetryToolStripMenuItem.Text = "Save Telemetry...";
+            this.saveTelemetryToolStripMenuItem.Click += new System.EventHandler(this.saveTelemetryToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -513,6 +538,9 @@
         private System.Windows.Forms.Button playBackwardsButton;
         private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openTelemetryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveTelemetryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

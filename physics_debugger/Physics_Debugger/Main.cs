@@ -124,6 +124,14 @@ namespace physics_debugger
             }
         }
 
+        private void FramesAdded()
+        {
+            if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0)
+            {
+                controller.MaxFrameId = frameData.Frames.Count - 1;
+            }
+        }
+
         private void UpdateTelemetry()
         {
             if (dataStream.Connected)
@@ -145,10 +153,8 @@ namespace physics_debugger
                     Console.WriteLine($"Error: read unknown packet type: {basePacket.PacketType}");
                 }
 
-                if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0)
-                {
-                    controller.MaxFrameId = frameData.Frames.Count - 1;
-                }
+                FramesAdded();
+
             }
         }
 
@@ -287,6 +293,56 @@ namespace physics_debugger
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void openTelemetryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "Physics Telemetry | *.ptm";
+            openDialog.Title = "Open Telemetry";
+
+            if( openDialog.ShowDialog() == DialogResult.OK)
+            {
+                DataSerialiser serialiser = new DataSerialiser();
+                serialiser.Filename = openDialog.FileName;
+
+                FrameData.FrameData readFrameData = new FrameData.FrameData();
+                bool success = serialiser.OpenTelemetry(readFrameData);
+
+                if( success)
+                {
+                    frameData = readFrameData;
+                }
+                else 
+                {
+                    string errorMessage = "Failed to properly read in the telemetry file. It could be corrupt. Would you like to try and use what data was successfully read?\n";
+                    errorMessage += $"Potentially corrupt frames read: {readFrameData.Frames.Count}";
+
+                    DialogResult result = MessageBox.Show(errorMessage, "Error", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+
+                    if(result == DialogResult.Yes)
+                    {
+                        frameData = readFrameData;
+                    }
+                }
+
+                FramesAdded();
+            }
+        }
+
+        private void saveTelemetryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Physics Telemetry | *.ptm";
+            saveDialog.Title = "Save Telemetry";            
+
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                DataSerialiser serialiser = new DataSerialiser();
+                serialiser.Filename = saveDialog.FileName;
+
+                serialiser.SaveTelemetry(frameData);
+            }
         }
     }
 }
