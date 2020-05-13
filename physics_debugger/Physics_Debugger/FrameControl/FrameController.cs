@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.RightsManagement;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace physics_debugger
+namespace physics_debugger.FrameControl
 {
     public enum PlayBackState
     {
@@ -30,6 +25,7 @@ namespace physics_debugger
         eBackwards,
     }
 
+
     public class FrameController
     {
         private int maxFrameId;
@@ -38,6 +34,8 @@ namespace physics_debugger
             get { return maxFrameId; }
             set 
             {
+                int oldMaxFrame = maxFrameId;
+
                 if (value < 0)
                 {
                     maxFrameId = 0;
@@ -46,10 +44,29 @@ namespace physics_debugger
                 {
                     maxFrameId = value;
                 }
+
+                if (maxFrameId != oldMaxFrame)
+                {
+                    MaxFrameChanged?.Invoke(this, new EventArgs());
+                }
             }
         }
 
-        public PlayBackState State { get; set; }
+        private PlayBackState state;
+        public PlayBackState State 
+        { 
+            get { return state; }
+            set 
+            {
+                PlayBackState oldState = state;
+                state = value;
+
+                if (state != oldState)
+                {
+                    StateChanged?.Invoke(this, new EventArgs());
+                }
+            }
+        }
 
         private int currentFrameId;
         public int CurrentFrameId 
@@ -69,9 +86,20 @@ namespace physics_debugger
                     frameId = 0;
                 }
 
+                int oldFrameId = currentFrameId;
+
                 currentFrameId = frameId;
+
+                if(oldFrameId != currentFrameId)
+                {
+                    FrameChanged?.Invoke(this, new EventArgs());
+                }   
             }
         }
+
+        public event ThresholdReachedEventHandler StateChanged;
+        public event ThresholdReachedEventHandler MaxFrameChanged;
+        public event ThresholdReachedEventHandler FrameChanged;
 
         public FrameController()
         {

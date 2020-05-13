@@ -62,7 +62,8 @@
       <DependentUpon>ConnectionDialogue.cs</DependentUpon>
     </Compile>
     <Compile Include="DataStream1.cs" />
-    <Compile Include="FrameController.cs" />
+    <Compile Include="FrameControl\FrameController.cs" />
+    <Compile Include="FrameControl\FrameControllerEventHandler.cs" />
     <Compile Include="FrameData\FrameData.cs" />
     <Compile Include="FrameData\FrameSnapshot.cs" />
     <Compile Include="FrameData\Properties\FloatProperty.cs" />

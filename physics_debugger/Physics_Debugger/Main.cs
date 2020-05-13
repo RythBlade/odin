@@ -1,10 +1,9 @@
-﻿using physics_debugger.FrameData;
+﻿using physics_debugger.FrameControl;
+using physics_debugger.FrameData;
 using Renderer;
 using SharpDX;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Net.Sockets;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -12,7 +11,7 @@ namespace physics_debugger
 {
     public partial class Main : Form
     {
-        private static float s_cameraMoveSpeed = 0.1f;
+        private static float s_cameraMoveSpeed = 0.2f;
         private static float s_cameraSpeedModifier = 3.0f;
         private static float s_cameraScrollSpeed = (MathUtil.Pi / 360.0f);
 
@@ -38,22 +37,34 @@ namespace physics_debugger
             clock.Start();
             updateTimer.Start();
 
+            controller.FrameChanged += Controller_FrameChanged;
+            controller.MaxFrameChanged += Controller_MaxFrameChanged;
+            controller.StateChanged += Controller_StateChanged;
+
             controller.State = PlayBackState.eStaticFrame;
+            
+        }
+
+        private void Controller_StateChanged(object sender, EventArgs e)
+        {
             UpdateButtonText();
+        }
+
+        private void Controller_MaxFrameChanged(object sender, EventArgs e)
+        {
+            frameTrackBar.Maximum = controller.MaxFrameId;
+            frameTrackBar.TickFrequency = controller.MaxFrameId / 10;
+        }
+
+        private void Controller_FrameChanged(object sender, EventArgs e)
+        {
+            frameCounterTextBox.Text = controller.CurrentFrameId.ToString();
+            frameTrackBar.Value = controller.CurrentFrameId;
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
         {
             MainLoop();
-        }
-
-        private void UpdateFrameController()
-        {
-            controller.Update();
-
-            frameCounterTextBox.Text = controller.CurrentFrameId.ToString();
-
-            frameTrackBar.Value = controller.CurrentFrameId;
         }
 
         private void MainLoop()
@@ -62,8 +73,7 @@ namespace physics_debugger
 
             UpdateTelemetry();
 
-            UpdateFrameController();
-
+            controller.Update();
 
             RenderFrame(controller.CurrentFrameId);
         }
@@ -135,7 +145,10 @@ namespace physics_debugger
                     Console.WriteLine($"Error: read unknown packet type: {basePacket.PacketType}");
                 }
 
-                FramesAdded();
+                if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0)
+                {
+                    controller.MaxFrameId = frameData.Frames.Count - 1;
+                }
             }
         }
 
@@ -185,39 +198,35 @@ namespace physics_debugger
                 dataStream.HostName = connectionDialogue.HostName;
                 dataStream.Port = connectionDialogue.Port;
 
-                dataStream.Reconnect();                
+                dataStream.Reconnect();
+                controller.State = PlayBackState.eLive;
             }
         }
 
         private void frameTrackBar_Scroll(object sender, EventArgs e)
         {
             controller.CurrentFrameId = frameTrackBar.Value;
-            UpdateButtonText();
         }
 
 
         private void goToFirstFrameButton_Click(object sender, EventArgs e)
         {
             controller.GoToFirstFrame();
-            UpdateButtonText();
         }
 
         private void previousFrameButton_Click(object sender, EventArgs e)
         {
             controller.GoToPreviousFrame();
-            UpdateButtonText();
         }
 
         private void nextFrameButton_Click(object sender, EventArgs e)
         {
             controller.GoToNextFrame();
-            UpdateButtonText();
         }
 
         private void goToLastFrameButton_Click(object sender, EventArgs e)
         {
             controller.GoToLastFrame();
-            UpdateButtonText();
         }
 
         private void playBackwardsButton_Click(object sender, EventArgs e)
@@ -230,8 +239,6 @@ namespace physics_debugger
             {
                 controller.State = PlayBackState.eBackwards;
             }
-
-            UpdateButtonText();
         }
 
         private void playForwardsButton_Click(object sender, EventArgs e)
@@ -244,8 +251,6 @@ namespace physics_debugger
             {
                 controller.State = PlayBackState.eForwards;
             }
-
-            UpdateButtonText();
         }
 
         private void UpdateButtonText()
@@ -270,17 +275,6 @@ namespace physics_debugger
                     break;
                 default:
                     break;
-            }
-        }
-
-        private void FramesAdded()
-        {
-            if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0)
-            {
-                frameTrackBar.Maximum = frameData.Frames.Count;
-                frameTrackBar.TickFrequency = frameData.Frames.Count / 10;
-
-                controller.MaxFrameId = frameData.Frames.Count - 1;
             }
         }
     }
