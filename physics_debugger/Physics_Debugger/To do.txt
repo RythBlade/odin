@@ -9,7 +9,11 @@
 - Read generic properties
 - Send debug render commands
 - Profile markers
+	- Display hot frames
+	- Histogram of frame processing times (configurable time "budget")
 - Memory usage
+	- Display hot frames (nearly out of memory budget)
+	- Display histogram of frames (nearly out of memory budget)
 - Formalise the physics engine side code so it can be included in other projects
 	- send/receive data from the debugger application
 	- save data to a file
