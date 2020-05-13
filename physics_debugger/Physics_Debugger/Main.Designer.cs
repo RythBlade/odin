@@ -45,10 +45,14 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.playForwardsButton = new System.Windows.Forms.Button();
+            this.playBackwardsButton = new System.Windows.Forms.Button();
             this.frameCounterTextBox = new System.Windows.Forms.TextBox();
             this.goToLastFrameButton = new System.Windows.Forms.Button();
             this.nextFrameButton = new System.Windows.Forms.Button();
@@ -56,8 +60,6 @@
             this.previousFrameButton = new System.Windows.Forms.Button();
             this.goToFirstFrameButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.playBackwardsButton = new System.Windows.Forms.Button();
-            this.playForwardsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -275,7 +277,8 @@
             // 
             this.mainMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.connectionToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(1344, 28);
@@ -285,24 +288,39 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.connectToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // connectToolStripMenuItem
-            // 
-            this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
-            this.connectToolStripMenuItem.Text = "Connect...";
-            this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
-            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // connectionToolStripMenuItem
+            // 
+            this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.connectToolStripMenuItem,
+            this.disconnectToolStripMenuItem});
+            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
+            this.connectionToolStripMenuItem.Text = "Connection";
+            // 
+            // connectToolStripMenuItem
+            // 
+            this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.connectToolStripMenuItem.Text = "Connect...";
+            this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
+            // 
+            // disconnectToolStripMenuItem
+            // 
+            this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.disconnectToolStripMenuItem.Text = "Disconnect";
+            this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // updateTimer
             // 
@@ -324,6 +342,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1344, 64);
             this.panel1.TabIndex = 2;
+            // 
+            // playForwardsButton
+            // 
+            this.playForwardsButton.Location = new System.Drawing.Point(147, 0);
+            this.playForwardsButton.Name = "playForwardsButton";
+            this.playForwardsButton.Size = new System.Drawing.Size(42, 52);
+            this.playForwardsButton.TabIndex = 8;
+            this.playForwardsButton.Text = ">";
+            this.playForwardsButton.UseVisualStyleBackColor = true;
+            this.playForwardsButton.Click += new System.EventHandler(this.playForwardsButton_Click);
+            // 
+            // playBackwardsButton
+            // 
+            this.playBackwardsButton.Location = new System.Drawing.Point(99, 0);
+            this.playBackwardsButton.Name = "playBackwardsButton";
+            this.playBackwardsButton.Size = new System.Drawing.Size(42, 52);
+            this.playBackwardsButton.TabIndex = 7;
+            this.playBackwardsButton.Text = "<";
+            this.playBackwardsButton.UseVisualStyleBackColor = true;
+            this.playBackwardsButton.Click += new System.EventHandler(this.playBackwardsButton_Click);
             // 
             // frameCounterTextBox
             // 
@@ -399,26 +437,6 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // playBackwardsButton
-            // 
-            this.playBackwardsButton.Location = new System.Drawing.Point(99, 0);
-            this.playBackwardsButton.Name = "playBackwardsButton";
-            this.playBackwardsButton.Size = new System.Drawing.Size(42, 52);
-            this.playBackwardsButton.TabIndex = 7;
-            this.playBackwardsButton.Text = "<";
-            this.playBackwardsButton.UseVisualStyleBackColor = true;
-            this.playBackwardsButton.Click += new System.EventHandler(this.playBackwardsButton_Click);
-            // 
-            // playForwardsButton
-            // 
-            this.playForwardsButton.Location = new System.Drawing.Point(147, 0);
-            this.playForwardsButton.Name = "playForwardsButton";
-            this.playForwardsButton.Size = new System.Drawing.Size(42, 52);
-            this.playForwardsButton.TabIndex = 8;
-            this.playForwardsButton.Text = ">";
-            this.playForwardsButton.UseVisualStyleBackColor = true;
-            this.playForwardsButton.Click += new System.EventHandler(this.playForwardsButton_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -492,6 +510,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button playForwardsButton;
         private System.Windows.Forms.Button playBackwardsButton;
+        private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
     }
 }
 
