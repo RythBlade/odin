@@ -29,8 +29,7 @@ namespace physics_debugger
 
         private int CubeMeshId = 0;
 
-        private int m_frameToDisplay = 0;
-        private bool m_playLiveData = true;
+        private FrameController controller = new FrameController();
 
         public Main()
         {
@@ -72,19 +71,18 @@ namespace physics_debugger
 
             UpdateTelemetry();
 
-            if (m_playLiveData)
+            if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0)
             {
-                int frameIndexToRender = m_frameToDisplay;
-
-                if (frameData != null && frameData.Frames != null && frameData.Frames.Count > 0)
-                {
-                    frameIndexToRender = frameData.Frames.Count - 1;
-                }
-
-                goToFrame(frameIndexToRender);
+                controller.MaxFrameId = frameData.Frames.Count - 1;
             }
 
-            RenderFrame(m_frameToDisplay);
+            controller.Update();
+
+            frameCounterTextBox.Text = controller.CurrentFrameId.ToString();
+
+            frameTrackBar.Value = controller.CurrentFrameId;
+
+            RenderFrame(controller.CurrentFrameId);
         }
 
         private void UpdateInput()
@@ -211,54 +209,88 @@ namespace physics_debugger
 
         private void frameTrackBar_Scroll(object sender, EventArgs e)
         {
-            goToFrame(frameTrackBar.Value);
+            controller.CurrentFrameId = frameTrackBar.Value;
+            UpdateButtonText();
         }
 
-        void goToFrame(int frameIndex)
-        {
-            int firstFrame = 0;
-            int lastFrame = frameData.Frames.Count - 1;
-
-            // going to any other frame than the last one cancels tracking the live data
-            m_playLiveData = false;
-
-            if (frameIndex >= lastFrame)
-            {
-                frameIndex = lastFrame;
-
-                // are we going to the last frame - resume playing live data
-                m_playLiveData = true;
-            }
-
-            if (frameIndex <= firstFrame)
-            {
-                frameIndex = firstFrame;
-            }
-            
-            m_frameToDisplay = frameIndex;
-
-            frameCounterTextBox.Text = m_frameToDisplay.ToString();
-            frameTrackBar.Value = m_frameToDisplay;
-        }
 
         private void goToFirstFrameButton_Click(object sender, EventArgs e)
         {
-            goToFrame(0);
+            controller.GoToFirstFrame();
+            UpdateButtonText();
         }
 
         private void previousFrameButton_Click(object sender, EventArgs e)
         {
-            goToFrame(m_frameToDisplay - 1);
+            controller.GoToPreviousFrame();
+            UpdateButtonText();
         }
 
         private void nextFrameButton_Click(object sender, EventArgs e)
         {
-            goToFrame(m_frameToDisplay + 1);
+            controller.GoToNextFrame();
+            UpdateButtonText();
         }
 
         private void goToLastFrameButton_Click(object sender, EventArgs e)
         {
-            goToFrame(frameData.Frames.Count - 1);
+            controller.GoToLastFrame();
+            UpdateButtonText();
+        }
+
+        private void playBackwardsButton_Click(object sender, EventArgs e)
+        {
+            if( controller.State == PlayBackState.eBackwards)
+            {
+                controller.State = PlayBackState.eStaticFrame;
+            }
+            else
+            {
+                controller.State = PlayBackState.eBackwards;
+            }
+
+            UpdateButtonText();
+        }
+
+        private void playForwardsButton_Click(object sender, EventArgs e)
+        {
+            if (controller.State == PlayBackState.eForwards || controller.State == PlayBackState.eLive)
+            {
+                controller.State = PlayBackState.eStaticFrame;
+            }
+            else
+            {
+                controller.State = PlayBackState.eForwards;
+            }
+
+            UpdateButtonText();
+        }
+
+        private void UpdateButtonText()
+        {
+            switch (controller.State)
+            {
+                case PlayBackState.eStaticFrame:
+                    playForwardsButton.Text = ">";
+                    playBackwardsButton.Text = "<";
+                    break;
+                case PlayBackState.eLive:
+                    playForwardsButton.Text = "P";
+                    playBackwardsButton.Text = "<";
+                    break;
+                case PlayBackState.eForwards:
+                    playForwardsButton.Text = "P";
+                    playBackwardsButton.Text = "<";
+                    break;
+                case PlayBackState.eBackwards:
+                    playForwardsButton.Text = ">";
+                    playBackwardsButton.Text = "P";
+                    break;
+                default:
+                    break;
+            }
+
+            
         }
     }
 }

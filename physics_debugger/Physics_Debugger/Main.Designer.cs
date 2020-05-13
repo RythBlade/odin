@@ -56,6 +56,8 @@
             this.previousFrameButton = new System.Windows.Forms.Button();
             this.goToFirstFrameButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.playBackwardsButton = new System.Windows.Forms.Button();
+            this.playForwardsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -309,6 +311,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.playForwardsButton);
+            this.panel1.Controls.Add(this.playBackwardsButton);
             this.panel1.Controls.Add(this.frameCounterTextBox);
             this.panel1.Controls.Add(this.goToLastFrameButton);
             this.panel1.Controls.Add(this.nextFrameButton);
@@ -323,6 +327,7 @@
             // 
             // frameCounterTextBox
             // 
+            this.frameCounterTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.frameCounterTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.frameCounterTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frameCounterTextBox.Location = new System.Drawing.Point(1206, 3);
@@ -335,7 +340,7 @@
             // 
             // goToLastFrameButton
             // 
-            this.goToLastFrameButton.Location = new System.Drawing.Point(147, 0);
+            this.goToLastFrameButton.Location = new System.Drawing.Point(243, 0);
             this.goToLastFrameButton.Name = "goToLastFrameButton";
             this.goToLastFrameButton.Size = new System.Drawing.Size(42, 52);
             this.goToLastFrameButton.TabIndex = 6;
@@ -345,11 +350,11 @@
             // 
             // nextFrameButton
             // 
-            this.nextFrameButton.Location = new System.Drawing.Point(99, 0);
+            this.nextFrameButton.Location = new System.Drawing.Point(195, 0);
             this.nextFrameButton.Name = "nextFrameButton";
             this.nextFrameButton.Size = new System.Drawing.Size(42, 52);
             this.nextFrameButton.TabIndex = 5;
-            this.nextFrameButton.Text = ">";
+            this.nextFrameButton.Text = ">l";
             this.nextFrameButton.UseVisualStyleBackColor = true;
             this.nextFrameButton.Click += new System.EventHandler(this.nextFrameButton_Click);
             // 
@@ -357,10 +362,10 @@
             // 
             this.frameTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.frameTrackBar.Location = new System.Drawing.Point(195, 0);
+            this.frameTrackBar.Location = new System.Drawing.Point(291, 0);
             this.frameTrackBar.Maximum = 0;
             this.frameTrackBar.Name = "frameTrackBar";
-            this.frameTrackBar.Size = new System.Drawing.Size(1005, 56);
+            this.frameTrackBar.Size = new System.Drawing.Size(909, 56);
             this.frameTrackBar.TabIndex = 2;
             this.frameTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.frameTrackBar.Scroll += new System.EventHandler(this.frameTrackBar_Scroll);
@@ -371,7 +376,7 @@
             this.previousFrameButton.Name = "previousFrameButton";
             this.previousFrameButton.Size = new System.Drawing.Size(42, 52);
             this.previousFrameButton.TabIndex = 1;
-            this.previousFrameButton.Text = "<";
+            this.previousFrameButton.Text = "l<";
             this.previousFrameButton.UseVisualStyleBackColor = true;
             this.previousFrameButton.Click += new System.EventHandler(this.previousFrameButton_Click);
             // 
@@ -393,6 +398,26 @@
             this.statusStrip1.Size = new System.Drawing.Size(1344, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // playBackwardsButton
+            // 
+            this.playBackwardsButton.Location = new System.Drawing.Point(99, 0);
+            this.playBackwardsButton.Name = "playBackwardsButton";
+            this.playBackwardsButton.Size = new System.Drawing.Size(42, 52);
+            this.playBackwardsButton.TabIndex = 7;
+            this.playBackwardsButton.Text = "<";
+            this.playBackwardsButton.UseVisualStyleBackColor = true;
+            this.playBackwardsButton.Click += new System.EventHandler(this.playBackwardsButton_Click);
+            // 
+            // playForwardsButton
+            // 
+            this.playForwardsButton.Location = new System.Drawing.Point(147, 0);
+            this.playForwardsButton.Name = "playForwardsButton";
+            this.playForwardsButton.Size = new System.Drawing.Size(42, 52);
+            this.playForwardsButton.TabIndex = 8;
+            this.playForwardsButton.Text = ">";
+            this.playForwardsButton.UseVisualStyleBackColor = true;
+            this.playForwardsButton.Click += new System.EventHandler(this.playForwardsButton_Click);
             // 
             // Main
             // 
@@ -465,6 +490,8 @@
         private System.Windows.Forms.Button nextFrameButton;
         private System.Windows.Forms.TextBox frameCounterTextBox;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Button playForwardsButton;
+        private System.Windows.Forms.Button playBackwardsButton;
     }
 }
 
