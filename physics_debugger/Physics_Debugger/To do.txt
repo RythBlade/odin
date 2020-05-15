@@ -25,7 +25,7 @@
 - Scene explorer tree view in the debugger?
 - Clickable objects in the viewport to select them to display their data in the debugger
 - Send more data types
-	- Shape information
+	- Shape information - meshes + arbitrary meshes
 	- Compount shapes
 	- Contacts
 	- Forces added
@@ -45,12 +45,20 @@ but also so you could record a really long run! Would need some special logic in
 - Camera Speed adjuster
 - Draw a wireframe ground plane to help with orientation
 - Allow "game" to send an idea camera position to the viewer so it can mirror the game play camera
+- Mesh Types
+	- Sphere
+	- Cone
+	- Capsule
+	- Cylinder
+	- Arbitrary mesh (triangle list)
 
 ---- DONE ----
 - Proper frame scrubbing controls
 - playback modes
 	- play/pause
 	- Scrub through the telemetry we've been sent
+- Mesh types
+	- Tetrahedron
 
 ----Notes----
 Packets are prescriptive now, but the version when we can generate the serialisation/deserialisation code, I'm thinking about using shader style Semantics, to infer/retrieve what I NEED to render the scene. You can mark the 
