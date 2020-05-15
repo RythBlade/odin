@@ -49,5 +49,24 @@ namespace Renderer.Geometry
             new Vertex( new Vector4( 1.0f,  1.0f, -1.0f, 1.0f), new Vector4(0.0f, 1.0f, 1.0f, 1.0f) ),
             new Vertex( new Vector4( 1.0f,  1.0f,  1.0f, 1.0f), new Vector4(0.0f, 1.0f, 1.0f, 1.0f) ),
         };
+
+        public static Vertex[] s_tetrahedron = new Vertex[]
+        {
+            new Vertex( new Vector4(-1.0f, -1.0f, -1.0f, 1.0f), Vector4.Normalize(new Vector4(-1.0f,  1.0f, -1.0f, 1.0f)) ),
+            new Vertex( new Vector4(-1.0f,  1.0f,  1.0f, 1.0f), Vector4.Normalize(new Vector4(-1.0f,  1.0f, -1.0f, 1.0f)) ),
+            new Vertex( new Vector4( 1.0f,  1.0f, -1.0f, 1.0f), Vector4.Normalize(new Vector4(-1.0f,  1.0f, -1.0f, 1.0f)) ),
+
+            new Vertex( new Vector4(-1.0f, -1.0f, -1.0f, 1.0f), Vector4.Normalize(new Vector4( 1.0f, -1.0f, -1.0f, 1.0f)) ),
+            new Vertex( new Vector4( 1.0f,  1.0f, -1.0f, 1.0f), Vector4.Normalize(new Vector4( 1.0f, -1.0f, -1.0f, 1.0f)) ),
+            new Vertex( new Vector4( 1.0f, -1.0f,  1.0f, 1.0f), Vector4.Normalize(new Vector4( 1.0f, -1.0f, -1.0f, 1.0f)) ),
+
+            new Vertex( new Vector4( 1.0f,  1.0f, -1.0f, 1.0f), Vector4.Normalize(new Vector4( 1.0f,  1.0f,  1.0f, 1.0f)) ),
+            new Vertex( new Vector4(-1.0f,  1.0f,  1.0f, 1.0f), Vector4.Normalize(new Vector4( 1.0f,  1.0f,  1.0f, 1.0f)) ),
+            new Vertex( new Vector4( 1.0f, -1.0f,  1.0f, 1.0f), Vector4.Normalize(new Vector4( 1.0f,  1.0f,  1.0f, 1.0f)) ),
+
+            new Vertex( new Vector4(-1.0f, -1.0f, -1.0f, 1.0f), Vector4.Normalize(new Vector4(-1.0f, -1.0f,  1.0f, 1.0f)) ),
+            new Vertex( new Vector4( 1.0f, -1.0f,  1.0f, 1.0f), Vector4.Normalize(new Vector4(-1.0f, -1.0f,  1.0f, 1.0f)) ),
+            new Vertex( new Vector4(-1.0f,  1.0f,  1.0f, 1.0f), Vector4.Normalize(new Vector4(-1.0f, -1.0f,  1.0f, 1.0f)) ),
+        };
     }
 }

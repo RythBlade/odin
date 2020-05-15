@@ -25,6 +25,7 @@ namespace physics_debugger
         private FrameController controller = new FrameController();
 
         private int CubeMeshId = 0;
+        private int TetrahedronMeshId = 0;
 
         public Main()
         {
@@ -33,6 +34,7 @@ namespace physics_debugger
             lastMousePosition = Control.MousePosition;
 
             CubeMeshId = mainViewport.Renderer.Meshes.AddCubeMesh();
+            TetrahedronMeshId = mainViewport.Renderer.Meshes.AddTetrahedron();
 
             clock.Start();
             updateTimer.Start();
@@ -176,7 +178,7 @@ namespace physics_debugger
                 {
                     for (int i = 0; i < -differenceInRenderInstances; ++i)
                     {
-                        mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), CubeMeshId));
+                        mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), TetrahedronMeshId));
                     }
                 }
 

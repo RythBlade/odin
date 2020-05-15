@@ -36,5 +36,17 @@ namespace Renderer.Geometry
 
             return m_meshes.Count > 0 ? m_meshes.Count - 1 : -1;
         }
+
+        public int AddTetrahedron()
+        {
+            Mesh newMesh = new Mesh();
+            newMesh.numberOfVertices = MeshVertices.s_tetrahedron.Length;
+            newMesh.vertexBuffer = SharpDX.Direct3D11.Buffer.Create(GraphicsDevice.Instance.Device, BindFlags.VertexBuffer, MeshVertices.s_tetrahedron);
+            newMesh.vertexBufferBinding = new VertexBufferBinding(newMesh.vertexBuffer, Utilities.SizeOf<Vertex>(), 0);
+
+            m_meshes.Add(newMesh);
+
+            return m_meshes.Count > 0 ? m_meshes.Count - 1 : -1;
+        }
     }
 }
