@@ -8,4 +8,7 @@
 
 ---- Network Flow ----
 - Initial hand-shakes to establish connection
-- Do we need an intial dump of data - or can it be iteratively sent across as it happens - e.g. as meshes are instanced, or settings change. Is there anything we need to know from the outset? I don't think there is
+- Do we need an intial dump of data - or can it be iteratively sent across as it happens - e.g. as meshes are instanced, or settings change. Is there anything we need to know from the outset? I don't think there is.
+
+
+Packet transmission.

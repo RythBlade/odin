@@ -8,7 +8,8 @@ namespace physics_debugger.Network
 {
     enum PacketType : uint
     {
-        eRigidBodies
+        eRigidBodyFrameUpdate
+        , eShapeAdded
     }
 
     public class BasePacketHeader
