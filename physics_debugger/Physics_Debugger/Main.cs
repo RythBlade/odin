@@ -143,12 +143,12 @@ namespace physics_debugger
                 if (translator.TranslatePacket(basePacket))
                 {
                     // todo: error - don't pull out packets that aren't complete
-                    foreach (Tuple<bool, FrameSnapshot> snapshot in translator.ConstructedSnapehots.Values)
+                    foreach (Tuple<bool, FrameSnapshot> snapshot in translator.ConstructedSnaphots.Values)
                     {
                         frameData.Frames.Add(snapshot.Item2);
                     }
 
-                    translator.ConstructedSnapehots.Clear();
+                    translator.ConstructedSnaphots.Clear();
                 }
                 else
                 {

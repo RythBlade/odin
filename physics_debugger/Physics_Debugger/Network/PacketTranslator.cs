@@ -8,7 +8,7 @@ namespace physics_debugger.Network
 {
     public class PacketTranslator
     {
-        public Dictionary<uint, Tuple<bool, FrameSnapshot>> ConstructedSnapehots = new Dictionary<uint, Tuple<bool, FrameSnapshot>>();
+        public Dictionary<uint, Tuple<bool, FrameSnapshot>> ConstructedSnaphots = new Dictionary<uint, Tuple<bool, FrameSnapshot>>();
         public Dictionary<int, BaseShape> AddedShapes = new Dictionary<int, BaseShape>();
 
         public PacketTranslator()
@@ -22,7 +22,7 @@ namespace physics_debugger.Network
             if (snapshot == null)
             {
                 snapshot = new FrameSnapshot();
-                ConstructedSnapehots.Add(frameId, new Tuple<bool, FrameSnapshot>(false, snapshot));
+                ConstructedSnaphots.Add(frameId, new Tuple<bool, FrameSnapshot>(false, snapshot));
             }
 
             return snapshot;
@@ -35,7 +35,7 @@ namespace physics_debugger.Network
             // todo: Error handling - if you do packets broken up into bits, they you'll need to keep a list of the bits you've recieved, so you know if you recieve a piece twice!
             Tuple<bool, FrameSnapshot> tuple = null;
 
-            if (ConstructedSnapehots.TryGetValue( frameId, out tuple))
+            if (ConstructedSnaphots.TryGetValue( frameId, out tuple))
             {
                 snapshot = tuple.Item2;
             }
