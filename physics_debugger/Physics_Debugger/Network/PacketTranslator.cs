@@ -1,12 +1,8 @@
 ﻿using physics_debugger.FrameData;
 using physics_debugger.FrameData.Shapes;
-using Renderer.Buffers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace physics_debugger.Network
 {
@@ -98,7 +94,7 @@ namespace physics_debugger.Network
 
         private void ProcessShapeAdded(BasePacketHeader packet)
         {
-            // -- rigid body packet layout --
+            // -- shape packet layout --
             //      int         shape ID
             //      uint        shape type
             //      uint        has local matrix

@@ -2,6 +2,12 @@
 
 namespace physics_debugger.FrameData
 {
+    public class FrameItem
+    {
+        public int ObjectId = -1;
+        public int FrameIdToUse = -1;
+    }
+
     public class FrameSnapshot
     {
         public int FrameId { get; set; }
@@ -11,5 +17,9 @@ namespace physics_debugger.FrameData
         public FrameSnapshot()
         {
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public List<FrameItem> Shapes = new List<FrameItem>();
     }
 }
