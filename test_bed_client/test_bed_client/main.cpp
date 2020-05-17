@@ -7,7 +7,7 @@
 #include "DataServer.h"
 
 #include <Windows.h>
-#include "BoxShape.h"
+#include "ObbShape.h"
 #include "ConvexHull.h"
 
 unsigned int const numberOfParticles = 10;
