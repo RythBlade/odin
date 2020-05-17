@@ -8,9 +8,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>physics_debugger</RootNamespace>
     <AssemblyName>physics_debugger</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,25 +65,12 @@
     <Compile Include="DataStream1.cs" />
     <Compile Include="FrameControl\FrameController.cs" />
     <Compile Include="FrameControl\FrameControllerEventHandler.cs" />
-    <Compile Include="FrameData\DataSerialiser.cs" />
-    <Compile Include="FrameData\FrameData.cs" />
-    <Compile Include="FrameData\FrameSnapshot.cs" />
-    <Compile Include="FrameData\Properties\FloatProperty.cs" />
-    <Compile Include="FrameData\Properties\IBaseProperty.cs" />
-    <Compile Include="FrameData\RigidBody.cs" />
-    <Compile Include="FrameData\ShapeDataManager.cs" />
-    <Compile Include="FrameData\Shapes\BaseShape.cs" />
-    <Compile Include="FrameData\Shapes\ConvexHull.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Network\BasePacketHeader.cs" />
-    <Compile Include="Network\DataStream.cs" />
-    <Compile Include="Network\GenericPropertiesPacket.cs" />
-    <Compile Include="Network\PacketTranslator.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +88,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -119,6 +108,10 @@
     <ProjectReference Include="..\Renderer\Renderer.csproj">
       <Project>{d0b9399a-9451-4ede-9846-5bc25e8bf762}</Project>
       <Name>Renderer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Telemetry\Telemetry.csproj">
+      <Project>{8915142e-4a3c-42fb-ae4f-071e207bb0f9}</Project>
+      <Name>Telemetry</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

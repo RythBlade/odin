@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace physics_debugger.Network
+namespace Telemetry.Network
 {
     public class GenericProperty
     {

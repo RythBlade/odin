@@ -1,5 +1,5 @@
 ﻿using physics_debugger.FrameControl;
-using physics_debugger.FrameData;
+using Telemetry.FrameData;
 using Renderer;
 using SharpDX;
 using System;
@@ -18,10 +18,10 @@ namespace physics_debugger
         private System.Drawing.Point lastMousePosition = new System.Drawing.Point(0, 0);
         private Stopwatch clock = new Stopwatch();
 
-        private Network.DataStream dataStream = new Network.DataStream("localhost", 27015);
-        private Network.PacketTranslator translator = new Network.PacketTranslator();
+        private Telemetry.Network.DataStream dataStream = new Telemetry.Network.DataStream("localhost", 27015);
+        private Telemetry.Network.PacketTranslator translator = new Telemetry.Network.PacketTranslator();
 
-        private FrameData.FrameData frameData = new FrameData.FrameData();
+        private Telemetry.FrameData.FrameData frameData = new Telemetry.FrameData.FrameData();
         private FrameController controller = new FrameController();
 
         private int CubeMeshId = 0;
@@ -138,7 +138,7 @@ namespace physics_debugger
         {
             if (dataStream.Connected)
             {
-                Network.BasePacketHeader basePacket = dataStream.ReceiveData();
+                Telemetry.Network.BasePacketHeader basePacket = dataStream.ReceiveData();
 
                 if (translator.TranslatePacket(basePacket))
                 {
@@ -308,7 +308,7 @@ namespace physics_debugger
                 DataSerialiser serialiser = new DataSerialiser();
                 serialiser.Filename = openDialog.FileName;
 
-                FrameData.FrameData readFrameData = new FrameData.FrameData();
+                Telemetry.FrameData.FrameData readFrameData = new Telemetry.FrameData.FrameData();
                 bool success = serialiser.OpenTelemetry(readFrameData);
 
                 if( success)

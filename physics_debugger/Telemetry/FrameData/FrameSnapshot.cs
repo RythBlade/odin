@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace physics_debugger.FrameData
+namespace Telemetry.FrameData
 {
     public class FrameItem
     {

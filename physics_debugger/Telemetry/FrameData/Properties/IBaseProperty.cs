@@ -1,4 +1,4 @@
-﻿namespace physics_debugger.FrameData.Properties
+﻿namespace Telemetry.FrameData.Properties
 {
     public interface IBaseProperty
     {

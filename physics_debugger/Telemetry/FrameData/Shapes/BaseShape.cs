@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace physics_debugger.FrameData.Shapes
+namespace Telemetry.FrameData.Shapes
 {
     public enum ShapeType : uint
     {

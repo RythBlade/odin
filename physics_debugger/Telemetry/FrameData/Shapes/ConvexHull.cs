@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
 
-namespace physics_debugger.FrameData.Shapes
+namespace Telemetry.FrameData.Shapes
 {
     public class ConvexHull : BaseShape
     {

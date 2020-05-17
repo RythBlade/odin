@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace physics_debugger.FrameData
+namespace Telemetry.FrameData
 {
     public class DataSerialiser
     {

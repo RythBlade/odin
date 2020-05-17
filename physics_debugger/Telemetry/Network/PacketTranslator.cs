@@ -1,10 +1,10 @@
-﻿using physics_debugger.FrameData;
-using physics_debugger.FrameData.Shapes;
+﻿using Telemetry.FrameData;
+using Telemetry.FrameData.Shapes;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 
-namespace physics_debugger.Network
+namespace Telemetry.Network
 {
     public class PacketTranslator
     {

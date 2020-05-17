@@ -1,8 +1,8 @@
-﻿using physics_debugger.FrameData.Properties;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Numerics;
+using Telemetry.FrameData.Properties;
 
-namespace physics_debugger.FrameData
+namespace Telemetry.FrameData
 {
     public class RigidBody
     {

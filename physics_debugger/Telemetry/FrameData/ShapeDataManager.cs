@@ -1,7 +1,7 @@
-﻿using physics_debugger.FrameData.Shapes;
+﻿using Telemetry.FrameData.Shapes;
 using System.Collections.Generic;
 
-namespace physics_debugger.FrameData
+namespace Telemetry.FrameData
 {
     public class ShapeIterations
     {
