@@ -70,6 +70,8 @@
     <Compile Include="FrameData\Properties\FloatProperty.cs" />
     <Compile Include="FrameData\Properties\IBaseProperty.cs" />
     <Compile Include="FrameData\RigidBody.cs" />
+    <Compile Include="FrameData\Shapes\BaseShape.cs" />
+    <Compile Include="FrameData\Shapes\ConvexHull.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +121,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Designs.txt" />
     <Content Include="To do.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
