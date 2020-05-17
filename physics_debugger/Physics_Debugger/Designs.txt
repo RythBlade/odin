@@ -1,0 +1,11 @@
+﻿
+---- Mesh Handling ----
+- 
+
+---- Message Types ----
+- "thing"/mesh/rigid body created
+- "thing"/mesh/rigid body data changed (mesh changed, or random setting altered on the object)
+
+---- Network Flow ----
+- Initial hand-shakes to establish connection
+- Do we need an intial dump of data - or can it be iteratively sent across as it happens - e.g. as meshes are instanced, or settings change. Is there anything we need to know from the outset? I don't think there is
