@@ -1,5 +1,9 @@
 #pragma once
 
+#include "Shape.h"
+
+#include <vector>
+
 struct Particle
 {
 public:
@@ -19,5 +23,7 @@ public:
 
     float m_position[ 3 ];
     float m_velocity[ 3 ];
+
+    std::vector<Shape*> m_collisionShapes;
 };
 

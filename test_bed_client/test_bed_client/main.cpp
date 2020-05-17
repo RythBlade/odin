@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <iostream>
+#include <string>
+#include <vector>
 
 #include "Particle.h"
 #include "DataServer.h"
 
 #include <Windows.h>
+#include "BoxShape.h"
+#include "ConvexHull.h"
 
 unsigned int const numberOfParticles = 10;
 
@@ -22,6 +26,7 @@ public:
     }
 };
 
+ConvexHull* loadMesh();
 void updateParticles( ParticlePacket* particles, float timeStep );
 unsigned int getNextTimeStep();
 
@@ -51,11 +56,19 @@ void main()
 
     for ( int i = 0; i < numberOfParticles; ++i )
     {
+        Particle& particle = particles.particles[i];
+
         for ( int comp = 0; comp < 3; ++comp )
         {
             float random = static_cast<float>( rand() ) / static_cast<float>(RAND_MAX);
-            particles.particles[ i ].m_position[ comp ] = -worldAABB[ comp ] + particleRadius + random * ( worldAABB[ comp ] * 2.0f - 2.0f * particleRadius );
+            particle.m_position[ comp ] = -worldAABB[ comp ] + particleRadius + random * ( worldAABB[ comp ] * 2.0f - 2.0f * particleRadius );
         }
+
+        ConvexHull* convexHull = loadMesh();
+
+        convexHull->m_hasLocalMatrix = false;
+
+        particle.m_collisionShapes.push_back(convexHull);
     }
 
     DataServer server;
@@ -227,4 +240,66 @@ unsigned int getNextTimeStep()
     StartingTime.QuadPart /= Frequency.QuadPart;
 
     return ( unsigned int ) StartingTime.QuadPart;
+}
+
+ConvexHull* loadMesh()
+{
+    ConvexHull* convexHull = new ConvexHull();
+
+    float randomOffset = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+
+    convexHull->vertices.push_back(ConvexHull::Vertex(-randomOffset, -randomOffset, -randomOffset, /**/ 1.0f, 0.0f, 0.0f)); // Front
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f,  1.0f, -1.0f, /**/ 1.0f, 0.0f, 0.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f,  1.0f, -1.0f, /**/ 1.0f, 0.0f, 0.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+    convexHull->vertices.push_back(ConvexHull::Vertex(-randomOffset, -randomOffset, -randomOffset, /**/ 1.0f, 0.0f, 0.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f,  1.0f, -1.0f, /**/ 1.0f, 0.0f, 0.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( randomOffset, -randomOffset, -randomOffset, /**/ 1.0f, 0.0f, 0.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f, -1.0f,  1.0f, /**/ 0.0f, 1.0f, 0.0f)); // BACK
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f,  1.0f,  1.0f, /**/ 0.0f, 1.0f, 0.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f,  1.0f,  1.0f, /**/ 0.0f, 1.0f, 0.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f, -1.0f,  1.0f, /**/ 0.0f, 1.0f, 0.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f, -1.0f,  1.0f, /**/ 0.0f, 1.0f, 0.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f,  1.0f,  1.0f, /**/ 0.0f, 1.0f, 0.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f, 1.0f, -1.0f, /**/ 0.0f, 0.0f, 1.0f)); // Top
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f, 1.0f,  1.0f, /**/ 0.0f, 0.0f, 1.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f, 1.0f,  1.0f, /**/ 0.0f, 0.0f, 1.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f, 1.0f, -1.0f, /**/ 0.0f, 0.0f, 1.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f, 1.0f,  1.0f, /**/ 0.0f, 0.0f, 1.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f, 1.0f, -1.0f, /**/ 0.0f, 0.0f, 1.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f,-1.0f, -1.0f, /**/ 1.0f, 1.0f, 0.0f)); // Bottom
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f,-1.0f,  1.0f, /**/ 1.0f, 1.0f, 0.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f,-1.0f,  1.0f, /**/ 1.0f, 1.0f, 0.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f,-1.0f, -1.0f, /**/ 1.0f, 1.0f, 0.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f,-1.0f, -1.0f, /**/ 1.0f, 1.0f, 0.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f,-1.0f,  1.0f, /**/ 1.0f, 1.0f, 0.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+
+    convexHull->vertices.push_back(ConvexHull::Vertex(-randomOffset, -randomOffset, -randomOffset, /**/ 1.0f, 0.0f, 1.0f)); // Left
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f, -1.0f,  1.0f, /**/ 1.0f, 0.0f, 1.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f,  1.0f,  1.0f, /**/ 1.0f, 0.0f, 1.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+    convexHull->vertices.push_back(ConvexHull::Vertex(-randomOffset, -randomOffset, -randomOffset, /**/ 1.0f, 0.0f, 1.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f,  1.0f,  1.0f, /**/ 1.0f, 0.0f, 1.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex(-1.0f,  1.0f, -1.0f, /**/ 1.0f, 0.0f, 1.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+
+    convexHull->vertices.push_back(ConvexHull::Vertex( randomOffset, -randomOffset, -randomOffset, /**/ 0.0f, 1.0f, 1.0f)); // Right
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f,  1.0f,  1.0f, /**/ 0.0f, 1.0f, 1.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f, -1.0f,  1.0f, /**/ 0.0f, 1.0f, 1.0f));
+    convexHull->faces.push_back(ConvexHull::Face(convexHull->vertices.size() - 1, convexHull->vertices.size() - 2, convexHull->vertices.size() - 3));
+    convexHull->vertices.push_back(ConvexHull::Vertex( randomOffset, -randomOffset, -randomOffset, /**/ 0.0f, 1.0f, 1.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f,  1.0f, -1.0f, /**/ 0.0f, 1.0f, 1.0f));
+    convexHull->vertices.push_back(ConvexHull::Vertex( 1.0f,  1.0f,  1.0f, /**/ 0.0f, 1.0f, 1.0f));
+        
+    return convexHull;
 }

@@ -115,8 +115,12 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ObbShape.h" />
+    <ClInclude Include="ConvexHull.h" />
     <ClInclude Include="DataServer.h" />
     <ClInclude Include="Particle.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="SphereShape.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
