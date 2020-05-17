@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="FrameData\DataSerialiser.cs" />
     <Compile Include="FrameData\FrameData.cs" />
     <Compile Include="FrameData\FrameSnapshot.cs" />

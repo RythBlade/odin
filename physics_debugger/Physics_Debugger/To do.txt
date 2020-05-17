@@ -51,6 +51,7 @@ but also so you could record a really long run! Would need some special logic in
 	- Capsule
 	- Cylinder
 	- Arbitrary mesh (triangle list)
+- Connecting to an "in progress" session
 
 ---- DONE ----
 - Proper frame scrubbing controls
@@ -63,6 +64,23 @@ but also so you could record a really long run! Would need some special logic in
 ----Notes----
 Packets are prescriptive now, but the version when we can generate the serialisation/deserialisation code, I'm thinking about using shader style Semantics, to infer/retrieve what I NEED to render the scene. You can mark the 
 properties that should be interpretted as semantic values so I know what they are so can use them for rendering purposes - e.g. position/orientation/velocity etc.
+
+What about multi-world games - where they have multiple physics worlds you might want to collect data for. They'll each need their own "telemetry world" for gathering frame data. They could be running at different frame
+rates. Should they use the same network connection and the packet translator splits it up into the correct world, so there's only 1 data stream? Or, create a data stream for each world and exchange ports to use for each
+one on initial connection - or via some sort of connection manager? The base packet could have a world ID or world name. The debugger could then allow the user to select which world to collect data for - defaulting to 
+collect all channels though, so no data is missed.
+
+-- Network/data source structuring --
+
+|----------------Telemetry source-------------------|
+|DataStream ---> Packet Accumulator? ---> Translator|  --queue-> Frame Data
+|---------------------------------------------------|
+
+You may want to accumulate telemetry from multiple sources simutaneously - so passing in a data stream to use is good - or at least specify the address. If you're collecting from multiple sources you'll need a complete
+pipeline for each source, or to dump all data whenever you swap source as there's no real way to merge the two.
+Memory snooping is another "telemetry source", so it should be interfaced, so you can swap between them as a mode of running - e.g. when the target application hits a break point, you can swap to snoop mode, where
+it can continue to process data for the same physics engine instance, except it's data source is a memory snooper.
+Files may also be another source of data?
 
 ----Bugs----
 Drag the splitters to make the DirectX control have zero height causes an assert - likely the same thing happens if you do it to the width too.
