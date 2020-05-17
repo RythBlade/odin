@@ -25,6 +25,18 @@ namespace Renderer.Geometry
             return m_meshes[index];
         }
 
+        public int AddMesh(List<Vertex> triangleList)
+        {
+            Mesh newMesh = new Mesh();
+            newMesh.numberOfVertices = triangleList.Count;
+            newMesh.vertexBuffer = SharpDX.Direct3D11.Buffer.Create(GraphicsDevice.Instance.Device, BindFlags.VertexBuffer, triangleList.ToArray());
+            newMesh.vertexBufferBinding = new VertexBufferBinding(newMesh.vertexBuffer, Utilities.SizeOf<Vertex>(), 0);
+
+            m_meshes.Add(newMesh);
+
+            return m_meshes.Count > 0 ? m_meshes.Count - 1 : -1;
+        }
+
         public int AddCubeMesh()
         {
             Mesh newMesh = new Mesh();
