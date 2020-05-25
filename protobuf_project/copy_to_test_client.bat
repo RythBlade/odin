@@ -1,0 +1,1 @@
+robocopy "generated\cpp\include" "..\test_bed_client\test_bed_client\proto.generated" *.* /s /mir

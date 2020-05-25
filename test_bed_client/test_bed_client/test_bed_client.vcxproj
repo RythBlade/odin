@@ -113,12 +113,14 @@
   <ItemGroup>
     <ClCompile Include="DataServer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="proto.generated\particle.pb.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ObbShape.h" />
     <ClInclude Include="ConvexHull.h" />
     <ClInclude Include="DataServer.h" />
     <ClInclude Include="Particle.h" />
+    <ClInclude Include="proto.generated\particle.pb.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SphereShape.h" />
   </ItemGroup>

@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="proto.generated">
+      <UniqueIdentifier>{e1d0dc63-06e2-4304-a935-2ff8e65eee05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -20,6 +23,9 @@
     </ClCompile>
     <ClCompile Include="DataServer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="proto.generated\particle.pb.cc">
+      <Filter>proto.generated</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -40,6 +46,9 @@
     </ClInclude>
     <ClInclude Include="ObbShape.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="proto.generated\particle.pb.h">
+      <Filter>proto.generated</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

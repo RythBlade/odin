@@ -1,0 +1,1 @@
+robocopy "generated\csharp" "..\physics_debugger\Telemetry\FrameData\Generated" *.* /s /mir
