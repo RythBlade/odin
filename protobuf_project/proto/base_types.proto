@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package PhysicsTelemetry;
+
+option csharp_namespace = "Physics.Telemetry.Serialised";
+
+message Vector3
+{
+	float x = 1;
+	float y = 2;
+	float z = 3;
+}
+
+message Vector4
+{
+	float x = 1;
+	float y = 2;
+	float z = 3;
+	float w = 4;
+}
+
+message Matrix4x4
+{
+	float m11 = 1;
+	float m12 = 2;
+	float m13 = 3;
+	float m14 = 4;
+
+	float m21 = 5;
+	float m22 = 6;
+	float m23 = 7;
+	float m24 = 8;
+
+	float m31 = 9;
+	float m32 = 10;
+	float m33 = 11;
+	float m34 = 12;
+
+	float m41 = 13;
+	float m42 = 14;
+	float m43 = 15;
+	float m44 = 16;
+}
