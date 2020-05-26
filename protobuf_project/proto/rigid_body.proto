@@ -6,7 +6,7 @@ import "base_types.proto";
 
 option csharp_namespace = "Physics.Telemetry.Serialised";
 
-message Person
+message RigidBody
 {
 	PhysicsTelemetry.Vector4 position = 1;
 	PhysicsTelemetry.Vector4 velocity = 2;

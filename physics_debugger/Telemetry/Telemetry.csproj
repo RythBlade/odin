@@ -63,7 +63,7 @@
     <Compile Include="FrameData\FrameData.cs" />
     <Compile Include="FrameData\FrameSnapshot.cs" />
     <Compile Include="FrameData\Generated\BaseTypes.cs" />
-    <Compile Include="FrameData\Generated\Particle.cs" />
+    <Compile Include="FrameData\Generated\RigidBody.cs" />
     <Compile Include="FrameData\Properties\FloatProperty.cs" />
     <Compile Include="FrameData\Properties\IBaseProperty.cs" />
     <Compile Include="FrameData\RigidBody.cs" />

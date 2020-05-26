@@ -24,10 +24,10 @@
     <ClCompile Include="DataServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="proto.generated\particle.pb.cc">
+    <ClCompile Include="proto.generated\base_types.pb.cc">
       <Filter>proto.generated</Filter>
     </ClCompile>
-    <ClCompile Include="proto.generated\base_types.pb.cc">
+    <ClCompile Include="proto.generated\rigid_body.pb.cc">
       <Filter>proto.generated</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,10 +50,10 @@
     <ClInclude Include="ObbShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="proto.generated\particle.pb.h">
+    <ClInclude Include="proto.generated\base_types.pb.h">
       <Filter>proto.generated</Filter>
     </ClInclude>
-    <ClInclude Include="proto.generated\base_types.pb.h">
+    <ClInclude Include="proto.generated\rigid_body.pb.h">
       <Filter>proto.generated</Filter>
     </ClInclude>
   </ItemGroup>
