@@ -71,15 +71,16 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_par
   &scc_info_Person_particle_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_particle_2eproto_once;
+static bool descriptor_table_particle_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_particle_2eproto = {
-  false, false, descriptor_table_protodef_particle_2eproto, "particle.proto", 193,
+  &descriptor_table_particle_2eproto_initialized, descriptor_table_protodef_particle_2eproto, "particle.proto", 193,
   &descriptor_table_particle_2eproto_once, descriptor_table_particle_2eproto_sccs, descriptor_table_particle_2eproto_deps, 1, 1,
   schemas, file_default_instances, TableStruct_particle_2eproto::offsets,
   file_level_metadata_particle_2eproto, 1, file_level_enum_descriptors_particle_2eproto, file_level_service_descriptors_particle_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_particle_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_particle_2eproto)), true);
+static bool dynamic_init_dummy_particle_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_particle_2eproto), true);
 namespace PhysicsTelemetry {
 
 // ===================================================================
@@ -105,26 +106,26 @@ Person::_Internal::velocity(const Person* msg) {
   return *msg->velocity_;
 }
 void Person::clear_position() {
-  if (GetArena() == nullptr && position_ != nullptr) {
+  if (GetArenaNoVirtual() == nullptr && position_ != nullptr) {
     delete position_;
   }
   position_ = nullptr;
 }
 void Person::clear_velocity() {
-  if (GetArena() == nullptr && velocity_ != nullptr) {
+  if (GetArenaNoVirtual() == nullptr && velocity_ != nullptr) {
     delete velocity_;
   }
   velocity_ = nullptr;
 }
-Person::Person(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+Person::Person()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  RegisterArenaDtor(arena);
-  // @@protoc_insertion_point(arena_constructor:PhysicsTelemetry.Person)
+  // @@protoc_insertion_point(constructor:PhysicsTelemetry.Person)
 }
 Person::Person(const Person& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from._internal_has_position()) {
     position_ = new ::PhysicsTelemetry::Vector4(*from.position_);
   } else {
@@ -148,21 +149,13 @@ void Person::SharedCtor() {
 Person::~Person() {
   // @@protoc_insertion_point(destructor:PhysicsTelemetry.Person)
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void Person::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete position_;
   if (this != internal_default_instance()) delete velocity_;
 }
 
-void Person::ArenaDtor(void* object) {
-  Person* _this = reinterpret_cast< Person* >(object);
-  (void)_this;
-}
-void Person::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void Person::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
@@ -178,20 +171,19 @@ void Person::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArena() == nullptr && position_ != nullptr) {
+  if (GetArenaNoVirtual() == nullptr && position_ != nullptr) {
     delete position_;
   }
   position_ = nullptr;
-  if (GetArena() == nullptr && velocity_ != nullptr) {
+  if (GetArenaNoVirtual() == nullptr && velocity_ != nullptr) {
     delete velocity_;
   }
   velocity_ = nullptr;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear();
 }
 
 const char* Person::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -217,9 +209,7 @@ const char* Person::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
           ctx->SetLastTag(tag);
           goto success;
         }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
         CHK_(ptr != nullptr);
         continue;
       }
@@ -257,7 +247,7 @@ failure:
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+        _internal_metadata_.unknown_fields(), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.Person)
   return target;
@@ -312,7 +302,7 @@ void Person::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 void Person::MergeFrom(const Person& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.Person)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -344,13 +334,9 @@ bool Person::IsInitialized() const {
 
 void Person::InternalSwap(Person* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Person, velocity_)
-      + sizeof(Person::velocity_)
-      - PROTOBUF_FIELD_OFFSET(Person, position_)>(
-          reinterpret_cast<char*>(&position_),
-          reinterpret_cast<char*>(&other->position_));
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(position_, other->position_);
+  swap(velocity_, other->velocity_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Person::GetMetadata() const {
@@ -362,7 +348,7 @@ void Person::InternalSwap(Person* other) {
 }  // namespace PhysicsTelemetry
 PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::Person* Arena::CreateMaybeMessage< ::PhysicsTelemetry::Person >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PhysicsTelemetry::Person >(arena);
+  return Arena::CreateInternal< ::PhysicsTelemetry::Person >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

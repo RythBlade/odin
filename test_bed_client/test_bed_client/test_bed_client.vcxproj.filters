@@ -27,6 +27,9 @@
     <ClCompile Include="proto.generated\particle.pb.cc">
       <Filter>proto.generated</Filter>
     </ClCompile>
+    <ClCompile Include="proto.generated\base_types.pb.cc">
+      <Filter>proto.generated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataServer.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="proto.generated\particle.pb.h">
+      <Filter>proto.generated</Filter>
+    </ClInclude>
+    <ClInclude Include="proto.generated\base_types.pb.h">
       <Filter>proto.generated</Filter>
     </ClInclude>
   </ItemGroup>
