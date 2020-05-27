@@ -25,14 +25,17 @@ namespace Physics.Telemetry.Serialised {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChByaWdpZF9ib2R5LnByb3RvEhBQaHlzaWNzVGVsZW1ldHJ5GhBiYXNlX3R5",
-            "cGVzLnByb3RvImUKCVJpZ2lkQm9keRIrCghwb3NpdGlvbhgBIAEoCzIZLlBo",
-            "eXNpY3NUZWxlbWV0cnkuVmVjdG9yNBIrCgh2ZWxvY2l0eRgCIAEoCzIZLlBo",
-            "eXNpY3NUZWxlbWV0cnkuVmVjdG9yNEIfqgIcUGh5c2ljcy5UZWxlbWV0cnku",
-            "U2VyaWFsaXNlZGIGcHJvdG8z"));
+            "cGVzLnByb3RvInMKCVJpZ2lkQm9keRIKCgJJZBgBIAEoDRItCghwb3NpdGlv",
+            "bhgCIAEoCzIbLlBoeXNpY3NUZWxlbWV0cnkuTWF0cml4NHg0EisKCHZlbG9j",
+            "aXR5GAMgASgLMhkuUGh5c2ljc1RlbGVtZXRyeS5WZWN0b3I0IkEKDVJpZ2lk",
+            "Qm9keUxpc3QSMAoLcmlnaWRCb2RpZXMYASADKAsyGy5QaHlzaWNzVGVsZW1l",
+            "dHJ5LlJpZ2lkQm9keUIfqgIcUGh5c2ljcy5UZWxlbWV0cnkuU2VyaWFsaXNl",
+            "ZGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Physics.Telemetry.Serialised.BaseTypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.RigidBody), global::Physics.Telemetry.Serialised.RigidBody.Parser, new[]{ "Position", "Velocity" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.RigidBody), global::Physics.Telemetry.Serialised.RigidBody.Parser, new[]{ "Id", "Position", "Velocity" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.RigidBodyList), global::Physics.Telemetry.Serialised.RigidBodyList.Parser, new[]{ "RigidBodies" }, null, null, null, null)
           }));
     }
     #endregion
@@ -64,6 +67,7 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public RigidBody(RigidBody other) : this() {
+      id_ = other.id_;
       position_ = other.position_ != null ? other.position_.Clone() : null;
       velocity_ = other.velocity_ != null ? other.velocity_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -74,11 +78,22 @@ namespace Physics.Telemetry.Serialised {
       return new RigidBody(this);
     }
 
-    /// <summary>Field number for the "position" field.</summary>
-    public const int PositionFieldNumber = 1;
-    private global::Physics.Telemetry.Serialised.Vector4 position_;
+    /// <summary>Field number for the "Id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Physics.Telemetry.Serialised.Vector4 Position {
+    public uint Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "position" field.</summary>
+    public const int PositionFieldNumber = 2;
+    private global::Physics.Telemetry.Serialised.Matrix4x4 position_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Physics.Telemetry.Serialised.Matrix4x4 Position {
       get { return position_; }
       set {
         position_ = value;
@@ -86,7 +101,7 @@ namespace Physics.Telemetry.Serialised {
     }
 
     /// <summary>Field number for the "velocity" field.</summary>
-    public const int VelocityFieldNumber = 2;
+    public const int VelocityFieldNumber = 3;
     private global::Physics.Telemetry.Serialised.Vector4 velocity_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Physics.Telemetry.Serialised.Vector4 Velocity {
@@ -109,6 +124,7 @@ namespace Physics.Telemetry.Serialised {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Id != other.Id) return false;
       if (!object.Equals(Position, other.Position)) return false;
       if (!object.Equals(Velocity, other.Velocity)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -117,6 +133,7 @@ namespace Physics.Telemetry.Serialised {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
       if (position_ != null) hash ^= Position.GetHashCode();
       if (velocity_ != null) hash ^= Velocity.GetHashCode();
       if (_unknownFields != null) {
@@ -132,12 +149,16 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Id);
+      }
       if (position_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(18);
         output.WriteMessage(Position);
       }
       if (velocity_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(Velocity);
       }
       if (_unknownFields != null) {
@@ -148,6 +169,9 @@ namespace Physics.Telemetry.Serialised {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      }
       if (position_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
       }
@@ -165,9 +189,12 @@ namespace Physics.Telemetry.Serialised {
       if (other == null) {
         return;
       }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
       if (other.position_ != null) {
         if (position_ == null) {
-          Position = new global::Physics.Telemetry.Serialised.Vector4();
+          Position = new global::Physics.Telemetry.Serialised.Matrix4x4();
         }
         Position.MergeFrom(other.Position);
       }
@@ -188,18 +215,143 @@ namespace Physics.Telemetry.Serialised {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 8: {
+            Id = input.ReadUInt32();
+            break;
+          }
+          case 18: {
             if (position_ == null) {
-              Position = new global::Physics.Telemetry.Serialised.Vector4();
+              Position = new global::Physics.Telemetry.Serialised.Matrix4x4();
             }
             input.ReadMessage(Position);
             break;
           }
-          case 18: {
+          case 26: {
             if (velocity_ == null) {
               Velocity = new global::Physics.Telemetry.Serialised.Vector4();
             }
             input.ReadMessage(Velocity);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class RigidBodyList : pb::IMessage<RigidBodyList> {
+    private static readonly pb::MessageParser<RigidBodyList> _parser = new pb::MessageParser<RigidBodyList>(() => new RigidBodyList());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RigidBodyList> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Physics.Telemetry.Serialised.RigidBodyReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RigidBodyList() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RigidBodyList(RigidBodyList other) : this() {
+      rigidBodies_ = other.rigidBodies_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RigidBodyList Clone() {
+      return new RigidBodyList(this);
+    }
+
+    /// <summary>Field number for the "rigidBodies" field.</summary>
+    public const int RigidBodiesFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Physics.Telemetry.Serialised.RigidBody> _repeated_rigidBodies_codec
+        = pb::FieldCodec.ForMessage(10, global::Physics.Telemetry.Serialised.RigidBody.Parser);
+    private readonly pbc::RepeatedField<global::Physics.Telemetry.Serialised.RigidBody> rigidBodies_ = new pbc::RepeatedField<global::Physics.Telemetry.Serialised.RigidBody>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Physics.Telemetry.Serialised.RigidBody> RigidBodies {
+      get { return rigidBodies_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RigidBodyList);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RigidBodyList other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!rigidBodies_.Equals(other.rigidBodies_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= rigidBodies_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      rigidBodies_.WriteTo(output, _repeated_rigidBodies_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += rigidBodies_.CalculateSize(_repeated_rigidBodies_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RigidBodyList other) {
+      if (other == null) {
+        return;
+      }
+      rigidBodies_.Add(other.rigidBodies_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            rigidBodies_.AddEntriesFrom(input, _repeated_rigidBodies_codec);
             break;
           }
         }

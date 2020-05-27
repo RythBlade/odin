@@ -3,6 +3,7 @@ using Telemetry.FrameData.Shapes;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Physics.Telemetry.Serialised;
 
 namespace Telemetry.Network
 {
@@ -45,54 +46,20 @@ namespace Telemetry.Network
 
         private void ProcessRigidBodyFrameUpdate(BasePacketHeader packet, FrameSnapshot snapshot)
         {
-            // -- rigid body packet layout --
-            //      uint        number of rigid bodies
-            ///////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////      -- generic property description packet --
-            ///////////////////////////////////////////////////////////////////      uint                        number of properties
-            ///////////////////////////////////////////////////////////////////      array<uint, char, uint>     string length, property name, property id
-            ///////////////////////////////////////////////////////////////////      -- end generic property description packet --
-            ///////////////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////       --generic property packet --
-            ///////////////////////////////////////////////////////////////////      array<uint, uint, object>     property id, property type, property data
-            ///////////////////////////////////////////////////////////////////      -- end generic property packet --
-            //
-            //      -- rigid body specific property packet --
-            //      array<uint matrix4>         rigid bodoy Id, rigid body matrix
-            //      -- rigid body specific property packet --
-            // -- end rigid body packet layout --
-            int byteIndex = BasePacketHeader.StartOfPacketData;
+            RigidBodyList rigidBodyList = RigidBodyList.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData, packet.messageHeader.DataSize);
 
-            uint numberOfRigidBodies = BitConverter.ToUInt32(packet.PacketBytes, byteIndex); byteIndex += 4;
-
-            for (uint i = 0; i < numberOfRigidBodies; ++i)
+            foreach(Physics.Telemetry.Serialised.RigidBody packetBody in rigidBodyList.RigidBodies)
             {
-                RigidBody body = new RigidBody();
-                body.Id = BitConverter.ToUInt32(packet.PacketBytes, byteIndex); byteIndex += 4;
+                FrameData.RigidBody body = new FrameData.RigidBody();
 
-                body.WorldMatrix.M11 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M12 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M13 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M14 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M21 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M22 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M23 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M24 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M31 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M32 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M33 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M34 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M41 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M42 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M43 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
-                body.WorldMatrix.M44 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
+                body.CopyFromPacket(packetBody);
 
                 // todo: error handle - what if the rigid body already exists?
                 snapshot.RigidBodies.Add(body.Id, body);
             }
         }
 
-        private void ProcessShapeAdded(BasePacketHeader packet)
+        /*private void ProcessShapeAdded(BasePacketHeader1 packet)
         {
             // -- shape packet layout --
             //      int         shape ID
@@ -110,13 +77,13 @@ namespace Telemetry.Network
 
             BaseShape baseShape = null;
 
-            int byteIndex = BasePacketHeader.StartOfPacketData;
+            int byteIndex = BasePacketHeader1.StartOfPacketData;
 
             int shapeId = BitConverter.ToInt32(packet.PacketBytes, byteIndex); byteIndex += 4;
             uint shapeType = BitConverter.ToUInt32(packet.PacketBytes, byteIndex); byteIndex += 4;
             uint hasLocalMatrix = BitConverter.ToUInt32(packet.PacketBytes, byteIndex); byteIndex += 4;
 
-            Matrix4x4 localMatrix = new Matrix4x4();
+            System.Numerics.Matrix4x4 localMatrix = new System.Numerics.Matrix4x4();
 
             localMatrix.M11 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
             localMatrix.M12 = BitConverter.ToSingle(packet.PacketBytes, byteIndex); byteIndex += 4;
@@ -183,7 +150,7 @@ namespace Telemetry.Network
             }
 
             AddedShapes.Add(baseShape.Id, baseShape);
-        }
+        }*/
 
         public bool TranslatePacket(BasePacketHeader packet)
         {
@@ -191,9 +158,20 @@ namespace Telemetry.Network
 
             if (packet != null)
             {
-                FrameSnapshot snapshot = FindOrCreateSnapshotForFrame(packet.FrameID);
+                FrameSnapshot snapshot = FindOrCreateSnapshotForFrame(packet.messageHeader.FrameId);
 
-                switch(packet.PacketType)
+                switch (packet.messageHeader.MessageType)
+                {
+                    case MessageHeader.Types.MessageType.RigidBodyUpdate:
+                        ProcessRigidBodyFrameUpdate(packet, snapshot);
+                        toReturn = true;
+                        break;
+                    default:
+                        break;
+                }
+
+                /*
+                switch(packet.messageHeader.MessageType)
                 {
                     case (uint)PacketType.eRigidBodyFrameUpdate:
                         ProcessRigidBodyFrameUpdate(packet, snapshot);
@@ -207,7 +185,7 @@ namespace Telemetry.Network
 
                     default:
                         break;
-                }
+                }*/
             }
 
             return toReturn;

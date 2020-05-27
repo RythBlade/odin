@@ -10,19 +10,18 @@
 #include "ObbShape.h"
 #include "ConvexHull.h"
 
+#include "proto.generated/rigid_body.pb.h"
+#include "proto.generated/message_header.pb.h"
+
 unsigned int const numberOfParticles = 10;
 
 struct ParticlePacket
 {
-    int packetStart;
     Particle particles[ numberOfParticles ];
-    int  packetEnd;
 
 public:
     ParticlePacket()
     {
-        packetStart = 999999;
-        packetEnd = -999999;
     }
 };
 
@@ -96,7 +95,74 @@ void main()
 
             updateParticles( &particles, frameTime );
 
+            PhysicsTelemetry::RigidBodyList bodyList;
+            
+            for (int i = 0; i < numberOfParticles; ++i)
+            {
+                PhysicsTelemetry::RigidBody* rigidBody = bodyList.add_rigidbodies();
+
+                rigidBody->set_id(i);
+
+                PhysicsTelemetry::Vector4 position;
+                rigidBody->mutable_position()->set_m11(1.0f);
+                rigidBody->mutable_position()->set_m12(0.0f);
+                rigidBody->mutable_position()->set_m13(0.0f);
+                rigidBody->mutable_position()->set_m14(0.0f);
+
+                rigidBody->mutable_position()->set_m21(0.0f);
+                rigidBody->mutable_position()->set_m22(1.0f);
+                rigidBody->mutable_position()->set_m23(0.0f);
+                rigidBody->mutable_position()->set_m24(0.0f);
+
+                rigidBody->mutable_position()->set_m31(0.0f);
+                rigidBody->mutable_position()->set_m32(0.0f);
+                rigidBody->mutable_position()->set_m33(1.0f);
+                rigidBody->mutable_position()->set_m34(0.0f);
+
+                rigidBody->mutable_position()->set_m41(particles.particles[i].m_position[0]);
+                rigidBody->mutable_position()->set_m42(particles.particles[i].m_position[1]);
+                rigidBody->mutable_position()->set_m43(particles.particles[i].m_position[2]);
+                rigidBody->mutable_position()->set_m44(particles.particles[i].m_position[3]);
+
+                //rigidBody->mutable_position()->set_m(particles.particles[i].m_position[0]);
+                //rigidBody->mutable_position()->set_y(particles.particles[i].m_position[1]);
+                //rigidBody->mutable_position()->set_z(particles.particles[i].m_position[2]);
+
+                PhysicsTelemetry::Vector4 velocity;
+                rigidBody->mutable_velocity()->set_x(particles.particles[i].m_velocity[0]);
+                rigidBody->mutable_velocity()->set_y(particles.particles[i].m_velocity[1]);
+                rigidBody->mutable_velocity()->set_z(particles.particles[i].m_velocity[2]);
+            }
+
+            size_t bodyListPacketSize = bodyList.ByteSizeLong();
+
+            PhysicsTelemetry::MessageHeader messageHeader;
+            messageHeader.set_frameid(frameCounter);
+            messageHeader.set_messagetype(PhysicsTelemetry::MessageHeader_MessageType_RigidBodyUpdate);
+            messageHeader.set_datasize(bodyListPacketSize);
+
             int const sizeOfNetworkPacket = 1024;
+            char networkPacket[sizeOfNetworkPacket];
+            char* bufferPointer = networkPacket;
+
+            int headerLength = messageHeader.ByteSizeLong();
+            memcpy(bufferPointer, &headerLength, sizeof(int)); bufferPointer += sizeof(int);
+
+            messageHeader.SerializePartialToArray(bufferPointer, sizeOfNetworkPacket);
+            bufferPointer += headerLength;
+
+            bodyList.SerializePartialToArray(bufferPointer, sizeOfNetworkPacket - headerLength);
+
+            server.sendData(reinterpret_cast<char*>(&networkPacket), sizeOfNetworkPacket);
+
+
+
+
+
+
+
+
+            /*int const sizeOfNetworkPacket = 1024;
             char networkPacket[sizeOfNetworkPacket];
             char* bufferPointer = networkPacket;
 
@@ -144,7 +210,7 @@ void main()
             }
 
             //server.sendData( reinterpret_cast< char* >( &particles ), sizeof( ParticlePacket ) );
-            server.sendData( reinterpret_cast< char* >( &networkPacket), sizeOfNetworkPacket);
+            server.sendData( reinterpret_cast< char* >( &networkPacket), sizeOfNetworkPacket);*/
 
             ++frameCounter;
         }

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package PhysicsTelemetry;
+
+option csharp_namespace = "Physics.Telemetry.Serialised";
+
+message MessageHeader
+{
+	uint32 frameId = 1;
+	
+	enum MessageType
+	{
+		RigidBodyUpdate = 0;
+	}
+	
+	MessageType messageType = 2;
+	int32 dataSize = 3;
+}

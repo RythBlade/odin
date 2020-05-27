@@ -8,6 +8,13 @@ option csharp_namespace = "Physics.Telemetry.Serialised";
 
 message RigidBody
 {
-	PhysicsTelemetry.Vector4 position = 1;
-	PhysicsTelemetry.Vector4 velocity = 2;
+	uint32 Id = 1;
+
+	PhysicsTelemetry.Matrix4x4 position = 2;
+	PhysicsTelemetry.Vector4 velocity = 3;
+}
+
+message RigidBodyList
+{
+	repeated RigidBody rigidBodies = 1;
 }

@@ -152,7 +152,7 @@ namespace physics_debugger
                 }
                 else
                 {
-                    Console.WriteLine($"Error: read unknown packet type: {basePacket.PacketType}");
+                    Console.WriteLine($"Error: read unknown packet type: {basePacket.PacketBytes}");
                 }
 
                 FramesAdded();

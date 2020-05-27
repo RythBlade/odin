@@ -114,6 +114,7 @@
     <ClCompile Include="DataServer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="proto.generated\base_types.pb.cc" />
+    <ClCompile Include="proto.generated\message_header.pb.cc" />
     <ClCompile Include="proto.generated\rigid_body.pb.cc" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +123,7 @@
     <ClInclude Include="DataServer.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="proto.generated\base_types.pb.h" />
+    <ClInclude Include="proto.generated\message_header.pb.h" />
     <ClInclude Include="proto.generated\rigid_body.pb.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SphereShape.h" />

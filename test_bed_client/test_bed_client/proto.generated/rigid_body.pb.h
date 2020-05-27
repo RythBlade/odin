@@ -48,7 +48,7 @@ struct TableStruct_rigid_5fbody_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[1]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[2]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -59,9 +59,13 @@ namespace PhysicsTelemetry {
 class RigidBody;
 class RigidBodyDefaultTypeInternal;
 extern RigidBodyDefaultTypeInternal _RigidBody_default_instance_;
+class RigidBodyList;
+class RigidBodyListDefaultTypeInternal;
+extern RigidBodyListDefaultTypeInternal _RigidBodyList_default_instance_;
 }  // namespace PhysicsTelemetry
 PROTOBUF_NAMESPACE_OPEN
 template<> ::PhysicsTelemetry::RigidBody* Arena::CreateMaybeMessage<::PhysicsTelemetry::RigidBody>(Arena*);
+template<> ::PhysicsTelemetry::RigidBodyList* Arena::CreateMaybeMessage<::PhysicsTelemetry::RigidBodyList>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace PhysicsTelemetry {
 
@@ -173,25 +177,26 @@ class RigidBody :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPositionFieldNumber = 1,
-    kVelocityFieldNumber = 2,
+    kPositionFieldNumber = 2,
+    kVelocityFieldNumber = 3,
+    kIdFieldNumber = 1,
   };
-  // .PhysicsTelemetry.Vector4 position = 1;
+  // .PhysicsTelemetry.Matrix4x4 position = 2;
   bool has_position() const;
   private:
   bool _internal_has_position() const;
   public:
   void clear_position();
-  const ::PhysicsTelemetry::Vector4& position() const;
-  ::PhysicsTelemetry::Vector4* release_position();
-  ::PhysicsTelemetry::Vector4* mutable_position();
-  void set_allocated_position(::PhysicsTelemetry::Vector4* position);
+  const ::PhysicsTelemetry::Matrix4x4& position() const;
+  ::PhysicsTelemetry::Matrix4x4* release_position();
+  ::PhysicsTelemetry::Matrix4x4* mutable_position();
+  void set_allocated_position(::PhysicsTelemetry::Matrix4x4* position);
   private:
-  const ::PhysicsTelemetry::Vector4& _internal_position() const;
-  ::PhysicsTelemetry::Vector4* _internal_mutable_position();
+  const ::PhysicsTelemetry::Matrix4x4& _internal_position() const;
+  ::PhysicsTelemetry::Matrix4x4* _internal_mutable_position();
   public:
 
-  // .PhysicsTelemetry.Vector4 velocity = 2;
+  // .PhysicsTelemetry.Vector4 velocity = 3;
   bool has_velocity() const;
   private:
   bool _internal_has_velocity() const;
@@ -206,13 +211,160 @@ class RigidBody :
   ::PhysicsTelemetry::Vector4* _internal_mutable_velocity();
   public:
 
+  // uint32 Id = 1;
+  void clear_id();
+  ::PROTOBUF_NAMESPACE_ID::uint32 id() const;
+  void set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_id() const;
+  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:PhysicsTelemetry.RigidBody)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PhysicsTelemetry::Vector4* position_;
+  ::PhysicsTelemetry::Matrix4x4* position_;
   ::PhysicsTelemetry::Vector4* velocity_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rigid_5fbody_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RigidBodyList :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.RigidBodyList) */ {
+ public:
+  RigidBodyList();
+  virtual ~RigidBodyList();
+
+  RigidBodyList(const RigidBodyList& from);
+  RigidBodyList(RigidBodyList&& from) noexcept
+    : RigidBodyList() {
+    *this = ::std::move(from);
+  }
+
+  inline RigidBodyList& operator=(const RigidBodyList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RigidBodyList& operator=(RigidBodyList&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RigidBodyList& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RigidBodyList* internal_default_instance() {
+    return reinterpret_cast<const RigidBodyList*>(
+               &_RigidBodyList_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(RigidBodyList& a, RigidBodyList& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RigidBodyList* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RigidBodyList* New() const final {
+    return CreateMaybeMessage<RigidBodyList>(nullptr);
+  }
+
+  RigidBodyList* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RigidBodyList>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RigidBodyList& from);
+  void MergeFrom(const RigidBodyList& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RigidBodyList* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PhysicsTelemetry.RigidBodyList";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rigid_5fbody_2eproto);
+    return ::descriptor_table_rigid_5fbody_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRigidBodiesFieldNumber = 1,
+  };
+  // repeated .PhysicsTelemetry.RigidBody rigidBodies = 1;
+  int rigidbodies_size() const;
+  private:
+  int _internal_rigidbodies_size() const;
+  public:
+  void clear_rigidbodies();
+  ::PhysicsTelemetry::RigidBody* mutable_rigidbodies(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBody >*
+      mutable_rigidbodies();
+  private:
+  const ::PhysicsTelemetry::RigidBody& _internal_rigidbodies(int index) const;
+  ::PhysicsTelemetry::RigidBody* _internal_add_rigidbodies();
+  public:
+  const ::PhysicsTelemetry::RigidBody& rigidbodies(int index) const;
+  ::PhysicsTelemetry::RigidBody* add_rigidbodies();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBody >&
+      rigidbodies() const;
+
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.RigidBodyList)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBody > rigidbodies_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_rigid_5fbody_2eproto;
 };
@@ -227,42 +379,62 @@ class RigidBody :
 #endif  // __GNUC__
 // RigidBody
 
-// .PhysicsTelemetry.Vector4 position = 1;
+// uint32 Id = 1;
+inline void RigidBody::clear_id() {
+  id_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBody::_internal_id() const {
+  return id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBody::id() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBody.Id)
+  return _internal_id();
+}
+inline void RigidBody::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  id_ = value;
+}
+inline void RigidBody::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.RigidBody.Id)
+}
+
+// .PhysicsTelemetry.Matrix4x4 position = 2;
 inline bool RigidBody::_internal_has_position() const {
   return this != internal_default_instance() && position_ != nullptr;
 }
 inline bool RigidBody::has_position() const {
   return _internal_has_position();
 }
-inline const ::PhysicsTelemetry::Vector4& RigidBody::_internal_position() const {
-  const ::PhysicsTelemetry::Vector4* p = position_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector4*>(
-      &::PhysicsTelemetry::_Vector4_default_instance_);
+inline const ::PhysicsTelemetry::Matrix4x4& RigidBody::_internal_position() const {
+  const ::PhysicsTelemetry::Matrix4x4* p = position_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Matrix4x4*>(
+      &::PhysicsTelemetry::_Matrix4x4_default_instance_);
 }
-inline const ::PhysicsTelemetry::Vector4& RigidBody::position() const {
+inline const ::PhysicsTelemetry::Matrix4x4& RigidBody::position() const {
   // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBody.position)
   return _internal_position();
 }
-inline ::PhysicsTelemetry::Vector4* RigidBody::release_position() {
+inline ::PhysicsTelemetry::Matrix4x4* RigidBody::release_position() {
   // @@protoc_insertion_point(field_release:PhysicsTelemetry.RigidBody.position)
   
-  ::PhysicsTelemetry::Vector4* temp = position_;
+  ::PhysicsTelemetry::Matrix4x4* temp = position_;
   position_ = nullptr;
   return temp;
 }
-inline ::PhysicsTelemetry::Vector4* RigidBody::_internal_mutable_position() {
+inline ::PhysicsTelemetry::Matrix4x4* RigidBody::_internal_mutable_position() {
   
   if (position_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector4>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Matrix4x4>(GetArenaNoVirtual());
     position_ = p;
   }
   return position_;
 }
-inline ::PhysicsTelemetry::Vector4* RigidBody::mutable_position() {
+inline ::PhysicsTelemetry::Matrix4x4* RigidBody::mutable_position() {
   // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.RigidBody.position)
   return _internal_mutable_position();
 }
-inline void RigidBody::set_allocated_position(::PhysicsTelemetry::Vector4* position) {
+inline void RigidBody::set_allocated_position(::PhysicsTelemetry::Matrix4x4* position) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(position_);
@@ -281,7 +453,7 @@ inline void RigidBody::set_allocated_position(::PhysicsTelemetry::Vector4* posit
   // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.RigidBody.position)
 }
 
-// .PhysicsTelemetry.Vector4 velocity = 2;
+// .PhysicsTelemetry.Vector4 velocity = 3;
 inline bool RigidBody::_internal_has_velocity() const {
   return this != internal_default_instance() && velocity_ != nullptr;
 }
@@ -335,9 +507,54 @@ inline void RigidBody::set_allocated_velocity(::PhysicsTelemetry::Vector4* veloc
   // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.RigidBody.velocity)
 }
 
+// -------------------------------------------------------------------
+
+// RigidBodyList
+
+// repeated .PhysicsTelemetry.RigidBody rigidBodies = 1;
+inline int RigidBodyList::_internal_rigidbodies_size() const {
+  return rigidbodies_.size();
+}
+inline int RigidBodyList::rigidbodies_size() const {
+  return _internal_rigidbodies_size();
+}
+inline void RigidBodyList::clear_rigidbodies() {
+  rigidbodies_.Clear();
+}
+inline ::PhysicsTelemetry::RigidBody* RigidBodyList::mutable_rigidbodies(int index) {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.RigidBodyList.rigidBodies)
+  return rigidbodies_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBody >*
+RigidBodyList::mutable_rigidbodies() {
+  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.RigidBodyList.rigidBodies)
+  return &rigidbodies_;
+}
+inline const ::PhysicsTelemetry::RigidBody& RigidBodyList::_internal_rigidbodies(int index) const {
+  return rigidbodies_.Get(index);
+}
+inline const ::PhysicsTelemetry::RigidBody& RigidBodyList::rigidbodies(int index) const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBodyList.rigidBodies)
+  return _internal_rigidbodies(index);
+}
+inline ::PhysicsTelemetry::RigidBody* RigidBodyList::_internal_add_rigidbodies() {
+  return rigidbodies_.Add();
+}
+inline ::PhysicsTelemetry::RigidBody* RigidBodyList::add_rigidbodies() {
+  // @@protoc_insertion_point(field_add:PhysicsTelemetry.RigidBodyList.rigidBodies)
+  return _internal_add_rigidbodies();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBody >&
+RigidBodyList::rigidbodies() const {
+  // @@protoc_insertion_point(field_list:PhysicsTelemetry.RigidBodyList.rigidBodies)
+  return rigidbodies_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
