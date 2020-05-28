@@ -70,6 +70,7 @@ void main()
 
         ObbShape* obbShape = new ObbShape();
 
+        obbShape->m_id = i;
         obbShape->m_halfExtents[0] = 1.0f;
         obbShape->m_halfExtents[1] = 1.0f;
         obbShape->m_halfExtents[2] = 1.0f;
@@ -203,6 +204,11 @@ void main()
                 rigidBody->mutable_velocity()->set_x(particles.particles[i].m_velocity[0]);
                 rigidBody->mutable_velocity()->set_y(particles.particles[i].m_velocity[1]);
                 rigidBody->mutable_velocity()->set_z(particles.particles[i].m_velocity[2]);
+
+                for (int shapeIndex = 0; shapeIndex < particles.particles[i].m_collisionShapes.size(); ++shapeIndex)
+                {
+                    rigidBody->add_collisionshapes(particles.particles[i].m_collisionShapes[shapeIndex]->m_id);
+                }
             }
 
             size_t bodyListPacketSize = bodyList.ByteSizeLong();
@@ -356,7 +362,8 @@ void updateParticles( ParticlePacket* particles, float timeStep )
 
     if ( particles->particles[ 0 ].m_velocity[ 0 ] != 0.0f || particles->particles[ 0 ].m_velocity[ 1 ] != 0.0f || particles->particles[ 0 ].m_velocity[ 2 ] != 0.0f )
     {
-        printf( "particle position: %.2f, %.2f, %.2f     Velocity: %.2f, %.2f, %.2f\n"
+        printf( "Frame id: %d,     particle position: %.2f, %.2f, %.2f     Velocity: %.2f, %.2f, %.2f\n"
+            , frameCounter
             , particles->particles[ 0 ].m_position[ 0 ]
             , particles->particles[ 0 ].m_position[ 1 ]
             , particles->particles[ 0 ].m_position[ 2 ]

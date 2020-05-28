@@ -23,6 +23,7 @@ namespace Telemetry.Network
             if (snapshot == null)
             {
                 snapshot = new FrameSnapshot();
+                snapshot.FrameId = frameId;
                 ConstructedSnaphots.Add(frameId, new Tuple<bool, FrameSnapshot>(false, snapshot));
             }
 

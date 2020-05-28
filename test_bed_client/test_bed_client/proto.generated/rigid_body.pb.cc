@@ -71,6 +71,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_rigid_5fbody_2eproto::offsets[
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::RigidBody, id_),
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::RigidBody, position_),
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::RigidBody, velocity_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::RigidBody, collisionshapes_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::RigidBodyList, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -80,7 +81,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_rigid_5fbody_2eproto::offsets[
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::PhysicsTelemetry::RigidBody)},
-  { 8, -1, sizeof(::PhysicsTelemetry::RigidBodyList)},
+  { 9, -1, sizeof(::PhysicsTelemetry::RigidBodyList)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -90,12 +91,13 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_rigid_5fbody_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\020rigid_body.proto\022\020PhysicsTelemetry\032\020ba"
-  "se_types.proto\"s\n\tRigidBody\022\n\n\002id\030\001 \001(\r\022"
-  "-\n\010position\030\002 \001(\0132\033.PhysicsTelemetry.Mat"
-  "rix4x4\022+\n\010velocity\030\003 \001(\0132\031.PhysicsTeleme"
-  "try.Vector4\"A\n\rRigidBodyList\0220\n\013rigidBod"
-  "ies\030\001 \003(\0132\033.PhysicsTelemetry.RigidBodyB\037"
-  "\252\002\034Physics.Telemetry.Serialisedb\006proto3"
+  "se_types.proto\"\214\001\n\tRigidBody\022\n\n\002id\030\001 \001(\r"
+  "\022-\n\010position\030\002 \001(\0132\033.PhysicsTelemetry.Ma"
+  "trix4x4\022+\n\010velocity\030\003 \001(\0132\031.PhysicsTelem"
+  "etry.Vector4\022\027\n\017collisionShapes\030\004 \003(\r\"A\n"
+  "\rRigidBodyList\0220\n\013rigidBodies\030\001 \003(\0132\033.Ph"
+  "ysicsTelemetry.RigidBodyB\037\252\002\034Physics.Tel"
+  "emetry.Serialisedb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_rigid_5fbody_2eproto_deps[1] = {
   &::descriptor_table_base_5ftypes_2eproto,
@@ -107,7 +109,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rig
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_rigid_5fbody_2eproto_once;
 static bool descriptor_table_rigid_5fbody_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rigid_5fbody_2eproto = {
-  &descriptor_table_rigid_5fbody_2eproto_initialized, descriptor_table_protodef_rigid_5fbody_2eproto, "rigid_body.proto", 279,
+  &descriptor_table_rigid_5fbody_2eproto_initialized, descriptor_table_protodef_rigid_5fbody_2eproto, "rigid_body.proto", 305,
   &descriptor_table_rigid_5fbody_2eproto_once, descriptor_table_rigid_5fbody_2eproto_sccs, descriptor_table_rigid_5fbody_2eproto_deps, 2, 1,
   schemas, file_default_instances, TableStruct_rigid_5fbody_2eproto::offsets,
   file_level_metadata_rigid_5fbody_2eproto, 2, file_level_enum_descriptors_rigid_5fbody_2eproto, file_level_service_descriptors_rigid_5fbody_2eproto,
@@ -158,7 +160,8 @@ RigidBody::RigidBody()
 }
 RigidBody::RigidBody(const RigidBody& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr) {
+      _internal_metadata_(nullptr),
+      collisionshapes_(from.collisionshapes_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from._internal_has_position()) {
     position_ = new ::PhysicsTelemetry::Matrix4x4(*from.position_);
@@ -206,6 +209,7 @@ void RigidBody::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  collisionshapes_.Clear();
   if (GetArenaNoVirtual() == nullptr && position_ != nullptr) {
     delete position_;
   }
@@ -243,6 +247,16 @@ const char* RigidBody::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           ptr = ctx->ParseMessage(_internal_mutable_velocity(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated uint32 collisionShapes = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedUInt32Parser(_internal_mutable_collisionshapes(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32) {
+          _internal_add_collisionshapes(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -294,6 +308,15 @@ failure:
         3, _Internal::velocity(this), target, stream);
   }
 
+  // repeated uint32 collisionShapes = 4;
+  {
+    int byte_size = _collisionshapes_cached_byte_size_.load(std::memory_order_relaxed);
+    if (byte_size > 0) {
+      target = stream->WriteUInt32Packed(
+          4, _internal_collisionshapes(), byte_size, target);
+    }
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
@@ -309,6 +332,21 @@ size_t RigidBody::ByteSizeLong() const {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated uint32 collisionShapes = 4;
+  {
+    size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      UInt32Size(this->collisionshapes_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
+    }
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _collisionshapes_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
 
   // .PhysicsTelemetry.Matrix4x4 position = 2;
   if (this->has_position()) {
@@ -362,6 +400,7 @@ void RigidBody::MergeFrom(const RigidBody& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  collisionshapes_.MergeFrom(from.collisionshapes_);
   if (from.has_position()) {
     _internal_mutable_position()->::PhysicsTelemetry::Matrix4x4::MergeFrom(from._internal_position());
   }
@@ -394,6 +433,7 @@ bool RigidBody::IsInitialized() const {
 void RigidBody::InternalSwap(RigidBody* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  collisionshapes_.InternalSwap(&other->collisionshapes_);
   swap(position_, other->position_);
   swap(velocity_, other->velocity_);
   swap(id_, other->id_);

@@ -25,16 +25,16 @@ namespace Physics.Telemetry.Serialised {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChByaWdpZF9ib2R5LnByb3RvEhBQaHlzaWNzVGVsZW1ldHJ5GhBiYXNlX3R5",
-            "cGVzLnByb3RvInMKCVJpZ2lkQm9keRIKCgJpZBgBIAEoDRItCghwb3NpdGlv",
-            "bhgCIAEoCzIbLlBoeXNpY3NUZWxlbWV0cnkuTWF0cml4NHg0EisKCHZlbG9j",
-            "aXR5GAMgASgLMhkuUGh5c2ljc1RlbGVtZXRyeS5WZWN0b3I0IkEKDVJpZ2lk",
-            "Qm9keUxpc3QSMAoLcmlnaWRCb2RpZXMYASADKAsyGy5QaHlzaWNzVGVsZW1l",
-            "dHJ5LlJpZ2lkQm9keUIfqgIcUGh5c2ljcy5UZWxlbWV0cnkuU2VyaWFsaXNl",
-            "ZGIGcHJvdG8z"));
+            "cGVzLnByb3RvIowBCglSaWdpZEJvZHkSCgoCaWQYASABKA0SLQoIcG9zaXRp",
+            "b24YAiABKAsyGy5QaHlzaWNzVGVsZW1ldHJ5Lk1hdHJpeDR4NBIrCgh2ZWxv",
+            "Y2l0eRgDIAEoCzIZLlBoeXNpY3NUZWxlbWV0cnkuVmVjdG9yNBIXCg9jb2xs",
+            "aXNpb25TaGFwZXMYBCADKA0iQQoNUmlnaWRCb2R5TGlzdBIwCgtyaWdpZEJv",
+            "ZGllcxgBIAMoCzIbLlBoeXNpY3NUZWxlbWV0cnkuUmlnaWRCb2R5Qh+qAhxQ",
+            "aHlzaWNzLlRlbGVtZXRyeS5TZXJpYWxpc2VkYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Physics.Telemetry.Serialised.BaseTypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.RigidBody), global::Physics.Telemetry.Serialised.RigidBody.Parser, new[]{ "Id", "Position", "Velocity" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.RigidBody), global::Physics.Telemetry.Serialised.RigidBody.Parser, new[]{ "Id", "Position", "Velocity", "CollisionShapes" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.RigidBodyList), global::Physics.Telemetry.Serialised.RigidBodyList.Parser, new[]{ "RigidBodies" }, null, null, null, null)
           }));
     }
@@ -70,6 +70,7 @@ namespace Physics.Telemetry.Serialised {
       id_ = other.id_;
       position_ = other.position_ != null ? other.position_.Clone() : null;
       velocity_ = other.velocity_ != null ? other.velocity_.Clone() : null;
+      collisionShapes_ = other.collisionShapes_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -111,6 +112,16 @@ namespace Physics.Telemetry.Serialised {
       }
     }
 
+    /// <summary>Field number for the "collisionShapes" field.</summary>
+    public const int CollisionShapesFieldNumber = 4;
+    private static readonly pb::FieldCodec<uint> _repeated_collisionShapes_codec
+        = pb::FieldCodec.ForUInt32(34);
+    private readonly pbc::RepeatedField<uint> collisionShapes_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<uint> CollisionShapes {
+      get { return collisionShapes_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as RigidBody);
@@ -127,6 +138,7 @@ namespace Physics.Telemetry.Serialised {
       if (Id != other.Id) return false;
       if (!object.Equals(Position, other.Position)) return false;
       if (!object.Equals(Velocity, other.Velocity)) return false;
+      if(!collisionShapes_.Equals(other.collisionShapes_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -136,6 +148,7 @@ namespace Physics.Telemetry.Serialised {
       if (Id != 0) hash ^= Id.GetHashCode();
       if (position_ != null) hash ^= Position.GetHashCode();
       if (velocity_ != null) hash ^= Velocity.GetHashCode();
+      hash ^= collisionShapes_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -161,6 +174,7 @@ namespace Physics.Telemetry.Serialised {
         output.WriteRawTag(26);
         output.WriteMessage(Velocity);
       }
+      collisionShapes_.WriteTo(output, _repeated_collisionShapes_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -178,6 +192,7 @@ namespace Physics.Telemetry.Serialised {
       if (velocity_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Velocity);
       }
+      size += collisionShapes_.CalculateSize(_repeated_collisionShapes_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -204,6 +219,7 @@ namespace Physics.Telemetry.Serialised {
         }
         Velocity.MergeFrom(other.Velocity);
       }
+      collisionShapes_.Add(other.collisionShapes_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -231,6 +247,11 @@ namespace Physics.Telemetry.Serialised {
               Velocity = new global::Physics.Telemetry.Serialised.Vector4();
             }
             input.ReadMessage(Velocity);
+            break;
+          }
+          case 34:
+          case 32: {
+            collisionShapes_.AddEntriesFrom(input, _repeated_collisionShapes_codec);
             break;
           }
         }

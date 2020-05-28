@@ -33,7 +33,7 @@ namespace Telemetry.FrameData
 
                     FrameSnapshot readFrame = new FrameSnapshot();
 
-                    readFrame.FrameId = reader.ReadInt32();
+                    readFrame.FrameId = reader.ReadUInt32();
 
                     int numberOfRigidBodies = reader.ReadInt32();
 

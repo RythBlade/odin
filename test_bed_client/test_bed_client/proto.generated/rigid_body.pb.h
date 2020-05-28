@@ -177,10 +177,33 @@ class RigidBody :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kCollisionShapesFieldNumber = 4,
     kPositionFieldNumber = 2,
     kVelocityFieldNumber = 3,
     kIdFieldNumber = 1,
   };
+  // repeated uint32 collisionShapes = 4;
+  int collisionshapes_size() const;
+  private:
+  int _internal_collisionshapes_size() const;
+  public:
+  void clear_collisionshapes();
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_collisionshapes(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+      _internal_collisionshapes() const;
+  void _internal_add_collisionshapes(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+      _internal_mutable_collisionshapes();
+  public:
+  ::PROTOBUF_NAMESPACE_ID::uint32 collisionshapes(int index) const;
+  void set_collisionshapes(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value);
+  void add_collisionshapes(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+      collisionshapes() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+      mutable_collisionshapes();
+
   // .PhysicsTelemetry.Matrix4x4 position = 2;
   bool has_position() const;
   private:
@@ -225,6 +248,8 @@ class RigidBody :
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > collisionshapes_;
+  mutable std::atomic<int> _collisionshapes_cached_byte_size_;
   ::PhysicsTelemetry::Matrix4x4* position_;
   ::PhysicsTelemetry::Vector4* velocity_;
   ::PROTOBUF_NAMESPACE_ID::uint32 id_;
@@ -505,6 +530,53 @@ inline void RigidBody::set_allocated_velocity(::PhysicsTelemetry::Vector4* veloc
   }
   velocity_ = velocity;
   // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.RigidBody.velocity)
+}
+
+// repeated uint32 collisionShapes = 4;
+inline int RigidBody::_internal_collisionshapes_size() const {
+  return collisionshapes_.size();
+}
+inline int RigidBody::collisionshapes_size() const {
+  return _internal_collisionshapes_size();
+}
+inline void RigidBody::clear_collisionshapes() {
+  collisionshapes_.Clear();
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBody::_internal_collisionshapes(int index) const {
+  return collisionshapes_.Get(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBody::collisionshapes(int index) const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBody.collisionShapes)
+  return _internal_collisionshapes(index);
+}
+inline void RigidBody::set_collisionshapes(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  collisionshapes_.Set(index, value);
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.RigidBody.collisionShapes)
+}
+inline void RigidBody::_internal_add_collisionshapes(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  collisionshapes_.Add(value);
+}
+inline void RigidBody::add_collisionshapes(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_add_collisionshapes(value);
+  // @@protoc_insertion_point(field_add:PhysicsTelemetry.RigidBody.collisionShapes)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+RigidBody::_internal_collisionshapes() const {
+  return collisionshapes_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
+RigidBody::collisionshapes() const {
+  // @@protoc_insertion_point(field_list:PhysicsTelemetry.RigidBody.collisionShapes)
+  return _internal_collisionshapes();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+RigidBody::_internal_mutable_collisionshapes() {
+  return &collisionshapes_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
+RigidBody::mutable_collisionshapes() {
+  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.RigidBody.collisionShapes)
+  return _internal_mutable_collisionshapes();
 }
 
 // -------------------------------------------------------------------

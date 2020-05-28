@@ -12,6 +12,7 @@ namespace Telemetry.FrameData
         public Vector4 Velocity = new Vector4();
 
         public Dictionary<string, IBaseProperty> Properties = new Dictionary<string, IBaseProperty>();
+        public List<uint> CollisionShapeIds = new List<uint>();
 
         public void CopyFromPacket(Physics.Telemetry.Serialised.RigidBody packetBody)
         {
@@ -42,6 +43,11 @@ namespace Telemetry.FrameData
                 Velocity.Y = packetBody.Velocity.Y;
                 Velocity.Z = packetBody.Velocity.Z;
                 Velocity.W = packetBody.Velocity.W;
+
+                foreach(uint id in packetBody.CollisionShapes)
+                {
+                    CollisionShapeIds.Add(id);
+                }    
             }
         }
     }

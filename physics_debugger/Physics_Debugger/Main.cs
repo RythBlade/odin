@@ -179,32 +179,61 @@ namespace physics_debugger
 
             if (latestFrame != null)
             {
-                int differenceInRenderInstances = mainViewport.Renderer.InstanceList.Count - latestFrame.RigidBodies.Count;
-
-                if (differenceInRenderInstances > 0)
-                {
-                    mainViewport.Renderer.InstanceList.RemoveRange(0, differenceInRenderInstances);
-                }
-                else if (differenceInRenderInstances < 0)
-                {
-                    for (int i = 0; i < -differenceInRenderInstances; ++i)
-                    {
-                        mainViewport.Renderer.InstanceList.Add(new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), TetrahedronMeshId));
-                    }
-                }
-
-                int instance = 0;
+                int nextRenderInstanceId = 0;
 
                 foreach (RigidBody rigidBody in latestFrame.RigidBodies.Values)
                 {
-                    Matrix translationMatrix = Matrix.Translation(
-                        rigidBody.WorldMatrix.Translation.X
-                        , rigidBody.WorldMatrix.Translation.Y
-                        , rigidBody.WorldMatrix.Translation.Z);
+                    foreach(uint shapeId in rigidBody.CollisionShapeIds)
+                    {
+                        RenderInstance instanceToRender = null;
 
-                    mainViewport.Renderer.InstanceList[instance].WorldMatrix = Matrix.RotationX(time) * Matrix.RotationY(time * 2.0f) * Matrix.RotationZ(time * 0.7f) * translationMatrix;
-                    ++instance;
+                        BaseShape actualShape = frameData.ShapeData.RetrieveShapeForFrame(shapeId, frameData.Frames[frameIndex].FrameId);
+
+                        if (actualShape != null)
+                        {
+                            if (nextRenderInstanceId < mainViewport.Renderer.InstanceList.Count)
+                            {
+                                instanceToRender = mainViewport.Renderer.InstanceList[nextRenderInstanceId];
+                            }
+                            else
+                            {
+                                instanceToRender = new RenderInstance(Matrix.Translation(5.0f, 0.0f, 5.0f), TetrahedronMeshId);
+                                mainViewport.Renderer.InstanceList.Add(instanceToRender);
+                            }
+
+                            // todo - do the rest of the shape types and properly setup the position of the shapes
+                            switch (actualShape.ShapeType)
+                            {
+                                case ShapeType.eObb:
+                                    instanceToRender.MeshId = CubeMeshId;
+                                    break;
+                                case ShapeType.eSphere:
+                                    break;
+                                case ShapeType.eCone:
+                                    break;
+                                case ShapeType.eConvexHull:
+                                    break;
+                                case ShapeType.eTetrahedron:
+                                    instanceToRender.MeshId = TetrahedronMeshId;
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            Matrix translationMatrix = Matrix.Translation(
+                                rigidBody.WorldMatrix.Translation.X
+                                , rigidBody.WorldMatrix.Translation.Y
+                                , rigidBody.WorldMatrix.Translation.Z);
+
+                            instanceToRender.WorldMatrix = Matrix.RotationX(time) * Matrix.RotationY(time * 2.0f) * Matrix.RotationZ(time * 0.7f) * translationMatrix;
+
+                            ++nextRenderInstanceId;
+                        }
+                    }
                 }
+
+                int differenceInRenderInstances = mainViewport.Renderer.InstanceList.Count - nextRenderInstanceId;
+                mainViewport.Renderer.InstanceList.RemoveRange(mainViewport.Renderer.InstanceList.Count - differenceInRenderInstances, differenceInRenderInstances);
             }
         }
 

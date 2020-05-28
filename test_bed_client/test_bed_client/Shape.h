@@ -13,4 +13,5 @@ struct Shape
 
     bool m_hasLocalMatrix;
     float m_localMatrix[16];
+    unsigned int m_id;
 };
