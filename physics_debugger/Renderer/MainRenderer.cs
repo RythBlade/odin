@@ -11,8 +11,11 @@ namespace Renderer
 {
     public class MainRenderer : IDisposable
     {
-        private RasterizerState rasterizerState = null;
-        private RasterizerStateDescription state = new RasterizerStateDescription();
+        private RasterizerState rasterizerStateFill = null;
+        private RasterizerState rasterizerStateWireFrame = null;
+        private RasterizerStateDescription rasterizerStateDescFill = new RasterizerStateDescription();
+        private RasterizerStateDescription rasterizerStateDescWireframe = new RasterizerStateDescription();
+
 
         VertexShader vertexShader = null;
         PixelShader pixelShader = null;
@@ -44,8 +47,11 @@ namespace Renderer
 
         public MainRenderer()
         {
-            state.FillMode = FillMode.Solid;
-            state.CullMode = CullMode.Back;
+            rasterizerStateDescFill.FillMode = FillMode.Solid;
+            rasterizerStateDescFill.CullMode = CullMode.Back;
+
+            rasterizerStateDescWireframe.FillMode = FillMode.Wireframe;
+            rasterizerStateDescWireframe.CullMode = CullMode.Back;
 
             // Setup new projection matrix with correct aspect ratio
             camera.CameraPosition = new Vector3(0.0f, 0.0f, 15.0f);
@@ -60,7 +66,8 @@ namespace Renderer
         public void Initialise()
         {
             DeviceContext deviceContext = GraphicsDevice.Instance.Context;
-            rasterizerState = new RasterizerState(GraphicsDevice.Instance.Device, state);
+            rasterizerStateFill = new RasterizerState(GraphicsDevice.Instance.Device, rasterizerStateDescFill);
+            rasterizerStateWireFrame = new RasterizerState(GraphicsDevice.Instance.Device, rasterizerStateDescWireframe);
 
             CompilationResult vertexShaderByteCode = ShaderBytecode.CompileFromFile("Shaders\\MiniCube.fx", "VS", "vs_4_0");
             vertexShader = new VertexShader(GraphicsDevice.Instance.Device, vertexShaderByteCode);
@@ -109,8 +116,7 @@ namespace Renderer
             Matrix viewProj = Matrix.Multiply(camera.ViewMatrix, camera.ProjectionMatrix);
 
             DeviceContext deviceContext = GraphicsDevice.Instance.Context;
-            deviceContext.Rasterizer.State = rasterizerState;
-
+            
             deviceContext.InputAssembler.InputLayout = inputLayout;
             deviceContext.InputAssembler.PrimitiveTopology = PrimitiveTopology.TriangleList;
 
@@ -126,6 +132,17 @@ namespace Renderer
             {
                 Mesh nextMesh = meshManager.GetMeshInstanceAt(instance.MeshId);
                 deviceContext.InputAssembler.SetVertexBuffers(0, nextMesh.vertexBufferBinding);
+
+                switch (instance.Fill)
+                {
+                    case RenderInstance.FillMode.eWireFrame:
+                        deviceContext.Rasterizer.State = rasterizerStateWireFrame;
+                        break;
+                    case RenderInstance.FillMode.eFill:
+                    default:
+                        deviceContext.Rasterizer.State = rasterizerStateFill;
+                        break;
+                }
 
                 // Update world matrix
                 Matrix world = instance.WorldMatrix;
