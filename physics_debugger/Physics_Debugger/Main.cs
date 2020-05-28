@@ -225,6 +225,16 @@ namespace physics_debugger
                                 , rigidBody.WorldMatrix.Translation.Y
                                 , rigidBody.WorldMatrix.Translation.Z);
 
+                            if( actualShape.HasLocalMatrix)
+                            {
+                                Matrix localMatrix = Matrix.Translation(
+                                    actualShape.LocalMatrix.Translation.X
+                                    , actualShape.LocalMatrix.Translation.Y
+                                    , actualShape.LocalMatrix.Translation.Z);
+
+                                translationMatrix = localMatrix * translationMatrix;
+                            }
+
                             instanceToRender.WorldMatrix = Matrix.RotationX(time) * Matrix.RotationY(time * 2.0f) * Matrix.RotationZ(time * 0.7f) * translationMatrix;
 
                             ++nextRenderInstanceId;
