@@ -68,5 +68,8 @@
     <ClInclude Include="proto.generated\shapes.pb.h">
       <Filter>proto.generated</Filter>
     </ClInclude>
+    <ClInclude Include="TetrahedronShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

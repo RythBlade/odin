@@ -49,7 +49,7 @@ struct TableStruct_shapes_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -69,12 +69,16 @@ extern ShapeChangedDefaultTypeInternal _ShapeChanged_default_instance_;
 class ShapeCreated;
 class ShapeCreatedDefaultTypeInternal;
 extern ShapeCreatedDefaultTypeInternal _ShapeCreated_default_instance_;
+class TetrahedronShape;
+class TetrahedronShapeDefaultTypeInternal;
+extern TetrahedronShapeDefaultTypeInternal _TetrahedronShape_default_instance_;
 }  // namespace PhysicsTelemetry
 PROTOBUF_NAMESPACE_OPEN
 template<> ::PhysicsTelemetry::OBBShape* Arena::CreateMaybeMessage<::PhysicsTelemetry::OBBShape>(Arena*);
 template<> ::PhysicsTelemetry::ShapeBase* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeBase>(Arena*);
 template<> ::PhysicsTelemetry::ShapeChanged* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeChanged>(Arena*);
 template<> ::PhysicsTelemetry::ShapeCreated* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeCreated>(Arena*);
+template<> ::PhysicsTelemetry::TetrahedronShape* Arena::CreateMaybeMessage<::PhysicsTelemetry::TetrahedronShape>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace PhysicsTelemetry {
 
@@ -426,6 +430,140 @@ class OBBShape :
 };
 // -------------------------------------------------------------------
 
+class TetrahedronShape :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.TetrahedronShape) */ {
+ public:
+  TetrahedronShape();
+  virtual ~TetrahedronShape();
+
+  TetrahedronShape(const TetrahedronShape& from);
+  TetrahedronShape(TetrahedronShape&& from) noexcept
+    : TetrahedronShape() {
+    *this = ::std::move(from);
+  }
+
+  inline TetrahedronShape& operator=(const TetrahedronShape& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TetrahedronShape& operator=(TetrahedronShape&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const TetrahedronShape& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TetrahedronShape* internal_default_instance() {
+    return reinterpret_cast<const TetrahedronShape*>(
+               &_TetrahedronShape_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(TetrahedronShape& a, TetrahedronShape& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TetrahedronShape* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TetrahedronShape* New() const final {
+    return CreateMaybeMessage<TetrahedronShape>(nullptr);
+  }
+
+  TetrahedronShape* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TetrahedronShape>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const TetrahedronShape& from);
+  void MergeFrom(const TetrahedronShape& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TetrahedronShape* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PhysicsTelemetry.TetrahedronShape";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_shapes_2eproto);
+    return ::descriptor_table_shapes_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBaseFieldNumber = 1,
+  };
+  // .PhysicsTelemetry.ShapeBase base = 1;
+  bool has_base() const;
+  private:
+  bool _internal_has_base() const;
+  public:
+  void clear_base();
+  const ::PhysicsTelemetry::ShapeBase& base() const;
+  ::PhysicsTelemetry::ShapeBase* release_base();
+  ::PhysicsTelemetry::ShapeBase* mutable_base();
+  void set_allocated_base(::PhysicsTelemetry::ShapeBase* base);
+  private:
+  const ::PhysicsTelemetry::ShapeBase& _internal_base() const;
+  ::PhysicsTelemetry::ShapeBase* _internal_mutable_base();
+  public:
+
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.TetrahedronShape)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PhysicsTelemetry::ShapeBase* base_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_shapes_2eproto;
+};
+// -------------------------------------------------------------------
+
 class ShapeCreated :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ShapeCreated) */ {
  public:
@@ -468,7 +606,7 @@ class ShapeCreated :
                &_ShapeCreated_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(ShapeCreated& a, ShapeCreated& b) {
     a.Swap(&b);
@@ -607,7 +745,7 @@ class ShapeChanged :
                &_ShapeChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(ShapeChanged& a, ShapeChanged& b) {
     a.Swap(&b);
@@ -947,6 +1085,70 @@ inline void OBBShape::set_allocated_halfextents(::PhysicsTelemetry::Vector3* hal
 
 // -------------------------------------------------------------------
 
+// TetrahedronShape
+
+// .PhysicsTelemetry.ShapeBase base = 1;
+inline bool TetrahedronShape::_internal_has_base() const {
+  return this != internal_default_instance() && base_ != nullptr;
+}
+inline bool TetrahedronShape::has_base() const {
+  return _internal_has_base();
+}
+inline void TetrahedronShape::clear_base() {
+  if (GetArenaNoVirtual() == nullptr && base_ != nullptr) {
+    delete base_;
+  }
+  base_ = nullptr;
+}
+inline const ::PhysicsTelemetry::ShapeBase& TetrahedronShape::_internal_base() const {
+  const ::PhysicsTelemetry::ShapeBase* p = base_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::ShapeBase*>(
+      &::PhysicsTelemetry::_ShapeBase_default_instance_);
+}
+inline const ::PhysicsTelemetry::ShapeBase& TetrahedronShape::base() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.TetrahedronShape.base)
+  return _internal_base();
+}
+inline ::PhysicsTelemetry::ShapeBase* TetrahedronShape::release_base() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.TetrahedronShape.base)
+  
+  ::PhysicsTelemetry::ShapeBase* temp = base_;
+  base_ = nullptr;
+  return temp;
+}
+inline ::PhysicsTelemetry::ShapeBase* TetrahedronShape::_internal_mutable_base() {
+  
+  if (base_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::ShapeBase>(GetArenaNoVirtual());
+    base_ = p;
+  }
+  return base_;
+}
+inline ::PhysicsTelemetry::ShapeBase* TetrahedronShape::mutable_base() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.TetrahedronShape.base)
+  return _internal_mutable_base();
+}
+inline void TetrahedronShape::set_allocated_base(::PhysicsTelemetry::ShapeBase* base) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete base_;
+  }
+  if (base) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      base = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, base, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  base_ = base;
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.TetrahedronShape.base)
+}
+
+// -------------------------------------------------------------------
+
 // ShapeCreated
 
 // .PhysicsTelemetry.ShapeType shapeType = 1;
@@ -1036,6 +1238,8 @@ inline void ShapeChanged::set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

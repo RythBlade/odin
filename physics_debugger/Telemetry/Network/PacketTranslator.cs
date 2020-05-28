@@ -67,21 +67,23 @@ namespace Telemetry.Network
             switch (shapeCreatedPacket.ShapeType)
             {
                 case Physics.Telemetry.Serialised.ShapeType.Obb:
-                    OBBShape createdObbPacket = OBBShape.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
-
-                    ObbShape createdObb = new ObbShape();
-                    createdObb.CopyFromPacket(createdObbPacket);
-
-                    List<BaseShape> frameShapeList = null;
-                    if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))
                     {
-                        frameShapeList.Add(createdObb);
-                    }
-                    else
-                    {
-                        frameShapeList = new List<BaseShape>();
-                        frameShapeList.Add(createdObb);
-                        AddedShapes.Add(packet.messageHeader.FrameId, frameShapeList);
+                        OBBShape createdObbPacket = OBBShape.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
+
+                        ObbShape createdObb = new ObbShape();
+                        createdObb.CopyFromPacket(createdObbPacket);
+
+                        List<BaseShape> frameShapeList = null;
+                        if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))
+                        {
+                            frameShapeList.Add(createdObb);
+                        }
+                        else
+                        {
+                            frameShapeList = new List<BaseShape>();
+                            frameShapeList.Add(createdObb);
+                            AddedShapes.Add(packet.messageHeader.FrameId, frameShapeList);
+                        }
                     }
                     break;
                 case Physics.Telemetry.Serialised.ShapeType.Sphere:
@@ -91,6 +93,24 @@ namespace Telemetry.Network
                 case Physics.Telemetry.Serialised.ShapeType.ConvexHull:
                     break;
                 case Physics.Telemetry.Serialised.ShapeType.Tetrahedron:
+                    {
+                        Physics.Telemetry.Serialised.TetrahedronShape createdTetrahedronPacket = Physics.Telemetry.Serialised.TetrahedronShape.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
+
+                        Telemetry.FrameData.Shapes.TetrahedronShape createdTetrahedron = new Telemetry.FrameData.Shapes.TetrahedronShape();
+                        createdTetrahedron.CopyFromPacket(createdTetrahedronPacket);
+
+                        List<BaseShape> frameShapeList = null;
+                        if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))
+                        {
+                            frameShapeList.Add(createdTetrahedron);
+                        }
+                        else
+                        {
+                            frameShapeList = new List<BaseShape>();
+                            frameShapeList.Add(createdTetrahedron);
+                            AddedShapes.Add(packet.messageHeader.FrameId, frameShapeList);
+                        }
+                    }
                     break;
                 default:
                     break;

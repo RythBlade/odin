@@ -129,6 +129,7 @@
     <ClInclude Include="proto.generated\shapes.pb.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SphereShape.h" />
+    <ClInclude Include="TetrahedronShape.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

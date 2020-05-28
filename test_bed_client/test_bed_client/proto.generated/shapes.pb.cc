@@ -26,6 +26,10 @@ class OBBShapeDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<OBBShape> _instance;
 } _OBBShape_default_instance_;
+class TetrahedronShapeDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TetrahedronShape> _instance;
+} _TetrahedronShape_default_instance_;
 class ShapeCreatedDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ShapeCreated> _instance;
@@ -94,7 +98,22 @@ static void InitDefaultsscc_info_ShapeCreated_shapes_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ShapeCreated_shapes_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ShapeCreated_shapes_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_shapes_2eproto[4];
+static void InitDefaultsscc_info_TetrahedronShape_shapes_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::PhysicsTelemetry::_TetrahedronShape_default_instance_;
+    new (ptr) ::PhysicsTelemetry::TetrahedronShape();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::PhysicsTelemetry::TetrahedronShape::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_TetrahedronShape_shapes_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_TetrahedronShape_shapes_2eproto}, {
+      &scc_info_ShapeBase_shapes_2eproto.base,}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_shapes_2eproto[5];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_shapes_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_shapes_2eproto = nullptr;
 
@@ -116,6 +135,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_shapes_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::OBBShape, base_),
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::OBBShape, halfextents_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::TetrahedronShape, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::TetrahedronShape, base_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ShapeCreated, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -133,13 +158,15 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_shapes_2eproto::offsets[] PROT
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::PhysicsTelemetry::ShapeBase)},
   { 9, -1, sizeof(::PhysicsTelemetry::OBBShape)},
-  { 16, -1, sizeof(::PhysicsTelemetry::ShapeCreated)},
-  { 23, -1, sizeof(::PhysicsTelemetry::ShapeChanged)},
+  { 16, -1, sizeof(::PhysicsTelemetry::TetrahedronShape)},
+  { 22, -1, sizeof(::PhysicsTelemetry::ShapeCreated)},
+  { 29, -1, sizeof(::PhysicsTelemetry::ShapeChanged)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_ShapeBase_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_OBBShape_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_TetrahedronShape_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_ShapeCreated_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_ShapeChanged_default_instance_),
 };
@@ -152,31 +179,34 @@ const char descriptor_table_protodef_shapes_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "ype\030\004 \001(\0162\033.PhysicsTelemetry.ShapeType\"e"
   "\n\010OBBShape\022)\n\004base\030\001 \001(\0132\033.PhysicsTeleme"
   "try.ShapeBase\022.\n\013halfExtents\030\002 \001(\0132\031.Phy"
-  "sicsTelemetry.Vector3\"Q\n\014ShapeCreated\022.\n"
-  "\tshapeType\030\001 \001(\0162\033.PhysicsTelemetry.Shap"
-  "eType\022\021\n\tshapeSize\030\002 \001(\005\"Q\n\014ShapeChanged"
-  "\022.\n\tshapeType\030\001 \001(\0162\033.PhysicsTelemetry.S"
-  "hapeType\022\021\n\tshapeSize\030\002 \001(\005*K\n\tShapeType"
-  "\022\007\n\003OBB\020\000\022\n\n\006Sphere\020\001\022\010\n\004Cone\020\002\022\016\n\nConve"
-  "xHull\020\003\022\017\n\013Tetrahedron\020\004B\037\252\002\034Physics.Tel"
-  "emetry.Serialisedb\006proto3"
+  "sicsTelemetry.Vector3\"=\n\020TetrahedronShap"
+  "e\022)\n\004base\030\001 \001(\0132\033.PhysicsTelemetry.Shape"
+  "Base\"Q\n\014ShapeCreated\022.\n\tshapeType\030\001 \001(\0162"
+  "\033.PhysicsTelemetry.ShapeType\022\021\n\tshapeSiz"
+  "e\030\002 \001(\005\"Q\n\014ShapeChanged\022.\n\tshapeType\030\001 \001"
+  "(\0162\033.PhysicsTelemetry.ShapeType\022\021\n\tshape"
+  "Size\030\002 \001(\005*K\n\tShapeType\022\007\n\003OBB\020\000\022\n\n\006Sphe"
+  "re\020\001\022\010\n\004Cone\020\002\022\016\n\nConvexHull\020\003\022\017\n\013Tetrah"
+  "edron\020\004B\037\252\002\034Physics.Telemetry.Serialised"
+  "b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_shapes_2eproto_deps[1] = {
   &::descriptor_table_base_5ftypes_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_shapes_2eproto_sccs[4] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_shapes_2eproto_sccs[5] = {
   &scc_info_OBBShape_shapes_2eproto.base,
   &scc_info_ShapeBase_shapes_2eproto.base,
   &scc_info_ShapeChanged_shapes_2eproto.base,
   &scc_info_ShapeCreated_shapes_2eproto.base,
+  &scc_info_TetrahedronShape_shapes_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_shapes_2eproto_once;
 static bool descriptor_table_shapes_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_shapes_2eproto = {
-  &descriptor_table_shapes_2eproto_initialized, descriptor_table_protodef_shapes_2eproto, "shapes.proto", 585,
-  &descriptor_table_shapes_2eproto_once, descriptor_table_shapes_2eproto_sccs, descriptor_table_shapes_2eproto_deps, 4, 1,
+  &descriptor_table_shapes_2eproto_initialized, descriptor_table_protodef_shapes_2eproto, "shapes.proto", 648,
+  &descriptor_table_shapes_2eproto_once, descriptor_table_shapes_2eproto_sccs, descriptor_table_shapes_2eproto_deps, 5, 1,
   schemas, file_default_instances, TableStruct_shapes_2eproto::offsets,
-  file_level_metadata_shapes_2eproto, 4, file_level_enum_descriptors_shapes_2eproto, file_level_service_descriptors_shapes_2eproto,
+  file_level_metadata_shapes_2eproto, 5, file_level_enum_descriptors_shapes_2eproto, file_level_service_descriptors_shapes_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -746,6 +776,210 @@ void OBBShape::InternalSwap(OBBShape* other) {
 
 // ===================================================================
 
+void TetrahedronShape::InitAsDefaultInstance() {
+  ::PhysicsTelemetry::_TetrahedronShape_default_instance_._instance.get_mutable()->base_ = const_cast< ::PhysicsTelemetry::ShapeBase*>(
+      ::PhysicsTelemetry::ShapeBase::internal_default_instance());
+}
+class TetrahedronShape::_Internal {
+ public:
+  static const ::PhysicsTelemetry::ShapeBase& base(const TetrahedronShape* msg);
+};
+
+const ::PhysicsTelemetry::ShapeBase&
+TetrahedronShape::_Internal::base(const TetrahedronShape* msg) {
+  return *msg->base_;
+}
+TetrahedronShape::TetrahedronShape()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:PhysicsTelemetry.TetrahedronShape)
+}
+TetrahedronShape::TetrahedronShape(const TetrahedronShape& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from._internal_has_base()) {
+    base_ = new ::PhysicsTelemetry::ShapeBase(*from.base_);
+  } else {
+    base_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.TetrahedronShape)
+}
+
+void TetrahedronShape::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_TetrahedronShape_shapes_2eproto.base);
+  base_ = nullptr;
+}
+
+TetrahedronShape::~TetrahedronShape() {
+  // @@protoc_insertion_point(destructor:PhysicsTelemetry.TetrahedronShape)
+  SharedDtor();
+}
+
+void TetrahedronShape::SharedDtor() {
+  if (this != internal_default_instance()) delete base_;
+}
+
+void TetrahedronShape::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const TetrahedronShape& TetrahedronShape::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TetrahedronShape_shapes_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void TetrahedronShape::Clear() {
+// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.TetrahedronShape)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaNoVirtual() == nullptr && base_ != nullptr) {
+    delete base_;
+  }
+  base_ = nullptr;
+  _internal_metadata_.Clear();
+}
+
+const char* TetrahedronShape::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .PhysicsTelemetry.ShapeBase base = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_base(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* TetrahedronShape::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.TetrahedronShape)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .PhysicsTelemetry.ShapeBase base = 1;
+  if (this->has_base()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::base(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.TetrahedronShape)
+  return target;
+}
+
+size_t TetrahedronShape::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.TetrahedronShape)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .PhysicsTelemetry.ShapeBase base = 1;
+  if (this->has_base()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *base_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void TetrahedronShape::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.TetrahedronShape)
+  GOOGLE_DCHECK_NE(&from, this);
+  const TetrahedronShape* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TetrahedronShape>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.TetrahedronShape)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.TetrahedronShape)
+    MergeFrom(*source);
+  }
+}
+
+void TetrahedronShape::MergeFrom(const TetrahedronShape& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.TetrahedronShape)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_base()) {
+    _internal_mutable_base()->::PhysicsTelemetry::ShapeBase::MergeFrom(from._internal_base());
+  }
+}
+
+void TetrahedronShape::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.TetrahedronShape)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TetrahedronShape::CopyFrom(const TetrahedronShape& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.TetrahedronShape)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TetrahedronShape::IsInitialized() const {
+  return true;
+}
+
+void TetrahedronShape::InternalSwap(TetrahedronShape* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(base_, other->base_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata TetrahedronShape::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void ShapeCreated::InitAsDefaultInstance() {
 }
 class ShapeCreated::_Internal {
@@ -1186,6 +1420,9 @@ template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::ShapeBase* Arena::CreateMaybeMe
 }
 template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::OBBShape* Arena::CreateMaybeMessage< ::PhysicsTelemetry::OBBShape >(Arena* arena) {
   return Arena::CreateInternal< ::PhysicsTelemetry::OBBShape >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::TetrahedronShape* Arena::CreateMaybeMessage< ::PhysicsTelemetry::TetrahedronShape >(Arena* arena) {
+  return Arena::CreateInternal< ::PhysicsTelemetry::TetrahedronShape >(arena);
 }
 template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::ShapeCreated* Arena::CreateMaybeMessage< ::PhysicsTelemetry::ShapeCreated >(Arena* arena) {
   return Arena::CreateInternal< ::PhysicsTelemetry::ShapeCreated >(arena);

@@ -30,18 +30,21 @@ namespace Physics.Telemetry.Serialised {
             "bWV0cnkuTWF0cml4NHg0Ei4KCXNoYXBlVHlwZRgEIAEoDjIbLlBoeXNpY3NU",
             "ZWxlbWV0cnkuU2hhcGVUeXBlImUKCE9CQlNoYXBlEikKBGJhc2UYASABKAsy",
             "Gy5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBlQmFzZRIuCgtoYWxmRXh0ZW50cxgC",
-            "IAEoCzIZLlBoeXNpY3NUZWxlbWV0cnkuVmVjdG9yMyJRCgxTaGFwZUNyZWF0",
-            "ZWQSLgoJc2hhcGVUeXBlGAEgASgOMhsuUGh5c2ljc1RlbGVtZXRyeS5TaGFw",
-            "ZVR5cGUSEQoJc2hhcGVTaXplGAIgASgFIlEKDFNoYXBlQ2hhbmdlZBIuCglz",
-            "aGFwZVR5cGUYASABKA4yGy5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBlVHlwZRIR",
-            "CglzaGFwZVNpemUYAiABKAUqSwoJU2hhcGVUeXBlEgcKA09CQhAAEgoKBlNw",
-            "aGVyZRABEggKBENvbmUQAhIOCgpDb252ZXhIdWxsEAMSDwoLVGV0cmFoZWRy",
-            "b24QBEIfqgIcUGh5c2ljcy5UZWxlbWV0cnkuU2VyaWFsaXNlZGIGcHJvdG8z"));
+            "IAEoCzIZLlBoeXNpY3NUZWxlbWV0cnkuVmVjdG9yMyI9ChBUZXRyYWhlZHJv",
+            "blNoYXBlEikKBGJhc2UYASABKAsyGy5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBl",
+            "QmFzZSJRCgxTaGFwZUNyZWF0ZWQSLgoJc2hhcGVUeXBlGAEgASgOMhsuUGh5",
+            "c2ljc1RlbGVtZXRyeS5TaGFwZVR5cGUSEQoJc2hhcGVTaXplGAIgASgFIlEK",
+            "DFNoYXBlQ2hhbmdlZBIuCglzaGFwZVR5cGUYASABKA4yGy5QaHlzaWNzVGVs",
+            "ZW1ldHJ5LlNoYXBlVHlwZRIRCglzaGFwZVNpemUYAiABKAUqSwoJU2hhcGVU",
+            "eXBlEgcKA09CQhAAEgoKBlNwaGVyZRABEggKBENvbmUQAhIOCgpDb252ZXhI",
+            "dWxsEAMSDwoLVGV0cmFoZWRyb24QBEIfqgIcUGh5c2ljcy5UZWxlbWV0cnku",
+            "U2VyaWFsaXNlZGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Physics.Telemetry.Serialised.BaseTypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Physics.Telemetry.Serialised.ShapeType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeBase), global::Physics.Telemetry.Serialised.ShapeBase.Parser, new[]{ "Id", "HasLocalMatrix", "LocalMatrix", "ShapeType" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.OBBShape), global::Physics.Telemetry.Serialised.OBBShape.Parser, new[]{ "Base", "HalfExtents" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.TetrahedronShape), global::Physics.Telemetry.Serialised.TetrahedronShape.Parser, new[]{ "Base" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeCreated), global::Physics.Telemetry.Serialised.ShapeCreated.Parser, new[]{ "ShapeType", "ShapeSize" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeChanged), global::Physics.Telemetry.Serialised.ShapeChanged.Parser, new[]{ "ShapeType", "ShapeSize" }, null, null, null, null)
           }));
@@ -449,6 +452,141 @@ namespace Physics.Telemetry.Serialised {
 
   }
 
+  public sealed partial class TetrahedronShape : pb::IMessage<TetrahedronShape> {
+    private static readonly pb::MessageParser<TetrahedronShape> _parser = new pb::MessageParser<TetrahedronShape>(() => new TetrahedronShape());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<TetrahedronShape> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Physics.Telemetry.Serialised.ShapesReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public TetrahedronShape() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public TetrahedronShape(TetrahedronShape other) : this() {
+      base_ = other.base_ != null ? other.base_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public TetrahedronShape Clone() {
+      return new TetrahedronShape(this);
+    }
+
+    /// <summary>Field number for the "base" field.</summary>
+    public const int BaseFieldNumber = 1;
+    private global::Physics.Telemetry.Serialised.ShapeBase base_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Physics.Telemetry.Serialised.ShapeBase Base {
+      get { return base_; }
+      set {
+        base_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as TetrahedronShape);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(TetrahedronShape other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Base, other.Base)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (base_ != null) hash ^= Base.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (base_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Base);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (base_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Base);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(TetrahedronShape other) {
+      if (other == null) {
+        return;
+      }
+      if (other.base_ != null) {
+        if (base_ == null) {
+          Base = new global::Physics.Telemetry.Serialised.ShapeBase();
+        }
+        Base.MergeFrom(other.Base);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (base_ == null) {
+              Base = new global::Physics.Telemetry.Serialised.ShapeBase();
+            }
+            input.ReadMessage(Base);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class ShapeCreated : pb::IMessage<ShapeCreated> {
     private static readonly pb::MessageParser<ShapeCreated> _parser = new pb::MessageParser<ShapeCreated>(() => new ShapeCreated());
     private pb::UnknownFieldSet _unknownFields;
@@ -457,7 +595,7 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Physics.Telemetry.Serialised.ShapesReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Physics.Telemetry.Serialised.ShapesReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -614,7 +752,7 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Physics.Telemetry.Serialised.ShapesReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Physics.Telemetry.Serialised.ShapesReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

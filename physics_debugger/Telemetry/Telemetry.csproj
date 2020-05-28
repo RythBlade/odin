@@ -73,6 +73,7 @@
     <Compile Include="FrameData\Shapes\BaseShape.cs" />
     <Compile Include="FrameData\Shapes\ConvexHullShape.cs" />
     <Compile Include="FrameData\Shapes\ObbShape.cs" />
+    <Compile Include="FrameData\Shapes\TetrahedronShape.cs" />
     <Compile Include="Network\BasePacketHeader.cs" />
     <Compile Include="Network\DataStream.cs" />
     <Compile Include="Network\GenericPropertiesPacket.cs" />
