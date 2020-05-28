@@ -60,6 +60,7 @@ but also so you could record a really long run! Would need some special logic in
 	- Scrub through the telemetry we've been sent
 - Mesh types
 	- Tetrahedron
+	- OBB
 
 ----Notes----
 Packets are prescriptive now, but the version when we can generate the serialisation/deserialisation code, I'm thinking about using shader style Semantics, to infer/retrieve what I NEED to render the scene. You can mark the 

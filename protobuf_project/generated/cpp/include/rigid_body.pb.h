@@ -211,7 +211,7 @@ class RigidBody :
   ::PhysicsTelemetry::Vector4* _internal_mutable_velocity();
   public:
 
-  // uint32 Id = 1;
+  // uint32 id = 1;
   void clear_id();
   ::PROTOBUF_NAMESPACE_ID::uint32 id() const;
   void set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
@@ -379,7 +379,7 @@ class RigidBodyList :
 #endif  // __GNUC__
 // RigidBody
 
-// uint32 Id = 1;
+// uint32 id = 1;
 inline void RigidBody::clear_id() {
   id_ = 0u;
 }
@@ -387,7 +387,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBody::_internal_id() const {
   return id_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBody::id() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBody.Id)
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBody.id)
   return _internal_id();
 }
 inline void RigidBody::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
@@ -396,7 +396,7 @@ inline void RigidBody::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
 }
 inline void RigidBody::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.RigidBody.Id)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.RigidBody.id)
 }
 
 // .PhysicsTelemetry.Matrix4x4 position = 2;

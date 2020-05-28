@@ -11,6 +11,8 @@ message MessageHeader
 	enum MessageType
 	{
 		RigidBodyUpdate = 0;
+		ShapeCreated = 1;
+		ShapeChanged = 2;
 	}
 	
 	MessageType messageType = 2;

@@ -10,7 +10,7 @@ namespace Telemetry.Network
     public class PacketTranslator
     {
         public Dictionary<uint, Tuple<bool, FrameSnapshot>> ConstructedSnaphots = new Dictionary<uint, Tuple<bool, FrameSnapshot>>();
-        public Dictionary<int, BaseShape> AddedShapes = new Dictionary<int, BaseShape>();
+        public Dictionary<uint, BaseShape> AddedShapes = new Dictionary<uint, BaseShape>();
 
         public PacketTranslator()
         {
@@ -56,6 +56,33 @@ namespace Telemetry.Network
 
                 // todo: error handle - what if the rigid body already exists?
                 snapshot.RigidBodies.Add(body.Id, body);
+            }
+        }
+
+        private void ProcessShapeAdded(BasePacketHeader packet)
+        {
+            ShapeCreated shapeCreatedPacket = ShapeCreated.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData, packet.messageHeader.DataSize);
+
+            switch (shapeCreatedPacket.ShapeType)
+            {
+                case Physics.Telemetry.Serialised.ShapeType.Obb:
+                    OBBShape createdObbPacket = OBBShape.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
+
+                    ObbShape createdObb = new ObbShape();
+                    createdObb.CopyFromPacket(createdObbPacket);
+
+                    AddedShapes.Add(createdObb.Id, createdObb);
+                    break;
+                case Physics.Telemetry.Serialised.ShapeType.Sphere:
+                    break;
+                case Physics.Telemetry.Serialised.ShapeType.Cone:
+                    break;
+                case Physics.Telemetry.Serialised.ShapeType.ConvexHull:
+                    break;
+                case Physics.Telemetry.Serialised.ShapeType.Tetrahedron:
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -164,6 +191,11 @@ namespace Telemetry.Network
                 {
                     case MessageHeader.Types.MessageType.RigidBodyUpdate:
                         ProcessRigidBodyFrameUpdate(packet, snapshot);
+                        toReturn = true;
+                        break;
+
+                    case MessageHeader.Types.MessageType.ShapeCreated:
+                        ProcessShapeAdded(packet);
                         toReturn = true;
                         break;
                     default:

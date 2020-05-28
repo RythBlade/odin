@@ -12,6 +12,7 @@
 
 #include "proto.generated/rigid_body.pb.h"
 #include "proto.generated/message_header.pb.h"
+#include "proto.generated/shapes.pb.h"
 
 unsigned int const numberOfParticles = 10;
 
@@ -53,6 +54,10 @@ void main()
     printf( "I'm just testing\n" );
     printf( "Enter something to continue...\n" );
 
+    DataServer server;
+
+    server.initialiseServer();
+
     for ( int i = 0; i < numberOfParticles; ++i )
     {
         Particle& particle = particles.particles[i];
@@ -63,16 +68,86 @@ void main()
             particle.m_position[ comp ] = -worldAABB[ comp ] + particleRadius + random * ( worldAABB[ comp ] * 2.0f - 2.0f * particleRadius );
         }
 
-        ConvexHull* convexHull = loadMesh();
+        ObbShape* obbShape = new ObbShape();
 
-        convexHull->m_hasLocalMatrix = false;
+        obbShape->m_halfExtents[0] = 1.0f;
+        obbShape->m_halfExtents[1] = 1.0f;
+        obbShape->m_halfExtents[2] = 1.0f;
 
-        particle.m_collisionShapes.push_back(convexHull);
+        particle.m_collisionShapes.push_back(obbShape);
+
+        //ConvexHull* convexHull = loadMesh();
+        //
+        //convexHull->m_hasLocalMatrix = false;
+        //
+        //particle.m_collisionShapes.push_back(convexHull);
+
+        PhysicsTelemetry::OBBShape obbCreated;
+
+        obbCreated.mutable_halfextents()->set_x(obbShape->m_halfExtents[0]);
+        obbCreated.mutable_halfextents()->set_y(obbShape->m_halfExtents[1]);
+        obbCreated.mutable_halfextents()->set_z(obbShape->m_halfExtents[2]);
+
+        obbCreated.mutable_base()->set_id(i);
+        obbCreated.mutable_base()->set_shapetype(PhysicsTelemetry::OBB);
+        obbCreated.mutable_base()->set_haslocalmatrix(true);
+        
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m11(1.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m12(0.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m13(0.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m14(0.0f);
+
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m21(0.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m22(1.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m23(0.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m24(0.0f);
+
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m31(0.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m32(0.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m33(1.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m34(0.0f);
+
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m41(0.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m42(0.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m43(0.0f);
+        obbCreated.mutable_base()->mutable_localmatrix()->set_m44(1.0f);
+
+        size_t shapeSize = obbCreated.ByteSizeLong();
+
+        PhysicsTelemetry::ShapeCreated shapeCreated;
+
+        shapeCreated.set_shapetype(PhysicsTelemetry::OBB);
+        shapeCreated.set_shapesize(shapeSize);
+
+        size_t baseShapeSize = shapeCreated.ByteSizeLong();
+
+        PhysicsTelemetry::MessageHeader messageHeader;
+        messageHeader.set_frameid(frameCounter);
+        messageHeader.set_messagetype(PhysicsTelemetry::MessageHeader_MessageType_ShapeCreated);
+        messageHeader.set_datasize(baseShapeSize);
+
+        int const sizeOfNetworkPacket = 1024;
+        char networkPacket[sizeOfNetworkPacket];
+        char* bufferPointer = networkPacket;
+        int remainingBytes = sizeOfNetworkPacket;
+
+        int headerLength = messageHeader.ByteSizeLong();
+        memcpy(bufferPointer, &headerLength, sizeof(int)); bufferPointer += sizeof(int);
+
+        messageHeader.SerializePartialToArray(bufferPointer, sizeOfNetworkPacket);
+        bufferPointer += headerLength;
+        remainingBytes -= headerLength;
+
+        shapeCreated.SerializePartialToArray(bufferPointer, remainingBytes);
+        bufferPointer += baseShapeSize;
+        remainingBytes -= baseShapeSize;
+
+        obbCreated.SerializePartialToArray(bufferPointer, remainingBytes);
+        bufferPointer += baseShapeSize;
+        remainingBytes -= baseShapeSize;
+
+        server.sendData(reinterpret_cast<char*>(&networkPacket), sizeOfNetworkPacket);
     }
-
-    DataServer server;
-
-    server.initialiseServer();
 
     unsigned int currentTime = getNextTimeStep();
     
@@ -123,10 +198,6 @@ void main()
                 rigidBody->mutable_position()->set_m42(particles.particles[i].m_position[1]);
                 rigidBody->mutable_position()->set_m43(particles.particles[i].m_position[2]);
                 rigidBody->mutable_position()->set_m44(particles.particles[i].m_position[3]);
-
-                //rigidBody->mutable_position()->set_m(particles.particles[i].m_position[0]);
-                //rigidBody->mutable_position()->set_y(particles.particles[i].m_position[1]);
-                //rigidBody->mutable_position()->set_z(particles.particles[i].m_position[2]);
 
                 PhysicsTelemetry::Vector4 velocity;
                 rigidBody->mutable_velocity()->set_x(particles.particles[i].m_velocity[0]);

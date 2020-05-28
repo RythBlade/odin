@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace Telemetry.FrameData.Shapes
 {
-    public class ConvexHull : BaseShape
+    public class ConvexHullShape : BaseShape
     {
         public class Face
         {

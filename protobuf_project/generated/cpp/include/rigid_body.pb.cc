@@ -90,7 +90,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_rigid_5fbody_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\020rigid_body.proto\022\020PhysicsTelemetry\032\020ba"
-  "se_types.proto\"s\n\tRigidBody\022\n\n\002Id\030\001 \001(\r\022"
+  "se_types.proto\"s\n\tRigidBody\022\n\n\002id\030\001 \001(\r\022"
   "-\n\010position\030\002 \001(\0132\033.PhysicsTelemetry.Mat"
   "rix4x4\022+\n\010velocity\030\003 \001(\0132\031.PhysicsTeleme"
   "try.Vector4\"A\n\rRigidBodyList\0220\n\013rigidBod"
@@ -225,7 +225,7 @@ const char* RigidBody::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 Id = 1;
+      // uint32 id = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
@@ -272,7 +272,7 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 Id = 1;
+  // uint32 id = 1;
   if (this->id() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_id(), target);
@@ -324,7 +324,7 @@ size_t RigidBody::ByteSizeLong() const {
         *velocity_);
   }
 
-  // uint32 Id = 1;
+  // uint32 id = 1;
   if (this->id() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(

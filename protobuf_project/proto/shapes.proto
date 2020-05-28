@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package PhysicsTelemetry;
+
+import "base_types.proto";
+
+option csharp_namespace = "Physics.Telemetry.Serialised";
+
+enum ShapeType
+{
+	OBB = 0;
+	Sphere = 1;
+	Cone = 2;
+	ConvexHull = 3;
+	Tetrahedron = 4;
+}
+
+message ShapeBase
+{
+	uint32 Id = 1;
+	
+	bool hasLocalMatrix = 2;
+	PhysicsTelemetry.Matrix4x4 localMatrix = 3;
+	
+	ShapeType shapeType = 4;
+}
+
+message OBBShape
+{
+	ShapeBase base = 1;
+	Vector3 halfExtents = 2;
+}
+
+message ShapeCreated
+{
+	ShapeType shapeType = 1;
+	int32 shapeSize = 2;
+}
+
+message ShapeChanged
+{
+	ShapeType shapeType = 1;
+	int32 shapeSize = 2;
+}

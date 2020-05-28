@@ -67,12 +67,14 @@ namespace PhysicsTelemetry {
 
 enum MessageHeader_MessageType : int {
   MessageHeader_MessageType_RigidBodyUpdate = 0,
+  MessageHeader_MessageType_ShapeCreated = 1,
+  MessageHeader_MessageType_ShapeChanged = 2,
   MessageHeader_MessageType_MessageHeader_MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   MessageHeader_MessageType_MessageHeader_MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool MessageHeader_MessageType_IsValid(int value);
 constexpr MessageHeader_MessageType MessageHeader_MessageType_MessageType_MIN = MessageHeader_MessageType_RigidBodyUpdate;
-constexpr MessageHeader_MessageType MessageHeader_MessageType_MessageType_MAX = MessageHeader_MessageType_RigidBodyUpdate;
+constexpr MessageHeader_MessageType MessageHeader_MessageType_MessageType_MAX = MessageHeader_MessageType_ShapeChanged;
 constexpr int MessageHeader_MessageType_MessageType_ARRAYSIZE = MessageHeader_MessageType_MessageType_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageHeader_MessageType_descriptor();
@@ -197,6 +199,10 @@ class MessageHeader :
   typedef MessageHeader_MessageType MessageType;
   static constexpr MessageType RigidBodyUpdate =
     MessageHeader_MessageType_RigidBodyUpdate;
+  static constexpr MessageType ShapeCreated =
+    MessageHeader_MessageType_ShapeCreated;
+  static constexpr MessageType ShapeChanged =
+    MessageHeader_MessageType_ShapeChanged;
   static inline bool MessageType_IsValid(int value) {
     return MessageHeader_MessageType_IsValid(value);
   }

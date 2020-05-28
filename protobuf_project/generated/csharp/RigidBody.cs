@@ -25,7 +25,7 @@ namespace Physics.Telemetry.Serialised {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChByaWdpZF9ib2R5LnByb3RvEhBQaHlzaWNzVGVsZW1ldHJ5GhBiYXNlX3R5",
-            "cGVzLnByb3RvInMKCVJpZ2lkQm9keRIKCgJJZBgBIAEoDRItCghwb3NpdGlv",
+            "cGVzLnByb3RvInMKCVJpZ2lkQm9keRIKCgJpZBgBIAEoDRItCghwb3NpdGlv",
             "bhgCIAEoCzIbLlBoeXNpY3NUZWxlbWV0cnkuTWF0cml4NHg0EisKCHZlbG9j",
             "aXR5GAMgASgLMhkuUGh5c2ljc1RlbGVtZXRyeS5WZWN0b3I0IkEKDVJpZ2lk",
             "Qm9keUxpc3QSMAoLcmlnaWRCb2RpZXMYASADKAsyGy5QaHlzaWNzVGVsZW1l",
@@ -78,7 +78,7 @@ namespace Physics.Telemetry.Serialised {
       return new RigidBody(this);
     }
 
-    /// <summary>Field number for the "Id" field.</summary>
+    /// <summary>Field number for the "id" field.</summary>
     public const int IdFieldNumber = 1;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
