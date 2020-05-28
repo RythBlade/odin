@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Telemetry.FrameData.Shapes;
 
 namespace Telemetry.FrameData
 {

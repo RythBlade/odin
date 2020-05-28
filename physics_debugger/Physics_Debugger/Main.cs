@@ -6,6 +6,8 @@ using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Collections.Generic;
+using Telemetry.FrameData.Shapes;
 
 namespace physics_debugger
 {
@@ -148,7 +150,16 @@ namespace physics_debugger
                         frameData.Frames.Add(snapshot.Item2);
                     }
 
+                    foreach(KeyValuePair<uint, List<BaseShape>> frameShapeList in translator.AddedShapes)
+                    {
+                        foreach (BaseShape addedShape in frameShapeList.Value)
+                        {
+                            frameData.ShapeData.AddNewShape(frameShapeList.Key, addedShape);
+                        }
+                    }    
+
                     translator.ConstructedSnaphots.Clear();
+                    translator.AddedShapes.Clear();
                 }
                 else
                 {

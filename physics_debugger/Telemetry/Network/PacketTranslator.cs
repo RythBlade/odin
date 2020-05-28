@@ -10,7 +10,7 @@ namespace Telemetry.Network
     public class PacketTranslator
     {
         public Dictionary<uint, Tuple<bool, FrameSnapshot>> ConstructedSnaphots = new Dictionary<uint, Tuple<bool, FrameSnapshot>>();
-        public Dictionary<uint, BaseShape> AddedShapes = new Dictionary<uint, BaseShape>();
+        public Dictionary<uint, List<BaseShape>> AddedShapes = new Dictionary<uint, List<BaseShape>>();
 
         public PacketTranslator()
         {
@@ -71,7 +71,17 @@ namespace Telemetry.Network
                     ObbShape createdObb = new ObbShape();
                     createdObb.CopyFromPacket(createdObbPacket);
 
-                    AddedShapes.Add(createdObb.Id, createdObb);
+                    List<BaseShape> frameShapeList = null;
+                    if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))
+                    {
+                        frameShapeList.Add(createdObb);
+                    }
+                    else
+                    {
+                        frameShapeList = new List<BaseShape>();
+                        frameShapeList.Add(createdObb);
+                        AddedShapes.Add(packet.messageHeader.FrameId, frameShapeList);
+                    }
                     break;
                 case Physics.Telemetry.Serialised.ShapeType.Sphere:
                     break;

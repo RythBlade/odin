@@ -69,7 +69,7 @@
     <Compile Include="FrameData\Properties\FloatProperty.cs" />
     <Compile Include="FrameData\Properties\IBaseProperty.cs" />
     <Compile Include="FrameData\RigidBody.cs" />
-    <Compile Include="FrameData\ShapeDataManager.cs" />
+    <Compile Include="FrameData\Shapes\ShapeDataManager.cs" />
     <Compile Include="FrameData\Shapes\BaseShape.cs" />
     <Compile Include="FrameData\Shapes\ConvexHullShape.cs" />
     <Compile Include="FrameData\Shapes\ObbShape.cs" />
