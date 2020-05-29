@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Collections.Generic;
 using Telemetry.FrameData.Shapes;
+using Renderer.Buffers;
 
 namespace physics_debugger
 {
@@ -38,7 +39,9 @@ namespace physics_debugger
 
             CubeMeshId = mainViewport.Renderer.Meshes.AddCubeMesh();
             TetrahedronMeshId = mainViewport.Renderer.Meshes.AddTetrahedron();
-            PlaneMeshId = mainViewport.Renderer.Meshes.AddPlane();
+            PlaneMeshId = GenerateReferencePlane(10, 10, new Vector3(-10.0f, 0.0f, -10.0f), new Vector3(10.0f, 0.0f, 10.0f));
+
+            mainViewport.Renderer.Camera.CameraPosition = new Vector3(0.0f, 0.0f, 15.0f);
 
             RenderInstance instanceToRender = new RenderInstance(Matrix.Translation(0.0f, 0.0f, 0.0f), PlaneMeshId);
             instanceToRender.Fill = RenderInstance.FillMode.eWireFrame;
@@ -51,8 +54,35 @@ namespace physics_debugger
             controller.MaxFrameChanged += Controller_MaxFrameChanged;
             controller.StateChanged += Controller_StateChanged;
 
-            controller.State = PlayBackState.eStaticFrame;
-            
+            controller.State = PlayBackState.eStaticFrame;   
+        }
+
+        private int GenerateReferencePlane(int width, int depth, Vector3 minCorner, Vector3 maxCorner)
+        {
+            List<Vertex> vertexList = new List<Vertex>();
+
+            float xStepSize = (maxCorner.X - minCorner.X) / (float)width;
+            float zStepSize = (maxCorner.Z - minCorner.Z) / (float)depth;
+
+            for (int x = 0; x < width; ++x)
+            {
+                for (int z = 0; z < depth; ++z)
+                {
+                    float minX = minCorner.X + (float)x * xStepSize;
+                    float maxX = minCorner.X + ((float)x + 1.0f) * xStepSize;
+                    float minZ = minCorner.Z + (float)z * xStepSize;
+                    float maxZ = minCorner.Z + ((float)z + 1.0f) * zStepSize;
+
+                    vertexList.Add(new Vertex(new Vector4(minX, 0.0f, minZ, 1.0f), new Vector4( 0.0f, 0.0f, 0.0f, 1.0f)));
+                    vertexList.Add(new Vertex(new Vector4(minX, 0.0f, maxZ, 1.0f), new Vector4( 0.0f, 0.0f, 0.0f, 1.0f)));
+                    vertexList.Add(new Vertex(new Vector4(maxX, 0.0f, maxZ, 1.0f), new Vector4( 0.0f, 0.0f, 0.0f, 1.0f)));
+                    vertexList.Add(new Vertex(new Vector4(minX, 0.0f, minZ, 1.0f), new Vector4( 0.0f, 0.0f, 0.0f, 1.0f)));
+                    vertexList.Add(new Vertex(new Vector4(maxX, 0.0f, maxZ, 1.0f), new Vector4( 0.0f, 0.0f, 0.0f, 1.0f)));
+                    vertexList.Add(new Vertex(new Vector4(maxX, 0.0f, minZ, 1.0f), new Vector4( 0.0f, 0.0f, 0.0f, 1.0f)));
+                }
+            }
+
+            return mainViewport.Renderer.Meshes.AddMesh(vertexList);
         }
 
         private void Controller_StateChanged(object sender, EventArgs e)

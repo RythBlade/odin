@@ -54,7 +54,7 @@ namespace Renderer
             rasterizerStateDescWireframe.CullMode = CullMode.Back;
 
             // Setup new projection matrix with correct aspect ratio
-            camera.CameraPosition = new Vector3(0.0f, 0.0f, 15.0f);
+            camera.CameraPosition = new Vector3(0.0f, 0.0f, 0.0f);
             camera.NearClipPlane = 0.1f;
             camera.FarClipPlane = 100.0f;
             camera.FieldOfView = (float)Math.PI / 4.0f;
