@@ -28,6 +28,7 @@ namespace physics_debugger
 
         private int CubeMeshId = 0;
         private int TetrahedronMeshId = 0;
+        private int PlaneMeshId = 0;
 
         public Main()
         {
@@ -37,6 +38,11 @@ namespace physics_debugger
 
             CubeMeshId = mainViewport.Renderer.Meshes.AddCubeMesh();
             TetrahedronMeshId = mainViewport.Renderer.Meshes.AddTetrahedron();
+            PlaneMeshId = mainViewport.Renderer.Meshes.AddPlane();
+
+            RenderInstance instanceToRender = new RenderInstance(Matrix.Translation(0.0f, 0.0f, 0.0f), PlaneMeshId);
+            instanceToRender.Fill = RenderInstance.FillMode.eWireFrame;
+            mainViewport.Renderer.InstanceList.Add(instanceToRender);
 
             clock.Start();
             updateTimer.Start();
@@ -179,7 +185,7 @@ namespace physics_debugger
 
             if (latestFrame != null)
             {
-                int nextRenderInstanceId = 0;
+                int nextRenderInstanceId = 1; // the first instance is the world reference plane
 
                 foreach (RigidBody rigidBody in latestFrame.RigidBodies.Values)
                 {

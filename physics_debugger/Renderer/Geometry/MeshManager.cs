@@ -60,5 +60,17 @@ namespace Renderer.Geometry
 
             return m_meshes.Count > 0 ? m_meshes.Count - 1 : -1;
         }
+
+        public int AddPlane()
+        {
+            Mesh newMesh = new Mesh();
+            newMesh.numberOfVertices = MeshVertices.s_plane.Length;
+            newMesh.vertexBuffer = SharpDX.Direct3D11.Buffer.Create(GraphicsDevice.Instance.Device, BindFlags.VertexBuffer, MeshVertices.s_plane);
+            newMesh.vertexBufferBinding = new VertexBufferBinding(newMesh.vertexBuffer, Utilities.SizeOf<Vertex>(), 0);
+
+            m_meshes.Add(newMesh);
+
+            return m_meshes.Count > 0 ? m_meshes.Count - 1 : -1;
+        }
     }
 }
