@@ -27,45 +27,29 @@ namespace Renderer.Geometry
 
         public int AddMesh(List<Vertex> triangleList)
         {
-            Mesh newMesh = new Mesh();
-            newMesh.numberOfVertices = triangleList.Count;
-            newMesh.vertexBuffer = SharpDX.Direct3D11.Buffer.Create(GraphicsDevice.Instance.Device, BindFlags.VertexBuffer, triangleList.ToArray());
-            newMesh.vertexBufferBinding = new VertexBufferBinding(newMesh.vertexBuffer, Utilities.SizeOf<Vertex>(), 0);
-
-            m_meshes.Add(newMesh);
-
-            return m_meshes.Count > 0 ? m_meshes.Count - 1 : -1;
+            return AddMesh(triangleList.ToArray());
         }
 
         public int AddCubeMesh()
         {
-            Mesh newMesh = new Mesh();
-            newMesh.numberOfVertices = MeshVertices.s_cube.Length;
-            newMesh.vertexBuffer = SharpDX.Direct3D11.Buffer.Create(GraphicsDevice.Instance.Device, BindFlags.VertexBuffer, MeshVertices.s_cube);
-            newMesh.vertexBufferBinding = new VertexBufferBinding(newMesh.vertexBuffer, Utilities.SizeOf<Vertex>(), 0);
-
-            m_meshes.Add(newMesh);
-
-            return m_meshes.Count > 0 ? m_meshes.Count - 1 : -1;
+            return AddMesh(MeshVertices.s_cube);
         }
 
         public int AddTetrahedron()
         {
-            Mesh newMesh = new Mesh();
-            newMesh.numberOfVertices = MeshVertices.s_tetrahedron.Length;
-            newMesh.vertexBuffer = SharpDX.Direct3D11.Buffer.Create(GraphicsDevice.Instance.Device, BindFlags.VertexBuffer, MeshVertices.s_tetrahedron);
-            newMesh.vertexBufferBinding = new VertexBufferBinding(newMesh.vertexBuffer, Utilities.SizeOf<Vertex>(), 0);
-
-            m_meshes.Add(newMesh);
-
-            return m_meshes.Count > 0 ? m_meshes.Count - 1 : -1;
+            return AddMesh(MeshVertices.s_tetrahedron);
         }
 
         public int AddPlane()
         {
+            return AddMesh(MeshVertices.s_plane);
+        }
+
+        public int AddMesh(Vertex[] triangleList)
+        {
             Mesh newMesh = new Mesh();
-            newMesh.numberOfVertices = MeshVertices.s_plane.Length;
-            newMesh.vertexBuffer = SharpDX.Direct3D11.Buffer.Create(GraphicsDevice.Instance.Device, BindFlags.VertexBuffer, MeshVertices.s_plane);
+            newMesh.numberOfVertices = triangleList.Length;
+            newMesh.vertexBuffer = SharpDX.Direct3D11.Buffer.Create(GraphicsDevice.Instance.Device, BindFlags.VertexBuffer, triangleList);
             newMesh.vertexBufferBinding = new VertexBufferBinding(newMesh.vertexBuffer, Utilities.SizeOf<Vertex>(), 0);
 
             m_meshes.Add(newMesh);
