@@ -75,38 +75,6 @@ namespace Telemetry.Network
             return true;
         }
 
-        /*public BasePacketHeader1 ReceiveData()
-        {
-            BasePacketHeader basePacket = null;
-
-            if (clientSocket != null && clientSocket.Connected)
-            {
-                basePacket = new BasePacketHeader();
-
-                int numberOfReadBytes = clientSocket.Receive(basePacket.PacketBytes);
-
-                if (numberOfReadBytes > 0)
-                {
-                    Console.WriteLine($"bytes, {basePacket.PacketBytes[0]}, {basePacket.PacketBytes[1]}, {basePacket.PacketBytes[2]}, {basePacket.PacketBytes[3]}, {basePacket.PacketBytes[4]}, {basePacket.PacketBytes[5]}, {basePacket.PacketBytes[6]}, {basePacket.PacketBytes[7]}");
-
-                    int byteIndex = 0;
-
-                    // -- packet layout --
-                    // uint32 frame id
-                    // uint32 packet type
-                    // uint32 data size
-                    // byte[] data
-                    // -- end packet layout --
-
-                    basePacket.FrameID = BitConverter.ToUInt32(basePacket.PacketBytes, byteIndex); byteIndex += 4;
-                    basePacket.PacketType = BitConverter.ToUInt32(basePacket.PacketBytes, byteIndex); byteIndex += 4;
-                    basePacket.DataSize = BitConverter.ToUInt32(basePacket.PacketBytes, byteIndex); byteIndex += 4;
-                }
-            }
-
-            return basePacket;
-        }*/
-
         public BasePacketHeader ReceiveData()
         {
             BasePacketHeader basePacket = null;
