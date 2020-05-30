@@ -51,7 +51,7 @@ namespace Renderer
             rasterizerStateDescFill.CullMode = CullMode.Back;
 
             rasterizerStateDescWireframe.FillMode = FillMode.Wireframe;
-            rasterizerStateDescWireframe.CullMode = CullMode.Back;
+            rasterizerStateDescWireframe.CullMode = CullMode.None;
 
             // Setup new projection matrix with correct aspect ratio
             camera.CameraPosition = new Vector3(0.0f, 0.0f, 0.0f);
