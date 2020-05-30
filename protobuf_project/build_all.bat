@@ -1,7 +1,22 @@
-protobufCompiler\protoc.exe --proto_path="%cd%\proto" --proto_path="%cd%\protobufCompiler" --cpp_out="%cd%\generated\cpp\include" --csharp_out="%cd%\generated\csharp" "%cd%\proto\rigid_body.proto"
+set PROTOPATH="%cd%\proto"
+set CPP_OUT_PATH="%cd%\generated\cpp\include"
+set CSHARP_OUT_PATH="%cd%\generated\csharp"
 
-protobufCompiler\protoc.exe --proto_path="%cd%\proto" --proto_path="%cd%\protobufCompiler" --cpp_out="%cd%\generated\cpp\include" --csharp_out="%cd%\generated\csharp" "%cd%\proto\base_types.proto"
+@echo ---- Starting protobuf ----
 
-protobufCompiler\protoc.exe --proto_path="%cd%\proto" --proto_path="%cd%\protobufCompiler" --cpp_out="%cd%\generated\cpp\include" --csharp_out="%cd%\generated\csharp" "%cd%\proto\message_header.proto"
+protobufCompiler\protoc.exe --proto_path=%PROTOPATH% --proto_path="%cd%\protobufCompiler" --cpp_out=%CPP_OUT_PATH% --csharp_out=%CSHARP_OUT_PATH% "%PROTOPATH%\rigid_body.proto"
 
-protobufCompiler\protoc.exe --proto_path="%cd%\proto" --proto_path="%cd%\protobufCompiler" --cpp_out="%cd%\generated\cpp\include" --csharp_out="%cd%\generated\csharp" "%cd%\proto\shapes.proto"
+@echo ---------------------------
+
+protobufCompiler\protoc.exe --proto_path=%PROTOPATH% --proto_path="%cd%\protobufCompiler" --cpp_out=%CPP_OUT_PATH% --csharp_out=%CSHARP_OUT_PATH% "%PROTOPATH%\base_types.proto"
+
+@echo ---------------------------
+
+protobufCompiler\protoc.exe --proto_path=%PROTOPATH% --proto_path="%cd%\protobufCompiler" --cpp_out=%CPP_OUT_PATH% --csharp_out=%CSHARP_OUT_PATH% "%PROTOPATH%\message_header.proto"
+
+@echo ---------------------------
+
+protobufCompiler\protoc.exe --proto_path=%PROTOPATH% --proto_path="%cd%\protobufCompiler" --cpp_out=%CPP_OUT_PATH% --csharp_out=%CSHARP_OUT_PATH% "%PROTOPATH%\shapes.proto"
+
+@echo ---------------------------
+@echo ---- Protobuf Complete ----
