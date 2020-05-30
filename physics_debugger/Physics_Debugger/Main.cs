@@ -270,6 +270,8 @@ namespace physics_debugger
                                     break;
                             }
 
+                            Matrix rotationAnimation = Matrix.RotationX(time) * Matrix.RotationY(time * 2.0f) * Matrix.RotationZ(time * 0.7f);
+
                             Matrix translationMatrix = Matrix.Translation(
                                 rigidBody.WorldMatrix.Translation.X
                                 , rigidBody.WorldMatrix.Translation.Y
@@ -282,10 +284,12 @@ namespace physics_debugger
                                     , actualShape.LocalMatrix.Translation.Y
                                     , actualShape.LocalMatrix.Translation.Z);
 
-                                translationMatrix = localMatrix * translationMatrix;
+                                instanceToRender.WorldMatrix = localMatrix * rotationAnimation * translationMatrix;
                             }
-
-                            instanceToRender.WorldMatrix = Matrix.RotationX(time) * Matrix.RotationY(time * 2.0f) * Matrix.RotationZ(time * 0.7f) * translationMatrix;
+                            else
+                            {
+                                instanceToRender.WorldMatrix = rotationAnimation * translationMatrix; 
+                            }
 
                             ++nextRenderInstanceId;
                         }
