@@ -10,6 +10,23 @@ namespace Telemetry.FrameData
 
         public ShapeDataManager ShapeData = new ShapeDataManager();
 
+        public void ImportFromPacket(FrameDataPacket packet)
+        {
+            if (packet != null)
+            {
+                foreach (FrameSnapshotPacket frame in packet.Frames)
+                {
+                    FrameSnapshot newFrame = new FrameSnapshot();
+
+                    newFrame.ImportFromPacket(frame);
+
+                    Frames.Add(newFrame);
+                }
+
+                ShapeData.ImportFromPacket(packet.ShapeData);
+            }
+        }
+
         public FrameDataPacket ExportToPacket()
         {
             FrameDataPacket packet = new FrameDataPacket();

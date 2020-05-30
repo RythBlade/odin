@@ -106,11 +106,11 @@ namespace Telemetry.FrameData.Shapes
             ShapeType = ShapeType.eConvexHull;
         }
 
-        public void CopyFromPacket(ConvexHullShapePacket packetConvexHullShape)
+        public void ImportFromPacket(ConvexHullShapePacket packetConvexHullShape)
         {
             if (packetConvexHullShape != null)
             {
-                base.CopyFromPacket(packetConvexHullShape.Base);
+                base.ImportFromPacket(packetConvexHullShape.Base);
 
                 foreach(ConvexHullShapePacket.Types.Face face in packetConvexHullShape.Faces)
                 {

@@ -24,7 +24,7 @@ namespace Telemetry.FrameData.Shapes
         public Matrix4x4 LocalMatrix = new Matrix4x4();
         public ShapeType ShapeType = ShapeType.eObb;
 
-        public void CopyFromPacket(ShapeBasePacket packetBaseShape)
+        public void ImportFromPacket(ShapeBasePacket packetBaseShape)
         {
             if (packetBaseShape != null)
             {

@@ -23,6 +23,34 @@ namespace Telemetry.FrameData
 
         public List<FrameItem> Shapes = new List<FrameItem>();
 
+        public void AddRigidBody(RigidBody body)
+        {
+            // todo: error handle - what if the rigid body already exists?
+            RigidBodies.Add(body.Id, body);
+        }
+
+        public void AddRigidBody(RigidBodyPacket packet)
+        {
+            RigidBody body = new RigidBody();
+
+            body.ImportFromPacket(packet);
+
+            AddRigidBody(body);
+        }
+
+        public void ImportFromPacket(FrameSnapshotPacket packet)
+        {
+            if (packet != null)
+            {
+                FrameId = packet.FrameId;
+
+                foreach(RigidBodyPacket rigidBodyPacket in packet.RigidBodies)
+                {
+                    AddRigidBody(rigidBodyPacket);
+                }
+            }
+        }
+
         public FrameSnapshotPacket ExportToPacket()
         {
             FrameSnapshotPacket snapshot = new FrameSnapshotPacket(); ;

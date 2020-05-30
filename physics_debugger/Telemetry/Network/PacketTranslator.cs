@@ -50,12 +50,8 @@ namespace Telemetry.Network
 
             foreach(RigidBodyPacket packetBody in rigidBodyList.RigidBodies)
             {
-                FrameData.RigidBody body = new FrameData.RigidBody();
-
-                body.CopyFromPacket(packetBody);
-
                 // todo: error handle - what if the rigid body already exists?
-                snapshot.RigidBodies.Add(body.Id, body);
+                snapshot.AddRigidBody(packetBody);
             }
         }
 
@@ -70,7 +66,7 @@ namespace Telemetry.Network
                         ObbShapePacket createdObbPacket = ObbShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
 
                         ObbShape createdObb = new ObbShape();
-                        createdObb.CopyFromPacket(createdObbPacket);
+                        createdObb.ImportFromPacket(createdObbPacket);
 
                         List<BaseShape> frameShapeList = null;
                         if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))
@@ -94,7 +90,7 @@ namespace Telemetry.Network
                         ConvexHullShapePacket createdConvexHullPacket = ConvexHullShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
 
                         ConvexHullShape createdConvexHull = new ConvexHullShape();
-                        createdConvexHull.CopyFromPacket(createdConvexHullPacket);
+                        createdConvexHull.ImportFromPacket(createdConvexHullPacket);
 
                         List<BaseShape> frameShapeList = null;
                         if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))
@@ -114,7 +110,7 @@ namespace Telemetry.Network
                         TetrahedronShapePacket createdTetrahedronPacket = TetrahedronShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
 
                         TetrahedronShape createdTetrahedron = new TetrahedronShape();
-                        createdTetrahedron.CopyFromPacket(createdTetrahedronPacket);
+                        createdTetrahedron.ImportFromPacket(createdTetrahedronPacket);
 
                         List<BaseShape> frameShapeList = null;
                         if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))

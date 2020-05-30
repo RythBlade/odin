@@ -12,11 +12,11 @@ namespace Telemetry.FrameData.Shapes
             ShapeType = ShapeType.eObb;
         }
 
-        public void CopyFromPacket(ObbShapePacket packetObbShape)
+        public void ImportFromPacket(ObbShapePacket packetObbShape)
         {
             if (packetObbShape != null)
             {
-                base.CopyFromPacket(packetObbShape.Base);
+                base.ImportFromPacket(packetObbShape.Base);
 
                 HalfExtents.X = packetObbShape.HalfExtents.X;
                 HalfExtents.Y = packetObbShape.HalfExtents.Y;

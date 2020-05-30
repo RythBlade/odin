@@ -136,6 +136,43 @@ namespace Telemetry.FrameData.Shapes
             return shapeToReturn;
         }
 
+        public void ImportFromPacket(ShapeDataPacket packet)
+        {
+            if (packet != null)
+            {
+                foreach(ShapeFrameIterationPacket iterationPacket in packet.Shapes)
+                {
+                    switch (iterationPacket.ShapeType)
+                    {
+                        case ShapeTypePacket.Obb:
+                            ObbShape createdObb = new ObbShape();
+                            createdObb.ImportFromPacket(iterationPacket.ObbShape);
+
+                            AddNewShape(iterationPacket.FrameId, createdObb);
+                            break;
+                        case ShapeTypePacket.Sphere:
+                            break;
+                        case ShapeTypePacket.Cone:
+                            break;
+                        case ShapeTypePacket.ConvexHull:
+                            ConvexHullShape createdConvexHull = new ConvexHullShape();
+                            createdConvexHull.ImportFromPacket(iterationPacket.ConvexHullShape);
+
+                            AddNewShape(iterationPacket.FrameId, createdConvexHull);
+                            break;
+                        case ShapeTypePacket.Tetrahedron:
+                            TetrahedronShape createdTetrahedron = new TetrahedronShape();
+                            createdTetrahedron.ImportFromPacket(iterationPacket.TetrahedronShape);
+
+                            AddNewShape(iterationPacket.FrameId, createdTetrahedron);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
         public ShapeDataPacket ExportToPacket()
         {
             ShapeDataPacket packet = new ShapeDataPacket();

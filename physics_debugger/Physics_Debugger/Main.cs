@@ -256,7 +256,12 @@ namespace physics_debugger
                                 case ShapeType.eCone:
                                     break;
                                 case ShapeType.eConvexHull:
-                                    instanceToRender.MeshId = ((ConvexHullRenderable)actualShape).RenderHandle;
+                                    ConvexHullRenderable renderable = actualShape as ConvexHullRenderable;
+                                    // todo - but of a hack to make loading from file work - need a proper binding system to ascociate renderable meshes with their shapes :)
+                                    if (renderable != null)
+                                    {
+                                        instanceToRender.MeshId = ((ConvexHullRenderable)actualShape).RenderHandle;
+                                    }
                                     break;
                                 case ShapeType.eTetrahedron:
                                     instanceToRender.MeshId = TetrahedronMeshId;

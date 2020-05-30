@@ -9,11 +9,11 @@ namespace Telemetry.FrameData.Shapes
             ShapeType = ShapeType.eTetrahedron;
         }
 
-        public void CopyFromPacket(TetrahedronShapePacket packetTetrahedronShape)
+        public void ImportFromPacket(TetrahedronShapePacket packetTetrahedronShape)
         {
             if (packetTetrahedronShape != null)
             {
-                base.CopyFromPacket(packetTetrahedronShape.Base);
+                base.ImportFromPacket(packetTetrahedronShape.Base);
             }
         }
 
