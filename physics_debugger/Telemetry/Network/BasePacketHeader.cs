@@ -15,7 +15,7 @@ namespace Telemetry.Network
 
     public class BasePacketHeader
     {
-        public const int MaxPacketLength = 1024;
+        public const int MaxPacketLength = 2048;
 
         public byte[] PacketBytes = new byte[MaxPacketLength];
         public int startOfPacketData = 0;

@@ -14,6 +14,8 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_shapes_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ConvexHullShape_Face_shapes_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_shapes_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ConvexHullShape_Vertex_shapes_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_base_5ftypes_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Matrix4x4_base_5ftypes_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_shapes_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ShapeBase_shapes_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_base_5ftypes_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Vector3_base_5ftypes_2eproto;
@@ -30,6 +32,18 @@ class TetrahedronShapeDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TetrahedronShape> _instance;
 } _TetrahedronShape_default_instance_;
+class ConvexHullShape_VertexDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ConvexHullShape_Vertex> _instance;
+} _ConvexHullShape_Vertex_default_instance_;
+class ConvexHullShape_FaceDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ConvexHullShape_Face> _instance;
+} _ConvexHullShape_Face_default_instance_;
+class ConvexHullShapeDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ConvexHullShape> _instance;
+} _ConvexHullShape_default_instance_;
 class ShapeCreatedDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ShapeCreated> _instance;
@@ -39,6 +53,52 @@ class ShapeChangedDefaultTypeInternal {
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ShapeChanged> _instance;
 } _ShapeChanged_default_instance_;
 }  // namespace PhysicsTelemetry
+static void InitDefaultsscc_info_ConvexHullShape_shapes_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::PhysicsTelemetry::_ConvexHullShape_default_instance_;
+    new (ptr) ::PhysicsTelemetry::ConvexHullShape();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::PhysicsTelemetry::ConvexHullShape::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_ConvexHullShape_shapes_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 3, 0, InitDefaultsscc_info_ConvexHullShape_shapes_2eproto}, {
+      &scc_info_ShapeBase_shapes_2eproto.base,
+      &scc_info_ConvexHullShape_Vertex_shapes_2eproto.base,
+      &scc_info_ConvexHullShape_Face_shapes_2eproto.base,}};
+
+static void InitDefaultsscc_info_ConvexHullShape_Face_shapes_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::PhysicsTelemetry::_ConvexHullShape_Face_default_instance_;
+    new (ptr) ::PhysicsTelemetry::ConvexHullShape_Face();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::PhysicsTelemetry::ConvexHullShape_Face::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ConvexHullShape_Face_shapes_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ConvexHullShape_Face_shapes_2eproto}, {}};
+
+static void InitDefaultsscc_info_ConvexHullShape_Vertex_shapes_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::PhysicsTelemetry::_ConvexHullShape_Vertex_default_instance_;
+    new (ptr) ::PhysicsTelemetry::ConvexHullShape_Vertex();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::PhysicsTelemetry::ConvexHullShape_Vertex::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ConvexHullShape_Vertex_shapes_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ConvexHullShape_Vertex_shapes_2eproto}, {
+      &scc_info_Vector3_base_5ftypes_2eproto.base,}};
+
 static void InitDefaultsscc_info_OBBShape_shapes_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -113,7 +173,7 @@ static void InitDefaultsscc_info_TetrahedronShape_shapes_2eproto() {
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_TetrahedronShape_shapes_2eproto}, {
       &scc_info_ShapeBase_shapes_2eproto.base,}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_shapes_2eproto[5];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_shapes_2eproto[8];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_shapes_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_shapes_2eproto = nullptr;
 
@@ -141,6 +201,29 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_shapes_2eproto::offsets[] PROT
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::TetrahedronShape, base_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape_Vertex, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape_Vertex, position_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape_Vertex, normal_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape_Face, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape_Face, vert0_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape_Face, vert1_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape_Face, vert2_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape, base_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape, vertices_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ConvexHullShape, faces_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::ShapeCreated, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -159,14 +242,20 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, sizeof(::PhysicsTelemetry::ShapeBase)},
   { 9, -1, sizeof(::PhysicsTelemetry::OBBShape)},
   { 16, -1, sizeof(::PhysicsTelemetry::TetrahedronShape)},
-  { 22, -1, sizeof(::PhysicsTelemetry::ShapeCreated)},
-  { 29, -1, sizeof(::PhysicsTelemetry::ShapeChanged)},
+  { 22, -1, sizeof(::PhysicsTelemetry::ConvexHullShape_Vertex)},
+  { 29, -1, sizeof(::PhysicsTelemetry::ConvexHullShape_Face)},
+  { 37, -1, sizeof(::PhysicsTelemetry::ConvexHullShape)},
+  { 45, -1, sizeof(::PhysicsTelemetry::ShapeCreated)},
+  { 52, -1, sizeof(::PhysicsTelemetry::ShapeChanged)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_ShapeBase_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_OBBShape_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_TetrahedronShape_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_ConvexHullShape_Vertex_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_ConvexHullShape_Face_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_ConvexHullShape_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_ShapeCreated_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_ShapeChanged_default_instance_),
 };
@@ -181,19 +270,30 @@ const char descriptor_table_protodef_shapes_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "try.ShapeBase\022.\n\013halfExtents\030\002 \001(\0132\031.Phy"
   "sicsTelemetry.Vector3\"=\n\020TetrahedronShap"
   "e\022)\n\004base\030\001 \001(\0132\033.PhysicsTelemetry.Shape"
-  "Base\"Q\n\014ShapeCreated\022.\n\tshapeType\030\001 \001(\0162"
-  "\033.PhysicsTelemetry.ShapeType\022\021\n\tshapeSiz"
-  "e\030\002 \001(\005\"Q\n\014ShapeChanged\022.\n\tshapeType\030\001 \001"
-  "(\0162\033.PhysicsTelemetry.ShapeType\022\021\n\tshape"
-  "Size\030\002 \001(\005*K\n\tShapeType\022\007\n\003OBB\020\000\022\n\n\006Sphe"
-  "re\020\001\022\010\n\004Cone\020\002\022\016\n\nConvexHull\020\003\022\017\n\013Tetrah"
-  "edron\020\004B\037\252\002\034Physics.Telemetry.Serialised"
-  "b\006proto3"
+  "Base\"\306\002\n\017ConvexHullShape\022)\n\004base\030\001 \001(\0132\033"
+  ".PhysicsTelemetry.ShapeBase\022:\n\010vertices\030"
+  "\002 \003(\0132(.PhysicsTelemetry.ConvexHullShape"
+  ".Vertex\0225\n\005faces\030\003 \003(\0132&.PhysicsTelemetr"
+  "y.ConvexHullShape.Face\032`\n\006Vertex\022+\n\010posi"
+  "tion\030\001 \001(\0132\031.PhysicsTelemetry.Vector3\022)\n"
+  "\006normal\030\002 \001(\0132\031.PhysicsTelemetry.Vector3"
+  "\0323\n\004Face\022\r\n\005vert0\030\001 \001(\005\022\r\n\005vert1\030\002 \001(\005\022\r"
+  "\n\005vert2\030\003 \001(\005\"Q\n\014ShapeCreated\022.\n\tshapeTy"
+  "pe\030\001 \001(\0162\033.PhysicsTelemetry.ShapeType\022\021\n"
+  "\tshapeSize\030\002 \001(\005\"Q\n\014ShapeChanged\022.\n\tshap"
+  "eType\030\001 \001(\0162\033.PhysicsTelemetry.ShapeType"
+  "\022\021\n\tshapeSize\030\002 \001(\005*K\n\tShapeType\022\007\n\003OBB\020"
+  "\000\022\n\n\006Sphere\020\001\022\010\n\004Cone\020\002\022\016\n\nConvexHull\020\003\022"
+  "\017\n\013Tetrahedron\020\004B\037\252\002\034Physics.Telemetry.S"
+  "erialisedb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_shapes_2eproto_deps[1] = {
   &::descriptor_table_base_5ftypes_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_shapes_2eproto_sccs[5] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_shapes_2eproto_sccs[8] = {
+  &scc_info_ConvexHullShape_shapes_2eproto.base,
+  &scc_info_ConvexHullShape_Face_shapes_2eproto.base,
+  &scc_info_ConvexHullShape_Vertex_shapes_2eproto.base,
   &scc_info_OBBShape_shapes_2eproto.base,
   &scc_info_ShapeBase_shapes_2eproto.base,
   &scc_info_ShapeChanged_shapes_2eproto.base,
@@ -203,10 +303,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_sha
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_shapes_2eproto_once;
 static bool descriptor_table_shapes_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_shapes_2eproto = {
-  &descriptor_table_shapes_2eproto_initialized, descriptor_table_protodef_shapes_2eproto, "shapes.proto", 648,
-  &descriptor_table_shapes_2eproto_once, descriptor_table_shapes_2eproto_sccs, descriptor_table_shapes_2eproto_deps, 5, 1,
+  &descriptor_table_shapes_2eproto_initialized, descriptor_table_protodef_shapes_2eproto, "shapes.proto", 977,
+  &descriptor_table_shapes_2eproto_once, descriptor_table_shapes_2eproto_sccs, descriptor_table_shapes_2eproto_deps, 8, 1,
   schemas, file_default_instances, TableStruct_shapes_2eproto::offsets,
-  file_level_metadata_shapes_2eproto, 5, file_level_enum_descriptors_shapes_2eproto, file_level_service_descriptors_shapes_2eproto,
+  file_level_metadata_shapes_2eproto, 8, file_level_enum_descriptors_shapes_2eproto, file_level_service_descriptors_shapes_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -980,6 +1080,773 @@ void TetrahedronShape::InternalSwap(TetrahedronShape* other) {
 
 // ===================================================================
 
+void ConvexHullShape_Vertex::InitAsDefaultInstance() {
+  ::PhysicsTelemetry::_ConvexHullShape_Vertex_default_instance_._instance.get_mutable()->position_ = const_cast< ::PhysicsTelemetry::Vector3*>(
+      ::PhysicsTelemetry::Vector3::internal_default_instance());
+  ::PhysicsTelemetry::_ConvexHullShape_Vertex_default_instance_._instance.get_mutable()->normal_ = const_cast< ::PhysicsTelemetry::Vector3*>(
+      ::PhysicsTelemetry::Vector3::internal_default_instance());
+}
+class ConvexHullShape_Vertex::_Internal {
+ public:
+  static const ::PhysicsTelemetry::Vector3& position(const ConvexHullShape_Vertex* msg);
+  static const ::PhysicsTelemetry::Vector3& normal(const ConvexHullShape_Vertex* msg);
+};
+
+const ::PhysicsTelemetry::Vector3&
+ConvexHullShape_Vertex::_Internal::position(const ConvexHullShape_Vertex* msg) {
+  return *msg->position_;
+}
+const ::PhysicsTelemetry::Vector3&
+ConvexHullShape_Vertex::_Internal::normal(const ConvexHullShape_Vertex* msg) {
+  return *msg->normal_;
+}
+void ConvexHullShape_Vertex::clear_position() {
+  if (GetArenaNoVirtual() == nullptr && position_ != nullptr) {
+    delete position_;
+  }
+  position_ = nullptr;
+}
+void ConvexHullShape_Vertex::clear_normal() {
+  if (GetArenaNoVirtual() == nullptr && normal_ != nullptr) {
+    delete normal_;
+  }
+  normal_ = nullptr;
+}
+ConvexHullShape_Vertex::ConvexHullShape_Vertex()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:PhysicsTelemetry.ConvexHullShape.Vertex)
+}
+ConvexHullShape_Vertex::ConvexHullShape_Vertex(const ConvexHullShape_Vertex& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from._internal_has_position()) {
+    position_ = new ::PhysicsTelemetry::Vector3(*from.position_);
+  } else {
+    position_ = nullptr;
+  }
+  if (from._internal_has_normal()) {
+    normal_ = new ::PhysicsTelemetry::Vector3(*from.normal_);
+  } else {
+    normal_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.ConvexHullShape.Vertex)
+}
+
+void ConvexHullShape_Vertex::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ConvexHullShape_Vertex_shapes_2eproto.base);
+  ::memset(&position_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&normal_) -
+      reinterpret_cast<char*>(&position_)) + sizeof(normal_));
+}
+
+ConvexHullShape_Vertex::~ConvexHullShape_Vertex() {
+  // @@protoc_insertion_point(destructor:PhysicsTelemetry.ConvexHullShape.Vertex)
+  SharedDtor();
+}
+
+void ConvexHullShape_Vertex::SharedDtor() {
+  if (this != internal_default_instance()) delete position_;
+  if (this != internal_default_instance()) delete normal_;
+}
+
+void ConvexHullShape_Vertex::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ConvexHullShape_Vertex& ConvexHullShape_Vertex::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ConvexHullShape_Vertex_shapes_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void ConvexHullShape_Vertex::Clear() {
+// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.ConvexHullShape.Vertex)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaNoVirtual() == nullptr && position_ != nullptr) {
+    delete position_;
+  }
+  position_ = nullptr;
+  if (GetArenaNoVirtual() == nullptr && normal_ != nullptr) {
+    delete normal_;
+  }
+  normal_ = nullptr;
+  _internal_metadata_.Clear();
+}
+
+const char* ConvexHullShape_Vertex::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .PhysicsTelemetry.Vector3 position = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_position(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .PhysicsTelemetry.Vector3 normal = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_normal(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* ConvexHullShape_Vertex::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.ConvexHullShape.Vertex)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .PhysicsTelemetry.Vector3 position = 1;
+  if (this->has_position()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::position(this), target, stream);
+  }
+
+  // .PhysicsTelemetry.Vector3 normal = 2;
+  if (this->has_normal()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::normal(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.ConvexHullShape.Vertex)
+  return target;
+}
+
+size_t ConvexHullShape_Vertex::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.ConvexHullShape.Vertex)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .PhysicsTelemetry.Vector3 position = 1;
+  if (this->has_position()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *position_);
+  }
+
+  // .PhysicsTelemetry.Vector3 normal = 2;
+  if (this->has_normal()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *normal_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void ConvexHullShape_Vertex::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.ConvexHullShape.Vertex)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ConvexHullShape_Vertex* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ConvexHullShape_Vertex>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.ConvexHullShape.Vertex)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.ConvexHullShape.Vertex)
+    MergeFrom(*source);
+  }
+}
+
+void ConvexHullShape_Vertex::MergeFrom(const ConvexHullShape_Vertex& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.ConvexHullShape.Vertex)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.has_position()) {
+    _internal_mutable_position()->::PhysicsTelemetry::Vector3::MergeFrom(from._internal_position());
+  }
+  if (from.has_normal()) {
+    _internal_mutable_normal()->::PhysicsTelemetry::Vector3::MergeFrom(from._internal_normal());
+  }
+}
+
+void ConvexHullShape_Vertex::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.ConvexHullShape.Vertex)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ConvexHullShape_Vertex::CopyFrom(const ConvexHullShape_Vertex& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.ConvexHullShape.Vertex)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ConvexHullShape_Vertex::IsInitialized() const {
+  return true;
+}
+
+void ConvexHullShape_Vertex::InternalSwap(ConvexHullShape_Vertex* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(position_, other->position_);
+  swap(normal_, other->normal_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ConvexHullShape_Vertex::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void ConvexHullShape_Face::InitAsDefaultInstance() {
+}
+class ConvexHullShape_Face::_Internal {
+ public:
+};
+
+ConvexHullShape_Face::ConvexHullShape_Face()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:PhysicsTelemetry.ConvexHullShape.Face)
+}
+ConvexHullShape_Face::ConvexHullShape_Face(const ConvexHullShape_Face& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&vert0_, &from.vert0_,
+    static_cast<size_t>(reinterpret_cast<char*>(&vert2_) -
+    reinterpret_cast<char*>(&vert0_)) + sizeof(vert2_));
+  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.ConvexHullShape.Face)
+}
+
+void ConvexHullShape_Face::SharedCtor() {
+  ::memset(&vert0_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&vert2_) -
+      reinterpret_cast<char*>(&vert0_)) + sizeof(vert2_));
+}
+
+ConvexHullShape_Face::~ConvexHullShape_Face() {
+  // @@protoc_insertion_point(destructor:PhysicsTelemetry.ConvexHullShape.Face)
+  SharedDtor();
+}
+
+void ConvexHullShape_Face::SharedDtor() {
+}
+
+void ConvexHullShape_Face::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ConvexHullShape_Face& ConvexHullShape_Face::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ConvexHullShape_Face_shapes_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void ConvexHullShape_Face::Clear() {
+// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.ConvexHullShape.Face)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&vert0_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&vert2_) -
+      reinterpret_cast<char*>(&vert0_)) + sizeof(vert2_));
+  _internal_metadata_.Clear();
+}
+
+const char* ConvexHullShape_Face::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int32 vert0 = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          vert0_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 vert1 = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          vert1_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 vert2 = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          vert2_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* ConvexHullShape_Face::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.ConvexHullShape.Face)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 vert0 = 1;
+  if (this->vert0() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_vert0(), target);
+  }
+
+  // int32 vert1 = 2;
+  if (this->vert1() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_vert1(), target);
+  }
+
+  // int32 vert2 = 3;
+  if (this->vert2() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_vert2(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.ConvexHullShape.Face)
+  return target;
+}
+
+size_t ConvexHullShape_Face::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.ConvexHullShape.Face)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 vert0 = 1;
+  if (this->vert0() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_vert0());
+  }
+
+  // int32 vert1 = 2;
+  if (this->vert1() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_vert1());
+  }
+
+  // int32 vert2 = 3;
+  if (this->vert2() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_vert2());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void ConvexHullShape_Face::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.ConvexHullShape.Face)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ConvexHullShape_Face* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ConvexHullShape_Face>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.ConvexHullShape.Face)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.ConvexHullShape.Face)
+    MergeFrom(*source);
+  }
+}
+
+void ConvexHullShape_Face::MergeFrom(const ConvexHullShape_Face& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.ConvexHullShape.Face)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.vert0() != 0) {
+    _internal_set_vert0(from._internal_vert0());
+  }
+  if (from.vert1() != 0) {
+    _internal_set_vert1(from._internal_vert1());
+  }
+  if (from.vert2() != 0) {
+    _internal_set_vert2(from._internal_vert2());
+  }
+}
+
+void ConvexHullShape_Face::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.ConvexHullShape.Face)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ConvexHullShape_Face::CopyFrom(const ConvexHullShape_Face& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.ConvexHullShape.Face)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ConvexHullShape_Face::IsInitialized() const {
+  return true;
+}
+
+void ConvexHullShape_Face::InternalSwap(ConvexHullShape_Face* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(vert0_, other->vert0_);
+  swap(vert1_, other->vert1_);
+  swap(vert2_, other->vert2_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ConvexHullShape_Face::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void ConvexHullShape::InitAsDefaultInstance() {
+  ::PhysicsTelemetry::_ConvexHullShape_default_instance_._instance.get_mutable()->base_ = const_cast< ::PhysicsTelemetry::ShapeBase*>(
+      ::PhysicsTelemetry::ShapeBase::internal_default_instance());
+}
+class ConvexHullShape::_Internal {
+ public:
+  static const ::PhysicsTelemetry::ShapeBase& base(const ConvexHullShape* msg);
+};
+
+const ::PhysicsTelemetry::ShapeBase&
+ConvexHullShape::_Internal::base(const ConvexHullShape* msg) {
+  return *msg->base_;
+}
+ConvexHullShape::ConvexHullShape()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:PhysicsTelemetry.ConvexHullShape)
+}
+ConvexHullShape::ConvexHullShape(const ConvexHullShape& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
+      vertices_(from.vertices_),
+      faces_(from.faces_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from._internal_has_base()) {
+    base_ = new ::PhysicsTelemetry::ShapeBase(*from.base_);
+  } else {
+    base_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.ConvexHullShape)
+}
+
+void ConvexHullShape::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ConvexHullShape_shapes_2eproto.base);
+  base_ = nullptr;
+}
+
+ConvexHullShape::~ConvexHullShape() {
+  // @@protoc_insertion_point(destructor:PhysicsTelemetry.ConvexHullShape)
+  SharedDtor();
+}
+
+void ConvexHullShape::SharedDtor() {
+  if (this != internal_default_instance()) delete base_;
+}
+
+void ConvexHullShape::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ConvexHullShape& ConvexHullShape::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ConvexHullShape_shapes_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void ConvexHullShape::Clear() {
+// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.ConvexHullShape)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  vertices_.Clear();
+  faces_.Clear();
+  if (GetArenaNoVirtual() == nullptr && base_ != nullptr) {
+    delete base_;
+  }
+  base_ = nullptr;
+  _internal_metadata_.Clear();
+}
+
+const char* ConvexHullShape::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .PhysicsTelemetry.ShapeBase base = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_base(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated .PhysicsTelemetry.ConvexHullShape.Vertex vertices = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_vertices(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // repeated .PhysicsTelemetry.ConvexHullShape.Face faces = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_faces(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* ConvexHullShape::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.ConvexHullShape)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .PhysicsTelemetry.ShapeBase base = 1;
+  if (this->has_base()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::base(this), target, stream);
+  }
+
+  // repeated .PhysicsTelemetry.ConvexHullShape.Vertex vertices = 2;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_vertices_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_vertices(i), target, stream);
+  }
+
+  // repeated .PhysicsTelemetry.ConvexHullShape.Face faces = 3;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_faces_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, this->_internal_faces(i), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.ConvexHullShape)
+  return target;
+}
+
+size_t ConvexHullShape::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.ConvexHullShape)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .PhysicsTelemetry.ConvexHullShape.Vertex vertices = 2;
+  total_size += 1UL * this->_internal_vertices_size();
+  for (const auto& msg : this->vertices_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .PhysicsTelemetry.ConvexHullShape.Face faces = 3;
+  total_size += 1UL * this->_internal_faces_size();
+  for (const auto& msg : this->faces_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // .PhysicsTelemetry.ShapeBase base = 1;
+  if (this->has_base()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *base_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void ConvexHullShape::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.ConvexHullShape)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ConvexHullShape* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ConvexHullShape>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.ConvexHullShape)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.ConvexHullShape)
+    MergeFrom(*source);
+  }
+}
+
+void ConvexHullShape::MergeFrom(const ConvexHullShape& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.ConvexHullShape)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  vertices_.MergeFrom(from.vertices_);
+  faces_.MergeFrom(from.faces_);
+  if (from.has_base()) {
+    _internal_mutable_base()->::PhysicsTelemetry::ShapeBase::MergeFrom(from._internal_base());
+  }
+}
+
+void ConvexHullShape::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.ConvexHullShape)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ConvexHullShape::CopyFrom(const ConvexHullShape& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.ConvexHullShape)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ConvexHullShape::IsInitialized() const {
+  return true;
+}
+
+void ConvexHullShape::InternalSwap(ConvexHullShape* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  vertices_.InternalSwap(&other->vertices_);
+  faces_.InternalSwap(&other->faces_);
+  swap(base_, other->base_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ConvexHullShape::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void ShapeCreated::InitAsDefaultInstance() {
 }
 class ShapeCreated::_Internal {
@@ -1423,6 +2290,15 @@ template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::OBBShape* Arena::CreateMaybeMes
 }
 template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::TetrahedronShape* Arena::CreateMaybeMessage< ::PhysicsTelemetry::TetrahedronShape >(Arena* arena) {
   return Arena::CreateInternal< ::PhysicsTelemetry::TetrahedronShape >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::ConvexHullShape_Vertex* Arena::CreateMaybeMessage< ::PhysicsTelemetry::ConvexHullShape_Vertex >(Arena* arena) {
+  return Arena::CreateInternal< ::PhysicsTelemetry::ConvexHullShape_Vertex >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::ConvexHullShape_Face* Arena::CreateMaybeMessage< ::PhysicsTelemetry::ConvexHullShape_Face >(Arena* arena) {
+  return Arena::CreateInternal< ::PhysicsTelemetry::ConvexHullShape_Face >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::ConvexHullShape* Arena::CreateMaybeMessage< ::PhysicsTelemetry::ConvexHullShape >(Arena* arena) {
+  return Arena::CreateInternal< ::PhysicsTelemetry::ConvexHullShape >(arena);
 }
 template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::ShapeCreated* Arena::CreateMaybeMessage< ::PhysicsTelemetry::ShapeCreated >(Arena* arena) {
   return Arena::CreateInternal< ::PhysicsTelemetry::ShapeCreated >(arena);

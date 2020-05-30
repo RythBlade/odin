@@ -91,6 +91,24 @@ namespace Telemetry.Network
                 case Physics.Telemetry.Serialised.ShapeType.Cone:
                     break;
                 case Physics.Telemetry.Serialised.ShapeType.ConvexHull:
+                    {
+                        Physics.Telemetry.Serialised.ConvexHullShape createdConvexHullPacket = Physics.Telemetry.Serialised.ConvexHullShape.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
+
+                        Telemetry.FrameData.Shapes.ConvexHullShape createdConvexHull = new Telemetry.FrameData.Shapes.ConvexHullShape();
+                        createdConvexHull.CopyFromPacket(createdConvexHullPacket);
+
+                        List<BaseShape> frameShapeList = null;
+                        if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))
+                        {
+                            frameShapeList.Add(createdConvexHull);
+                        }
+                        else
+                        {
+                            frameShapeList = new List<BaseShape>();
+                            frameShapeList.Add(createdConvexHull);
+                            AddedShapes.Add(packet.messageHeader.FrameId, frameShapeList);
+                        }
+                    }
                     break;
                 case Physics.Telemetry.Serialised.ShapeType.Tetrahedron:
                     {

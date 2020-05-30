@@ -36,6 +36,27 @@ message TetrahedronShape
 	ShapeBase base = 1;
 }
 
+message ConvexHullShape
+{
+	message Vertex
+	{
+		Vector3 position = 1;
+		Vector3 normal = 2;
+	}
+	
+	message Face
+	{
+		int32 vert0 = 1;
+		int32 vert1 = 2;
+		int32 vert2 = 3;
+	}
+
+	ShapeBase base = 1;
+
+	repeated Vertex vertices = 2;
+	repeated Face faces = 3;
+}
+
 message ShapeCreated
 {
 	ShapeType shapeType = 1;

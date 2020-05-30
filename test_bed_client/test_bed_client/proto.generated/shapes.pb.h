@@ -49,7 +49,7 @@ struct TableStruct_shapes_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -57,6 +57,15 @@ struct TableStruct_shapes_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_shapes_2eproto;
 namespace PhysicsTelemetry {
+class ConvexHullShape;
+class ConvexHullShapeDefaultTypeInternal;
+extern ConvexHullShapeDefaultTypeInternal _ConvexHullShape_default_instance_;
+class ConvexHullShape_Face;
+class ConvexHullShape_FaceDefaultTypeInternal;
+extern ConvexHullShape_FaceDefaultTypeInternal _ConvexHullShape_Face_default_instance_;
+class ConvexHullShape_Vertex;
+class ConvexHullShape_VertexDefaultTypeInternal;
+extern ConvexHullShape_VertexDefaultTypeInternal _ConvexHullShape_Vertex_default_instance_;
 class OBBShape;
 class OBBShapeDefaultTypeInternal;
 extern OBBShapeDefaultTypeInternal _OBBShape_default_instance_;
@@ -74,6 +83,9 @@ class TetrahedronShapeDefaultTypeInternal;
 extern TetrahedronShapeDefaultTypeInternal _TetrahedronShape_default_instance_;
 }  // namespace PhysicsTelemetry
 PROTOBUF_NAMESPACE_OPEN
+template<> ::PhysicsTelemetry::ConvexHullShape* Arena::CreateMaybeMessage<::PhysicsTelemetry::ConvexHullShape>(Arena*);
+template<> ::PhysicsTelemetry::ConvexHullShape_Face* Arena::CreateMaybeMessage<::PhysicsTelemetry::ConvexHullShape_Face>(Arena*);
+template<> ::PhysicsTelemetry::ConvexHullShape_Vertex* Arena::CreateMaybeMessage<::PhysicsTelemetry::ConvexHullShape_Vertex>(Arena*);
 template<> ::PhysicsTelemetry::OBBShape* Arena::CreateMaybeMessage<::PhysicsTelemetry::OBBShape>(Arena*);
 template<> ::PhysicsTelemetry::ShapeBase* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeBase>(Arena*);
 template<> ::PhysicsTelemetry::ShapeChanged* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeChanged>(Arena*);
@@ -564,6 +576,484 @@ class TetrahedronShape :
 };
 // -------------------------------------------------------------------
 
+class ConvexHullShape_Vertex :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ConvexHullShape.Vertex) */ {
+ public:
+  ConvexHullShape_Vertex();
+  virtual ~ConvexHullShape_Vertex();
+
+  ConvexHullShape_Vertex(const ConvexHullShape_Vertex& from);
+  ConvexHullShape_Vertex(ConvexHullShape_Vertex&& from) noexcept
+    : ConvexHullShape_Vertex() {
+    *this = ::std::move(from);
+  }
+
+  inline ConvexHullShape_Vertex& operator=(const ConvexHullShape_Vertex& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ConvexHullShape_Vertex& operator=(ConvexHullShape_Vertex&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const ConvexHullShape_Vertex& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ConvexHullShape_Vertex* internal_default_instance() {
+    return reinterpret_cast<const ConvexHullShape_Vertex*>(
+               &_ConvexHullShape_Vertex_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(ConvexHullShape_Vertex& a, ConvexHullShape_Vertex& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ConvexHullShape_Vertex* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ConvexHullShape_Vertex* New() const final {
+    return CreateMaybeMessage<ConvexHullShape_Vertex>(nullptr);
+  }
+
+  ConvexHullShape_Vertex* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ConvexHullShape_Vertex>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const ConvexHullShape_Vertex& from);
+  void MergeFrom(const ConvexHullShape_Vertex& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ConvexHullShape_Vertex* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PhysicsTelemetry.ConvexHullShape.Vertex";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_shapes_2eproto);
+    return ::descriptor_table_shapes_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPositionFieldNumber = 1,
+    kNormalFieldNumber = 2,
+  };
+  // .PhysicsTelemetry.Vector3 position = 1;
+  bool has_position() const;
+  private:
+  bool _internal_has_position() const;
+  public:
+  void clear_position();
+  const ::PhysicsTelemetry::Vector3& position() const;
+  ::PhysicsTelemetry::Vector3* release_position();
+  ::PhysicsTelemetry::Vector3* mutable_position();
+  void set_allocated_position(::PhysicsTelemetry::Vector3* position);
+  private:
+  const ::PhysicsTelemetry::Vector3& _internal_position() const;
+  ::PhysicsTelemetry::Vector3* _internal_mutable_position();
+  public:
+
+  // .PhysicsTelemetry.Vector3 normal = 2;
+  bool has_normal() const;
+  private:
+  bool _internal_has_normal() const;
+  public:
+  void clear_normal();
+  const ::PhysicsTelemetry::Vector3& normal() const;
+  ::PhysicsTelemetry::Vector3* release_normal();
+  ::PhysicsTelemetry::Vector3* mutable_normal();
+  void set_allocated_normal(::PhysicsTelemetry::Vector3* normal);
+  private:
+  const ::PhysicsTelemetry::Vector3& _internal_normal() const;
+  ::PhysicsTelemetry::Vector3* _internal_mutable_normal();
+  public:
+
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ConvexHullShape.Vertex)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PhysicsTelemetry::Vector3* position_;
+  ::PhysicsTelemetry::Vector3* normal_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_shapes_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ConvexHullShape_Face :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ConvexHullShape.Face) */ {
+ public:
+  ConvexHullShape_Face();
+  virtual ~ConvexHullShape_Face();
+
+  ConvexHullShape_Face(const ConvexHullShape_Face& from);
+  ConvexHullShape_Face(ConvexHullShape_Face&& from) noexcept
+    : ConvexHullShape_Face() {
+    *this = ::std::move(from);
+  }
+
+  inline ConvexHullShape_Face& operator=(const ConvexHullShape_Face& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ConvexHullShape_Face& operator=(ConvexHullShape_Face&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const ConvexHullShape_Face& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ConvexHullShape_Face* internal_default_instance() {
+    return reinterpret_cast<const ConvexHullShape_Face*>(
+               &_ConvexHullShape_Face_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(ConvexHullShape_Face& a, ConvexHullShape_Face& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ConvexHullShape_Face* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ConvexHullShape_Face* New() const final {
+    return CreateMaybeMessage<ConvexHullShape_Face>(nullptr);
+  }
+
+  ConvexHullShape_Face* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ConvexHullShape_Face>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const ConvexHullShape_Face& from);
+  void MergeFrom(const ConvexHullShape_Face& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ConvexHullShape_Face* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PhysicsTelemetry.ConvexHullShape.Face";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_shapes_2eproto);
+    return ::descriptor_table_shapes_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kVert0FieldNumber = 1,
+    kVert1FieldNumber = 2,
+    kVert2FieldNumber = 3,
+  };
+  // int32 vert0 = 1;
+  void clear_vert0();
+  ::PROTOBUF_NAMESPACE_ID::int32 vert0() const;
+  void set_vert0(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_vert0() const;
+  void _internal_set_vert0(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 vert1 = 2;
+  void clear_vert1();
+  ::PROTOBUF_NAMESPACE_ID::int32 vert1() const;
+  void set_vert1(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_vert1() const;
+  void _internal_set_vert1(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 vert2 = 3;
+  void clear_vert2();
+  ::PROTOBUF_NAMESPACE_ID::int32 vert2() const;
+  void set_vert2(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_vert2() const;
+  void _internal_set_vert2(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ConvexHullShape.Face)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::int32 vert0_;
+  ::PROTOBUF_NAMESPACE_ID::int32 vert1_;
+  ::PROTOBUF_NAMESPACE_ID::int32 vert2_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_shapes_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ConvexHullShape :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ConvexHullShape) */ {
+ public:
+  ConvexHullShape();
+  virtual ~ConvexHullShape();
+
+  ConvexHullShape(const ConvexHullShape& from);
+  ConvexHullShape(ConvexHullShape&& from) noexcept
+    : ConvexHullShape() {
+    *this = ::std::move(from);
+  }
+
+  inline ConvexHullShape& operator=(const ConvexHullShape& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ConvexHullShape& operator=(ConvexHullShape&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const ConvexHullShape& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ConvexHullShape* internal_default_instance() {
+    return reinterpret_cast<const ConvexHullShape*>(
+               &_ConvexHullShape_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(ConvexHullShape& a, ConvexHullShape& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ConvexHullShape* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ConvexHullShape* New() const final {
+    return CreateMaybeMessage<ConvexHullShape>(nullptr);
+  }
+
+  ConvexHullShape* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ConvexHullShape>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const ConvexHullShape& from);
+  void MergeFrom(const ConvexHullShape& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ConvexHullShape* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PhysicsTelemetry.ConvexHullShape";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_shapes_2eproto);
+    return ::descriptor_table_shapes_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  typedef ConvexHullShape_Vertex Vertex;
+  typedef ConvexHullShape_Face Face;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kVerticesFieldNumber = 2,
+    kFacesFieldNumber = 3,
+    kBaseFieldNumber = 1,
+  };
+  // repeated .PhysicsTelemetry.ConvexHullShape.Vertex vertices = 2;
+  int vertices_size() const;
+  private:
+  int _internal_vertices_size() const;
+  public:
+  void clear_vertices();
+  ::PhysicsTelemetry::ConvexHullShape_Vertex* mutable_vertices(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Vertex >*
+      mutable_vertices();
+  private:
+  const ::PhysicsTelemetry::ConvexHullShape_Vertex& _internal_vertices(int index) const;
+  ::PhysicsTelemetry::ConvexHullShape_Vertex* _internal_add_vertices();
+  public:
+  const ::PhysicsTelemetry::ConvexHullShape_Vertex& vertices(int index) const;
+  ::PhysicsTelemetry::ConvexHullShape_Vertex* add_vertices();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Vertex >&
+      vertices() const;
+
+  // repeated .PhysicsTelemetry.ConvexHullShape.Face faces = 3;
+  int faces_size() const;
+  private:
+  int _internal_faces_size() const;
+  public:
+  void clear_faces();
+  ::PhysicsTelemetry::ConvexHullShape_Face* mutable_faces(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Face >*
+      mutable_faces();
+  private:
+  const ::PhysicsTelemetry::ConvexHullShape_Face& _internal_faces(int index) const;
+  ::PhysicsTelemetry::ConvexHullShape_Face* _internal_add_faces();
+  public:
+  const ::PhysicsTelemetry::ConvexHullShape_Face& faces(int index) const;
+  ::PhysicsTelemetry::ConvexHullShape_Face* add_faces();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Face >&
+      faces() const;
+
+  // .PhysicsTelemetry.ShapeBase base = 1;
+  bool has_base() const;
+  private:
+  bool _internal_has_base() const;
+  public:
+  void clear_base();
+  const ::PhysicsTelemetry::ShapeBase& base() const;
+  ::PhysicsTelemetry::ShapeBase* release_base();
+  ::PhysicsTelemetry::ShapeBase* mutable_base();
+  void set_allocated_base(::PhysicsTelemetry::ShapeBase* base);
+  private:
+  const ::PhysicsTelemetry::ShapeBase& _internal_base() const;
+  ::PhysicsTelemetry::ShapeBase* _internal_mutable_base();
+  public:
+
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ConvexHullShape)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Vertex > vertices_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Face > faces_;
+  ::PhysicsTelemetry::ShapeBase* base_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_shapes_2eproto;
+};
+// -------------------------------------------------------------------
+
 class ShapeCreated :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ShapeCreated) */ {
  public:
@@ -606,7 +1096,7 @@ class ShapeCreated :
                &_ShapeCreated_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    6;
 
   friend void swap(ShapeCreated& a, ShapeCreated& b) {
     a.Swap(&b);
@@ -745,7 +1235,7 @@ class ShapeChanged :
                &_ShapeChanged_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    7;
 
   friend void swap(ShapeChanged& a, ShapeChanged& b) {
     a.Swap(&b);
@@ -1149,6 +1639,324 @@ inline void TetrahedronShape::set_allocated_base(::PhysicsTelemetry::ShapeBase* 
 
 // -------------------------------------------------------------------
 
+// ConvexHullShape_Vertex
+
+// .PhysicsTelemetry.Vector3 position = 1;
+inline bool ConvexHullShape_Vertex::_internal_has_position() const {
+  return this != internal_default_instance() && position_ != nullptr;
+}
+inline bool ConvexHullShape_Vertex::has_position() const {
+  return _internal_has_position();
+}
+inline const ::PhysicsTelemetry::Vector3& ConvexHullShape_Vertex::_internal_position() const {
+  const ::PhysicsTelemetry::Vector3* p = position_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector3*>(
+      &::PhysicsTelemetry::_Vector3_default_instance_);
+}
+inline const ::PhysicsTelemetry::Vector3& ConvexHullShape_Vertex::position() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.Vertex.position)
+  return _internal_position();
+}
+inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::release_position() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ConvexHullShape.Vertex.position)
+  
+  ::PhysicsTelemetry::Vector3* temp = position_;
+  position_ = nullptr;
+  return temp;
+}
+inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::_internal_mutable_position() {
+  
+  if (position_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector3>(GetArenaNoVirtual());
+    position_ = p;
+  }
+  return position_;
+}
+inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::mutable_position() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShape.Vertex.position)
+  return _internal_mutable_position();
+}
+inline void ConvexHullShape_Vertex::set_allocated_position(::PhysicsTelemetry::Vector3* position) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(position_);
+  }
+  if (position) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      position = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, position, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  position_ = position;
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ConvexHullShape.Vertex.position)
+}
+
+// .PhysicsTelemetry.Vector3 normal = 2;
+inline bool ConvexHullShape_Vertex::_internal_has_normal() const {
+  return this != internal_default_instance() && normal_ != nullptr;
+}
+inline bool ConvexHullShape_Vertex::has_normal() const {
+  return _internal_has_normal();
+}
+inline const ::PhysicsTelemetry::Vector3& ConvexHullShape_Vertex::_internal_normal() const {
+  const ::PhysicsTelemetry::Vector3* p = normal_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector3*>(
+      &::PhysicsTelemetry::_Vector3_default_instance_);
+}
+inline const ::PhysicsTelemetry::Vector3& ConvexHullShape_Vertex::normal() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.Vertex.normal)
+  return _internal_normal();
+}
+inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::release_normal() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ConvexHullShape.Vertex.normal)
+  
+  ::PhysicsTelemetry::Vector3* temp = normal_;
+  normal_ = nullptr;
+  return temp;
+}
+inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::_internal_mutable_normal() {
+  
+  if (normal_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector3>(GetArenaNoVirtual());
+    normal_ = p;
+  }
+  return normal_;
+}
+inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::mutable_normal() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShape.Vertex.normal)
+  return _internal_mutable_normal();
+}
+inline void ConvexHullShape_Vertex::set_allocated_normal(::PhysicsTelemetry::Vector3* normal) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(normal_);
+  }
+  if (normal) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      normal = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, normal, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  normal_ = normal;
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ConvexHullShape.Vertex.normal)
+}
+
+// -------------------------------------------------------------------
+
+// ConvexHullShape_Face
+
+// int32 vert0 = 1;
+inline void ConvexHullShape_Face::clear_vert0() {
+  vert0_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::_internal_vert0() const {
+  return vert0_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::vert0() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.Face.vert0)
+  return _internal_vert0();
+}
+inline void ConvexHullShape_Face::_internal_set_vert0(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  vert0_ = value;
+}
+inline void ConvexHullShape_Face::set_vert0(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_vert0(value);
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ConvexHullShape.Face.vert0)
+}
+
+// int32 vert1 = 2;
+inline void ConvexHullShape_Face::clear_vert1() {
+  vert1_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::_internal_vert1() const {
+  return vert1_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::vert1() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.Face.vert1)
+  return _internal_vert1();
+}
+inline void ConvexHullShape_Face::_internal_set_vert1(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  vert1_ = value;
+}
+inline void ConvexHullShape_Face::set_vert1(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_vert1(value);
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ConvexHullShape.Face.vert1)
+}
+
+// int32 vert2 = 3;
+inline void ConvexHullShape_Face::clear_vert2() {
+  vert2_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::_internal_vert2() const {
+  return vert2_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::vert2() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.Face.vert2)
+  return _internal_vert2();
+}
+inline void ConvexHullShape_Face::_internal_set_vert2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  vert2_ = value;
+}
+inline void ConvexHullShape_Face::set_vert2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_vert2(value);
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ConvexHullShape.Face.vert2)
+}
+
+// -------------------------------------------------------------------
+
+// ConvexHullShape
+
+// .PhysicsTelemetry.ShapeBase base = 1;
+inline bool ConvexHullShape::_internal_has_base() const {
+  return this != internal_default_instance() && base_ != nullptr;
+}
+inline bool ConvexHullShape::has_base() const {
+  return _internal_has_base();
+}
+inline void ConvexHullShape::clear_base() {
+  if (GetArenaNoVirtual() == nullptr && base_ != nullptr) {
+    delete base_;
+  }
+  base_ = nullptr;
+}
+inline const ::PhysicsTelemetry::ShapeBase& ConvexHullShape::_internal_base() const {
+  const ::PhysicsTelemetry::ShapeBase* p = base_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::ShapeBase*>(
+      &::PhysicsTelemetry::_ShapeBase_default_instance_);
+}
+inline const ::PhysicsTelemetry::ShapeBase& ConvexHullShape::base() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.base)
+  return _internal_base();
+}
+inline ::PhysicsTelemetry::ShapeBase* ConvexHullShape::release_base() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ConvexHullShape.base)
+  
+  ::PhysicsTelemetry::ShapeBase* temp = base_;
+  base_ = nullptr;
+  return temp;
+}
+inline ::PhysicsTelemetry::ShapeBase* ConvexHullShape::_internal_mutable_base() {
+  
+  if (base_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::ShapeBase>(GetArenaNoVirtual());
+    base_ = p;
+  }
+  return base_;
+}
+inline ::PhysicsTelemetry::ShapeBase* ConvexHullShape::mutable_base() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShape.base)
+  return _internal_mutable_base();
+}
+inline void ConvexHullShape::set_allocated_base(::PhysicsTelemetry::ShapeBase* base) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete base_;
+  }
+  if (base) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      base = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, base, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  base_ = base;
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ConvexHullShape.base)
+}
+
+// repeated .PhysicsTelemetry.ConvexHullShape.Vertex vertices = 2;
+inline int ConvexHullShape::_internal_vertices_size() const {
+  return vertices_.size();
+}
+inline int ConvexHullShape::vertices_size() const {
+  return _internal_vertices_size();
+}
+inline void ConvexHullShape::clear_vertices() {
+  vertices_.Clear();
+}
+inline ::PhysicsTelemetry::ConvexHullShape_Vertex* ConvexHullShape::mutable_vertices(int index) {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShape.vertices)
+  return vertices_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Vertex >*
+ConvexHullShape::mutable_vertices() {
+  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.ConvexHullShape.vertices)
+  return &vertices_;
+}
+inline const ::PhysicsTelemetry::ConvexHullShape_Vertex& ConvexHullShape::_internal_vertices(int index) const {
+  return vertices_.Get(index);
+}
+inline const ::PhysicsTelemetry::ConvexHullShape_Vertex& ConvexHullShape::vertices(int index) const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.vertices)
+  return _internal_vertices(index);
+}
+inline ::PhysicsTelemetry::ConvexHullShape_Vertex* ConvexHullShape::_internal_add_vertices() {
+  return vertices_.Add();
+}
+inline ::PhysicsTelemetry::ConvexHullShape_Vertex* ConvexHullShape::add_vertices() {
+  // @@protoc_insertion_point(field_add:PhysicsTelemetry.ConvexHullShape.vertices)
+  return _internal_add_vertices();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Vertex >&
+ConvexHullShape::vertices() const {
+  // @@protoc_insertion_point(field_list:PhysicsTelemetry.ConvexHullShape.vertices)
+  return vertices_;
+}
+
+// repeated .PhysicsTelemetry.ConvexHullShape.Face faces = 3;
+inline int ConvexHullShape::_internal_faces_size() const {
+  return faces_.size();
+}
+inline int ConvexHullShape::faces_size() const {
+  return _internal_faces_size();
+}
+inline void ConvexHullShape::clear_faces() {
+  faces_.Clear();
+}
+inline ::PhysicsTelemetry::ConvexHullShape_Face* ConvexHullShape::mutable_faces(int index) {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShape.faces)
+  return faces_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Face >*
+ConvexHullShape::mutable_faces() {
+  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.ConvexHullShape.faces)
+  return &faces_;
+}
+inline const ::PhysicsTelemetry::ConvexHullShape_Face& ConvexHullShape::_internal_faces(int index) const {
+  return faces_.Get(index);
+}
+inline const ::PhysicsTelemetry::ConvexHullShape_Face& ConvexHullShape::faces(int index) const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.faces)
+  return _internal_faces(index);
+}
+inline ::PhysicsTelemetry::ConvexHullShape_Face* ConvexHullShape::_internal_add_faces() {
+  return faces_.Add();
+}
+inline ::PhysicsTelemetry::ConvexHullShape_Face* ConvexHullShape::add_faces() {
+  // @@protoc_insertion_point(field_add:PhysicsTelemetry.ConvexHullShape.faces)
+  return _internal_add_faces();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Face >&
+ConvexHullShape::faces() const {
+  // @@protoc_insertion_point(field_list:PhysicsTelemetry.ConvexHullShape.faces)
+  return faces_;
+}
+
+// -------------------------------------------------------------------
+
 // ShapeCreated
 
 // .PhysicsTelemetry.ShapeType shapeType = 1;
@@ -1238,6 +2046,12 @@ inline void ShapeChanged::set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
