@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package PhysicsTelemetry;
+
+//import "base_types.proto";
+import "rigid_body.proto";
+import "shapes.proto";
+
+option csharp_namespace = "Physics.Telemetry.Serialised";
+
+message FrameSnapshotPacket
+{
+	uint32 frameId = 1;
+	
+	repeated RigidBodyPacket rigidBodies = 2;
+}
+
+message ShapeFrameIterationPacket
+{
+	uint32 frameId = 1;
+	ShapeTypePacket shapeType = 2;
+	
+	ObbShapePacket obbShape = 3;
+	TetrahedronShapePacket tetrahedronShape = 4;
+	ConvexHullShapePacket convexHullShape = 5;
+}
+
+message ShapeDataPacket
+{
+	repeated ShapeFrameIterationPacket shapes = 1;
+}
+
+message FrameDataPacket
+{
+	repeated FrameSnapshotPacket frames = 1;
+	
+	ShapeDataPacket shapeData = 2;
+}
