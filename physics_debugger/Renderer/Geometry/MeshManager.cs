@@ -45,6 +45,34 @@ namespace Renderer.Geometry
             return AddMesh(MeshVertices.s_plane);
         }
 
+        public int AddPlane(int width, int depth, Vector3 minCorner, Vector3 maxCorner)
+        {
+            List<Vertex> vertexList = new List<Vertex>(width * depth * 6);
+
+            float xStepSize = (maxCorner.X - minCorner.X) / (float)width;
+            float zStepSize = (maxCorner.Z - minCorner.Z) / (float)depth;
+
+            for (int x = 0; x < width; ++x)
+            {
+                for (int z = 0; z < depth; ++z)
+                {
+                    float minX = minCorner.X + (float)x * xStepSize;
+                    float maxX = minCorner.X + ((float)x + 1.0f) * xStepSize;
+                    float minZ = minCorner.Z + (float)z * xStepSize;
+                    float maxZ = minCorner.Z + ((float)z + 1.0f) * zStepSize;
+
+                    vertexList.Add(new Vertex(new Vector4(minX, 0.0f, minZ, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)));
+                    vertexList.Add(new Vertex(new Vector4(minX, 0.0f, maxZ, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)));
+                    vertexList.Add(new Vertex(new Vector4(maxX, 0.0f, maxZ, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)));
+                    vertexList.Add(new Vertex(new Vector4(minX, 0.0f, minZ, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)));
+                    vertexList.Add(new Vertex(new Vector4(maxX, 0.0f, maxZ, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)));
+                    vertexList.Add(new Vertex(new Vector4(maxX, 0.0f, minZ, 1.0f), new Vector4(0.0f, 0.0f, 0.0f, 1.0f)));
+                }
+            }
+
+            return AddMesh(vertexList);
+        }
+
         public int AddMesh(Vertex[] triangleList)
         {
             Mesh newMesh = new Mesh();
