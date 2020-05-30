@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Physics.Telemetry.Serialised;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Telemetry.FrameData.Shapes
 {
@@ -16,7 +12,7 @@ namespace Telemetry.FrameData.Shapes
             ShapeType = ShapeType.eObb;
         }
 
-        public void CopyFromPacket(Physics.Telemetry.Serialised.ObbShapePacket packetObbShape)
+        public void CopyFromPacket(ObbShapePacket packetObbShape)
         {
             if (packetObbShape != null)
             {

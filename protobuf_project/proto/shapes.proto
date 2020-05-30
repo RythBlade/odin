@@ -6,9 +6,9 @@ import "base_types.proto";
 
 option csharp_namespace = "Physics.Telemetry.Serialised";
 
-enum ShapeType
+enum ShapeTypePacket
 {
-	OBB = 0;
+	Obb = 0;
 	Sphere = 1;
 	Cone = 2;
 	ConvexHull = 3;
@@ -22,7 +22,7 @@ message ShapeBasePacket
 	bool hasLocalMatrix = 2;
 	PhysicsTelemetry.Matrix4x4Packet localMatrix = 3;
 	
-	ShapeType shapeType = 4;
+	ShapeTypePacket shapeType = 4;
 }
 
 message ObbShapePacket
@@ -59,12 +59,12 @@ message ConvexHullShapePacket
 
 message ShapeCreatedMessage
 {
-	ShapeType shapeType = 1;
+	ShapeTypePacket shapeType = 1;
 	int32 shapeSize = 2;
 }
 
 message ShapeChangedMessage
 {
-	ShapeType shapeType = 1;
+	ShapeTypePacket shapeType = 1;
 	int32 shapeSize = 2;
 }

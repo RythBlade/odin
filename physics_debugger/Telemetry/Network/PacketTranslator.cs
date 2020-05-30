@@ -1,9 +1,8 @@
-﻿using Telemetry.FrameData;
-using Telemetry.FrameData.Shapes;
+﻿using Physics.Telemetry.Serialised;
 using System;
 using System.Collections.Generic;
-using System.Numerics;
-using Physics.Telemetry.Serialised;
+using Telemetry.FrameData;
+using Telemetry.FrameData.Shapes;
 
 namespace Telemetry.Network
 {
@@ -49,7 +48,7 @@ namespace Telemetry.Network
         {
             RigidBodyListPacket rigidBodyList = RigidBodyListPacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData, packet.messageHeader.DataSize);
 
-            foreach(Physics.Telemetry.Serialised.RigidBodyPacket packetBody in rigidBodyList.RigidBodies)
+            foreach(RigidBodyPacket packetBody in rigidBodyList.RigidBodies)
             {
                 FrameData.RigidBody body = new FrameData.RigidBody();
 
@@ -66,7 +65,7 @@ namespace Telemetry.Network
 
             switch (shapeCreatedPacket.ShapeType)
             {
-                case Physics.Telemetry.Serialised.ShapeType.Obb:
+                case ShapeTypePacket.Obb:
                     {
                         ObbShapePacket createdObbPacket = ObbShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
 
@@ -86,15 +85,15 @@ namespace Telemetry.Network
                         }
                     }
                     break;
-                case Physics.Telemetry.Serialised.ShapeType.Sphere:
+                case ShapeTypePacket.Sphere:
                     break;
-                case Physics.Telemetry.Serialised.ShapeType.Cone:
+                case ShapeTypePacket.Cone:
                     break;
-                case Physics.Telemetry.Serialised.ShapeType.ConvexHull:
+                case ShapeTypePacket.ConvexHull:
                     {
-                        Physics.Telemetry.Serialised.ConvexHullShapePacket createdConvexHullPacket = Physics.Telemetry.Serialised.ConvexHullShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
+                        ConvexHullShapePacket createdConvexHullPacket = ConvexHullShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
 
-                        Telemetry.FrameData.Shapes.ConvexHullShape createdConvexHull = new Telemetry.FrameData.Shapes.ConvexHullShape();
+                        ConvexHullShape createdConvexHull = new ConvexHullShape();
                         createdConvexHull.CopyFromPacket(createdConvexHullPacket);
 
                         List<BaseShape> frameShapeList = null;
@@ -110,11 +109,11 @@ namespace Telemetry.Network
                         }
                     }
                     break;
-                case Physics.Telemetry.Serialised.ShapeType.Tetrahedron:
+                case ShapeTypePacket.Tetrahedron:
                     {
-                        Physics.Telemetry.Serialised.TetrahedronShapePacket createdTetrahedronPacket = Physics.Telemetry.Serialised.TetrahedronShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
+                        TetrahedronShapePacket createdTetrahedronPacket = TetrahedronShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
 
-                        Telemetry.FrameData.Shapes.TetrahedronShape createdTetrahedron = new Telemetry.FrameData.Shapes.TetrahedronShape();
+                        TetrahedronShape createdTetrahedron = new TetrahedronShape();
                         createdTetrahedron.CopyFromPacket(createdTetrahedronPacket);
 
                         List<BaseShape> frameShapeList = null;

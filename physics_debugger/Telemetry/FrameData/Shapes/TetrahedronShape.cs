@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Physics.Telemetry.Serialised;
 
 namespace Telemetry.FrameData.Shapes
 {
@@ -13,7 +9,7 @@ namespace Telemetry.FrameData.Shapes
             ShapeType = ShapeType.eTetrahedron;
         }
 
-        public void CopyFromPacket(Physics.Telemetry.Serialised.TetrahedronShapePacket packetTetrahedronShape)
+        public void CopyFromPacket(TetrahedronShapePacket packetTetrahedronShape)
         {
             if (packetTetrahedronShape != null)
             {

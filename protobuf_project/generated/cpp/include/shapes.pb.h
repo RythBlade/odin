@@ -94,33 +94,33 @@ template<> ::PhysicsTelemetry::TetrahedronShapePacket* Arena::CreateMaybeMessage
 PROTOBUF_NAMESPACE_CLOSE
 namespace PhysicsTelemetry {
 
-enum ShapeType : int {
-  OBB = 0,
+enum ShapeTypePacket : int {
+  Obb = 0,
   Sphere = 1,
   Cone = 2,
   ConvexHull = 3,
   Tetrahedron = 4,
-  ShapeType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
-  ShapeType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+  ShapeTypePacket_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  ShapeTypePacket_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
-bool ShapeType_IsValid(int value);
-constexpr ShapeType ShapeType_MIN = OBB;
-constexpr ShapeType ShapeType_MAX = Tetrahedron;
-constexpr int ShapeType_ARRAYSIZE = ShapeType_MAX + 1;
+bool ShapeTypePacket_IsValid(int value);
+constexpr ShapeTypePacket ShapeTypePacket_MIN = Obb;
+constexpr ShapeTypePacket ShapeTypePacket_MAX = Tetrahedron;
+constexpr int ShapeTypePacket_ARRAYSIZE = ShapeTypePacket_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ShapeType_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ShapeTypePacket_descriptor();
 template<typename T>
-inline const std::string& ShapeType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, ShapeType>::value ||
+inline const std::string& ShapeTypePacket_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ShapeTypePacket>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function ShapeType_Name.");
+    "Incorrect type passed to function ShapeTypePacket_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    ShapeType_descriptor(), enum_t_value);
+    ShapeTypePacket_descriptor(), enum_t_value);
 }
-inline bool ShapeType_Parse(
-    const std::string& name, ShapeType* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ShapeType>(
-    ShapeType_descriptor(), name, value);
+inline bool ShapeTypePacket_Parse(
+    const std::string& name, ShapeTypePacket* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ShapeTypePacket>(
+    ShapeTypePacket_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -268,13 +268,13 @@ class ShapeBasePacket :
   void _internal_set_haslocalmatrix(bool value);
   public:
 
-  // .PhysicsTelemetry.ShapeType shapeType = 4;
+  // .PhysicsTelemetry.ShapeTypePacket shapeType = 4;
   void clear_shapetype();
-  ::PhysicsTelemetry::ShapeType shapetype() const;
-  void set_shapetype(::PhysicsTelemetry::ShapeType value);
+  ::PhysicsTelemetry::ShapeTypePacket shapetype() const;
+  void set_shapetype(::PhysicsTelemetry::ShapeTypePacket value);
   private:
-  ::PhysicsTelemetry::ShapeType _internal_shapetype() const;
-  void _internal_set_shapetype(::PhysicsTelemetry::ShapeType value);
+  ::PhysicsTelemetry::ShapeTypePacket _internal_shapetype() const;
+  void _internal_set_shapetype(::PhysicsTelemetry::ShapeTypePacket value);
   public:
 
   // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ShapeBasePacket)
@@ -1163,13 +1163,13 @@ class ShapeCreatedMessage :
     kShapeTypeFieldNumber = 1,
     kShapeSizeFieldNumber = 2,
   };
-  // .PhysicsTelemetry.ShapeType shapeType = 1;
+  // .PhysicsTelemetry.ShapeTypePacket shapeType = 1;
   void clear_shapetype();
-  ::PhysicsTelemetry::ShapeType shapetype() const;
-  void set_shapetype(::PhysicsTelemetry::ShapeType value);
+  ::PhysicsTelemetry::ShapeTypePacket shapetype() const;
+  void set_shapetype(::PhysicsTelemetry::ShapeTypePacket value);
   private:
-  ::PhysicsTelemetry::ShapeType _internal_shapetype() const;
-  void _internal_set_shapetype(::PhysicsTelemetry::ShapeType value);
+  ::PhysicsTelemetry::ShapeTypePacket _internal_shapetype() const;
+  void _internal_set_shapetype(::PhysicsTelemetry::ShapeTypePacket value);
   public:
 
   // int32 shapeSize = 2;
@@ -1302,13 +1302,13 @@ class ShapeChangedMessage :
     kShapeTypeFieldNumber = 1,
     kShapeSizeFieldNumber = 2,
   };
-  // .PhysicsTelemetry.ShapeType shapeType = 1;
+  // .PhysicsTelemetry.ShapeTypePacket shapeType = 1;
   void clear_shapetype();
-  ::PhysicsTelemetry::ShapeType shapetype() const;
-  void set_shapetype(::PhysicsTelemetry::ShapeType value);
+  ::PhysicsTelemetry::ShapeTypePacket shapetype() const;
+  void set_shapetype(::PhysicsTelemetry::ShapeTypePacket value);
   private:
-  ::PhysicsTelemetry::ShapeType _internal_shapetype() const;
-  void _internal_set_shapetype(::PhysicsTelemetry::ShapeType value);
+  ::PhysicsTelemetry::ShapeTypePacket _internal_shapetype() const;
+  void _internal_set_shapetype(::PhysicsTelemetry::ShapeTypePacket value);
   public:
 
   // int32 shapeSize = 2;
@@ -1435,22 +1435,22 @@ inline void ShapeBasePacket::set_allocated_localmatrix(::PhysicsTelemetry::Matri
   // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ShapeBasePacket.localMatrix)
 }
 
-// .PhysicsTelemetry.ShapeType shapeType = 4;
+// .PhysicsTelemetry.ShapeTypePacket shapeType = 4;
 inline void ShapeBasePacket::clear_shapetype() {
   shapetype_ = 0;
 }
-inline ::PhysicsTelemetry::ShapeType ShapeBasePacket::_internal_shapetype() const {
-  return static_cast< ::PhysicsTelemetry::ShapeType >(shapetype_);
+inline ::PhysicsTelemetry::ShapeTypePacket ShapeBasePacket::_internal_shapetype() const {
+  return static_cast< ::PhysicsTelemetry::ShapeTypePacket >(shapetype_);
 }
-inline ::PhysicsTelemetry::ShapeType ShapeBasePacket::shapetype() const {
+inline ::PhysicsTelemetry::ShapeTypePacket ShapeBasePacket::shapetype() const {
   // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeBasePacket.shapeType)
   return _internal_shapetype();
 }
-inline void ShapeBasePacket::_internal_set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeBasePacket::_internal_set_shapetype(::PhysicsTelemetry::ShapeTypePacket value) {
   
   shapetype_ = value;
 }
-inline void ShapeBasePacket::set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeBasePacket::set_shapetype(::PhysicsTelemetry::ShapeTypePacket value) {
   _internal_set_shapetype(value);
   // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeBasePacket.shapeType)
 }
@@ -1959,22 +1959,22 @@ ConvexHullShapePacket::faces() const {
 
 // ShapeCreatedMessage
 
-// .PhysicsTelemetry.ShapeType shapeType = 1;
+// .PhysicsTelemetry.ShapeTypePacket shapeType = 1;
 inline void ShapeCreatedMessage::clear_shapetype() {
   shapetype_ = 0;
 }
-inline ::PhysicsTelemetry::ShapeType ShapeCreatedMessage::_internal_shapetype() const {
-  return static_cast< ::PhysicsTelemetry::ShapeType >(shapetype_);
+inline ::PhysicsTelemetry::ShapeTypePacket ShapeCreatedMessage::_internal_shapetype() const {
+  return static_cast< ::PhysicsTelemetry::ShapeTypePacket >(shapetype_);
 }
-inline ::PhysicsTelemetry::ShapeType ShapeCreatedMessage::shapetype() const {
+inline ::PhysicsTelemetry::ShapeTypePacket ShapeCreatedMessage::shapetype() const {
   // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeCreatedMessage.shapeType)
   return _internal_shapetype();
 }
-inline void ShapeCreatedMessage::_internal_set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeCreatedMessage::_internal_set_shapetype(::PhysicsTelemetry::ShapeTypePacket value) {
   
   shapetype_ = value;
 }
-inline void ShapeCreatedMessage::set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeCreatedMessage::set_shapetype(::PhysicsTelemetry::ShapeTypePacket value) {
   _internal_set_shapetype(value);
   // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeCreatedMessage.shapeType)
 }
@@ -2003,22 +2003,22 @@ inline void ShapeCreatedMessage::set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 va
 
 // ShapeChangedMessage
 
-// .PhysicsTelemetry.ShapeType shapeType = 1;
+// .PhysicsTelemetry.ShapeTypePacket shapeType = 1;
 inline void ShapeChangedMessage::clear_shapetype() {
   shapetype_ = 0;
 }
-inline ::PhysicsTelemetry::ShapeType ShapeChangedMessage::_internal_shapetype() const {
-  return static_cast< ::PhysicsTelemetry::ShapeType >(shapetype_);
+inline ::PhysicsTelemetry::ShapeTypePacket ShapeChangedMessage::_internal_shapetype() const {
+  return static_cast< ::PhysicsTelemetry::ShapeTypePacket >(shapetype_);
 }
-inline ::PhysicsTelemetry::ShapeType ShapeChangedMessage::shapetype() const {
+inline ::PhysicsTelemetry::ShapeTypePacket ShapeChangedMessage::shapetype() const {
   // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeChangedMessage.shapeType)
   return _internal_shapetype();
 }
-inline void ShapeChangedMessage::_internal_set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeChangedMessage::_internal_set_shapetype(::PhysicsTelemetry::ShapeTypePacket value) {
   
   shapetype_ = value;
 }
-inline void ShapeChangedMessage::set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeChangedMessage::set_shapetype(::PhysicsTelemetry::ShapeTypePacket value) {
   _internal_set_shapetype(value);
   // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeChangedMessage.shapeType)
 }
@@ -2067,10 +2067,10 @@ inline void ShapeChangedMessage::set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 va
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::PhysicsTelemetry::ShapeType> : ::std::true_type {};
+template <> struct is_proto_enum< ::PhysicsTelemetry::ShapeTypePacket> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::PhysicsTelemetry::ShapeType>() {
-  return ::PhysicsTelemetry::ShapeType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::PhysicsTelemetry::ShapeTypePacket>() {
+  return ::PhysicsTelemetry::ShapeTypePacket_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

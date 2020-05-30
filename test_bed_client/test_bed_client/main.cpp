@@ -71,7 +71,7 @@ int addObb(int nextShapeId, Particle& particle, DataServer& server, bool hasLoca
     obbCreated.mutable_halfextents()->set_z(obbShape->m_halfExtents[2]);
 
     obbCreated.mutable_base()->set_id(nextShapeId);
-    obbCreated.mutable_base()->set_shapetype(PhysicsTelemetry::OBB);
+    obbCreated.mutable_base()->set_shapetype(PhysicsTelemetry::Obb);
     obbCreated.mutable_base()->set_haslocalmatrix(hasLocalMatrix);
 
     obbCreated.mutable_base()->mutable_localmatrix()->set_m11(1.0f);

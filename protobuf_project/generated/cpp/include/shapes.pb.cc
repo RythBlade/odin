@@ -262,32 +262,33 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_shapes_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\014shapes.proto\022\020PhysicsTelemetry\032\020base_t"
-  "ypes.proto\"\235\001\n\017ShapeBasePacket\022\n\n\002Id\030\001 \001"
+  "ypes.proto\"\243\001\n\017ShapeBasePacket\022\n\n\002Id\030\001 \001"
   "(\r\022\026\n\016hasLocalMatrix\030\002 \001(\010\0226\n\013localMatri"
   "x\030\003 \001(\0132!.PhysicsTelemetry.Matrix4x4Pack"
-  "et\022.\n\tshapeType\030\004 \001(\0162\033.PhysicsTelemetry"
-  ".ShapeType\"w\n\016ObbShapePacket\022/\n\004base\030\001 \001"
-  "(\0132!.PhysicsTelemetry.ShapeBasePacket\0224\n"
-  "\013halfExtents\030\002 \001(\0132\037.PhysicsTelemetry.Ve"
-  "ctor3Packet\"I\n\026TetrahedronShapePacket\022/\n"
-  "\004base\030\001 \001(\0132!.PhysicsTelemetry.ShapeBase"
-  "Packet\"\352\002\n\025ConvexHullShapePacket\022/\n\004base"
-  "\030\001 \001(\0132!.PhysicsTelemetry.ShapeBasePacke"
-  "t\022@\n\010vertices\030\002 \003(\0132..PhysicsTelemetry.C"
-  "onvexHullShapePacket.Vertex\022;\n\005faces\030\003 \003"
-  "(\0132,.PhysicsTelemetry.ConvexHullShapePac"
-  "ket.Face\032l\n\006Vertex\0221\n\010position\030\001 \001(\0132\037.P"
-  "hysicsTelemetry.Vector3Packet\022/\n\006normal\030"
-  "\002 \001(\0132\037.PhysicsTelemetry.Vector3Packet\0323"
-  "\n\004Face\022\r\n\005vert0\030\001 \001(\005\022\r\n\005vert1\030\002 \001(\005\022\r\n\005"
-  "vert2\030\003 \001(\005\"X\n\023ShapeCreatedMessage\022.\n\tsh"
-  "apeType\030\001 \001(\0162\033.PhysicsTelemetry.ShapeTy"
-  "pe\022\021\n\tshapeSize\030\002 \001(\005\"X\n\023ShapeChangedMes"
-  "sage\022.\n\tshapeType\030\001 \001(\0162\033.PhysicsTelemet"
-  "ry.ShapeType\022\021\n\tshapeSize\030\002 \001(\005*K\n\tShape"
-  "Type\022\007\n\003OBB\020\000\022\n\n\006Sphere\020\001\022\010\n\004Cone\020\002\022\016\n\nC"
-  "onvexHull\020\003\022\017\n\013Tetrahedron\020\004B\037\252\002\034Physics"
-  ".Telemetry.Serialisedb\006proto3"
+  "et\0224\n\tshapeType\030\004 \001(\0162!.PhysicsTelemetry"
+  ".ShapeTypePacket\"w\n\016ObbShapePacket\022/\n\004ba"
+  "se\030\001 \001(\0132!.PhysicsTelemetry.ShapeBasePac"
+  "ket\0224\n\013halfExtents\030\002 \001(\0132\037.PhysicsTeleme"
+  "try.Vector3Packet\"I\n\026TetrahedronShapePac"
+  "ket\022/\n\004base\030\001 \001(\0132!.PhysicsTelemetry.Sha"
+  "peBasePacket\"\352\002\n\025ConvexHullShapePacket\022/"
+  "\n\004base\030\001 \001(\0132!.PhysicsTelemetry.ShapeBas"
+  "ePacket\022@\n\010vertices\030\002 \003(\0132..PhysicsTelem"
+  "etry.ConvexHullShapePacket.Vertex\022;\n\005fac"
+  "es\030\003 \003(\0132,.PhysicsTelemetry.ConvexHullSh"
+  "apePacket.Face\032l\n\006Vertex\0221\n\010position\030\001 \001"
+  "(\0132\037.PhysicsTelemetry.Vector3Packet\022/\n\006n"
+  "ormal\030\002 \001(\0132\037.PhysicsTelemetry.Vector3Pa"
+  "cket\0323\n\004Face\022\r\n\005vert0\030\001 \001(\005\022\r\n\005vert1\030\002 \001"
+  "(\005\022\r\n\005vert2\030\003 \001(\005\"^\n\023ShapeCreatedMessage"
+  "\0224\n\tshapeType\030\001 \001(\0162!.PhysicsTelemetry.S"
+  "hapeTypePacket\022\021\n\tshapeSize\030\002 \001(\005\"^\n\023Sha"
+  "peChangedMessage\0224\n\tshapeType\030\001 \001(\0162!.Ph"
+  "ysicsTelemetry.ShapeTypePacket\022\021\n\tshapeS"
+  "ize\030\002 \001(\005*Q\n\017ShapeTypePacket\022\007\n\003Obb\020\000\022\n\n"
+  "\006Sphere\020\001\022\010\n\004Cone\020\002\022\016\n\nConvexHull\020\003\022\017\n\013T"
+  "etrahedron\020\004B\037\252\002\034Physics.Telemetry.Seria"
+  "lisedb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_shapes_2eproto_deps[1] = {
   &::descriptor_table_base_5ftypes_2eproto,
@@ -305,7 +306,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_sha
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_shapes_2eproto_once;
 static bool descriptor_table_shapes_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_shapes_2eproto = {
-  &descriptor_table_shapes_2eproto_initialized, descriptor_table_protodef_shapes_2eproto, "shapes.proto", 1069,
+  &descriptor_table_shapes_2eproto_initialized, descriptor_table_protodef_shapes_2eproto, "shapes.proto", 1093,
   &descriptor_table_shapes_2eproto_once, descriptor_table_shapes_2eproto_sccs, descriptor_table_shapes_2eproto_deps, 8, 1,
   schemas, file_default_instances, TableStruct_shapes_2eproto::offsets,
   file_level_metadata_shapes_2eproto, 8, file_level_enum_descriptors_shapes_2eproto, file_level_service_descriptors_shapes_2eproto,
@@ -314,11 +315,11 @@ const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_shapes
 // Force running AddDescriptors() at dynamic initialization time.
 static bool dynamic_init_dummy_shapes_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_shapes_2eproto), true);
 namespace PhysicsTelemetry {
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ShapeType_descriptor() {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ShapeTypePacket_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_shapes_2eproto);
   return file_level_enum_descriptors_shapes_2eproto[0];
 }
-bool ShapeType_IsValid(int value) {
+bool ShapeTypePacket_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
@@ -442,12 +443,12 @@ const char* ShapeBasePacket::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .PhysicsTelemetry.ShapeType shapeType = 4;
+      // .PhysicsTelemetry.ShapeTypePacket shapeType = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_shapetype(static_cast<::PhysicsTelemetry::ShapeType>(val));
+          _internal_set_shapetype(static_cast<::PhysicsTelemetry::ShapeTypePacket>(val));
         } else goto handle_unusual;
         continue;
       default: {
@@ -496,7 +497,7 @@ failure:
         3, _Internal::localmatrix(this), target, stream);
   }
 
-  // .PhysicsTelemetry.ShapeType shapeType = 4;
+  // .PhysicsTelemetry.ShapeTypePacket shapeType = 4;
   if (this->shapetype() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
@@ -538,7 +539,7 @@ size_t ShapeBasePacket::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
-  // .PhysicsTelemetry.ShapeType shapeType = 4;
+  // .PhysicsTelemetry.ShapeTypePacket shapeType = 4;
   if (this->shapetype() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_shapetype());
@@ -1912,12 +1913,12 @@ const char* ShapeCreatedMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // .PhysicsTelemetry.ShapeType shapeType = 1;
+      // .PhysicsTelemetry.ShapeTypePacket shapeType = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_shapetype(static_cast<::PhysicsTelemetry::ShapeType>(val));
+          _internal_set_shapetype(static_cast<::PhysicsTelemetry::ShapeTypePacket>(val));
         } else goto handle_unusual;
         continue;
       // int32 shapeSize = 2;
@@ -1953,7 +1954,7 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .PhysicsTelemetry.ShapeType shapeType = 1;
+  // .PhysicsTelemetry.ShapeTypePacket shapeType = 1;
   if (this->shapetype() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
@@ -1982,7 +1983,7 @@ size_t ShapeCreatedMessage::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .PhysicsTelemetry.ShapeType shapeType = 1;
+  // .PhysicsTelemetry.ShapeTypePacket shapeType = 1;
   if (this->shapetype() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_shapetype());
@@ -2129,12 +2130,12 @@ const char* ShapeChangedMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // .PhysicsTelemetry.ShapeType shapeType = 1;
+      // .PhysicsTelemetry.ShapeTypePacket shapeType = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_shapetype(static_cast<::PhysicsTelemetry::ShapeType>(val));
+          _internal_set_shapetype(static_cast<::PhysicsTelemetry::ShapeTypePacket>(val));
         } else goto handle_unusual;
         continue;
       // int32 shapeSize = 2;
@@ -2170,7 +2171,7 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .PhysicsTelemetry.ShapeType shapeType = 1;
+  // .PhysicsTelemetry.ShapeTypePacket shapeType = 1;
   if (this->shapetype() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
@@ -2199,7 +2200,7 @@ size_t ShapeChangedMessage::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .PhysicsTelemetry.ShapeType shapeType = 1;
+  // .PhysicsTelemetry.ShapeTypePacket shapeType = 1;
   if (this->shapetype() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_shapetype());

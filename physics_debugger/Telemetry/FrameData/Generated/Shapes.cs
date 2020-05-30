@@ -25,32 +25,33 @@ namespace Physics.Telemetry.Serialised {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CgxzaGFwZXMucHJvdG8SEFBoeXNpY3NUZWxlbWV0cnkaEGJhc2VfdHlwZXMu",
-            "cHJvdG8inQEKD1NoYXBlQmFzZVBhY2tldBIKCgJJZBgBIAEoDRIWCg5oYXNM",
+            "cHJvdG8iowEKD1NoYXBlQmFzZVBhY2tldBIKCgJJZBgBIAEoDRIWCg5oYXNM",
             "b2NhbE1hdHJpeBgCIAEoCBI2Cgtsb2NhbE1hdHJpeBgDIAEoCzIhLlBoeXNp",
-            "Y3NUZWxlbWV0cnkuTWF0cml4NHg0UGFja2V0Ei4KCXNoYXBlVHlwZRgEIAEo",
-            "DjIbLlBoeXNpY3NUZWxlbWV0cnkuU2hhcGVUeXBlIncKDk9iYlNoYXBlUGFj",
+            "Y3NUZWxlbWV0cnkuTWF0cml4NHg0UGFja2V0EjQKCXNoYXBlVHlwZRgEIAEo",
+            "DjIhLlBoeXNpY3NUZWxlbWV0cnkuU2hhcGVUeXBlUGFja2V0IncKDk9iYlNo",
+            "YXBlUGFja2V0Ei8KBGJhc2UYASABKAsyIS5QaHlzaWNzVGVsZW1ldHJ5LlNo",
+            "YXBlQmFzZVBhY2tldBI0CgtoYWxmRXh0ZW50cxgCIAEoCzIfLlBoeXNpY3NU",
+            "ZWxlbWV0cnkuVmVjdG9yM1BhY2tldCJJChZUZXRyYWhlZHJvblNoYXBlUGFj",
             "a2V0Ei8KBGJhc2UYASABKAsyIS5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBlQmFz",
-            "ZVBhY2tldBI0CgtoYWxmRXh0ZW50cxgCIAEoCzIfLlBoeXNpY3NUZWxlbWV0",
-            "cnkuVmVjdG9yM1BhY2tldCJJChZUZXRyYWhlZHJvblNoYXBlUGFja2V0Ei8K",
-            "BGJhc2UYASABKAsyIS5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBlQmFzZVBhY2tl",
-            "dCLqAgoVQ29udmV4SHVsbFNoYXBlUGFja2V0Ei8KBGJhc2UYASABKAsyIS5Q",
-            "aHlzaWNzVGVsZW1ldHJ5LlNoYXBlQmFzZVBhY2tldBJACgh2ZXJ0aWNlcxgC",
-            "IAMoCzIuLlBoeXNpY3NUZWxlbWV0cnkuQ29udmV4SHVsbFNoYXBlUGFja2V0",
-            "LlZlcnRleBI7CgVmYWNlcxgDIAMoCzIsLlBoeXNpY3NUZWxlbWV0cnkuQ29u",
-            "dmV4SHVsbFNoYXBlUGFja2V0LkZhY2UabAoGVmVydGV4EjEKCHBvc2l0aW9u",
-            "GAEgASgLMh8uUGh5c2ljc1RlbGVtZXRyeS5WZWN0b3IzUGFja2V0Ei8KBm5v",
-            "cm1hbBgCIAEoCzIfLlBoeXNpY3NUZWxlbWV0cnkuVmVjdG9yM1BhY2tldBoz",
-            "CgRGYWNlEg0KBXZlcnQwGAEgASgFEg0KBXZlcnQxGAIgASgFEg0KBXZlcnQy",
-            "GAMgASgFIlgKE1NoYXBlQ3JlYXRlZE1lc3NhZ2USLgoJc2hhcGVUeXBlGAEg",
-            "ASgOMhsuUGh5c2ljc1RlbGVtZXRyeS5TaGFwZVR5cGUSEQoJc2hhcGVTaXpl",
-            "GAIgASgFIlgKE1NoYXBlQ2hhbmdlZE1lc3NhZ2USLgoJc2hhcGVUeXBlGAEg",
-            "ASgOMhsuUGh5c2ljc1RlbGVtZXRyeS5TaGFwZVR5cGUSEQoJc2hhcGVTaXpl",
-            "GAIgASgFKksKCVNoYXBlVHlwZRIHCgNPQkIQABIKCgZTcGhlcmUQARIICgRD",
-            "b25lEAISDgoKQ29udmV4SHVsbBADEg8KC1RldHJhaGVkcm9uEARCH6oCHFBo",
-            "eXNpY3MuVGVsZW1ldHJ5LlNlcmlhbGlzZWRiBnByb3RvMw=="));
+            "ZVBhY2tldCLqAgoVQ29udmV4SHVsbFNoYXBlUGFja2V0Ei8KBGJhc2UYASAB",
+            "KAsyIS5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBlQmFzZVBhY2tldBJACgh2ZXJ0",
+            "aWNlcxgCIAMoCzIuLlBoeXNpY3NUZWxlbWV0cnkuQ29udmV4SHVsbFNoYXBl",
+            "UGFja2V0LlZlcnRleBI7CgVmYWNlcxgDIAMoCzIsLlBoeXNpY3NUZWxlbWV0",
+            "cnkuQ29udmV4SHVsbFNoYXBlUGFja2V0LkZhY2UabAoGVmVydGV4EjEKCHBv",
+            "c2l0aW9uGAEgASgLMh8uUGh5c2ljc1RlbGVtZXRyeS5WZWN0b3IzUGFja2V0",
+            "Ei8KBm5vcm1hbBgCIAEoCzIfLlBoeXNpY3NUZWxlbWV0cnkuVmVjdG9yM1Bh",
+            "Y2tldBozCgRGYWNlEg0KBXZlcnQwGAEgASgFEg0KBXZlcnQxGAIgASgFEg0K",
+            "BXZlcnQyGAMgASgFIl4KE1NoYXBlQ3JlYXRlZE1lc3NhZ2USNAoJc2hhcGVU",
+            "eXBlGAEgASgOMiEuUGh5c2ljc1RlbGVtZXRyeS5TaGFwZVR5cGVQYWNrZXQS",
+            "EQoJc2hhcGVTaXplGAIgASgFIl4KE1NoYXBlQ2hhbmdlZE1lc3NhZ2USNAoJ",
+            "c2hhcGVUeXBlGAEgASgOMiEuUGh5c2ljc1RlbGVtZXRyeS5TaGFwZVR5cGVQ",
+            "YWNrZXQSEQoJc2hhcGVTaXplGAIgASgFKlEKD1NoYXBlVHlwZVBhY2tldBIH",
+            "CgNPYmIQABIKCgZTcGhlcmUQARIICgRDb25lEAISDgoKQ29udmV4SHVsbBAD",
+            "Eg8KC1RldHJhaGVkcm9uEARCH6oCHFBoeXNpY3MuVGVsZW1ldHJ5LlNlcmlh",
+            "bGlzZWRiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Physics.Telemetry.Serialised.BaseTypesReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Physics.Telemetry.Serialised.ShapeType), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Physics.Telemetry.Serialised.ShapeTypePacket), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeBasePacket), global::Physics.Telemetry.Serialised.ShapeBasePacket.Parser, new[]{ "Id", "HasLocalMatrix", "LocalMatrix", "ShapeType" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ObbShapePacket), global::Physics.Telemetry.Serialised.ObbShapePacket.Parser, new[]{ "Base", "HalfExtents" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.TetrahedronShapePacket), global::Physics.Telemetry.Serialised.TetrahedronShapePacket.Parser, new[]{ "Base" }, null, null, null, null),
@@ -64,8 +65,8 @@ namespace Physics.Telemetry.Serialised {
 
   }
   #region Enums
-  public enum ShapeType {
-    [pbr::OriginalName("OBB")] Obb = 0,
+  public enum ShapeTypePacket {
+    [pbr::OriginalName("Obb")] Obb = 0,
     [pbr::OriginalName("Sphere")] Sphere = 1,
     [pbr::OriginalName("Cone")] Cone = 2,
     [pbr::OriginalName("ConvexHull")] ConvexHull = 3,
@@ -147,9 +148,9 @@ namespace Physics.Telemetry.Serialised {
 
     /// <summary>Field number for the "shapeType" field.</summary>
     public const int ShapeTypeFieldNumber = 4;
-    private global::Physics.Telemetry.Serialised.ShapeType shapeType_ = global::Physics.Telemetry.Serialised.ShapeType.Obb;
+    private global::Physics.Telemetry.Serialised.ShapeTypePacket shapeType_ = global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Physics.Telemetry.Serialised.ShapeType ShapeType {
+    public global::Physics.Telemetry.Serialised.ShapeTypePacket ShapeType {
       get { return shapeType_; }
       set {
         shapeType_ = value;
@@ -182,7 +183,7 @@ namespace Physics.Telemetry.Serialised {
       if (Id != 0) hash ^= Id.GetHashCode();
       if (HasLocalMatrix != false) hash ^= HasLocalMatrix.GetHashCode();
       if (localMatrix_ != null) hash ^= LocalMatrix.GetHashCode();
-      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) hash ^= ShapeType.GetHashCode();
+      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) hash ^= ShapeType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -208,7 +209,7 @@ namespace Physics.Telemetry.Serialised {
         output.WriteRawTag(26);
         output.WriteMessage(LocalMatrix);
       }
-      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) {
+      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         output.WriteRawTag(32);
         output.WriteEnum((int) ShapeType);
       }
@@ -229,7 +230,7 @@ namespace Physics.Telemetry.Serialised {
       if (localMatrix_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(LocalMatrix);
       }
-      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) {
+      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ShapeType);
       }
       if (_unknownFields != null) {
@@ -255,7 +256,7 @@ namespace Physics.Telemetry.Serialised {
         }
         LocalMatrix.MergeFrom(other.LocalMatrix);
       }
-      if (other.ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) {
+      if (other.ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         ShapeType = other.ShapeType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -285,7 +286,7 @@ namespace Physics.Telemetry.Serialised {
             break;
           }
           case 32: {
-            ShapeType = (global::Physics.Telemetry.Serialised.ShapeType) input.ReadEnum();
+            ShapeType = (global::Physics.Telemetry.Serialised.ShapeTypePacket) input.ReadEnum();
             break;
           }
         }
@@ -1171,9 +1172,9 @@ namespace Physics.Telemetry.Serialised {
 
     /// <summary>Field number for the "shapeType" field.</summary>
     public const int ShapeTypeFieldNumber = 1;
-    private global::Physics.Telemetry.Serialised.ShapeType shapeType_ = global::Physics.Telemetry.Serialised.ShapeType.Obb;
+    private global::Physics.Telemetry.Serialised.ShapeTypePacket shapeType_ = global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Physics.Telemetry.Serialised.ShapeType ShapeType {
+    public global::Physics.Telemetry.Serialised.ShapeTypePacket ShapeType {
       get { return shapeType_; }
       set {
         shapeType_ = value;
@@ -1212,7 +1213,7 @@ namespace Physics.Telemetry.Serialised {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) hash ^= ShapeType.GetHashCode();
+      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) hash ^= ShapeType.GetHashCode();
       if (ShapeSize != 0) hash ^= ShapeSize.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1227,7 +1228,7 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) {
+      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         output.WriteRawTag(8);
         output.WriteEnum((int) ShapeType);
       }
@@ -1243,7 +1244,7 @@ namespace Physics.Telemetry.Serialised {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) {
+      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ShapeType);
       }
       if (ShapeSize != 0) {
@@ -1260,7 +1261,7 @@ namespace Physics.Telemetry.Serialised {
       if (other == null) {
         return;
       }
-      if (other.ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) {
+      if (other.ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         ShapeType = other.ShapeType;
       }
       if (other.ShapeSize != 0) {
@@ -1278,7 +1279,7 @@ namespace Physics.Telemetry.Serialised {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            ShapeType = (global::Physics.Telemetry.Serialised.ShapeType) input.ReadEnum();
+            ShapeType = (global::Physics.Telemetry.Serialised.ShapeTypePacket) input.ReadEnum();
             break;
           }
           case 16: {
@@ -1328,9 +1329,9 @@ namespace Physics.Telemetry.Serialised {
 
     /// <summary>Field number for the "shapeType" field.</summary>
     public const int ShapeTypeFieldNumber = 1;
-    private global::Physics.Telemetry.Serialised.ShapeType shapeType_ = global::Physics.Telemetry.Serialised.ShapeType.Obb;
+    private global::Physics.Telemetry.Serialised.ShapeTypePacket shapeType_ = global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Physics.Telemetry.Serialised.ShapeType ShapeType {
+    public global::Physics.Telemetry.Serialised.ShapeTypePacket ShapeType {
       get { return shapeType_; }
       set {
         shapeType_ = value;
@@ -1369,7 +1370,7 @@ namespace Physics.Telemetry.Serialised {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) hash ^= ShapeType.GetHashCode();
+      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) hash ^= ShapeType.GetHashCode();
       if (ShapeSize != 0) hash ^= ShapeSize.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1384,7 +1385,7 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) {
+      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         output.WriteRawTag(8);
         output.WriteEnum((int) ShapeType);
       }
@@ -1400,7 +1401,7 @@ namespace Physics.Telemetry.Serialised {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) {
+      if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ShapeType);
       }
       if (ShapeSize != 0) {
@@ -1417,7 +1418,7 @@ namespace Physics.Telemetry.Serialised {
       if (other == null) {
         return;
       }
-      if (other.ShapeType != global::Physics.Telemetry.Serialised.ShapeType.Obb) {
+      if (other.ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         ShapeType = other.ShapeType;
       }
       if (other.ShapeSize != 0) {
@@ -1435,7 +1436,7 @@ namespace Physics.Telemetry.Serialised {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            ShapeType = (global::Physics.Telemetry.Serialised.ShapeType) input.ReadEnum();
+            ShapeType = (global::Physics.Telemetry.Serialised.ShapeTypePacket) input.ReadEnum();
             break;
           }
           case 16: {

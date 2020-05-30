@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Physics.Telemetry.Serialised;
+using System.Collections.Generic;
 using System.Numerics;
 using Telemetry.FrameData.Properties;
 
@@ -14,7 +15,7 @@ namespace Telemetry.FrameData
         public Dictionary<string, IBaseProperty> Properties = new Dictionary<string, IBaseProperty>();
         public List<uint> CollisionShapeIds = new List<uint>();
 
-        public void CopyFromPacket(Physics.Telemetry.Serialised.RigidBodyPacket packetBody)
+        public void CopyFromPacket(RigidBodyPacket packetBody)
         {
             if(packetBody != null)
             {

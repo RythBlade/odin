@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Physics.Telemetry.Serialised;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -23,7 +24,7 @@ namespace Telemetry.FrameData.Shapes
         public Matrix4x4 LocalMatrix = new Matrix4x4();
         public ShapeType ShapeType = ShapeType.eObb;
 
-        public void CopyFromPacket(Physics.Telemetry.Serialised.ShapeBasePacket packetBaseShape)
+        public void CopyFromPacket(ShapeBasePacket packetBaseShape)
         {
             if (packetBaseShape != null)
             {
@@ -32,19 +33,19 @@ namespace Telemetry.FrameData.Shapes
 
                 switch (packetBaseShape.ShapeType)
                 {
-                    case Physics.Telemetry.Serialised.ShapeType.Obb:
+                    case ShapeTypePacket.Obb:
                         ShapeType = ShapeType.eObb;
                         break;
-                    case Physics.Telemetry.Serialised.ShapeType.Sphere:
+                    case ShapeTypePacket.Sphere:
                         ShapeType = ShapeType.eSphere;
                         break;
-                    case Physics.Telemetry.Serialised.ShapeType.Cone:
+                    case ShapeTypePacket.Cone:
                         ShapeType = ShapeType.eCone;
                         break;
-                    case Physics.Telemetry.Serialised.ShapeType.ConvexHull:
+                    case ShapeTypePacket.ConvexHull:
                         ShapeType = ShapeType.eConvexHull;
                         break;
-                    case Physics.Telemetry.Serialised.ShapeType.Tetrahedron:
+                    case ShapeTypePacket.Tetrahedron:
                         ShapeType = ShapeType.eTetrahedron;
                         break;
                     default:
