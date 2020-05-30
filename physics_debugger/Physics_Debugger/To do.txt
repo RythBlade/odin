@@ -19,19 +19,23 @@
 	- save data to a file
 	- load data from a file and playback?
 	- Rigid body ID's
-- Save telemetry to file
-- Open telemetry from file
+- Save telemetry to file - debugger
+- Save telemetry to file - game side library
+- Open telemetry from file - debugger
+- Open telemetry from file - game side library
 - Display object properties in the debugger
 - Scene explorer tree view in the debugger?
 - Clickable objects in the viewport to select them to display their data in the debugger
 - Send more data types
 	- Shape information - meshes + arbitrary meshes
-	- Compount shapes
+	- Compound shapes
 	- Contacts
 	- Forces added
 	- Physics engine function calls?
 	- Origin rebase?
+- Axis marker on rigid bodies
 - Make render instances 1:1 with their rigid body, so they're directly ascociated?
+	- Need proper render bindings so arbitrary meshes can be rendered without hacks
 - Thread network communication in the client and visual debugger.
 - Disconnect option and handling a forced disconnection if the "game" drops out
 - Swap telemetry data source to protobuff?
@@ -42,8 +46,9 @@
 but also so you could record a really long run! Would need some special logic in the loading to put segments together.
 - Adjust playback speed
 	- Configurable step size on the frame scrubber?
+	- Syncronise the frame timestep size, so on playback, we use the same animation rate - cope with varying and fixed update rates
+	- Capture when multiple physics frames run in a game frame?
 - Camera Speed adjuster
-- Draw a wireframe ground plane to help with orientation
 - Allow "game" to send an idea camera position to the viewer so it can mirror the game play camera
 - Mesh Types
 	- Sphere
@@ -53,9 +58,12 @@ but also so you could record a really long run! Would need some special logic in
 	- Arbitrary mesh (triangle list)
 - Connecting to an "in progress" session
 
+- Optimise the debugger so it can keep up more with the data it's getting sent
+
 ---- DONE ----
 - Proper frame scrubbing controls
-- playback modes
+- Draw a wireframe ground plane to help with orientation
+- Playback modes
 	- play/pause
 	- Scrub through the telemetry we've been sent
 - Mesh types
