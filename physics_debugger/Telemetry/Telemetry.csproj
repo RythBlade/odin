@@ -67,6 +67,7 @@
     <Compile Include="FrameData\Generated\MessageHeader.cs" />
     <Compile Include="FrameData\Generated\RigidBody.cs" />
     <Compile Include="FrameData\Generated\Shapes.cs" />
+    <Compile Include="FrameData\Generated\TelemetryFile.cs" />
     <Compile Include="FrameData\Properties\FloatProperty.cs" />
     <Compile Include="FrameData\Properties\IBaseProperty.cs" />
     <Compile Include="FrameData\RigidBody.cs" />

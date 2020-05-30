@@ -1,6 +1,7 @@
 ﻿using Telemetry.FrameData.Shapes;
 using System.Collections.Generic;
 using System;
+using Physics.Telemetry.Serialised;
 
 namespace Telemetry.FrameData.Shapes
 {
@@ -19,12 +20,73 @@ namespace Telemetry.FrameData.Shapes
         {
             return other.FrameId < FrameId ? -1 : other.FrameId > FrameId ? 1 : 0;
         }
+
+        public ShapeFrameIterationPacket ExportToPacket()
+        {
+            ShapeFrameIterationPacket packet = new ShapeFrameIterationPacket();
+
+            ExportToPacket(packet);
+
+            return packet;
+        }
+
+        public void ExportToPacket(ShapeFrameIterationPacket packet)
+        {
+            if (packet != null)
+            {
+                packet.FrameId = FrameId;
+
+                switch (Shape.ShapeType)
+                {
+                    case ShapeType.eObb:
+                        packet.ShapeType = ShapeTypePacket.Obb;
+                        packet.ObbShape = ((ObbShape)Shape).ExportToPacket();
+                        break;
+                    case ShapeType.eSphere:
+                        //packet.ShapeType = ShapeTypePacket.;
+                        break;
+                    case ShapeType.eCone:
+                        //packet.ShapeType = ShapeTypePacket.Cone;
+                        break;
+                    case ShapeType.eConvexHull:
+                        packet.ShapeType = ShapeTypePacket.ConvexHull;
+                        packet.ConvexHullShape = ((ConvexHullShape)Shape).ExportToPacket();
+                        break;
+                    case ShapeType.eTetrahedron:
+                        packet.ShapeType = ShapeTypePacket.Tetrahedron;
+                        packet.TetrahedronShape = ((TetrahedronShape)Shape).ExportToPacket();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 
     public class ShapeIterations
     {
         // frame ID that generated the iteration
         public List<ShapeFrameIdPair> Iterations = new List<ShapeFrameIdPair>();
+
+        public ShapeDataPacket ExportToPacket()
+        {
+            ShapeDataPacket packet = new ShapeDataPacket();
+
+            ExportToPacket(packet);
+
+            return packet;
+        }
+
+        public void ExportToPacket(ShapeDataPacket packet)
+        {
+            if(packet != null)
+            {
+                foreach(ShapeFrameIdPair iteration in Iterations)
+                {
+                    packet.Shapes.Add(iteration.ExportToPacket());
+                }
+            }
+        }
     }
 
     public class ShapeDataManager
@@ -72,6 +134,26 @@ namespace Telemetry.FrameData.Shapes
             }
 
             return shapeToReturn;
+        }
+
+        public ShapeDataPacket ExportToPacket()
+        {
+            ShapeDataPacket packet = new ShapeDataPacket();
+
+            ExportToPacket(packet);
+
+            return packet;
+        }
+
+        public void ExportToPacket(ShapeDataPacket packet)
+        {
+            if( packet != null)
+            {
+                foreach(ShapeIterations shapeIterations in ShapeData.Values)
+                {
+                    shapeIterations.ExportToPacket(packet);
+                }
+            }
         }
     }
 }

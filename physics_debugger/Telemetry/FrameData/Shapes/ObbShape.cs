@@ -23,5 +23,27 @@ namespace Telemetry.FrameData.Shapes
                 HalfExtents.Z = packetObbShape.HalfExtents.Z;
             }
         }
+
+        public ObbShapePacket ExportToPacket()
+        {
+            ObbShapePacket packet = new ObbShapePacket();
+
+            ExportToPacket(packet);
+
+            return packet;
+        }
+
+        public void ExportToPacket(ObbShapePacket packet)
+        {
+            if (packet != null)
+            {
+                packet.Base = base.ExportToPacket();
+
+                packet.HalfExtents = new Vector3Packet();
+                packet.HalfExtents.X = HalfExtents.X;
+                packet.HalfExtents.Y = HalfExtents.Y;
+                packet.HalfExtents.Z = HalfExtents.Z;
+            }
+        }
     }
 }

@@ -16,5 +16,22 @@ namespace Telemetry.FrameData.Shapes
                 base.CopyFromPacket(packetTetrahedronShape.Base);
             }
         }
+
+        public TetrahedronShapePacket ExportToPacket()
+        {
+            TetrahedronShapePacket packet = new TetrahedronShapePacket();
+
+            ExportToPacket(packet);
+
+            return packet;
+        }
+
+        public void ExportToPacket(TetrahedronShapePacket packet)
+        {
+            if (packet != null)
+            {
+                packet.Base = base.ExportToPacket();
+            }
+        }
     }
 }

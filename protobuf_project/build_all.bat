@@ -19,4 +19,8 @@ protobufCompiler\protoc.exe --proto_path=%PROTOPATH% --proto_path="%cd%\protobuf
 protobufCompiler\protoc.exe --proto_path=%PROTOPATH% --proto_path="%cd%\protobufCompiler" --cpp_out=%CPP_OUT_PATH% --csharp_out=%CSHARP_OUT_PATH% "%PROTOPATH%\shapes.proto"
 
 @echo ---------------------------
+
+protobufCompiler\protoc.exe --proto_path=%PROTOPATH% --proto_path="%cd%\protobufCompiler" --cpp_out=%CPP_OUT_PATH% --csharp_out=%CSHARP_OUT_PATH% "%PROTOPATH%\telemetry_file.proto"
+
+@echo ---------------------------
 @echo ---- Protobuf Complete ----

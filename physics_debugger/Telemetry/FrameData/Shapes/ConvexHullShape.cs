@@ -27,6 +27,25 @@ namespace Telemetry.FrameData.Shapes
                 Index[1] = face.Vert1;
                 Index[2] = face.Vert2;
             }
+
+            public ConvexHullShapePacket.Types.Face ExportToPacket()
+            {
+                ConvexHullShapePacket.Types.Face packet = new ConvexHullShapePacket.Types.Face();
+
+                ExportToPacket(packet);
+
+                return packet;
+            }
+
+            public void ExportToPacket(ConvexHullShapePacket.Types.Face packet)
+            {
+                if (packet != null)
+                {
+                    packet.Vert0 = Index[0];
+                    packet.Vert1 = Index[1];
+                    packet.Vert2 = Index[2];
+                }
+            }
         }
 
         public class Vertex
@@ -52,6 +71,31 @@ namespace Telemetry.FrameData.Shapes
                 Normal.Z = vertex.Normal.Z;
                 Normal.W = 1.0f;
             }
+
+            public ConvexHullShapePacket.Types.Vertex ExportToPacket()
+            {
+                ConvexHullShapePacket.Types.Vertex packet = new ConvexHullShapePacket.Types.Vertex();
+
+                ExportToPacket(packet);
+
+                return packet;
+            }
+
+            public void ExportToPacket(ConvexHullShapePacket.Types.Vertex packet)
+            {
+                if (packet != null)
+                {
+                    packet.Position = new Vector3Packet();
+                    packet.Position.X = Point.X;
+                    packet.Position.Y = Point.Y;
+                    packet.Position.Z = Point.Z;
+
+                    packet.Normal = new Vector3Packet();
+                    packet.Normal.X = Normal.X;
+                    packet.Normal.Y = Normal.Y;
+                    packet.Normal.Z = Normal.Z;
+                }
+            }
         }
 
         public List<Vertex> Vertices = new List<Vertex>();
@@ -76,6 +120,33 @@ namespace Telemetry.FrameData.Shapes
                 foreach(ConvexHullShapePacket.Types.Vertex vertex in packetConvexHullShape.Vertices)
                 {
                     Vertices.Add(new Vertex(vertex));
+                }
+            }
+        }
+
+        public ConvexHullShapePacket ExportToPacket()
+        {
+            ConvexHullShapePacket packet = new ConvexHullShapePacket();
+
+            ExportToPacket(packet);
+
+            return packet;
+        }
+
+        public void ExportToPacket(ConvexHullShapePacket packet)
+        {
+            if (packet != null)
+            {
+                packet.Base = base.ExportToPacket();
+
+                foreach(Face face in Faces)
+                {
+                    packet.Faces.Add(face.ExportToPacket());
+                }
+
+                foreach(Vertex vertex in Vertices)
+                {
+                    packet.Vertices.Add(vertex.ExportToPacket());
                 }
             }
         }

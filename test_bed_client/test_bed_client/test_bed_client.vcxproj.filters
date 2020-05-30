@@ -36,6 +36,9 @@
     <ClCompile Include="proto.generated\shapes.pb.cc">
       <Filter>proto.generated</Filter>
     </ClCompile>
+    <ClCompile Include="proto.generated\telemetry_file.pb.cc">
+      <Filter>proto.generated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataServer.h">
@@ -70,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="TetrahedronShape.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="proto.generated\telemetry_file.pb.h">
+      <Filter>proto.generated</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

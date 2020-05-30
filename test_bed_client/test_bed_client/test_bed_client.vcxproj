@@ -117,6 +117,7 @@
     <ClCompile Include="proto.generated\message_header.pb.cc" />
     <ClCompile Include="proto.generated\rigid_body.pb.cc" />
     <ClCompile Include="proto.generated\shapes.pb.cc" />
+    <ClCompile Include="proto.generated\telemetry_file.pb.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ObbShape.h" />
@@ -127,6 +128,7 @@
     <ClInclude Include="proto.generated\message_header.pb.h" />
     <ClInclude Include="proto.generated\rigid_body.pb.h" />
     <ClInclude Include="proto.generated\shapes.pb.h" />
+    <ClInclude Include="proto.generated\telemetry_file.pb.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SphereShape.h" />
     <ClInclude Include="TetrahedronShape.h" />

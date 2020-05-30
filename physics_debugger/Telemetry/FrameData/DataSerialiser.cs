@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Physics.Telemetry.Serialised;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -86,43 +87,11 @@ namespace Telemetry.FrameData
         {
             bool toReturn = true;
 
-            using (BinaryWriter writer = new BinaryWriter(File.Open(Filename, FileMode.OpenOrCreate)))
+            FrameDataPacket frameDataPack = data.ExportToPacket();
+
+            using (FileStream output = File.OpenWrite(Filename))
             {
-                foreach(FrameSnapshot frame in data.Frames)
-                {
-                    writer.Write(startOfFrameMarker);
-
-                    writer.Write(frame.FrameId);
-
-                    writer.Write(frame.RigidBodies.Values.Count);
-
-                    foreach(RigidBody body in frame.RigidBodies.Values)
-                    {
-                        writer.Write(body.Id);
-
-                        writer.Write(body.WorldMatrix.M11);
-                        writer.Write(body.WorldMatrix.M12);
-                        writer.Write(body.WorldMatrix.M13);
-                        writer.Write(body.WorldMatrix.M14);
-
-                        writer.Write(body.WorldMatrix.M21);
-                        writer.Write(body.WorldMatrix.M22);
-                        writer.Write(body.WorldMatrix.M23);
-                        writer.Write(body.WorldMatrix.M24);
-
-                        writer.Write(body.WorldMatrix.M31);
-                        writer.Write(body.WorldMatrix.M32);
-                        writer.Write(body.WorldMatrix.M33);
-                        writer.Write(body.WorldMatrix.M34);
-
-                        writer.Write(body.WorldMatrix.M41);
-                        writer.Write(body.WorldMatrix.M42);
-                        writer.Write(body.WorldMatrix.M43);
-                        writer.Write(body.WorldMatrix.M44);
-                    }
-
-                    writer.Write(endOfFrameMarker);
-                }
+                frameDataPack.WriteTo(new Google.Protobuf.CodedOutputStream(output));
             }
 
             return toReturn;

@@ -74,5 +74,66 @@ namespace Telemetry.FrameData.Shapes
                 LocalMatrix.M44 = packetBaseShape.LocalMatrix.M44;
             }
         }
+
+        public ShapeBasePacket ExportToPacket()
+        {
+            ShapeBasePacket packet = new ShapeBasePacket();
+
+            ExportToPacket(packet);
+
+            return packet;
+        }
+
+        public void ExportToPacket(ShapeBasePacket packet)
+        {
+            if (packet != null)
+            {
+                packet.Id = Id;
+                packet.HasLocalMatrix = HasLocalMatrix;
+
+                switch (ShapeType)
+                {
+                    case ShapeType.eObb:
+                        packet.ShapeType = ShapeTypePacket.Obb;
+                        break;
+                    case ShapeType.eSphere:
+                        packet.ShapeType = ShapeTypePacket.Sphere;
+                        break;
+                    case ShapeType.eCone:
+                        packet.ShapeType = ShapeTypePacket.Cone;
+                        break;
+                    case ShapeType.eConvexHull:
+                        packet.ShapeType = ShapeTypePacket.ConvexHull;
+                        break;
+                    case ShapeType.eTetrahedron:
+                        packet.ShapeType = ShapeTypePacket.Tetrahedron;
+                        break;
+                    default:
+                        // to do error handling
+                        break;
+                }
+
+                packet.LocalMatrix = new Matrix4x4Packet();
+                packet.LocalMatrix.M11 = LocalMatrix.M11;
+                packet.LocalMatrix.M12 = LocalMatrix.M12;
+                packet.LocalMatrix.M13 = LocalMatrix.M13;
+                packet.LocalMatrix.M14 = LocalMatrix.M14;
+
+                packet.LocalMatrix.M21 = LocalMatrix.M21;
+                packet.LocalMatrix.M22 = LocalMatrix.M22;
+                packet.LocalMatrix.M23 = LocalMatrix.M23;
+                packet.LocalMatrix.M24 = LocalMatrix.M24;
+
+                packet.LocalMatrix.M31 = LocalMatrix.M31;
+                packet.LocalMatrix.M32 = LocalMatrix.M32;
+                packet.LocalMatrix.M33 = LocalMatrix.M33;
+                packet.LocalMatrix.M34 = LocalMatrix.M34;
+
+                packet.LocalMatrix.M41 = LocalMatrix.M41;
+                packet.LocalMatrix.M42 = LocalMatrix.M42;
+                packet.LocalMatrix.M43 = LocalMatrix.M43;
+                packet.LocalMatrix.M44 = LocalMatrix.M44;
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Physics.Telemetry.Serialised;
+using System.Collections.Generic;
 
 namespace Telemetry.FrameData
 {
@@ -21,5 +22,27 @@ namespace Telemetry.FrameData
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public List<FrameItem> Shapes = new List<FrameItem>();
+
+        public FrameSnapshotPacket ExportToPacket()
+        {
+            FrameSnapshotPacket snapshot = new FrameSnapshotPacket(); ;
+
+            ExportToPacket(snapshot);
+
+            return snapshot;
+        }
+
+        public void ExportToPacket(FrameSnapshotPacket exportTarget)
+        {
+            if (exportTarget != null)
+            {
+                exportTarget.FrameId = FrameId;
+
+                foreach (RigidBody rigidBody in RigidBodies.Values)
+                {
+                    exportTarget.RigidBodies.Add(rigidBody.ExportToPacket());
+                }
+            }
+        }
     }
 }
