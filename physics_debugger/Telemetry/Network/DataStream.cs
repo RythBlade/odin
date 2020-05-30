@@ -66,7 +66,7 @@ namespace Telemetry.Network
 
         public bool Disconnect()
         {
-            if (clientSocket.Connected)
+            if (clientSocket != null && clientSocket.Connected)
             {
                 clientSocket.Disconnect(false);
                 clientSocket = null;
