@@ -44,10 +44,12 @@ namespace Telemetry.FrameData.Shapes
                 Point.X = vertex.Position.X;
                 Point.Y = vertex.Position.Y;
                 Point.Z = vertex.Position.Z;
+                Point.W = 1.0f;
 
                 Normal.X = vertex.Normal.X;
                 Normal.Y = vertex.Normal.Y;
                 Normal.Z = vertex.Normal.Z;
+                Normal.W = 1.0f;
             }
         }
 

@@ -1,16 +1,20 @@
-﻿using SharpDX;
-
-namespace Renderer.Buffers
+﻿namespace Renderer.Buffers
 {
     public struct Vertex
     {
-        Vector4 m_position;
-        Vector4 m_normal;
+        SharpDX.Vector4 m_position;
+        SharpDX.Vector4 m_normal;
 
-        public Vertex(Vector4 position, Vector4 normal )
+        public Vertex(SharpDX.Vector4 position, SharpDX.Vector4 normal )
         {
             m_position = position;
             m_normal = normal;
+        }
+
+        public Vertex(System.Numerics.Vector4 position, System.Numerics.Vector4 normal)
+        {
+            m_position = new SharpDX.Vector4(position.X, position.Y, position.Z, position.W);
+            m_normal = new SharpDX.Vector4(normal.X, normal.Y, normal.Z, normal.W);
         }
     }
 }

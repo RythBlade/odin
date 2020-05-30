@@ -144,6 +144,23 @@ namespace physics_debugger
             }
         }
 
+        private int GenerateMeshForConvexHull(ConvexHullShape shape)
+        {
+            List<Vertex> vertices = new List<Vertex>(shape.Faces.Count * 3);
+            
+            foreach(ConvexHullShape.Face face in shape.Faces)
+            {
+                for (int i = 0; i < 3; ++i)
+                {
+                    vertices.Add(new Vertex(shape.Vertices[face.Index[i]].Point, shape.Vertices[face.Index[i]].Normal));
+                }
+            }
+            
+            return mainViewport.Renderer.Meshes.AddMesh(vertices);
+
+            //return mainViewport.Renderer.Meshes.AddPlane(5, 5, new Vector3(-2.0f, 0.0f, -2.0f), new Vector3(2.0f, 0.0f, 2.0f));
+        }
+
         private void UpdateTelemetry()
         {
             if (dataStream.Connected)
@@ -162,7 +179,26 @@ namespace physics_debugger
                     {
                         foreach (BaseShape addedShape in frameShapeList.Value)
                         {
-                            frameData.ShapeData.AddNewShape(frameShapeList.Key, addedShape);
+                            BaseShape shapeToPushToFrameData = null;
+
+                            switch (addedShape.ShapeType)
+                            {
+                                case ShapeType.eConvexHull:
+                                    ConvexHullShape convexShape = (ConvexHullShape)addedShape;
+                                    int shapeRenderHandle = GenerateMeshForConvexHull(convexShape);
+
+                                    // wrap the convex hull shape to associate it with a render handle
+                                    shapeToPushToFrameData = new ConvexHullRenderable(convexShape, shapeRenderHandle);
+                                    break;
+                                case ShapeType.eObb:
+                                case ShapeType.eSphere:
+                                case ShapeType.eCone:
+                                case ShapeType.eTetrahedron:
+                                default:
+                                    shapeToPushToFrameData = addedShape;
+                                    break;
+                            }
+                            frameData.ShapeData.AddNewShape(frameShapeList.Key, shapeToPushToFrameData);
                         }
                     }    
 
@@ -220,6 +256,7 @@ namespace physics_debugger
                                 case ShapeType.eCone:
                                     break;
                                 case ShapeType.eConvexHull:
+                                    instanceToRender.MeshId = ((ConvexHullRenderable)actualShape).RenderHandle;
                                     break;
                                 case ShapeType.eTetrahedron:
                                     instanceToRender.MeshId = TetrahedronMeshId;
