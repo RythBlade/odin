@@ -64,7 +64,7 @@ int addObb(int nextShapeId, Particle& particle, DataServer& server, bool hasLoca
 
     particle.m_collisionShapes.push_back(obbShape);
 
-    PhysicsTelemetry::OBBShape obbCreated;
+    PhysicsTelemetry::ObbShapePacket obbCreated;
 
     obbCreated.mutable_halfextents()->set_x(obbShape->m_halfExtents[0]);
     obbCreated.mutable_halfextents()->set_y(obbShape->m_halfExtents[1]);
@@ -96,16 +96,16 @@ int addObb(int nextShapeId, Particle& particle, DataServer& server, bool hasLoca
 
     size_t shapeSize = obbCreated.ByteSizeLong();
 
-    PhysicsTelemetry::ShapeCreated shapeCreated;
+    PhysicsTelemetry::ShapeCreatedMessage shapeCreated;
 
     shapeCreated.set_shapetype(obbCreated.mutable_base()->shapetype());
     shapeCreated.set_shapesize(shapeSize);
 
     size_t baseShapeSize = shapeCreated.ByteSizeLong();
 
-    PhysicsTelemetry::MessageHeader messageHeader;
+    PhysicsTelemetry::MessageHeaderMessage messageHeader;
     messageHeader.set_frameid(frameCounter);
-    messageHeader.set_messagetype(PhysicsTelemetry::MessageHeader_MessageType_ShapeCreated);
+    messageHeader.set_messagetype(PhysicsTelemetry::MessageHeaderMessage_MessageType_ShapeCreated);
     messageHeader.set_datasize(baseShapeSize);
 
     char networkPacket[c_defaultPacketSize];
@@ -144,7 +144,7 @@ int addConvexHull(int nextShapeId, Particle& particle, DataServer& server, bool 
     
     particle.m_collisionShapes.push_back(convexHull);
 
-    PhysicsTelemetry::ConvexHullShape convexHullCreated;
+    PhysicsTelemetry::ConvexHullShapePacket convexHullCreated;
 
     convexHullCreated.mutable_base()->set_id(nextShapeId);
     convexHullCreated.mutable_base()->set_shapetype(PhysicsTelemetry::ConvexHull);
@@ -172,7 +172,7 @@ int addConvexHull(int nextShapeId, Particle& particle, DataServer& server, bool 
 
     for (int i = 0; i < convexHull->faces.size(); ++i)
     {
-        PhysicsTelemetry::ConvexHullShape_Face* face = convexHullCreated.add_faces();
+        PhysicsTelemetry::ConvexHullShapePacket_Face* face = convexHullCreated.add_faces();
         face->set_vert0(convexHull->faces[i].m_vertexIds[0]);
         face->set_vert1(convexHull->faces[i].m_vertexIds[1]);
         face->set_vert2(convexHull->faces[i].m_vertexIds[2]);
@@ -180,7 +180,7 @@ int addConvexHull(int nextShapeId, Particle& particle, DataServer& server, bool 
 
     for (int i = 0; i < convexHull->vertices.size(); ++i)
     {
-        PhysicsTelemetry::ConvexHullShape_Vertex* vertexCreated = convexHullCreated.add_vertices();
+        PhysicsTelemetry::ConvexHullShapePacket_Vertex* vertexCreated = convexHullCreated.add_vertices();
         vertexCreated->mutable_position()->set_x(convexHull->vertices[i].m_position[0]);
         vertexCreated->mutable_position()->set_y(convexHull->vertices[i].m_position[1]);
         vertexCreated->mutable_position()->set_z(convexHull->vertices[i].m_position[2]);
@@ -192,16 +192,16 @@ int addConvexHull(int nextShapeId, Particle& particle, DataServer& server, bool 
 
     size_t shapeSize = convexHullCreated.ByteSizeLong();
 
-    PhysicsTelemetry::ShapeCreated shapeCreated;
+    PhysicsTelemetry::ShapeCreatedMessage shapeCreated;
 
     shapeCreated.set_shapetype(convexHullCreated.mutable_base()->shapetype());
     shapeCreated.set_shapesize(shapeSize);
 
     size_t baseShapeSize = shapeCreated.ByteSizeLong();
 
-    PhysicsTelemetry::MessageHeader messageHeader;
+    PhysicsTelemetry::MessageHeaderMessage messageHeader;
     messageHeader.set_frameid(frameCounter);
-    messageHeader.set_messagetype(PhysicsTelemetry::MessageHeader_MessageType_ShapeCreated);
+    messageHeader.set_messagetype(PhysicsTelemetry::MessageHeaderMessage_MessageType_ShapeCreated);
     messageHeader.set_datasize(baseShapeSize);
 
     char networkPacket[c_defaultPacketSize];
@@ -238,7 +238,7 @@ int addTetrahedron(int nextShapeId, Particle& particle, DataServer& server, bool
 
     particle.m_collisionShapes.push_back(tetraShape);
 
-    PhysicsTelemetry::TetrahedronShape tetraCreated;
+    PhysicsTelemetry::TetrahedronShapePacket tetraCreated;
 
     tetraCreated.mutable_base()->set_id(nextShapeId);
     tetraCreated.mutable_base()->set_shapetype(PhysicsTelemetry::Tetrahedron);
@@ -266,16 +266,16 @@ int addTetrahedron(int nextShapeId, Particle& particle, DataServer& server, bool
 
     size_t shapeSize = tetraCreated.ByteSizeLong();
 
-    PhysicsTelemetry::ShapeCreated shapeCreated;
+    PhysicsTelemetry::ShapeCreatedMessage shapeCreated;
 
     shapeCreated.set_shapetype(tetraCreated.mutable_base()->shapetype());
     shapeCreated.set_shapesize(shapeSize);
 
     size_t baseShapeSize = shapeCreated.ByteSizeLong();
 
-    PhysicsTelemetry::MessageHeader messageHeader;
+    PhysicsTelemetry::MessageHeaderMessage messageHeader;
     messageHeader.set_frameid(frameCounter);
-    messageHeader.set_messagetype(PhysicsTelemetry::MessageHeader_MessageType_ShapeCreated);
+    messageHeader.set_messagetype(PhysicsTelemetry::MessageHeaderMessage_MessageType_ShapeCreated);
     messageHeader.set_datasize(baseShapeSize);
 
     char networkPacket[c_defaultPacketSize];
@@ -368,15 +368,15 @@ void main()
 
             updateParticles( &particles, frameTime );
 
-            PhysicsTelemetry::RigidBodyList bodyList;
+            PhysicsTelemetry::RigidBodyListPacket bodyList;
             
             for (int i = 0; i < numberOfParticles; ++i)
             {
-                PhysicsTelemetry::RigidBody* rigidBody = bodyList.add_rigidbodies();
+                PhysicsTelemetry::RigidBodyPacket* rigidBody = bodyList.add_rigidbodies();
 
                 rigidBody->set_id(i);
 
-                PhysicsTelemetry::Vector4 position;
+                PhysicsTelemetry::Vector4Packet position;
                 rigidBody->mutable_position()->set_m11(1.0f);
                 rigidBody->mutable_position()->set_m12(0.0f);
                 rigidBody->mutable_position()->set_m13(0.0f);
@@ -397,7 +397,7 @@ void main()
                 rigidBody->mutable_position()->set_m43(particles.particles[i].m_position[2]);
                 rigidBody->mutable_position()->set_m44(particles.particles[i].m_position[3]);
 
-                PhysicsTelemetry::Vector4 velocity;
+                PhysicsTelemetry::Vector4Packet velocity;
                 rigidBody->mutable_velocity()->set_x(particles.particles[i].m_velocity[0]);
                 rigidBody->mutable_velocity()->set_y(particles.particles[i].m_velocity[1]);
                 rigidBody->mutable_velocity()->set_z(particles.particles[i].m_velocity[2]);
@@ -410,9 +410,9 @@ void main()
 
             size_t bodyListPacketSize = bodyList.ByteSizeLong();
 
-            PhysicsTelemetry::MessageHeader messageHeader;
+            PhysicsTelemetry::MessageHeaderMessage messageHeader;
             messageHeader.set_frameid(frameCounter);
-            messageHeader.set_messagetype(PhysicsTelemetry::MessageHeader_MessageType_RigidBodyUpdate);
+            messageHeader.set_messagetype(PhysicsTelemetry::MessageHeaderMessage_MessageType_RigidBodyUpdate);
             messageHeader.set_datasize(bodyListPacketSize);
 
             char networkPacket[c_defaultPacketSize];

@@ -57,40 +57,40 @@ struct TableStruct_shapes_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_shapes_2eproto;
 namespace PhysicsTelemetry {
-class ConvexHullShape;
-class ConvexHullShapeDefaultTypeInternal;
-extern ConvexHullShapeDefaultTypeInternal _ConvexHullShape_default_instance_;
-class ConvexHullShape_Face;
-class ConvexHullShape_FaceDefaultTypeInternal;
-extern ConvexHullShape_FaceDefaultTypeInternal _ConvexHullShape_Face_default_instance_;
-class ConvexHullShape_Vertex;
-class ConvexHullShape_VertexDefaultTypeInternal;
-extern ConvexHullShape_VertexDefaultTypeInternal _ConvexHullShape_Vertex_default_instance_;
-class OBBShape;
-class OBBShapeDefaultTypeInternal;
-extern OBBShapeDefaultTypeInternal _OBBShape_default_instance_;
-class ShapeBase;
-class ShapeBaseDefaultTypeInternal;
-extern ShapeBaseDefaultTypeInternal _ShapeBase_default_instance_;
-class ShapeChanged;
-class ShapeChangedDefaultTypeInternal;
-extern ShapeChangedDefaultTypeInternal _ShapeChanged_default_instance_;
-class ShapeCreated;
-class ShapeCreatedDefaultTypeInternal;
-extern ShapeCreatedDefaultTypeInternal _ShapeCreated_default_instance_;
-class TetrahedronShape;
-class TetrahedronShapeDefaultTypeInternal;
-extern TetrahedronShapeDefaultTypeInternal _TetrahedronShape_default_instance_;
+class ConvexHullShapePacket;
+class ConvexHullShapePacketDefaultTypeInternal;
+extern ConvexHullShapePacketDefaultTypeInternal _ConvexHullShapePacket_default_instance_;
+class ConvexHullShapePacket_Face;
+class ConvexHullShapePacket_FaceDefaultTypeInternal;
+extern ConvexHullShapePacket_FaceDefaultTypeInternal _ConvexHullShapePacket_Face_default_instance_;
+class ConvexHullShapePacket_Vertex;
+class ConvexHullShapePacket_VertexDefaultTypeInternal;
+extern ConvexHullShapePacket_VertexDefaultTypeInternal _ConvexHullShapePacket_Vertex_default_instance_;
+class ObbShapePacket;
+class ObbShapePacketDefaultTypeInternal;
+extern ObbShapePacketDefaultTypeInternal _ObbShapePacket_default_instance_;
+class ShapeBasePacket;
+class ShapeBasePacketDefaultTypeInternal;
+extern ShapeBasePacketDefaultTypeInternal _ShapeBasePacket_default_instance_;
+class ShapeChangedMessage;
+class ShapeChangedMessageDefaultTypeInternal;
+extern ShapeChangedMessageDefaultTypeInternal _ShapeChangedMessage_default_instance_;
+class ShapeCreatedMessage;
+class ShapeCreatedMessageDefaultTypeInternal;
+extern ShapeCreatedMessageDefaultTypeInternal _ShapeCreatedMessage_default_instance_;
+class TetrahedronShapePacket;
+class TetrahedronShapePacketDefaultTypeInternal;
+extern TetrahedronShapePacketDefaultTypeInternal _TetrahedronShapePacket_default_instance_;
 }  // namespace PhysicsTelemetry
 PROTOBUF_NAMESPACE_OPEN
-template<> ::PhysicsTelemetry::ConvexHullShape* Arena::CreateMaybeMessage<::PhysicsTelemetry::ConvexHullShape>(Arena*);
-template<> ::PhysicsTelemetry::ConvexHullShape_Face* Arena::CreateMaybeMessage<::PhysicsTelemetry::ConvexHullShape_Face>(Arena*);
-template<> ::PhysicsTelemetry::ConvexHullShape_Vertex* Arena::CreateMaybeMessage<::PhysicsTelemetry::ConvexHullShape_Vertex>(Arena*);
-template<> ::PhysicsTelemetry::OBBShape* Arena::CreateMaybeMessage<::PhysicsTelemetry::OBBShape>(Arena*);
-template<> ::PhysicsTelemetry::ShapeBase* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeBase>(Arena*);
-template<> ::PhysicsTelemetry::ShapeChanged* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeChanged>(Arena*);
-template<> ::PhysicsTelemetry::ShapeCreated* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeCreated>(Arena*);
-template<> ::PhysicsTelemetry::TetrahedronShape* Arena::CreateMaybeMessage<::PhysicsTelemetry::TetrahedronShape>(Arena*);
+template<> ::PhysicsTelemetry::ConvexHullShapePacket* Arena::CreateMaybeMessage<::PhysicsTelemetry::ConvexHullShapePacket>(Arena*);
+template<> ::PhysicsTelemetry::ConvexHullShapePacket_Face* Arena::CreateMaybeMessage<::PhysicsTelemetry::ConvexHullShapePacket_Face>(Arena*);
+template<> ::PhysicsTelemetry::ConvexHullShapePacket_Vertex* Arena::CreateMaybeMessage<::PhysicsTelemetry::ConvexHullShapePacket_Vertex>(Arena*);
+template<> ::PhysicsTelemetry::ObbShapePacket* Arena::CreateMaybeMessage<::PhysicsTelemetry::ObbShapePacket>(Arena*);
+template<> ::PhysicsTelemetry::ShapeBasePacket* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeBasePacket>(Arena*);
+template<> ::PhysicsTelemetry::ShapeChangedMessage* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeChangedMessage>(Arena*);
+template<> ::PhysicsTelemetry::ShapeCreatedMessage* Arena::CreateMaybeMessage<::PhysicsTelemetry::ShapeCreatedMessage>(Arena*);
+template<> ::PhysicsTelemetry::TetrahedronShapePacket* Arena::CreateMaybeMessage<::PhysicsTelemetry::TetrahedronShapePacket>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace PhysicsTelemetry {
 
@@ -124,23 +124,23 @@ inline bool ShapeType_Parse(
 }
 // ===================================================================
 
-class ShapeBase :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ShapeBase) */ {
+class ShapeBasePacket :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ShapeBasePacket) */ {
  public:
-  ShapeBase();
-  virtual ~ShapeBase();
+  ShapeBasePacket();
+  virtual ~ShapeBasePacket();
 
-  ShapeBase(const ShapeBase& from);
-  ShapeBase(ShapeBase&& from) noexcept
-    : ShapeBase() {
+  ShapeBasePacket(const ShapeBasePacket& from);
+  ShapeBasePacket(ShapeBasePacket&& from) noexcept
+    : ShapeBasePacket() {
     *this = ::std::move(from);
   }
 
-  inline ShapeBase& operator=(const ShapeBase& from) {
+  inline ShapeBasePacket& operator=(const ShapeBasePacket& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ShapeBase& operator=(ShapeBase&& from) noexcept {
+  inline ShapeBasePacket& operator=(ShapeBasePacket&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -158,37 +158,37 @@ class ShapeBase :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const ShapeBase& default_instance();
+  static const ShapeBasePacket& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ShapeBase* internal_default_instance() {
-    return reinterpret_cast<const ShapeBase*>(
-               &_ShapeBase_default_instance_);
+  static inline const ShapeBasePacket* internal_default_instance() {
+    return reinterpret_cast<const ShapeBasePacket*>(
+               &_ShapeBasePacket_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(ShapeBase& a, ShapeBase& b) {
+  friend void swap(ShapeBasePacket& a, ShapeBasePacket& b) {
     a.Swap(&b);
   }
-  inline void Swap(ShapeBase* other) {
+  inline void Swap(ShapeBasePacket* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ShapeBase* New() const final {
-    return CreateMaybeMessage<ShapeBase>(nullptr);
+  inline ShapeBasePacket* New() const final {
+    return CreateMaybeMessage<ShapeBasePacket>(nullptr);
   }
 
-  ShapeBase* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<ShapeBase>(arena);
+  ShapeBasePacket* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ShapeBasePacket>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const ShapeBase& from);
-  void MergeFrom(const ShapeBase& from);
+  void CopyFrom(const ShapeBasePacket& from);
+  void MergeFrom(const ShapeBasePacket& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -202,10 +202,10 @@ class ShapeBase :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ShapeBase* other);
+  void InternalSwap(ShapeBasePacket* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.ShapeBase";
+    return "PhysicsTelemetry.ShapeBasePacket";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -235,19 +235,19 @@ class ShapeBase :
     kHasLocalMatrixFieldNumber = 2,
     kShapeTypeFieldNumber = 4,
   };
-  // .PhysicsTelemetry.Matrix4x4 localMatrix = 3;
+  // .PhysicsTelemetry.Matrix4x4Packet localMatrix = 3;
   bool has_localmatrix() const;
   private:
   bool _internal_has_localmatrix() const;
   public:
   void clear_localmatrix();
-  const ::PhysicsTelemetry::Matrix4x4& localmatrix() const;
-  ::PhysicsTelemetry::Matrix4x4* release_localmatrix();
-  ::PhysicsTelemetry::Matrix4x4* mutable_localmatrix();
-  void set_allocated_localmatrix(::PhysicsTelemetry::Matrix4x4* localmatrix);
+  const ::PhysicsTelemetry::Matrix4x4Packet& localmatrix() const;
+  ::PhysicsTelemetry::Matrix4x4Packet* release_localmatrix();
+  ::PhysicsTelemetry::Matrix4x4Packet* mutable_localmatrix();
+  void set_allocated_localmatrix(::PhysicsTelemetry::Matrix4x4Packet* localmatrix);
   private:
-  const ::PhysicsTelemetry::Matrix4x4& _internal_localmatrix() const;
-  ::PhysicsTelemetry::Matrix4x4* _internal_mutable_localmatrix();
+  const ::PhysicsTelemetry::Matrix4x4Packet& _internal_localmatrix() const;
+  ::PhysicsTelemetry::Matrix4x4Packet* _internal_mutable_localmatrix();
   public:
 
   // uint32 Id = 1;
@@ -277,12 +277,12 @@ class ShapeBase :
   void _internal_set_shapetype(::PhysicsTelemetry::ShapeType value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ShapeBase)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ShapeBasePacket)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PhysicsTelemetry::Matrix4x4* localmatrix_;
+  ::PhysicsTelemetry::Matrix4x4Packet* localmatrix_;
   ::PROTOBUF_NAMESPACE_ID::uint32 id_;
   bool haslocalmatrix_;
   int shapetype_;
@@ -291,23 +291,23 @@ class ShapeBase :
 };
 // -------------------------------------------------------------------
 
-class OBBShape :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.OBBShape) */ {
+class ObbShapePacket :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ObbShapePacket) */ {
  public:
-  OBBShape();
-  virtual ~OBBShape();
+  ObbShapePacket();
+  virtual ~ObbShapePacket();
 
-  OBBShape(const OBBShape& from);
-  OBBShape(OBBShape&& from) noexcept
-    : OBBShape() {
+  ObbShapePacket(const ObbShapePacket& from);
+  ObbShapePacket(ObbShapePacket&& from) noexcept
+    : ObbShapePacket() {
     *this = ::std::move(from);
   }
 
-  inline OBBShape& operator=(const OBBShape& from) {
+  inline ObbShapePacket& operator=(const ObbShapePacket& from) {
     CopyFrom(from);
     return *this;
   }
-  inline OBBShape& operator=(OBBShape&& from) noexcept {
+  inline ObbShapePacket& operator=(ObbShapePacket&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -325,37 +325,37 @@ class OBBShape :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const OBBShape& default_instance();
+  static const ObbShapePacket& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const OBBShape* internal_default_instance() {
-    return reinterpret_cast<const OBBShape*>(
-               &_OBBShape_default_instance_);
+  static inline const ObbShapePacket* internal_default_instance() {
+    return reinterpret_cast<const ObbShapePacket*>(
+               &_ObbShapePacket_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(OBBShape& a, OBBShape& b) {
+  friend void swap(ObbShapePacket& a, ObbShapePacket& b) {
     a.Swap(&b);
   }
-  inline void Swap(OBBShape* other) {
+  inline void Swap(ObbShapePacket* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline OBBShape* New() const final {
-    return CreateMaybeMessage<OBBShape>(nullptr);
+  inline ObbShapePacket* New() const final {
+    return CreateMaybeMessage<ObbShapePacket>(nullptr);
   }
 
-  OBBShape* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<OBBShape>(arena);
+  ObbShapePacket* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ObbShapePacket>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const OBBShape& from);
-  void MergeFrom(const OBBShape& from);
+  void CopyFrom(const ObbShapePacket& from);
+  void MergeFrom(const ObbShapePacket& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -369,10 +369,10 @@ class OBBShape :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(OBBShape* other);
+  void InternalSwap(ObbShapePacket* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.OBBShape";
+    return "PhysicsTelemetry.ObbShapePacket";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -400,65 +400,65 @@ class OBBShape :
     kBaseFieldNumber = 1,
     kHalfExtentsFieldNumber = 2,
   };
-  // .PhysicsTelemetry.ShapeBase base = 1;
+  // .PhysicsTelemetry.ShapeBasePacket base = 1;
   bool has_base() const;
   private:
   bool _internal_has_base() const;
   public:
   void clear_base();
-  const ::PhysicsTelemetry::ShapeBase& base() const;
-  ::PhysicsTelemetry::ShapeBase* release_base();
-  ::PhysicsTelemetry::ShapeBase* mutable_base();
-  void set_allocated_base(::PhysicsTelemetry::ShapeBase* base);
+  const ::PhysicsTelemetry::ShapeBasePacket& base() const;
+  ::PhysicsTelemetry::ShapeBasePacket* release_base();
+  ::PhysicsTelemetry::ShapeBasePacket* mutable_base();
+  void set_allocated_base(::PhysicsTelemetry::ShapeBasePacket* base);
   private:
-  const ::PhysicsTelemetry::ShapeBase& _internal_base() const;
-  ::PhysicsTelemetry::ShapeBase* _internal_mutable_base();
+  const ::PhysicsTelemetry::ShapeBasePacket& _internal_base() const;
+  ::PhysicsTelemetry::ShapeBasePacket* _internal_mutable_base();
   public:
 
-  // .PhysicsTelemetry.Vector3 halfExtents = 2;
+  // .PhysicsTelemetry.Vector3Packet halfExtents = 2;
   bool has_halfextents() const;
   private:
   bool _internal_has_halfextents() const;
   public:
   void clear_halfextents();
-  const ::PhysicsTelemetry::Vector3& halfextents() const;
-  ::PhysicsTelemetry::Vector3* release_halfextents();
-  ::PhysicsTelemetry::Vector3* mutable_halfextents();
-  void set_allocated_halfextents(::PhysicsTelemetry::Vector3* halfextents);
+  const ::PhysicsTelemetry::Vector3Packet& halfextents() const;
+  ::PhysicsTelemetry::Vector3Packet* release_halfextents();
+  ::PhysicsTelemetry::Vector3Packet* mutable_halfextents();
+  void set_allocated_halfextents(::PhysicsTelemetry::Vector3Packet* halfextents);
   private:
-  const ::PhysicsTelemetry::Vector3& _internal_halfextents() const;
-  ::PhysicsTelemetry::Vector3* _internal_mutable_halfextents();
+  const ::PhysicsTelemetry::Vector3Packet& _internal_halfextents() const;
+  ::PhysicsTelemetry::Vector3Packet* _internal_mutable_halfextents();
   public:
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.OBBShape)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ObbShapePacket)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PhysicsTelemetry::ShapeBase* base_;
-  ::PhysicsTelemetry::Vector3* halfextents_;
+  ::PhysicsTelemetry::ShapeBasePacket* base_;
+  ::PhysicsTelemetry::Vector3Packet* halfextents_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_shapes_2eproto;
 };
 // -------------------------------------------------------------------
 
-class TetrahedronShape :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.TetrahedronShape) */ {
+class TetrahedronShapePacket :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.TetrahedronShapePacket) */ {
  public:
-  TetrahedronShape();
-  virtual ~TetrahedronShape();
+  TetrahedronShapePacket();
+  virtual ~TetrahedronShapePacket();
 
-  TetrahedronShape(const TetrahedronShape& from);
-  TetrahedronShape(TetrahedronShape&& from) noexcept
-    : TetrahedronShape() {
+  TetrahedronShapePacket(const TetrahedronShapePacket& from);
+  TetrahedronShapePacket(TetrahedronShapePacket&& from) noexcept
+    : TetrahedronShapePacket() {
     *this = ::std::move(from);
   }
 
-  inline TetrahedronShape& operator=(const TetrahedronShape& from) {
+  inline TetrahedronShapePacket& operator=(const TetrahedronShapePacket& from) {
     CopyFrom(from);
     return *this;
   }
-  inline TetrahedronShape& operator=(TetrahedronShape&& from) noexcept {
+  inline TetrahedronShapePacket& operator=(TetrahedronShapePacket&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -476,37 +476,37 @@ class TetrahedronShape :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const TetrahedronShape& default_instance();
+  static const TetrahedronShapePacket& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const TetrahedronShape* internal_default_instance() {
-    return reinterpret_cast<const TetrahedronShape*>(
-               &_TetrahedronShape_default_instance_);
+  static inline const TetrahedronShapePacket* internal_default_instance() {
+    return reinterpret_cast<const TetrahedronShapePacket*>(
+               &_TetrahedronShapePacket_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     2;
 
-  friend void swap(TetrahedronShape& a, TetrahedronShape& b) {
+  friend void swap(TetrahedronShapePacket& a, TetrahedronShapePacket& b) {
     a.Swap(&b);
   }
-  inline void Swap(TetrahedronShape* other) {
+  inline void Swap(TetrahedronShapePacket* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline TetrahedronShape* New() const final {
-    return CreateMaybeMessage<TetrahedronShape>(nullptr);
+  inline TetrahedronShapePacket* New() const final {
+    return CreateMaybeMessage<TetrahedronShapePacket>(nullptr);
   }
 
-  TetrahedronShape* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<TetrahedronShape>(arena);
+  TetrahedronShapePacket* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TetrahedronShapePacket>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const TetrahedronShape& from);
-  void MergeFrom(const TetrahedronShape& from);
+  void CopyFrom(const TetrahedronShapePacket& from);
+  void MergeFrom(const TetrahedronShapePacket& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -520,10 +520,10 @@ class TetrahedronShape :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(TetrahedronShape* other);
+  void InternalSwap(TetrahedronShapePacket* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.TetrahedronShape";
+    return "PhysicsTelemetry.TetrahedronShapePacket";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -550,49 +550,49 @@ class TetrahedronShape :
   enum : int {
     kBaseFieldNumber = 1,
   };
-  // .PhysicsTelemetry.ShapeBase base = 1;
+  // .PhysicsTelemetry.ShapeBasePacket base = 1;
   bool has_base() const;
   private:
   bool _internal_has_base() const;
   public:
   void clear_base();
-  const ::PhysicsTelemetry::ShapeBase& base() const;
-  ::PhysicsTelemetry::ShapeBase* release_base();
-  ::PhysicsTelemetry::ShapeBase* mutable_base();
-  void set_allocated_base(::PhysicsTelemetry::ShapeBase* base);
+  const ::PhysicsTelemetry::ShapeBasePacket& base() const;
+  ::PhysicsTelemetry::ShapeBasePacket* release_base();
+  ::PhysicsTelemetry::ShapeBasePacket* mutable_base();
+  void set_allocated_base(::PhysicsTelemetry::ShapeBasePacket* base);
   private:
-  const ::PhysicsTelemetry::ShapeBase& _internal_base() const;
-  ::PhysicsTelemetry::ShapeBase* _internal_mutable_base();
+  const ::PhysicsTelemetry::ShapeBasePacket& _internal_base() const;
+  ::PhysicsTelemetry::ShapeBasePacket* _internal_mutable_base();
   public:
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.TetrahedronShape)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.TetrahedronShapePacket)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PhysicsTelemetry::ShapeBase* base_;
+  ::PhysicsTelemetry::ShapeBasePacket* base_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_shapes_2eproto;
 };
 // -------------------------------------------------------------------
 
-class ConvexHullShape_Vertex :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ConvexHullShape.Vertex) */ {
+class ConvexHullShapePacket_Vertex :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ConvexHullShapePacket.Vertex) */ {
  public:
-  ConvexHullShape_Vertex();
-  virtual ~ConvexHullShape_Vertex();
+  ConvexHullShapePacket_Vertex();
+  virtual ~ConvexHullShapePacket_Vertex();
 
-  ConvexHullShape_Vertex(const ConvexHullShape_Vertex& from);
-  ConvexHullShape_Vertex(ConvexHullShape_Vertex&& from) noexcept
-    : ConvexHullShape_Vertex() {
+  ConvexHullShapePacket_Vertex(const ConvexHullShapePacket_Vertex& from);
+  ConvexHullShapePacket_Vertex(ConvexHullShapePacket_Vertex&& from) noexcept
+    : ConvexHullShapePacket_Vertex() {
     *this = ::std::move(from);
   }
 
-  inline ConvexHullShape_Vertex& operator=(const ConvexHullShape_Vertex& from) {
+  inline ConvexHullShapePacket_Vertex& operator=(const ConvexHullShapePacket_Vertex& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ConvexHullShape_Vertex& operator=(ConvexHullShape_Vertex&& from) noexcept {
+  inline ConvexHullShapePacket_Vertex& operator=(ConvexHullShapePacket_Vertex&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -610,37 +610,37 @@ class ConvexHullShape_Vertex :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const ConvexHullShape_Vertex& default_instance();
+  static const ConvexHullShapePacket_Vertex& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ConvexHullShape_Vertex* internal_default_instance() {
-    return reinterpret_cast<const ConvexHullShape_Vertex*>(
-               &_ConvexHullShape_Vertex_default_instance_);
+  static inline const ConvexHullShapePacket_Vertex* internal_default_instance() {
+    return reinterpret_cast<const ConvexHullShapePacket_Vertex*>(
+               &_ConvexHullShapePacket_Vertex_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     3;
 
-  friend void swap(ConvexHullShape_Vertex& a, ConvexHullShape_Vertex& b) {
+  friend void swap(ConvexHullShapePacket_Vertex& a, ConvexHullShapePacket_Vertex& b) {
     a.Swap(&b);
   }
-  inline void Swap(ConvexHullShape_Vertex* other) {
+  inline void Swap(ConvexHullShapePacket_Vertex* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ConvexHullShape_Vertex* New() const final {
-    return CreateMaybeMessage<ConvexHullShape_Vertex>(nullptr);
+  inline ConvexHullShapePacket_Vertex* New() const final {
+    return CreateMaybeMessage<ConvexHullShapePacket_Vertex>(nullptr);
   }
 
-  ConvexHullShape_Vertex* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<ConvexHullShape_Vertex>(arena);
+  ConvexHullShapePacket_Vertex* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ConvexHullShapePacket_Vertex>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const ConvexHullShape_Vertex& from);
-  void MergeFrom(const ConvexHullShape_Vertex& from);
+  void CopyFrom(const ConvexHullShapePacket_Vertex& from);
+  void MergeFrom(const ConvexHullShapePacket_Vertex& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -654,10 +654,10 @@ class ConvexHullShape_Vertex :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ConvexHullShape_Vertex* other);
+  void InternalSwap(ConvexHullShapePacket_Vertex* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.ConvexHullShape.Vertex";
+    return "PhysicsTelemetry.ConvexHullShapePacket.Vertex";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -685,65 +685,65 @@ class ConvexHullShape_Vertex :
     kPositionFieldNumber = 1,
     kNormalFieldNumber = 2,
   };
-  // .PhysicsTelemetry.Vector3 position = 1;
+  // .PhysicsTelemetry.Vector3Packet position = 1;
   bool has_position() const;
   private:
   bool _internal_has_position() const;
   public:
   void clear_position();
-  const ::PhysicsTelemetry::Vector3& position() const;
-  ::PhysicsTelemetry::Vector3* release_position();
-  ::PhysicsTelemetry::Vector3* mutable_position();
-  void set_allocated_position(::PhysicsTelemetry::Vector3* position);
+  const ::PhysicsTelemetry::Vector3Packet& position() const;
+  ::PhysicsTelemetry::Vector3Packet* release_position();
+  ::PhysicsTelemetry::Vector3Packet* mutable_position();
+  void set_allocated_position(::PhysicsTelemetry::Vector3Packet* position);
   private:
-  const ::PhysicsTelemetry::Vector3& _internal_position() const;
-  ::PhysicsTelemetry::Vector3* _internal_mutable_position();
+  const ::PhysicsTelemetry::Vector3Packet& _internal_position() const;
+  ::PhysicsTelemetry::Vector3Packet* _internal_mutable_position();
   public:
 
-  // .PhysicsTelemetry.Vector3 normal = 2;
+  // .PhysicsTelemetry.Vector3Packet normal = 2;
   bool has_normal() const;
   private:
   bool _internal_has_normal() const;
   public:
   void clear_normal();
-  const ::PhysicsTelemetry::Vector3& normal() const;
-  ::PhysicsTelemetry::Vector3* release_normal();
-  ::PhysicsTelemetry::Vector3* mutable_normal();
-  void set_allocated_normal(::PhysicsTelemetry::Vector3* normal);
+  const ::PhysicsTelemetry::Vector3Packet& normal() const;
+  ::PhysicsTelemetry::Vector3Packet* release_normal();
+  ::PhysicsTelemetry::Vector3Packet* mutable_normal();
+  void set_allocated_normal(::PhysicsTelemetry::Vector3Packet* normal);
   private:
-  const ::PhysicsTelemetry::Vector3& _internal_normal() const;
-  ::PhysicsTelemetry::Vector3* _internal_mutable_normal();
+  const ::PhysicsTelemetry::Vector3Packet& _internal_normal() const;
+  ::PhysicsTelemetry::Vector3Packet* _internal_mutable_normal();
   public:
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ConvexHullShape.Vertex)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ConvexHullShapePacket.Vertex)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PhysicsTelemetry::Vector3* position_;
-  ::PhysicsTelemetry::Vector3* normal_;
+  ::PhysicsTelemetry::Vector3Packet* position_;
+  ::PhysicsTelemetry::Vector3Packet* normal_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_shapes_2eproto;
 };
 // -------------------------------------------------------------------
 
-class ConvexHullShape_Face :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ConvexHullShape.Face) */ {
+class ConvexHullShapePacket_Face :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ConvexHullShapePacket.Face) */ {
  public:
-  ConvexHullShape_Face();
-  virtual ~ConvexHullShape_Face();
+  ConvexHullShapePacket_Face();
+  virtual ~ConvexHullShapePacket_Face();
 
-  ConvexHullShape_Face(const ConvexHullShape_Face& from);
-  ConvexHullShape_Face(ConvexHullShape_Face&& from) noexcept
-    : ConvexHullShape_Face() {
+  ConvexHullShapePacket_Face(const ConvexHullShapePacket_Face& from);
+  ConvexHullShapePacket_Face(ConvexHullShapePacket_Face&& from) noexcept
+    : ConvexHullShapePacket_Face() {
     *this = ::std::move(from);
   }
 
-  inline ConvexHullShape_Face& operator=(const ConvexHullShape_Face& from) {
+  inline ConvexHullShapePacket_Face& operator=(const ConvexHullShapePacket_Face& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ConvexHullShape_Face& operator=(ConvexHullShape_Face&& from) noexcept {
+  inline ConvexHullShapePacket_Face& operator=(ConvexHullShapePacket_Face&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -761,37 +761,37 @@ class ConvexHullShape_Face :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const ConvexHullShape_Face& default_instance();
+  static const ConvexHullShapePacket_Face& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ConvexHullShape_Face* internal_default_instance() {
-    return reinterpret_cast<const ConvexHullShape_Face*>(
-               &_ConvexHullShape_Face_default_instance_);
+  static inline const ConvexHullShapePacket_Face* internal_default_instance() {
+    return reinterpret_cast<const ConvexHullShapePacket_Face*>(
+               &_ConvexHullShapePacket_Face_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     4;
 
-  friend void swap(ConvexHullShape_Face& a, ConvexHullShape_Face& b) {
+  friend void swap(ConvexHullShapePacket_Face& a, ConvexHullShapePacket_Face& b) {
     a.Swap(&b);
   }
-  inline void Swap(ConvexHullShape_Face* other) {
+  inline void Swap(ConvexHullShapePacket_Face* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ConvexHullShape_Face* New() const final {
-    return CreateMaybeMessage<ConvexHullShape_Face>(nullptr);
+  inline ConvexHullShapePacket_Face* New() const final {
+    return CreateMaybeMessage<ConvexHullShapePacket_Face>(nullptr);
   }
 
-  ConvexHullShape_Face* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<ConvexHullShape_Face>(arena);
+  ConvexHullShapePacket_Face* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ConvexHullShapePacket_Face>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const ConvexHullShape_Face& from);
-  void MergeFrom(const ConvexHullShape_Face& from);
+  void CopyFrom(const ConvexHullShapePacket_Face& from);
+  void MergeFrom(const ConvexHullShapePacket_Face& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -805,10 +805,10 @@ class ConvexHullShape_Face :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ConvexHullShape_Face* other);
+  void InternalSwap(ConvexHullShapePacket_Face* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.ConvexHullShape.Face";
+    return "PhysicsTelemetry.ConvexHullShapePacket.Face";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -864,7 +864,7 @@ class ConvexHullShape_Face :
   void _internal_set_vert2(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ConvexHullShape.Face)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ConvexHullShapePacket.Face)
  private:
   class _Internal;
 
@@ -877,23 +877,23 @@ class ConvexHullShape_Face :
 };
 // -------------------------------------------------------------------
 
-class ConvexHullShape :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ConvexHullShape) */ {
+class ConvexHullShapePacket :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ConvexHullShapePacket) */ {
  public:
-  ConvexHullShape();
-  virtual ~ConvexHullShape();
+  ConvexHullShapePacket();
+  virtual ~ConvexHullShapePacket();
 
-  ConvexHullShape(const ConvexHullShape& from);
-  ConvexHullShape(ConvexHullShape&& from) noexcept
-    : ConvexHullShape() {
+  ConvexHullShapePacket(const ConvexHullShapePacket& from);
+  ConvexHullShapePacket(ConvexHullShapePacket&& from) noexcept
+    : ConvexHullShapePacket() {
     *this = ::std::move(from);
   }
 
-  inline ConvexHullShape& operator=(const ConvexHullShape& from) {
+  inline ConvexHullShapePacket& operator=(const ConvexHullShapePacket& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ConvexHullShape& operator=(ConvexHullShape&& from) noexcept {
+  inline ConvexHullShapePacket& operator=(ConvexHullShapePacket&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -911,37 +911,37 @@ class ConvexHullShape :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const ConvexHullShape& default_instance();
+  static const ConvexHullShapePacket& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ConvexHullShape* internal_default_instance() {
-    return reinterpret_cast<const ConvexHullShape*>(
-               &_ConvexHullShape_default_instance_);
+  static inline const ConvexHullShapePacket* internal_default_instance() {
+    return reinterpret_cast<const ConvexHullShapePacket*>(
+               &_ConvexHullShapePacket_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     5;
 
-  friend void swap(ConvexHullShape& a, ConvexHullShape& b) {
+  friend void swap(ConvexHullShapePacket& a, ConvexHullShapePacket& b) {
     a.Swap(&b);
   }
-  inline void Swap(ConvexHullShape* other) {
+  inline void Swap(ConvexHullShapePacket* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ConvexHullShape* New() const final {
-    return CreateMaybeMessage<ConvexHullShape>(nullptr);
+  inline ConvexHullShapePacket* New() const final {
+    return CreateMaybeMessage<ConvexHullShapePacket>(nullptr);
   }
 
-  ConvexHullShape* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<ConvexHullShape>(arena);
+  ConvexHullShapePacket* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ConvexHullShapePacket>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const ConvexHullShape& from);
-  void MergeFrom(const ConvexHullShape& from);
+  void CopyFrom(const ConvexHullShapePacket& from);
+  void MergeFrom(const ConvexHullShapePacket& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -955,10 +955,10 @@ class ConvexHullShape :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ConvexHullShape* other);
+  void InternalSwap(ConvexHullShapePacket* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.ConvexHullShape";
+    return "PhysicsTelemetry.ConvexHullShapePacket";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -980,8 +980,8 @@ class ConvexHullShape :
 
   // nested types ----------------------------------------------------
 
-  typedef ConvexHullShape_Vertex Vertex;
-  typedef ConvexHullShape_Face Face;
+  typedef ConvexHullShapePacket_Vertex Vertex;
+  typedef ConvexHullShapePacket_Face Face;
 
   // accessors -------------------------------------------------------
 
@@ -990,87 +990,87 @@ class ConvexHullShape :
     kFacesFieldNumber = 3,
     kBaseFieldNumber = 1,
   };
-  // repeated .PhysicsTelemetry.ConvexHullShape.Vertex vertices = 2;
+  // repeated .PhysicsTelemetry.ConvexHullShapePacket.Vertex vertices = 2;
   int vertices_size() const;
   private:
   int _internal_vertices_size() const;
   public:
   void clear_vertices();
-  ::PhysicsTelemetry::ConvexHullShape_Vertex* mutable_vertices(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Vertex >*
+  ::PhysicsTelemetry::ConvexHullShapePacket_Vertex* mutable_vertices(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShapePacket_Vertex >*
       mutable_vertices();
   private:
-  const ::PhysicsTelemetry::ConvexHullShape_Vertex& _internal_vertices(int index) const;
-  ::PhysicsTelemetry::ConvexHullShape_Vertex* _internal_add_vertices();
+  const ::PhysicsTelemetry::ConvexHullShapePacket_Vertex& _internal_vertices(int index) const;
+  ::PhysicsTelemetry::ConvexHullShapePacket_Vertex* _internal_add_vertices();
   public:
-  const ::PhysicsTelemetry::ConvexHullShape_Vertex& vertices(int index) const;
-  ::PhysicsTelemetry::ConvexHullShape_Vertex* add_vertices();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Vertex >&
+  const ::PhysicsTelemetry::ConvexHullShapePacket_Vertex& vertices(int index) const;
+  ::PhysicsTelemetry::ConvexHullShapePacket_Vertex* add_vertices();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShapePacket_Vertex >&
       vertices() const;
 
-  // repeated .PhysicsTelemetry.ConvexHullShape.Face faces = 3;
+  // repeated .PhysicsTelemetry.ConvexHullShapePacket.Face faces = 3;
   int faces_size() const;
   private:
   int _internal_faces_size() const;
   public:
   void clear_faces();
-  ::PhysicsTelemetry::ConvexHullShape_Face* mutable_faces(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Face >*
+  ::PhysicsTelemetry::ConvexHullShapePacket_Face* mutable_faces(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShapePacket_Face >*
       mutable_faces();
   private:
-  const ::PhysicsTelemetry::ConvexHullShape_Face& _internal_faces(int index) const;
-  ::PhysicsTelemetry::ConvexHullShape_Face* _internal_add_faces();
+  const ::PhysicsTelemetry::ConvexHullShapePacket_Face& _internal_faces(int index) const;
+  ::PhysicsTelemetry::ConvexHullShapePacket_Face* _internal_add_faces();
   public:
-  const ::PhysicsTelemetry::ConvexHullShape_Face& faces(int index) const;
-  ::PhysicsTelemetry::ConvexHullShape_Face* add_faces();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Face >&
+  const ::PhysicsTelemetry::ConvexHullShapePacket_Face& faces(int index) const;
+  ::PhysicsTelemetry::ConvexHullShapePacket_Face* add_faces();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShapePacket_Face >&
       faces() const;
 
-  // .PhysicsTelemetry.ShapeBase base = 1;
+  // .PhysicsTelemetry.ShapeBasePacket base = 1;
   bool has_base() const;
   private:
   bool _internal_has_base() const;
   public:
   void clear_base();
-  const ::PhysicsTelemetry::ShapeBase& base() const;
-  ::PhysicsTelemetry::ShapeBase* release_base();
-  ::PhysicsTelemetry::ShapeBase* mutable_base();
-  void set_allocated_base(::PhysicsTelemetry::ShapeBase* base);
+  const ::PhysicsTelemetry::ShapeBasePacket& base() const;
+  ::PhysicsTelemetry::ShapeBasePacket* release_base();
+  ::PhysicsTelemetry::ShapeBasePacket* mutable_base();
+  void set_allocated_base(::PhysicsTelemetry::ShapeBasePacket* base);
   private:
-  const ::PhysicsTelemetry::ShapeBase& _internal_base() const;
-  ::PhysicsTelemetry::ShapeBase* _internal_mutable_base();
+  const ::PhysicsTelemetry::ShapeBasePacket& _internal_base() const;
+  ::PhysicsTelemetry::ShapeBasePacket* _internal_mutable_base();
   public:
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ConvexHullShape)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ConvexHullShapePacket)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Vertex > vertices_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Face > faces_;
-  ::PhysicsTelemetry::ShapeBase* base_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShapePacket_Vertex > vertices_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShapePacket_Face > faces_;
+  ::PhysicsTelemetry::ShapeBasePacket* base_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_shapes_2eproto;
 };
 // -------------------------------------------------------------------
 
-class ShapeCreated :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ShapeCreated) */ {
+class ShapeCreatedMessage :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ShapeCreatedMessage) */ {
  public:
-  ShapeCreated();
-  virtual ~ShapeCreated();
+  ShapeCreatedMessage();
+  virtual ~ShapeCreatedMessage();
 
-  ShapeCreated(const ShapeCreated& from);
-  ShapeCreated(ShapeCreated&& from) noexcept
-    : ShapeCreated() {
+  ShapeCreatedMessage(const ShapeCreatedMessage& from);
+  ShapeCreatedMessage(ShapeCreatedMessage&& from) noexcept
+    : ShapeCreatedMessage() {
     *this = ::std::move(from);
   }
 
-  inline ShapeCreated& operator=(const ShapeCreated& from) {
+  inline ShapeCreatedMessage& operator=(const ShapeCreatedMessage& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ShapeCreated& operator=(ShapeCreated&& from) noexcept {
+  inline ShapeCreatedMessage& operator=(ShapeCreatedMessage&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1088,37 +1088,37 @@ class ShapeCreated :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const ShapeCreated& default_instance();
+  static const ShapeCreatedMessage& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ShapeCreated* internal_default_instance() {
-    return reinterpret_cast<const ShapeCreated*>(
-               &_ShapeCreated_default_instance_);
+  static inline const ShapeCreatedMessage* internal_default_instance() {
+    return reinterpret_cast<const ShapeCreatedMessage*>(
+               &_ShapeCreatedMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     6;
 
-  friend void swap(ShapeCreated& a, ShapeCreated& b) {
+  friend void swap(ShapeCreatedMessage& a, ShapeCreatedMessage& b) {
     a.Swap(&b);
   }
-  inline void Swap(ShapeCreated* other) {
+  inline void Swap(ShapeCreatedMessage* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ShapeCreated* New() const final {
-    return CreateMaybeMessage<ShapeCreated>(nullptr);
+  inline ShapeCreatedMessage* New() const final {
+    return CreateMaybeMessage<ShapeCreatedMessage>(nullptr);
   }
 
-  ShapeCreated* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<ShapeCreated>(arena);
+  ShapeCreatedMessage* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ShapeCreatedMessage>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const ShapeCreated& from);
-  void MergeFrom(const ShapeCreated& from);
+  void CopyFrom(const ShapeCreatedMessage& from);
+  void MergeFrom(const ShapeCreatedMessage& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1132,10 +1132,10 @@ class ShapeCreated :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ShapeCreated* other);
+  void InternalSwap(ShapeCreatedMessage* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.ShapeCreated";
+    return "PhysicsTelemetry.ShapeCreatedMessage";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -1181,7 +1181,7 @@ class ShapeCreated :
   void _internal_set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ShapeCreated)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ShapeCreatedMessage)
  private:
   class _Internal;
 
@@ -1193,23 +1193,23 @@ class ShapeCreated :
 };
 // -------------------------------------------------------------------
 
-class ShapeChanged :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ShapeChanged) */ {
+class ShapeChangedMessage :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.ShapeChangedMessage) */ {
  public:
-  ShapeChanged();
-  virtual ~ShapeChanged();
+  ShapeChangedMessage();
+  virtual ~ShapeChangedMessage();
 
-  ShapeChanged(const ShapeChanged& from);
-  ShapeChanged(ShapeChanged&& from) noexcept
-    : ShapeChanged() {
+  ShapeChangedMessage(const ShapeChangedMessage& from);
+  ShapeChangedMessage(ShapeChangedMessage&& from) noexcept
+    : ShapeChangedMessage() {
     *this = ::std::move(from);
   }
 
-  inline ShapeChanged& operator=(const ShapeChanged& from) {
+  inline ShapeChangedMessage& operator=(const ShapeChangedMessage& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ShapeChanged& operator=(ShapeChanged&& from) noexcept {
+  inline ShapeChangedMessage& operator=(ShapeChangedMessage&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1227,37 +1227,37 @@ class ShapeChanged :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const ShapeChanged& default_instance();
+  static const ShapeChangedMessage& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ShapeChanged* internal_default_instance() {
-    return reinterpret_cast<const ShapeChanged*>(
-               &_ShapeChanged_default_instance_);
+  static inline const ShapeChangedMessage* internal_default_instance() {
+    return reinterpret_cast<const ShapeChangedMessage*>(
+               &_ShapeChangedMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     7;
 
-  friend void swap(ShapeChanged& a, ShapeChanged& b) {
+  friend void swap(ShapeChangedMessage& a, ShapeChangedMessage& b) {
     a.Swap(&b);
   }
-  inline void Swap(ShapeChanged* other) {
+  inline void Swap(ShapeChangedMessage* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ShapeChanged* New() const final {
-    return CreateMaybeMessage<ShapeChanged>(nullptr);
+  inline ShapeChangedMessage* New() const final {
+    return CreateMaybeMessage<ShapeChangedMessage>(nullptr);
   }
 
-  ShapeChanged* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<ShapeChanged>(arena);
+  ShapeChangedMessage* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ShapeChangedMessage>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const ShapeChanged& from);
-  void MergeFrom(const ShapeChanged& from);
+  void CopyFrom(const ShapeChangedMessage& from);
+  void MergeFrom(const ShapeChangedMessage& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -1271,10 +1271,10 @@ class ShapeChanged :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ShapeChanged* other);
+  void InternalSwap(ShapeChangedMessage* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.ShapeChanged";
+    return "PhysicsTelemetry.ShapeChangedMessage";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -1320,7 +1320,7 @@ class ShapeChanged :
   void _internal_set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ShapeChanged)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.ShapeChangedMessage)
  private:
   class _Internal;
 
@@ -1339,84 +1339,84 @@ class ShapeChanged :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// ShapeBase
+// ShapeBasePacket
 
 // uint32 Id = 1;
-inline void ShapeBase::clear_id() {
+inline void ShapeBasePacket::clear_id() {
   id_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ShapeBase::_internal_id() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ShapeBasePacket::_internal_id() const {
   return id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ShapeBase::id() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeBase.Id)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ShapeBasePacket::id() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeBasePacket.Id)
   return _internal_id();
 }
-inline void ShapeBase::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void ShapeBasePacket::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   id_ = value;
 }
-inline void ShapeBase::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void ShapeBasePacket::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeBase.Id)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeBasePacket.Id)
 }
 
 // bool hasLocalMatrix = 2;
-inline void ShapeBase::clear_haslocalmatrix() {
+inline void ShapeBasePacket::clear_haslocalmatrix() {
   haslocalmatrix_ = false;
 }
-inline bool ShapeBase::_internal_haslocalmatrix() const {
+inline bool ShapeBasePacket::_internal_haslocalmatrix() const {
   return haslocalmatrix_;
 }
-inline bool ShapeBase::haslocalmatrix() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeBase.hasLocalMatrix)
+inline bool ShapeBasePacket::haslocalmatrix() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeBasePacket.hasLocalMatrix)
   return _internal_haslocalmatrix();
 }
-inline void ShapeBase::_internal_set_haslocalmatrix(bool value) {
+inline void ShapeBasePacket::_internal_set_haslocalmatrix(bool value) {
   
   haslocalmatrix_ = value;
 }
-inline void ShapeBase::set_haslocalmatrix(bool value) {
+inline void ShapeBasePacket::set_haslocalmatrix(bool value) {
   _internal_set_haslocalmatrix(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeBase.hasLocalMatrix)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeBasePacket.hasLocalMatrix)
 }
 
-// .PhysicsTelemetry.Matrix4x4 localMatrix = 3;
-inline bool ShapeBase::_internal_has_localmatrix() const {
+// .PhysicsTelemetry.Matrix4x4Packet localMatrix = 3;
+inline bool ShapeBasePacket::_internal_has_localmatrix() const {
   return this != internal_default_instance() && localmatrix_ != nullptr;
 }
-inline bool ShapeBase::has_localmatrix() const {
+inline bool ShapeBasePacket::has_localmatrix() const {
   return _internal_has_localmatrix();
 }
-inline const ::PhysicsTelemetry::Matrix4x4& ShapeBase::_internal_localmatrix() const {
-  const ::PhysicsTelemetry::Matrix4x4* p = localmatrix_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Matrix4x4*>(
-      &::PhysicsTelemetry::_Matrix4x4_default_instance_);
+inline const ::PhysicsTelemetry::Matrix4x4Packet& ShapeBasePacket::_internal_localmatrix() const {
+  const ::PhysicsTelemetry::Matrix4x4Packet* p = localmatrix_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Matrix4x4Packet*>(
+      &::PhysicsTelemetry::_Matrix4x4Packet_default_instance_);
 }
-inline const ::PhysicsTelemetry::Matrix4x4& ShapeBase::localmatrix() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeBase.localMatrix)
+inline const ::PhysicsTelemetry::Matrix4x4Packet& ShapeBasePacket::localmatrix() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeBasePacket.localMatrix)
   return _internal_localmatrix();
 }
-inline ::PhysicsTelemetry::Matrix4x4* ShapeBase::release_localmatrix() {
-  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ShapeBase.localMatrix)
+inline ::PhysicsTelemetry::Matrix4x4Packet* ShapeBasePacket::release_localmatrix() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ShapeBasePacket.localMatrix)
   
-  ::PhysicsTelemetry::Matrix4x4* temp = localmatrix_;
+  ::PhysicsTelemetry::Matrix4x4Packet* temp = localmatrix_;
   localmatrix_ = nullptr;
   return temp;
 }
-inline ::PhysicsTelemetry::Matrix4x4* ShapeBase::_internal_mutable_localmatrix() {
+inline ::PhysicsTelemetry::Matrix4x4Packet* ShapeBasePacket::_internal_mutable_localmatrix() {
   
   if (localmatrix_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Matrix4x4>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Matrix4x4Packet>(GetArenaNoVirtual());
     localmatrix_ = p;
   }
   return localmatrix_;
 }
-inline ::PhysicsTelemetry::Matrix4x4* ShapeBase::mutable_localmatrix() {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ShapeBase.localMatrix)
+inline ::PhysicsTelemetry::Matrix4x4Packet* ShapeBasePacket::mutable_localmatrix() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ShapeBasePacket.localMatrix)
   return _internal_mutable_localmatrix();
 }
-inline void ShapeBase::set_allocated_localmatrix(::PhysicsTelemetry::Matrix4x4* localmatrix) {
+inline void ShapeBasePacket::set_allocated_localmatrix(::PhysicsTelemetry::Matrix4x4Packet* localmatrix) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(localmatrix_);
@@ -1432,75 +1432,75 @@ inline void ShapeBase::set_allocated_localmatrix(::PhysicsTelemetry::Matrix4x4* 
     
   }
   localmatrix_ = localmatrix;
-  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ShapeBase.localMatrix)
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ShapeBasePacket.localMatrix)
 }
 
 // .PhysicsTelemetry.ShapeType shapeType = 4;
-inline void ShapeBase::clear_shapetype() {
+inline void ShapeBasePacket::clear_shapetype() {
   shapetype_ = 0;
 }
-inline ::PhysicsTelemetry::ShapeType ShapeBase::_internal_shapetype() const {
+inline ::PhysicsTelemetry::ShapeType ShapeBasePacket::_internal_shapetype() const {
   return static_cast< ::PhysicsTelemetry::ShapeType >(shapetype_);
 }
-inline ::PhysicsTelemetry::ShapeType ShapeBase::shapetype() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeBase.shapeType)
+inline ::PhysicsTelemetry::ShapeType ShapeBasePacket::shapetype() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeBasePacket.shapeType)
   return _internal_shapetype();
 }
-inline void ShapeBase::_internal_set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeBasePacket::_internal_set_shapetype(::PhysicsTelemetry::ShapeType value) {
   
   shapetype_ = value;
 }
-inline void ShapeBase::set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeBasePacket::set_shapetype(::PhysicsTelemetry::ShapeType value) {
   _internal_set_shapetype(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeBase.shapeType)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeBasePacket.shapeType)
 }
 
 // -------------------------------------------------------------------
 
-// OBBShape
+// ObbShapePacket
 
-// .PhysicsTelemetry.ShapeBase base = 1;
-inline bool OBBShape::_internal_has_base() const {
+// .PhysicsTelemetry.ShapeBasePacket base = 1;
+inline bool ObbShapePacket::_internal_has_base() const {
   return this != internal_default_instance() && base_ != nullptr;
 }
-inline bool OBBShape::has_base() const {
+inline bool ObbShapePacket::has_base() const {
   return _internal_has_base();
 }
-inline void OBBShape::clear_base() {
+inline void ObbShapePacket::clear_base() {
   if (GetArenaNoVirtual() == nullptr && base_ != nullptr) {
     delete base_;
   }
   base_ = nullptr;
 }
-inline const ::PhysicsTelemetry::ShapeBase& OBBShape::_internal_base() const {
-  const ::PhysicsTelemetry::ShapeBase* p = base_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::ShapeBase*>(
-      &::PhysicsTelemetry::_ShapeBase_default_instance_);
+inline const ::PhysicsTelemetry::ShapeBasePacket& ObbShapePacket::_internal_base() const {
+  const ::PhysicsTelemetry::ShapeBasePacket* p = base_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::ShapeBasePacket*>(
+      &::PhysicsTelemetry::_ShapeBasePacket_default_instance_);
 }
-inline const ::PhysicsTelemetry::ShapeBase& OBBShape::base() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.OBBShape.base)
+inline const ::PhysicsTelemetry::ShapeBasePacket& ObbShapePacket::base() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ObbShapePacket.base)
   return _internal_base();
 }
-inline ::PhysicsTelemetry::ShapeBase* OBBShape::release_base() {
-  // @@protoc_insertion_point(field_release:PhysicsTelemetry.OBBShape.base)
+inline ::PhysicsTelemetry::ShapeBasePacket* ObbShapePacket::release_base() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ObbShapePacket.base)
   
-  ::PhysicsTelemetry::ShapeBase* temp = base_;
+  ::PhysicsTelemetry::ShapeBasePacket* temp = base_;
   base_ = nullptr;
   return temp;
 }
-inline ::PhysicsTelemetry::ShapeBase* OBBShape::_internal_mutable_base() {
+inline ::PhysicsTelemetry::ShapeBasePacket* ObbShapePacket::_internal_mutable_base() {
   
   if (base_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PhysicsTelemetry::ShapeBase>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::ShapeBasePacket>(GetArenaNoVirtual());
     base_ = p;
   }
   return base_;
 }
-inline ::PhysicsTelemetry::ShapeBase* OBBShape::mutable_base() {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.OBBShape.base)
+inline ::PhysicsTelemetry::ShapeBasePacket* ObbShapePacket::mutable_base() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ObbShapePacket.base)
   return _internal_mutable_base();
 }
-inline void OBBShape::set_allocated_base(::PhysicsTelemetry::ShapeBase* base) {
+inline void ObbShapePacket::set_allocated_base(::PhysicsTelemetry::ShapeBasePacket* base) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete base_;
@@ -1516,45 +1516,45 @@ inline void OBBShape::set_allocated_base(::PhysicsTelemetry::ShapeBase* base) {
     
   }
   base_ = base;
-  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.OBBShape.base)
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ObbShapePacket.base)
 }
 
-// .PhysicsTelemetry.Vector3 halfExtents = 2;
-inline bool OBBShape::_internal_has_halfextents() const {
+// .PhysicsTelemetry.Vector3Packet halfExtents = 2;
+inline bool ObbShapePacket::_internal_has_halfextents() const {
   return this != internal_default_instance() && halfextents_ != nullptr;
 }
-inline bool OBBShape::has_halfextents() const {
+inline bool ObbShapePacket::has_halfextents() const {
   return _internal_has_halfextents();
 }
-inline const ::PhysicsTelemetry::Vector3& OBBShape::_internal_halfextents() const {
-  const ::PhysicsTelemetry::Vector3* p = halfextents_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector3*>(
-      &::PhysicsTelemetry::_Vector3_default_instance_);
+inline const ::PhysicsTelemetry::Vector3Packet& ObbShapePacket::_internal_halfextents() const {
+  const ::PhysicsTelemetry::Vector3Packet* p = halfextents_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector3Packet*>(
+      &::PhysicsTelemetry::_Vector3Packet_default_instance_);
 }
-inline const ::PhysicsTelemetry::Vector3& OBBShape::halfextents() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.OBBShape.halfExtents)
+inline const ::PhysicsTelemetry::Vector3Packet& ObbShapePacket::halfextents() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ObbShapePacket.halfExtents)
   return _internal_halfextents();
 }
-inline ::PhysicsTelemetry::Vector3* OBBShape::release_halfextents() {
-  // @@protoc_insertion_point(field_release:PhysicsTelemetry.OBBShape.halfExtents)
+inline ::PhysicsTelemetry::Vector3Packet* ObbShapePacket::release_halfextents() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ObbShapePacket.halfExtents)
   
-  ::PhysicsTelemetry::Vector3* temp = halfextents_;
+  ::PhysicsTelemetry::Vector3Packet* temp = halfextents_;
   halfextents_ = nullptr;
   return temp;
 }
-inline ::PhysicsTelemetry::Vector3* OBBShape::_internal_mutable_halfextents() {
+inline ::PhysicsTelemetry::Vector3Packet* ObbShapePacket::_internal_mutable_halfextents() {
   
   if (halfextents_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector3>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector3Packet>(GetArenaNoVirtual());
     halfextents_ = p;
   }
   return halfextents_;
 }
-inline ::PhysicsTelemetry::Vector3* OBBShape::mutable_halfextents() {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.OBBShape.halfExtents)
+inline ::PhysicsTelemetry::Vector3Packet* ObbShapePacket::mutable_halfextents() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ObbShapePacket.halfExtents)
   return _internal_mutable_halfextents();
 }
-inline void OBBShape::set_allocated_halfextents(::PhysicsTelemetry::Vector3* halfextents) {
+inline void ObbShapePacket::set_allocated_halfextents(::PhysicsTelemetry::Vector3Packet* halfextents) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(halfextents_);
@@ -1570,55 +1570,55 @@ inline void OBBShape::set_allocated_halfextents(::PhysicsTelemetry::Vector3* hal
     
   }
   halfextents_ = halfextents;
-  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.OBBShape.halfExtents)
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ObbShapePacket.halfExtents)
 }
 
 // -------------------------------------------------------------------
 
-// TetrahedronShape
+// TetrahedronShapePacket
 
-// .PhysicsTelemetry.ShapeBase base = 1;
-inline bool TetrahedronShape::_internal_has_base() const {
+// .PhysicsTelemetry.ShapeBasePacket base = 1;
+inline bool TetrahedronShapePacket::_internal_has_base() const {
   return this != internal_default_instance() && base_ != nullptr;
 }
-inline bool TetrahedronShape::has_base() const {
+inline bool TetrahedronShapePacket::has_base() const {
   return _internal_has_base();
 }
-inline void TetrahedronShape::clear_base() {
+inline void TetrahedronShapePacket::clear_base() {
   if (GetArenaNoVirtual() == nullptr && base_ != nullptr) {
     delete base_;
   }
   base_ = nullptr;
 }
-inline const ::PhysicsTelemetry::ShapeBase& TetrahedronShape::_internal_base() const {
-  const ::PhysicsTelemetry::ShapeBase* p = base_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::ShapeBase*>(
-      &::PhysicsTelemetry::_ShapeBase_default_instance_);
+inline const ::PhysicsTelemetry::ShapeBasePacket& TetrahedronShapePacket::_internal_base() const {
+  const ::PhysicsTelemetry::ShapeBasePacket* p = base_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::ShapeBasePacket*>(
+      &::PhysicsTelemetry::_ShapeBasePacket_default_instance_);
 }
-inline const ::PhysicsTelemetry::ShapeBase& TetrahedronShape::base() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.TetrahedronShape.base)
+inline const ::PhysicsTelemetry::ShapeBasePacket& TetrahedronShapePacket::base() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.TetrahedronShapePacket.base)
   return _internal_base();
 }
-inline ::PhysicsTelemetry::ShapeBase* TetrahedronShape::release_base() {
-  // @@protoc_insertion_point(field_release:PhysicsTelemetry.TetrahedronShape.base)
+inline ::PhysicsTelemetry::ShapeBasePacket* TetrahedronShapePacket::release_base() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.TetrahedronShapePacket.base)
   
-  ::PhysicsTelemetry::ShapeBase* temp = base_;
+  ::PhysicsTelemetry::ShapeBasePacket* temp = base_;
   base_ = nullptr;
   return temp;
 }
-inline ::PhysicsTelemetry::ShapeBase* TetrahedronShape::_internal_mutable_base() {
+inline ::PhysicsTelemetry::ShapeBasePacket* TetrahedronShapePacket::_internal_mutable_base() {
   
   if (base_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PhysicsTelemetry::ShapeBase>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::ShapeBasePacket>(GetArenaNoVirtual());
     base_ = p;
   }
   return base_;
 }
-inline ::PhysicsTelemetry::ShapeBase* TetrahedronShape::mutable_base() {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.TetrahedronShape.base)
+inline ::PhysicsTelemetry::ShapeBasePacket* TetrahedronShapePacket::mutable_base() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.TetrahedronShapePacket.base)
   return _internal_mutable_base();
 }
-inline void TetrahedronShape::set_allocated_base(::PhysicsTelemetry::ShapeBase* base) {
+inline void TetrahedronShapePacket::set_allocated_base(::PhysicsTelemetry::ShapeBasePacket* base) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete base_;
@@ -1634,49 +1634,49 @@ inline void TetrahedronShape::set_allocated_base(::PhysicsTelemetry::ShapeBase* 
     
   }
   base_ = base;
-  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.TetrahedronShape.base)
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.TetrahedronShapePacket.base)
 }
 
 // -------------------------------------------------------------------
 
-// ConvexHullShape_Vertex
+// ConvexHullShapePacket_Vertex
 
-// .PhysicsTelemetry.Vector3 position = 1;
-inline bool ConvexHullShape_Vertex::_internal_has_position() const {
+// .PhysicsTelemetry.Vector3Packet position = 1;
+inline bool ConvexHullShapePacket_Vertex::_internal_has_position() const {
   return this != internal_default_instance() && position_ != nullptr;
 }
-inline bool ConvexHullShape_Vertex::has_position() const {
+inline bool ConvexHullShapePacket_Vertex::has_position() const {
   return _internal_has_position();
 }
-inline const ::PhysicsTelemetry::Vector3& ConvexHullShape_Vertex::_internal_position() const {
-  const ::PhysicsTelemetry::Vector3* p = position_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector3*>(
-      &::PhysicsTelemetry::_Vector3_default_instance_);
+inline const ::PhysicsTelemetry::Vector3Packet& ConvexHullShapePacket_Vertex::_internal_position() const {
+  const ::PhysicsTelemetry::Vector3Packet* p = position_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector3Packet*>(
+      &::PhysicsTelemetry::_Vector3Packet_default_instance_);
 }
-inline const ::PhysicsTelemetry::Vector3& ConvexHullShape_Vertex::position() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.Vertex.position)
+inline const ::PhysicsTelemetry::Vector3Packet& ConvexHullShapePacket_Vertex::position() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShapePacket.Vertex.position)
   return _internal_position();
 }
-inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::release_position() {
-  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ConvexHullShape.Vertex.position)
+inline ::PhysicsTelemetry::Vector3Packet* ConvexHullShapePacket_Vertex::release_position() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ConvexHullShapePacket.Vertex.position)
   
-  ::PhysicsTelemetry::Vector3* temp = position_;
+  ::PhysicsTelemetry::Vector3Packet* temp = position_;
   position_ = nullptr;
   return temp;
 }
-inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::_internal_mutable_position() {
+inline ::PhysicsTelemetry::Vector3Packet* ConvexHullShapePacket_Vertex::_internal_mutable_position() {
   
   if (position_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector3>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector3Packet>(GetArenaNoVirtual());
     position_ = p;
   }
   return position_;
 }
-inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::mutable_position() {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShape.Vertex.position)
+inline ::PhysicsTelemetry::Vector3Packet* ConvexHullShapePacket_Vertex::mutable_position() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShapePacket.Vertex.position)
   return _internal_mutable_position();
 }
-inline void ConvexHullShape_Vertex::set_allocated_position(::PhysicsTelemetry::Vector3* position) {
+inline void ConvexHullShapePacket_Vertex::set_allocated_position(::PhysicsTelemetry::Vector3Packet* position) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(position_);
@@ -1692,45 +1692,45 @@ inline void ConvexHullShape_Vertex::set_allocated_position(::PhysicsTelemetry::V
     
   }
   position_ = position;
-  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ConvexHullShape.Vertex.position)
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ConvexHullShapePacket.Vertex.position)
 }
 
-// .PhysicsTelemetry.Vector3 normal = 2;
-inline bool ConvexHullShape_Vertex::_internal_has_normal() const {
+// .PhysicsTelemetry.Vector3Packet normal = 2;
+inline bool ConvexHullShapePacket_Vertex::_internal_has_normal() const {
   return this != internal_default_instance() && normal_ != nullptr;
 }
-inline bool ConvexHullShape_Vertex::has_normal() const {
+inline bool ConvexHullShapePacket_Vertex::has_normal() const {
   return _internal_has_normal();
 }
-inline const ::PhysicsTelemetry::Vector3& ConvexHullShape_Vertex::_internal_normal() const {
-  const ::PhysicsTelemetry::Vector3* p = normal_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector3*>(
-      &::PhysicsTelemetry::_Vector3_default_instance_);
+inline const ::PhysicsTelemetry::Vector3Packet& ConvexHullShapePacket_Vertex::_internal_normal() const {
+  const ::PhysicsTelemetry::Vector3Packet* p = normal_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector3Packet*>(
+      &::PhysicsTelemetry::_Vector3Packet_default_instance_);
 }
-inline const ::PhysicsTelemetry::Vector3& ConvexHullShape_Vertex::normal() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.Vertex.normal)
+inline const ::PhysicsTelemetry::Vector3Packet& ConvexHullShapePacket_Vertex::normal() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShapePacket.Vertex.normal)
   return _internal_normal();
 }
-inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::release_normal() {
-  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ConvexHullShape.Vertex.normal)
+inline ::PhysicsTelemetry::Vector3Packet* ConvexHullShapePacket_Vertex::release_normal() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ConvexHullShapePacket.Vertex.normal)
   
-  ::PhysicsTelemetry::Vector3* temp = normal_;
+  ::PhysicsTelemetry::Vector3Packet* temp = normal_;
   normal_ = nullptr;
   return temp;
 }
-inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::_internal_mutable_normal() {
+inline ::PhysicsTelemetry::Vector3Packet* ConvexHullShapePacket_Vertex::_internal_mutable_normal() {
   
   if (normal_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector3>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector3Packet>(GetArenaNoVirtual());
     normal_ = p;
   }
   return normal_;
 }
-inline ::PhysicsTelemetry::Vector3* ConvexHullShape_Vertex::mutable_normal() {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShape.Vertex.normal)
+inline ::PhysicsTelemetry::Vector3Packet* ConvexHullShapePacket_Vertex::mutable_normal() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShapePacket.Vertex.normal)
   return _internal_mutable_normal();
 }
-inline void ConvexHullShape_Vertex::set_allocated_normal(::PhysicsTelemetry::Vector3* normal) {
+inline void ConvexHullShapePacket_Vertex::set_allocated_normal(::PhysicsTelemetry::Vector3Packet* normal) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(normal_);
@@ -1746,119 +1746,119 @@ inline void ConvexHullShape_Vertex::set_allocated_normal(::PhysicsTelemetry::Vec
     
   }
   normal_ = normal;
-  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ConvexHullShape.Vertex.normal)
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ConvexHullShapePacket.Vertex.normal)
 }
 
 // -------------------------------------------------------------------
 
-// ConvexHullShape_Face
+// ConvexHullShapePacket_Face
 
 // int32 vert0 = 1;
-inline void ConvexHullShape_Face::clear_vert0() {
+inline void ConvexHullShapePacket_Face::clear_vert0() {
   vert0_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::_internal_vert0() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShapePacket_Face::_internal_vert0() const {
   return vert0_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::vert0() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.Face.vert0)
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShapePacket_Face::vert0() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShapePacket.Face.vert0)
   return _internal_vert0();
 }
-inline void ConvexHullShape_Face::_internal_set_vert0(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ConvexHullShapePacket_Face::_internal_set_vert0(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   vert0_ = value;
 }
-inline void ConvexHullShape_Face::set_vert0(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ConvexHullShapePacket_Face::set_vert0(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_vert0(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ConvexHullShape.Face.vert0)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ConvexHullShapePacket.Face.vert0)
 }
 
 // int32 vert1 = 2;
-inline void ConvexHullShape_Face::clear_vert1() {
+inline void ConvexHullShapePacket_Face::clear_vert1() {
   vert1_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::_internal_vert1() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShapePacket_Face::_internal_vert1() const {
   return vert1_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::vert1() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.Face.vert1)
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShapePacket_Face::vert1() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShapePacket.Face.vert1)
   return _internal_vert1();
 }
-inline void ConvexHullShape_Face::_internal_set_vert1(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ConvexHullShapePacket_Face::_internal_set_vert1(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   vert1_ = value;
 }
-inline void ConvexHullShape_Face::set_vert1(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ConvexHullShapePacket_Face::set_vert1(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_vert1(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ConvexHullShape.Face.vert1)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ConvexHullShapePacket.Face.vert1)
 }
 
 // int32 vert2 = 3;
-inline void ConvexHullShape_Face::clear_vert2() {
+inline void ConvexHullShapePacket_Face::clear_vert2() {
   vert2_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::_internal_vert2() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShapePacket_Face::_internal_vert2() const {
   return vert2_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShape_Face::vert2() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.Face.vert2)
+inline ::PROTOBUF_NAMESPACE_ID::int32 ConvexHullShapePacket_Face::vert2() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShapePacket.Face.vert2)
   return _internal_vert2();
 }
-inline void ConvexHullShape_Face::_internal_set_vert2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ConvexHullShapePacket_Face::_internal_set_vert2(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   vert2_ = value;
 }
-inline void ConvexHullShape_Face::set_vert2(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ConvexHullShapePacket_Face::set_vert2(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_vert2(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ConvexHullShape.Face.vert2)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ConvexHullShapePacket.Face.vert2)
 }
 
 // -------------------------------------------------------------------
 
-// ConvexHullShape
+// ConvexHullShapePacket
 
-// .PhysicsTelemetry.ShapeBase base = 1;
-inline bool ConvexHullShape::_internal_has_base() const {
+// .PhysicsTelemetry.ShapeBasePacket base = 1;
+inline bool ConvexHullShapePacket::_internal_has_base() const {
   return this != internal_default_instance() && base_ != nullptr;
 }
-inline bool ConvexHullShape::has_base() const {
+inline bool ConvexHullShapePacket::has_base() const {
   return _internal_has_base();
 }
-inline void ConvexHullShape::clear_base() {
+inline void ConvexHullShapePacket::clear_base() {
   if (GetArenaNoVirtual() == nullptr && base_ != nullptr) {
     delete base_;
   }
   base_ = nullptr;
 }
-inline const ::PhysicsTelemetry::ShapeBase& ConvexHullShape::_internal_base() const {
-  const ::PhysicsTelemetry::ShapeBase* p = base_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::ShapeBase*>(
-      &::PhysicsTelemetry::_ShapeBase_default_instance_);
+inline const ::PhysicsTelemetry::ShapeBasePacket& ConvexHullShapePacket::_internal_base() const {
+  const ::PhysicsTelemetry::ShapeBasePacket* p = base_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::ShapeBasePacket*>(
+      &::PhysicsTelemetry::_ShapeBasePacket_default_instance_);
 }
-inline const ::PhysicsTelemetry::ShapeBase& ConvexHullShape::base() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.base)
+inline const ::PhysicsTelemetry::ShapeBasePacket& ConvexHullShapePacket::base() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShapePacket.base)
   return _internal_base();
 }
-inline ::PhysicsTelemetry::ShapeBase* ConvexHullShape::release_base() {
-  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ConvexHullShape.base)
+inline ::PhysicsTelemetry::ShapeBasePacket* ConvexHullShapePacket::release_base() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.ConvexHullShapePacket.base)
   
-  ::PhysicsTelemetry::ShapeBase* temp = base_;
+  ::PhysicsTelemetry::ShapeBasePacket* temp = base_;
   base_ = nullptr;
   return temp;
 }
-inline ::PhysicsTelemetry::ShapeBase* ConvexHullShape::_internal_mutable_base() {
+inline ::PhysicsTelemetry::ShapeBasePacket* ConvexHullShapePacket::_internal_mutable_base() {
   
   if (base_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PhysicsTelemetry::ShapeBase>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::ShapeBasePacket>(GetArenaNoVirtual());
     base_ = p;
   }
   return base_;
 }
-inline ::PhysicsTelemetry::ShapeBase* ConvexHullShape::mutable_base() {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShape.base)
+inline ::PhysicsTelemetry::ShapeBasePacket* ConvexHullShapePacket::mutable_base() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShapePacket.base)
   return _internal_mutable_base();
 }
-inline void ConvexHullShape::set_allocated_base(::PhysicsTelemetry::ShapeBase* base) {
+inline void ConvexHullShapePacket::set_allocated_base(::PhysicsTelemetry::ShapeBasePacket* base) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete base_;
@@ -1874,173 +1874,173 @@ inline void ConvexHullShape::set_allocated_base(::PhysicsTelemetry::ShapeBase* b
     
   }
   base_ = base;
-  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ConvexHullShape.base)
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.ConvexHullShapePacket.base)
 }
 
-// repeated .PhysicsTelemetry.ConvexHullShape.Vertex vertices = 2;
-inline int ConvexHullShape::_internal_vertices_size() const {
+// repeated .PhysicsTelemetry.ConvexHullShapePacket.Vertex vertices = 2;
+inline int ConvexHullShapePacket::_internal_vertices_size() const {
   return vertices_.size();
 }
-inline int ConvexHullShape::vertices_size() const {
+inline int ConvexHullShapePacket::vertices_size() const {
   return _internal_vertices_size();
 }
-inline void ConvexHullShape::clear_vertices() {
+inline void ConvexHullShapePacket::clear_vertices() {
   vertices_.Clear();
 }
-inline ::PhysicsTelemetry::ConvexHullShape_Vertex* ConvexHullShape::mutable_vertices(int index) {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShape.vertices)
+inline ::PhysicsTelemetry::ConvexHullShapePacket_Vertex* ConvexHullShapePacket::mutable_vertices(int index) {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShapePacket.vertices)
   return vertices_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Vertex >*
-ConvexHullShape::mutable_vertices() {
-  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.ConvexHullShape.vertices)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShapePacket_Vertex >*
+ConvexHullShapePacket::mutable_vertices() {
+  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.ConvexHullShapePacket.vertices)
   return &vertices_;
 }
-inline const ::PhysicsTelemetry::ConvexHullShape_Vertex& ConvexHullShape::_internal_vertices(int index) const {
+inline const ::PhysicsTelemetry::ConvexHullShapePacket_Vertex& ConvexHullShapePacket::_internal_vertices(int index) const {
   return vertices_.Get(index);
 }
-inline const ::PhysicsTelemetry::ConvexHullShape_Vertex& ConvexHullShape::vertices(int index) const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.vertices)
+inline const ::PhysicsTelemetry::ConvexHullShapePacket_Vertex& ConvexHullShapePacket::vertices(int index) const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShapePacket.vertices)
   return _internal_vertices(index);
 }
-inline ::PhysicsTelemetry::ConvexHullShape_Vertex* ConvexHullShape::_internal_add_vertices() {
+inline ::PhysicsTelemetry::ConvexHullShapePacket_Vertex* ConvexHullShapePacket::_internal_add_vertices() {
   return vertices_.Add();
 }
-inline ::PhysicsTelemetry::ConvexHullShape_Vertex* ConvexHullShape::add_vertices() {
-  // @@protoc_insertion_point(field_add:PhysicsTelemetry.ConvexHullShape.vertices)
+inline ::PhysicsTelemetry::ConvexHullShapePacket_Vertex* ConvexHullShapePacket::add_vertices() {
+  // @@protoc_insertion_point(field_add:PhysicsTelemetry.ConvexHullShapePacket.vertices)
   return _internal_add_vertices();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Vertex >&
-ConvexHullShape::vertices() const {
-  // @@protoc_insertion_point(field_list:PhysicsTelemetry.ConvexHullShape.vertices)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShapePacket_Vertex >&
+ConvexHullShapePacket::vertices() const {
+  // @@protoc_insertion_point(field_list:PhysicsTelemetry.ConvexHullShapePacket.vertices)
   return vertices_;
 }
 
-// repeated .PhysicsTelemetry.ConvexHullShape.Face faces = 3;
-inline int ConvexHullShape::_internal_faces_size() const {
+// repeated .PhysicsTelemetry.ConvexHullShapePacket.Face faces = 3;
+inline int ConvexHullShapePacket::_internal_faces_size() const {
   return faces_.size();
 }
-inline int ConvexHullShape::faces_size() const {
+inline int ConvexHullShapePacket::faces_size() const {
   return _internal_faces_size();
 }
-inline void ConvexHullShape::clear_faces() {
+inline void ConvexHullShapePacket::clear_faces() {
   faces_.Clear();
 }
-inline ::PhysicsTelemetry::ConvexHullShape_Face* ConvexHullShape::mutable_faces(int index) {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShape.faces)
+inline ::PhysicsTelemetry::ConvexHullShapePacket_Face* ConvexHullShapePacket::mutable_faces(int index) {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.ConvexHullShapePacket.faces)
   return faces_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Face >*
-ConvexHullShape::mutable_faces() {
-  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.ConvexHullShape.faces)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShapePacket_Face >*
+ConvexHullShapePacket::mutable_faces() {
+  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.ConvexHullShapePacket.faces)
   return &faces_;
 }
-inline const ::PhysicsTelemetry::ConvexHullShape_Face& ConvexHullShape::_internal_faces(int index) const {
+inline const ::PhysicsTelemetry::ConvexHullShapePacket_Face& ConvexHullShapePacket::_internal_faces(int index) const {
   return faces_.Get(index);
 }
-inline const ::PhysicsTelemetry::ConvexHullShape_Face& ConvexHullShape::faces(int index) const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShape.faces)
+inline const ::PhysicsTelemetry::ConvexHullShapePacket_Face& ConvexHullShapePacket::faces(int index) const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ConvexHullShapePacket.faces)
   return _internal_faces(index);
 }
-inline ::PhysicsTelemetry::ConvexHullShape_Face* ConvexHullShape::_internal_add_faces() {
+inline ::PhysicsTelemetry::ConvexHullShapePacket_Face* ConvexHullShapePacket::_internal_add_faces() {
   return faces_.Add();
 }
-inline ::PhysicsTelemetry::ConvexHullShape_Face* ConvexHullShape::add_faces() {
-  // @@protoc_insertion_point(field_add:PhysicsTelemetry.ConvexHullShape.faces)
+inline ::PhysicsTelemetry::ConvexHullShapePacket_Face* ConvexHullShapePacket::add_faces() {
+  // @@protoc_insertion_point(field_add:PhysicsTelemetry.ConvexHullShapePacket.faces)
   return _internal_add_faces();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShape_Face >&
-ConvexHullShape::faces() const {
-  // @@protoc_insertion_point(field_list:PhysicsTelemetry.ConvexHullShape.faces)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::ConvexHullShapePacket_Face >&
+ConvexHullShapePacket::faces() const {
+  // @@protoc_insertion_point(field_list:PhysicsTelemetry.ConvexHullShapePacket.faces)
   return faces_;
 }
 
 // -------------------------------------------------------------------
 
-// ShapeCreated
+// ShapeCreatedMessage
 
 // .PhysicsTelemetry.ShapeType shapeType = 1;
-inline void ShapeCreated::clear_shapetype() {
+inline void ShapeCreatedMessage::clear_shapetype() {
   shapetype_ = 0;
 }
-inline ::PhysicsTelemetry::ShapeType ShapeCreated::_internal_shapetype() const {
+inline ::PhysicsTelemetry::ShapeType ShapeCreatedMessage::_internal_shapetype() const {
   return static_cast< ::PhysicsTelemetry::ShapeType >(shapetype_);
 }
-inline ::PhysicsTelemetry::ShapeType ShapeCreated::shapetype() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeCreated.shapeType)
+inline ::PhysicsTelemetry::ShapeType ShapeCreatedMessage::shapetype() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeCreatedMessage.shapeType)
   return _internal_shapetype();
 }
-inline void ShapeCreated::_internal_set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeCreatedMessage::_internal_set_shapetype(::PhysicsTelemetry::ShapeType value) {
   
   shapetype_ = value;
 }
-inline void ShapeCreated::set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeCreatedMessage::set_shapetype(::PhysicsTelemetry::ShapeType value) {
   _internal_set_shapetype(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeCreated.shapeType)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeCreatedMessage.shapeType)
 }
 
 // int32 shapeSize = 2;
-inline void ShapeCreated::clear_shapesize() {
+inline void ShapeCreatedMessage::clear_shapesize() {
   shapesize_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ShapeCreated::_internal_shapesize() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 ShapeCreatedMessage::_internal_shapesize() const {
   return shapesize_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ShapeCreated::shapesize() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeCreated.shapeSize)
+inline ::PROTOBUF_NAMESPACE_ID::int32 ShapeCreatedMessage::shapesize() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeCreatedMessage.shapeSize)
   return _internal_shapesize();
 }
-inline void ShapeCreated::_internal_set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ShapeCreatedMessage::_internal_set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   shapesize_ = value;
 }
-inline void ShapeCreated::set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ShapeCreatedMessage::set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_shapesize(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeCreated.shapeSize)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeCreatedMessage.shapeSize)
 }
 
 // -------------------------------------------------------------------
 
-// ShapeChanged
+// ShapeChangedMessage
 
 // .PhysicsTelemetry.ShapeType shapeType = 1;
-inline void ShapeChanged::clear_shapetype() {
+inline void ShapeChangedMessage::clear_shapetype() {
   shapetype_ = 0;
 }
-inline ::PhysicsTelemetry::ShapeType ShapeChanged::_internal_shapetype() const {
+inline ::PhysicsTelemetry::ShapeType ShapeChangedMessage::_internal_shapetype() const {
   return static_cast< ::PhysicsTelemetry::ShapeType >(shapetype_);
 }
-inline ::PhysicsTelemetry::ShapeType ShapeChanged::shapetype() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeChanged.shapeType)
+inline ::PhysicsTelemetry::ShapeType ShapeChangedMessage::shapetype() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeChangedMessage.shapeType)
   return _internal_shapetype();
 }
-inline void ShapeChanged::_internal_set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeChangedMessage::_internal_set_shapetype(::PhysicsTelemetry::ShapeType value) {
   
   shapetype_ = value;
 }
-inline void ShapeChanged::set_shapetype(::PhysicsTelemetry::ShapeType value) {
+inline void ShapeChangedMessage::set_shapetype(::PhysicsTelemetry::ShapeType value) {
   _internal_set_shapetype(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeChanged.shapeType)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeChangedMessage.shapeType)
 }
 
 // int32 shapeSize = 2;
-inline void ShapeChanged::clear_shapesize() {
+inline void ShapeChangedMessage::clear_shapesize() {
   shapesize_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ShapeChanged::_internal_shapesize() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 ShapeChangedMessage::_internal_shapesize() const {
   return shapesize_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 ShapeChanged::shapesize() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeChanged.shapeSize)
+inline ::PROTOBUF_NAMESPACE_ID::int32 ShapeChangedMessage::shapesize() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeChangedMessage.shapeSize)
   return _internal_shapesize();
 }
-inline void ShapeChanged::_internal_set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ShapeChangedMessage::_internal_set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   shapesize_ = value;
 }
-inline void ShapeChanged::set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void ShapeChangedMessage::set_shapesize(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_shapesize(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeChanged.shapeSize)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeChangedMessage.shapeSize)
 }
 
 #ifdef __GNUC__

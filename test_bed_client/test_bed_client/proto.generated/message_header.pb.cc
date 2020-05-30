@@ -15,24 +15,24 @@
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 namespace PhysicsTelemetry {
-class MessageHeaderDefaultTypeInternal {
+class MessageHeaderMessageDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<MessageHeader> _instance;
-} _MessageHeader_default_instance_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<MessageHeaderMessage> _instance;
+} _MessageHeaderMessage_default_instance_;
 }  // namespace PhysicsTelemetry
-static void InitDefaultsscc_info_MessageHeader_message_5fheader_2eproto() {
+static void InitDefaultsscc_info_MessageHeaderMessage_message_5fheader_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::PhysicsTelemetry::_MessageHeader_default_instance_;
-    new (ptr) ::PhysicsTelemetry::MessageHeader();
+    void* ptr = &::PhysicsTelemetry::_MessageHeaderMessage_default_instance_;
+    new (ptr) ::PhysicsTelemetry::MessageHeaderMessage();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::PhysicsTelemetry::MessageHeader::InitAsDefaultInstance();
+  ::PhysicsTelemetry::MessageHeaderMessage::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_MessageHeader_message_5fheader_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_MessageHeader_message_5fheader_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_MessageHeaderMessage_message_5fheader_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_MessageHeaderMessage_message_5fheader_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_message_5fheader_2eproto[1];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_message_5fheader_2eproto[1];
@@ -40,40 +40,41 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_s
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_message_5fheader_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::MessageHeader, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::MessageHeaderMessage, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::MessageHeader, frameid_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::MessageHeader, messagetype_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::MessageHeader, datasize_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::MessageHeaderMessage, frameid_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::MessageHeaderMessage, messagetype_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::MessageHeaderMessage, datasize_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::PhysicsTelemetry::MessageHeader)},
+  { 0, -1, sizeof(::PhysicsTelemetry::MessageHeaderMessage)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_MessageHeader_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_MessageHeaderMessage_default_instance_),
 };
 
 const char descriptor_table_protodef_message_5fheader_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\024message_header.proto\022\020PhysicsTelemetry"
-  "\"\274\001\n\rMessageHeader\022\017\n\007frameId\030\001 \001(\r\022@\n\013m"
-  "essageType\030\002 \001(\0162+.PhysicsTelemetry.Mess"
-  "ageHeader.MessageType\022\020\n\010dataSize\030\003 \001(\005\""
-  "F\n\013MessageType\022\023\n\017RigidBodyUpdate\020\000\022\020\n\014S"
-  "hapeCreated\020\001\022\020\n\014ShapeChanged\020\002B\037\252\002\034Phys"
-  "ics.Telemetry.Serialisedb\006proto3"
+  "\"\312\001\n\024MessageHeaderMessage\022\017\n\007frameId\030\001 \001"
+  "(\r\022G\n\013messageType\030\002 \001(\01622.PhysicsTelemet"
+  "ry.MessageHeaderMessage.MessageType\022\020\n\010d"
+  "ataSize\030\003 \001(\005\"F\n\013MessageType\022\023\n\017RigidBod"
+  "yUpdate\020\000\022\020\n\014ShapeCreated\020\001\022\020\n\014ShapeChan"
+  "ged\020\002B\037\252\002\034Physics.Telemetry.Serialisedb\006"
+  "proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_message_5fheader_2eproto_deps[1] = {
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_message_5fheader_2eproto_sccs[1] = {
-  &scc_info_MessageHeader_message_5fheader_2eproto.base,
+  &scc_info_MessageHeaderMessage_message_5fheader_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_message_5fheader_2eproto_once;
 static bool descriptor_table_message_5fheader_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_message_5fheader_2eproto = {
-  &descriptor_table_message_5fheader_2eproto_initialized, descriptor_table_protodef_message_5fheader_2eproto, "message_header.proto", 272,
+  &descriptor_table_message_5fheader_2eproto_initialized, descriptor_table_protodef_message_5fheader_2eproto, "message_header.proto", 286,
   &descriptor_table_message_5fheader_2eproto_once, descriptor_table_message_5fheader_2eproto_sccs, descriptor_table_message_5fheader_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_message_5fheader_2eproto::offsets,
   file_level_metadata_message_5fheader_2eproto, 1, file_level_enum_descriptors_message_5fheader_2eproto, file_level_service_descriptors_message_5fheader_2eproto,
@@ -82,11 +83,11 @@ const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_messag
 // Force running AddDescriptors() at dynamic initialization time.
 static bool dynamic_init_dummy_message_5fheader_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_message_5fheader_2eproto), true);
 namespace PhysicsTelemetry {
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageHeader_MessageType_descriptor() {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageHeaderMessage_MessageType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_message_5fheader_2eproto);
   return file_level_enum_descriptors_message_5fheader_2eproto[0];
 }
-bool MessageHeader_MessageType_IsValid(int value) {
+bool MessageHeaderMessage_MessageType_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
@@ -98,62 +99,62 @@ bool MessageHeader_MessageType_IsValid(int value) {
 }
 
 #if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
-constexpr MessageHeader_MessageType MessageHeader::RigidBodyUpdate;
-constexpr MessageHeader_MessageType MessageHeader::ShapeCreated;
-constexpr MessageHeader_MessageType MessageHeader::ShapeChanged;
-constexpr MessageHeader_MessageType MessageHeader::MessageType_MIN;
-constexpr MessageHeader_MessageType MessageHeader::MessageType_MAX;
-constexpr int MessageHeader::MessageType_ARRAYSIZE;
+constexpr MessageHeaderMessage_MessageType MessageHeaderMessage::RigidBodyUpdate;
+constexpr MessageHeaderMessage_MessageType MessageHeaderMessage::ShapeCreated;
+constexpr MessageHeaderMessage_MessageType MessageHeaderMessage::ShapeChanged;
+constexpr MessageHeaderMessage_MessageType MessageHeaderMessage::MessageType_MIN;
+constexpr MessageHeaderMessage_MessageType MessageHeaderMessage::MessageType_MAX;
+constexpr int MessageHeaderMessage::MessageType_ARRAYSIZE;
 #endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 
 // ===================================================================
 
-void MessageHeader::InitAsDefaultInstance() {
+void MessageHeaderMessage::InitAsDefaultInstance() {
 }
-class MessageHeader::_Internal {
+class MessageHeaderMessage::_Internal {
  public:
 };
 
-MessageHeader::MessageHeader()
+MessageHeaderMessage::MessageHeaderMessage()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PhysicsTelemetry.MessageHeader)
+  // @@protoc_insertion_point(constructor:PhysicsTelemetry.MessageHeaderMessage)
 }
-MessageHeader::MessageHeader(const MessageHeader& from)
+MessageHeaderMessage::MessageHeaderMessage(const MessageHeaderMessage& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&frameid_, &from.frameid_,
     static_cast<size_t>(reinterpret_cast<char*>(&datasize_) -
     reinterpret_cast<char*>(&frameid_)) + sizeof(datasize_));
-  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.MessageHeader)
+  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.MessageHeaderMessage)
 }
 
-void MessageHeader::SharedCtor() {
+void MessageHeaderMessage::SharedCtor() {
   ::memset(&frameid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&datasize_) -
       reinterpret_cast<char*>(&frameid_)) + sizeof(datasize_));
 }
 
-MessageHeader::~MessageHeader() {
-  // @@protoc_insertion_point(destructor:PhysicsTelemetry.MessageHeader)
+MessageHeaderMessage::~MessageHeaderMessage() {
+  // @@protoc_insertion_point(destructor:PhysicsTelemetry.MessageHeaderMessage)
   SharedDtor();
 }
 
-void MessageHeader::SharedDtor() {
+void MessageHeaderMessage::SharedDtor() {
 }
 
-void MessageHeader::SetCachedSize(int size) const {
+void MessageHeaderMessage::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const MessageHeader& MessageHeader::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_MessageHeader_message_5fheader_2eproto.base);
+const MessageHeaderMessage& MessageHeaderMessage::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_MessageHeaderMessage_message_5fheader_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void MessageHeader::Clear() {
-// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.MessageHeader)
+void MessageHeaderMessage::Clear() {
+// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.MessageHeaderMessage)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -164,7 +165,7 @@ void MessageHeader::Clear() {
   _internal_metadata_.Clear();
 }
 
-const char* MessageHeader::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* MessageHeaderMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
@@ -178,12 +179,12 @@ const char* MessageHeader::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // .PhysicsTelemetry.MessageHeader.MessageType messageType = 2;
+      // .PhysicsTelemetry.MessageHeaderMessage.MessageType messageType = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_messagetype(static_cast<::PhysicsTelemetry::MessageHeader_MessageType>(val));
+          _internal_set_messagetype(static_cast<::PhysicsTelemetry::MessageHeaderMessage_MessageType>(val));
         } else goto handle_unusual;
         continue;
       // int32 dataSize = 3;
@@ -213,9 +214,9 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* MessageHeader::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* MessageHeaderMessage::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.MessageHeader)
+  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.MessageHeaderMessage)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -225,7 +226,7 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_frameid(), target);
   }
 
-  // .PhysicsTelemetry.MessageHeader.MessageType messageType = 2;
+  // .PhysicsTelemetry.MessageHeaderMessage.MessageType messageType = 2;
   if (this->messagetype() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
@@ -242,12 +243,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.MessageHeader)
+  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.MessageHeaderMessage)
   return target;
 }
 
-size_t MessageHeader::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.MessageHeader)
+size_t MessageHeaderMessage::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.MessageHeaderMessage)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -261,7 +262,7 @@ size_t MessageHeader::ByteSizeLong() const {
         this->_internal_frameid());
   }
 
-  // .PhysicsTelemetry.MessageHeader.MessageType messageType = 2;
+  // .PhysicsTelemetry.MessageHeaderMessage.MessageType messageType = 2;
   if (this->messagetype() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_messagetype());
@@ -283,23 +284,23 @@ size_t MessageHeader::ByteSizeLong() const {
   return total_size;
 }
 
-void MessageHeader::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.MessageHeader)
+void MessageHeaderMessage::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.MessageHeaderMessage)
   GOOGLE_DCHECK_NE(&from, this);
-  const MessageHeader* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<MessageHeader>(
+  const MessageHeaderMessage* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<MessageHeaderMessage>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.MessageHeader)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.MessageHeaderMessage)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.MessageHeader)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.MessageHeaderMessage)
     MergeFrom(*source);
   }
 }
 
-void MessageHeader::MergeFrom(const MessageHeader& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.MessageHeader)
+void MessageHeaderMessage::MergeFrom(const MessageHeaderMessage& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.MessageHeaderMessage)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -316,25 +317,25 @@ void MessageHeader::MergeFrom(const MessageHeader& from) {
   }
 }
 
-void MessageHeader::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.MessageHeader)
+void MessageHeaderMessage::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.MessageHeaderMessage)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void MessageHeader::CopyFrom(const MessageHeader& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.MessageHeader)
+void MessageHeaderMessage::CopyFrom(const MessageHeaderMessage& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.MessageHeaderMessage)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MessageHeader::IsInitialized() const {
+bool MessageHeaderMessage::IsInitialized() const {
   return true;
 }
 
-void MessageHeader::InternalSwap(MessageHeader* other) {
+void MessageHeaderMessage::InternalSwap(MessageHeaderMessage* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(frameid_, other->frameid_);
@@ -342,7 +343,7 @@ void MessageHeader::InternalSwap(MessageHeader* other) {
   swap(datasize_, other->datasize_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata MessageHeader::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata MessageHeaderMessage::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -350,8 +351,8 @@ void MessageHeader::InternalSwap(MessageHeader* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace PhysicsTelemetry
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::MessageHeader* Arena::CreateMaybeMessage< ::PhysicsTelemetry::MessageHeader >(Arena* arena) {
-  return Arena::CreateInternal< ::PhysicsTelemetry::MessageHeader >(arena);
+template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::MessageHeaderMessage* Arena::CreateMaybeMessage< ::PhysicsTelemetry::MessageHeaderMessage >(Arena* arena) {
+  return Arena::CreateInternal< ::PhysicsTelemetry::MessageHeaderMessage >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

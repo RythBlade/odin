@@ -56,38 +56,38 @@ struct TableStruct_rigid_5fbody_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rigid_5fbody_2eproto;
 namespace PhysicsTelemetry {
-class RigidBody;
-class RigidBodyDefaultTypeInternal;
-extern RigidBodyDefaultTypeInternal _RigidBody_default_instance_;
-class RigidBodyList;
-class RigidBodyListDefaultTypeInternal;
-extern RigidBodyListDefaultTypeInternal _RigidBodyList_default_instance_;
+class RigidBodyListPacket;
+class RigidBodyListPacketDefaultTypeInternal;
+extern RigidBodyListPacketDefaultTypeInternal _RigidBodyListPacket_default_instance_;
+class RigidBodyPacket;
+class RigidBodyPacketDefaultTypeInternal;
+extern RigidBodyPacketDefaultTypeInternal _RigidBodyPacket_default_instance_;
 }  // namespace PhysicsTelemetry
 PROTOBUF_NAMESPACE_OPEN
-template<> ::PhysicsTelemetry::RigidBody* Arena::CreateMaybeMessage<::PhysicsTelemetry::RigidBody>(Arena*);
-template<> ::PhysicsTelemetry::RigidBodyList* Arena::CreateMaybeMessage<::PhysicsTelemetry::RigidBodyList>(Arena*);
+template<> ::PhysicsTelemetry::RigidBodyListPacket* Arena::CreateMaybeMessage<::PhysicsTelemetry::RigidBodyListPacket>(Arena*);
+template<> ::PhysicsTelemetry::RigidBodyPacket* Arena::CreateMaybeMessage<::PhysicsTelemetry::RigidBodyPacket>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace PhysicsTelemetry {
 
 // ===================================================================
 
-class RigidBody :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.RigidBody) */ {
+class RigidBodyPacket :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.RigidBodyPacket) */ {
  public:
-  RigidBody();
-  virtual ~RigidBody();
+  RigidBodyPacket();
+  virtual ~RigidBodyPacket();
 
-  RigidBody(const RigidBody& from);
-  RigidBody(RigidBody&& from) noexcept
-    : RigidBody() {
+  RigidBodyPacket(const RigidBodyPacket& from);
+  RigidBodyPacket(RigidBodyPacket&& from) noexcept
+    : RigidBodyPacket() {
     *this = ::std::move(from);
   }
 
-  inline RigidBody& operator=(const RigidBody& from) {
+  inline RigidBodyPacket& operator=(const RigidBodyPacket& from) {
     CopyFrom(from);
     return *this;
   }
-  inline RigidBody& operator=(RigidBody&& from) noexcept {
+  inline RigidBodyPacket& operator=(RigidBodyPacket&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -105,37 +105,37 @@ class RigidBody :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const RigidBody& default_instance();
+  static const RigidBodyPacket& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const RigidBody* internal_default_instance() {
-    return reinterpret_cast<const RigidBody*>(
-               &_RigidBody_default_instance_);
+  static inline const RigidBodyPacket* internal_default_instance() {
+    return reinterpret_cast<const RigidBodyPacket*>(
+               &_RigidBodyPacket_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(RigidBody& a, RigidBody& b) {
+  friend void swap(RigidBodyPacket& a, RigidBodyPacket& b) {
     a.Swap(&b);
   }
-  inline void Swap(RigidBody* other) {
+  inline void Swap(RigidBodyPacket* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline RigidBody* New() const final {
-    return CreateMaybeMessage<RigidBody>(nullptr);
+  inline RigidBodyPacket* New() const final {
+    return CreateMaybeMessage<RigidBodyPacket>(nullptr);
   }
 
-  RigidBody* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<RigidBody>(arena);
+  RigidBodyPacket* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RigidBodyPacket>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const RigidBody& from);
-  void MergeFrom(const RigidBody& from);
+  void CopyFrom(const RigidBodyPacket& from);
+  void MergeFrom(const RigidBodyPacket& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -149,10 +149,10 @@ class RigidBody :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(RigidBody* other);
+  void InternalSwap(RigidBodyPacket* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.RigidBody";
+    return "PhysicsTelemetry.RigidBodyPacket";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -204,34 +204,34 @@ class RigidBody :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
       mutable_collisionshapes();
 
-  // .PhysicsTelemetry.Matrix4x4 position = 2;
+  // .PhysicsTelemetry.Matrix4x4Packet position = 2;
   bool has_position() const;
   private:
   bool _internal_has_position() const;
   public:
   void clear_position();
-  const ::PhysicsTelemetry::Matrix4x4& position() const;
-  ::PhysicsTelemetry::Matrix4x4* release_position();
-  ::PhysicsTelemetry::Matrix4x4* mutable_position();
-  void set_allocated_position(::PhysicsTelemetry::Matrix4x4* position);
+  const ::PhysicsTelemetry::Matrix4x4Packet& position() const;
+  ::PhysicsTelemetry::Matrix4x4Packet* release_position();
+  ::PhysicsTelemetry::Matrix4x4Packet* mutable_position();
+  void set_allocated_position(::PhysicsTelemetry::Matrix4x4Packet* position);
   private:
-  const ::PhysicsTelemetry::Matrix4x4& _internal_position() const;
-  ::PhysicsTelemetry::Matrix4x4* _internal_mutable_position();
+  const ::PhysicsTelemetry::Matrix4x4Packet& _internal_position() const;
+  ::PhysicsTelemetry::Matrix4x4Packet* _internal_mutable_position();
   public:
 
-  // .PhysicsTelemetry.Vector4 velocity = 3;
+  // .PhysicsTelemetry.Vector4Packet velocity = 3;
   bool has_velocity() const;
   private:
   bool _internal_has_velocity() const;
   public:
   void clear_velocity();
-  const ::PhysicsTelemetry::Vector4& velocity() const;
-  ::PhysicsTelemetry::Vector4* release_velocity();
-  ::PhysicsTelemetry::Vector4* mutable_velocity();
-  void set_allocated_velocity(::PhysicsTelemetry::Vector4* velocity);
+  const ::PhysicsTelemetry::Vector4Packet& velocity() const;
+  ::PhysicsTelemetry::Vector4Packet* release_velocity();
+  ::PhysicsTelemetry::Vector4Packet* mutable_velocity();
+  void set_allocated_velocity(::PhysicsTelemetry::Vector4Packet* velocity);
   private:
-  const ::PhysicsTelemetry::Vector4& _internal_velocity() const;
-  ::PhysicsTelemetry::Vector4* _internal_mutable_velocity();
+  const ::PhysicsTelemetry::Vector4Packet& _internal_velocity() const;
+  ::PhysicsTelemetry::Vector4Packet* _internal_mutable_velocity();
   public:
 
   // uint32 id = 1;
@@ -243,38 +243,38 @@ class RigidBody :
   void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.RigidBody)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.RigidBodyPacket)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 > collisionshapes_;
   mutable std::atomic<int> _collisionshapes_cached_byte_size_;
-  ::PhysicsTelemetry::Matrix4x4* position_;
-  ::PhysicsTelemetry::Vector4* velocity_;
+  ::PhysicsTelemetry::Matrix4x4Packet* position_;
+  ::PhysicsTelemetry::Vector4Packet* velocity_;
   ::PROTOBUF_NAMESPACE_ID::uint32 id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_rigid_5fbody_2eproto;
 };
 // -------------------------------------------------------------------
 
-class RigidBodyList :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.RigidBodyList) */ {
+class RigidBodyListPacket :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.RigidBodyListPacket) */ {
  public:
-  RigidBodyList();
-  virtual ~RigidBodyList();
+  RigidBodyListPacket();
+  virtual ~RigidBodyListPacket();
 
-  RigidBodyList(const RigidBodyList& from);
-  RigidBodyList(RigidBodyList&& from) noexcept
-    : RigidBodyList() {
+  RigidBodyListPacket(const RigidBodyListPacket& from);
+  RigidBodyListPacket(RigidBodyListPacket&& from) noexcept
+    : RigidBodyListPacket() {
     *this = ::std::move(from);
   }
 
-  inline RigidBodyList& operator=(const RigidBodyList& from) {
+  inline RigidBodyListPacket& operator=(const RigidBodyListPacket& from) {
     CopyFrom(from);
     return *this;
   }
-  inline RigidBodyList& operator=(RigidBodyList&& from) noexcept {
+  inline RigidBodyListPacket& operator=(RigidBodyListPacket&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -292,37 +292,37 @@ class RigidBodyList :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const RigidBodyList& default_instance();
+  static const RigidBodyListPacket& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const RigidBodyList* internal_default_instance() {
-    return reinterpret_cast<const RigidBodyList*>(
-               &_RigidBodyList_default_instance_);
+  static inline const RigidBodyListPacket* internal_default_instance() {
+    return reinterpret_cast<const RigidBodyListPacket*>(
+               &_RigidBodyListPacket_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(RigidBodyList& a, RigidBodyList& b) {
+  friend void swap(RigidBodyListPacket& a, RigidBodyListPacket& b) {
     a.Swap(&b);
   }
-  inline void Swap(RigidBodyList* other) {
+  inline void Swap(RigidBodyListPacket* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline RigidBodyList* New() const final {
-    return CreateMaybeMessage<RigidBodyList>(nullptr);
+  inline RigidBodyListPacket* New() const final {
+    return CreateMaybeMessage<RigidBodyListPacket>(nullptr);
   }
 
-  RigidBodyList* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<RigidBodyList>(arena);
+  RigidBodyListPacket* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RigidBodyListPacket>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const RigidBodyList& from);
-  void MergeFrom(const RigidBodyList& from);
+  void CopyFrom(const RigidBodyListPacket& from);
+  void MergeFrom(const RigidBodyListPacket& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -336,10 +336,10 @@ class RigidBodyList :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(RigidBodyList* other);
+  void InternalSwap(RigidBodyListPacket* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.RigidBodyList";
+    return "PhysicsTelemetry.RigidBodyListPacket";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -366,30 +366,30 @@ class RigidBodyList :
   enum : int {
     kRigidBodiesFieldNumber = 1,
   };
-  // repeated .PhysicsTelemetry.RigidBody rigidBodies = 1;
+  // repeated .PhysicsTelemetry.RigidBodyPacket rigidBodies = 1;
   int rigidbodies_size() const;
   private:
   int _internal_rigidbodies_size() const;
   public:
   void clear_rigidbodies();
-  ::PhysicsTelemetry::RigidBody* mutable_rigidbodies(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBody >*
+  ::PhysicsTelemetry::RigidBodyPacket* mutable_rigidbodies(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBodyPacket >*
       mutable_rigidbodies();
   private:
-  const ::PhysicsTelemetry::RigidBody& _internal_rigidbodies(int index) const;
-  ::PhysicsTelemetry::RigidBody* _internal_add_rigidbodies();
+  const ::PhysicsTelemetry::RigidBodyPacket& _internal_rigidbodies(int index) const;
+  ::PhysicsTelemetry::RigidBodyPacket* _internal_add_rigidbodies();
   public:
-  const ::PhysicsTelemetry::RigidBody& rigidbodies(int index) const;
-  ::PhysicsTelemetry::RigidBody* add_rigidbodies();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBody >&
+  const ::PhysicsTelemetry::RigidBodyPacket& rigidbodies(int index) const;
+  ::PhysicsTelemetry::RigidBodyPacket* add_rigidbodies();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBodyPacket >&
       rigidbodies() const;
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.RigidBodyList)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.RigidBodyListPacket)
  private:
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBody > rigidbodies_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBodyPacket > rigidbodies_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_rigid_5fbody_2eproto;
 };
@@ -402,64 +402,64 @@ class RigidBodyList :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// RigidBody
+// RigidBodyPacket
 
 // uint32 id = 1;
-inline void RigidBody::clear_id() {
+inline void RigidBodyPacket::clear_id() {
   id_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBody::_internal_id() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBodyPacket::_internal_id() const {
   return id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBody::id() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBody.id)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBodyPacket::id() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBodyPacket.id)
   return _internal_id();
 }
-inline void RigidBody::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void RigidBodyPacket::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   id_ = value;
 }
-inline void RigidBody::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void RigidBodyPacket::set_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.RigidBody.id)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.RigidBodyPacket.id)
 }
 
-// .PhysicsTelemetry.Matrix4x4 position = 2;
-inline bool RigidBody::_internal_has_position() const {
+// .PhysicsTelemetry.Matrix4x4Packet position = 2;
+inline bool RigidBodyPacket::_internal_has_position() const {
   return this != internal_default_instance() && position_ != nullptr;
 }
-inline bool RigidBody::has_position() const {
+inline bool RigidBodyPacket::has_position() const {
   return _internal_has_position();
 }
-inline const ::PhysicsTelemetry::Matrix4x4& RigidBody::_internal_position() const {
-  const ::PhysicsTelemetry::Matrix4x4* p = position_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Matrix4x4*>(
-      &::PhysicsTelemetry::_Matrix4x4_default_instance_);
+inline const ::PhysicsTelemetry::Matrix4x4Packet& RigidBodyPacket::_internal_position() const {
+  const ::PhysicsTelemetry::Matrix4x4Packet* p = position_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Matrix4x4Packet*>(
+      &::PhysicsTelemetry::_Matrix4x4Packet_default_instance_);
 }
-inline const ::PhysicsTelemetry::Matrix4x4& RigidBody::position() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBody.position)
+inline const ::PhysicsTelemetry::Matrix4x4Packet& RigidBodyPacket::position() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBodyPacket.position)
   return _internal_position();
 }
-inline ::PhysicsTelemetry::Matrix4x4* RigidBody::release_position() {
-  // @@protoc_insertion_point(field_release:PhysicsTelemetry.RigidBody.position)
+inline ::PhysicsTelemetry::Matrix4x4Packet* RigidBodyPacket::release_position() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.RigidBodyPacket.position)
   
-  ::PhysicsTelemetry::Matrix4x4* temp = position_;
+  ::PhysicsTelemetry::Matrix4x4Packet* temp = position_;
   position_ = nullptr;
   return temp;
 }
-inline ::PhysicsTelemetry::Matrix4x4* RigidBody::_internal_mutable_position() {
+inline ::PhysicsTelemetry::Matrix4x4Packet* RigidBodyPacket::_internal_mutable_position() {
   
   if (position_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Matrix4x4>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Matrix4x4Packet>(GetArenaNoVirtual());
     position_ = p;
   }
   return position_;
 }
-inline ::PhysicsTelemetry::Matrix4x4* RigidBody::mutable_position() {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.RigidBody.position)
+inline ::PhysicsTelemetry::Matrix4x4Packet* RigidBodyPacket::mutable_position() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.RigidBodyPacket.position)
   return _internal_mutable_position();
 }
-inline void RigidBody::set_allocated_position(::PhysicsTelemetry::Matrix4x4* position) {
+inline void RigidBodyPacket::set_allocated_position(::PhysicsTelemetry::Matrix4x4Packet* position) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(position_);
@@ -475,45 +475,45 @@ inline void RigidBody::set_allocated_position(::PhysicsTelemetry::Matrix4x4* pos
     
   }
   position_ = position;
-  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.RigidBody.position)
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.RigidBodyPacket.position)
 }
 
-// .PhysicsTelemetry.Vector4 velocity = 3;
-inline bool RigidBody::_internal_has_velocity() const {
+// .PhysicsTelemetry.Vector4Packet velocity = 3;
+inline bool RigidBodyPacket::_internal_has_velocity() const {
   return this != internal_default_instance() && velocity_ != nullptr;
 }
-inline bool RigidBody::has_velocity() const {
+inline bool RigidBodyPacket::has_velocity() const {
   return _internal_has_velocity();
 }
-inline const ::PhysicsTelemetry::Vector4& RigidBody::_internal_velocity() const {
-  const ::PhysicsTelemetry::Vector4* p = velocity_;
-  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector4*>(
-      &::PhysicsTelemetry::_Vector4_default_instance_);
+inline const ::PhysicsTelemetry::Vector4Packet& RigidBodyPacket::_internal_velocity() const {
+  const ::PhysicsTelemetry::Vector4Packet* p = velocity_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::PhysicsTelemetry::Vector4Packet*>(
+      &::PhysicsTelemetry::_Vector4Packet_default_instance_);
 }
-inline const ::PhysicsTelemetry::Vector4& RigidBody::velocity() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBody.velocity)
+inline const ::PhysicsTelemetry::Vector4Packet& RigidBodyPacket::velocity() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBodyPacket.velocity)
   return _internal_velocity();
 }
-inline ::PhysicsTelemetry::Vector4* RigidBody::release_velocity() {
-  // @@protoc_insertion_point(field_release:PhysicsTelemetry.RigidBody.velocity)
+inline ::PhysicsTelemetry::Vector4Packet* RigidBodyPacket::release_velocity() {
+  // @@protoc_insertion_point(field_release:PhysicsTelemetry.RigidBodyPacket.velocity)
   
-  ::PhysicsTelemetry::Vector4* temp = velocity_;
+  ::PhysicsTelemetry::Vector4Packet* temp = velocity_;
   velocity_ = nullptr;
   return temp;
 }
-inline ::PhysicsTelemetry::Vector4* RigidBody::_internal_mutable_velocity() {
+inline ::PhysicsTelemetry::Vector4Packet* RigidBodyPacket::_internal_mutable_velocity() {
   
   if (velocity_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector4>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::PhysicsTelemetry::Vector4Packet>(GetArenaNoVirtual());
     velocity_ = p;
   }
   return velocity_;
 }
-inline ::PhysicsTelemetry::Vector4* RigidBody::mutable_velocity() {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.RigidBody.velocity)
+inline ::PhysicsTelemetry::Vector4Packet* RigidBodyPacket::mutable_velocity() {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.RigidBodyPacket.velocity)
   return _internal_mutable_velocity();
 }
-inline void RigidBody::set_allocated_velocity(::PhysicsTelemetry::Vector4* velocity) {
+inline void RigidBodyPacket::set_allocated_velocity(::PhysicsTelemetry::Vector4Packet* velocity) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(velocity_);
@@ -529,96 +529,96 @@ inline void RigidBody::set_allocated_velocity(::PhysicsTelemetry::Vector4* veloc
     
   }
   velocity_ = velocity;
-  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.RigidBody.velocity)
+  // @@protoc_insertion_point(field_set_allocated:PhysicsTelemetry.RigidBodyPacket.velocity)
 }
 
 // repeated uint32 collisionShapes = 4;
-inline int RigidBody::_internal_collisionshapes_size() const {
+inline int RigidBodyPacket::_internal_collisionshapes_size() const {
   return collisionshapes_.size();
 }
-inline int RigidBody::collisionshapes_size() const {
+inline int RigidBodyPacket::collisionshapes_size() const {
   return _internal_collisionshapes_size();
 }
-inline void RigidBody::clear_collisionshapes() {
+inline void RigidBodyPacket::clear_collisionshapes() {
   collisionshapes_.Clear();
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBody::_internal_collisionshapes(int index) const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBodyPacket::_internal_collisionshapes(int index) const {
   return collisionshapes_.Get(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBody::collisionshapes(int index) const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBody.collisionShapes)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 RigidBodyPacket::collisionshapes(int index) const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBodyPacket.collisionShapes)
   return _internal_collisionshapes(index);
 }
-inline void RigidBody::set_collisionshapes(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void RigidBodyPacket::set_collisionshapes(int index, ::PROTOBUF_NAMESPACE_ID::uint32 value) {
   collisionshapes_.Set(index, value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.RigidBody.collisionShapes)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.RigidBodyPacket.collisionShapes)
 }
-inline void RigidBody::_internal_add_collisionshapes(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void RigidBodyPacket::_internal_add_collisionshapes(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   collisionshapes_.Add(value);
 }
-inline void RigidBody::add_collisionshapes(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void RigidBodyPacket::add_collisionshapes(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_add_collisionshapes(value);
-  // @@protoc_insertion_point(field_add:PhysicsTelemetry.RigidBody.collisionShapes)
+  // @@protoc_insertion_point(field_add:PhysicsTelemetry.RigidBodyPacket.collisionShapes)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-RigidBody::_internal_collisionshapes() const {
+RigidBodyPacket::_internal_collisionshapes() const {
   return collisionshapes_;
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >&
-RigidBody::collisionshapes() const {
-  // @@protoc_insertion_point(field_list:PhysicsTelemetry.RigidBody.collisionShapes)
+RigidBodyPacket::collisionshapes() const {
+  // @@protoc_insertion_point(field_list:PhysicsTelemetry.RigidBodyPacket.collisionShapes)
   return _internal_collisionshapes();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-RigidBody::_internal_mutable_collisionshapes() {
+RigidBodyPacket::_internal_mutable_collisionshapes() {
   return &collisionshapes_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint32 >*
-RigidBody::mutable_collisionshapes() {
-  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.RigidBody.collisionShapes)
+RigidBodyPacket::mutable_collisionshapes() {
+  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.RigidBodyPacket.collisionShapes)
   return _internal_mutable_collisionshapes();
 }
 
 // -------------------------------------------------------------------
 
-// RigidBodyList
+// RigidBodyListPacket
 
-// repeated .PhysicsTelemetry.RigidBody rigidBodies = 1;
-inline int RigidBodyList::_internal_rigidbodies_size() const {
+// repeated .PhysicsTelemetry.RigidBodyPacket rigidBodies = 1;
+inline int RigidBodyListPacket::_internal_rigidbodies_size() const {
   return rigidbodies_.size();
 }
-inline int RigidBodyList::rigidbodies_size() const {
+inline int RigidBodyListPacket::rigidbodies_size() const {
   return _internal_rigidbodies_size();
 }
-inline void RigidBodyList::clear_rigidbodies() {
+inline void RigidBodyListPacket::clear_rigidbodies() {
   rigidbodies_.Clear();
 }
-inline ::PhysicsTelemetry::RigidBody* RigidBodyList::mutable_rigidbodies(int index) {
-  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.RigidBodyList.rigidBodies)
+inline ::PhysicsTelemetry::RigidBodyPacket* RigidBodyListPacket::mutable_rigidbodies(int index) {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.RigidBodyListPacket.rigidBodies)
   return rigidbodies_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBody >*
-RigidBodyList::mutable_rigidbodies() {
-  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.RigidBodyList.rigidBodies)
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBodyPacket >*
+RigidBodyListPacket::mutable_rigidbodies() {
+  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.RigidBodyListPacket.rigidBodies)
   return &rigidbodies_;
 }
-inline const ::PhysicsTelemetry::RigidBody& RigidBodyList::_internal_rigidbodies(int index) const {
+inline const ::PhysicsTelemetry::RigidBodyPacket& RigidBodyListPacket::_internal_rigidbodies(int index) const {
   return rigidbodies_.Get(index);
 }
-inline const ::PhysicsTelemetry::RigidBody& RigidBodyList::rigidbodies(int index) const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBodyList.rigidBodies)
+inline const ::PhysicsTelemetry::RigidBodyPacket& RigidBodyListPacket::rigidbodies(int index) const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.RigidBodyListPacket.rigidBodies)
   return _internal_rigidbodies(index);
 }
-inline ::PhysicsTelemetry::RigidBody* RigidBodyList::_internal_add_rigidbodies() {
+inline ::PhysicsTelemetry::RigidBodyPacket* RigidBodyListPacket::_internal_add_rigidbodies() {
   return rigidbodies_.Add();
 }
-inline ::PhysicsTelemetry::RigidBody* RigidBodyList::add_rigidbodies() {
-  // @@protoc_insertion_point(field_add:PhysicsTelemetry.RigidBodyList.rigidBodies)
+inline ::PhysicsTelemetry::RigidBodyPacket* RigidBodyListPacket::add_rigidbodies() {
+  // @@protoc_insertion_point(field_add:PhysicsTelemetry.RigidBodyListPacket.rigidBodies)
   return _internal_add_rigidbodies();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBody >&
-RigidBodyList::rigidbodies() const {
-  // @@protoc_insertion_point(field_list:PhysicsTelemetry.RigidBodyList.rigidBodies)
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBodyPacket >&
+RigidBodyListPacket::rigidbodies() const {
+  // @@protoc_insertion_point(field_list:PhysicsTelemetry.RigidBodyListPacket.rigidBodies)
   return rigidbodies_;
 }
 

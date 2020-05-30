@@ -13,7 +13,7 @@ namespace Telemetry.FrameData.Shapes
             ShapeType = ShapeType.eTetrahedron;
         }
 
-        public void CopyFromPacket(Physics.Telemetry.Serialised.TetrahedronShape packetTetrahedronShape)
+        public void CopyFromPacket(Physics.Telemetry.Serialised.TetrahedronShapePacket packetTetrahedronShape)
         {
             if (packetTetrahedronShape != null)
             {

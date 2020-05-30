@@ -6,17 +6,17 @@ import "base_types.proto";
 
 option csharp_namespace = "Physics.Telemetry.Serialised";
 
-message RigidBody
+message RigidBodyPacket
 {
 	uint32 id = 1;
 
-	PhysicsTelemetry.Matrix4x4 position = 2;
-	PhysicsTelemetry.Vector4 velocity = 3;
+	PhysicsTelemetry.Matrix4x4Packet position = 2;
+	PhysicsTelemetry.Vector4Packet velocity = 3;
 	
 	repeated uint32 collisionShapes = 4;
 }
 
-message RigidBodyList
+message RigidBodyListPacket
 {
-	repeated RigidBody rigidBodies = 1;
+	repeated RigidBodyPacket rigidBodies = 1;
 }

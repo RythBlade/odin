@@ -23,7 +23,7 @@ namespace Telemetry.FrameData.Shapes
         public Matrix4x4 LocalMatrix = new Matrix4x4();
         public ShapeType ShapeType = ShapeType.eObb;
 
-        public void CopyFromPacket(Physics.Telemetry.Serialised.ShapeBase packetBaseShape)
+        public void CopyFromPacket(Physics.Telemetry.Serialised.ShapeBasePacket packetBaseShape)
         {
             if (packetBaseShape != null)
             {

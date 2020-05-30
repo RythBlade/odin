@@ -24,32 +24,33 @@ namespace Physics.Telemetry.Serialised {
     static BaseTypesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBiYXNlX3R5cGVzLnByb3RvEhBQaHlzaWNzVGVsZW1ldHJ5IioKB1ZlY3Rv",
-            "cjMSCQoBeBgBIAEoAhIJCgF5GAIgASgCEgkKAXoYAyABKAIiNQoHVmVjdG9y",
-            "NBIJCgF4GAEgASgCEgkKAXkYAiABKAISCQoBehgDIAEoAhIJCgF3GAQgASgC",
-            "ItsBCglNYXRyaXg0eDQSCwoDbTExGAEgASgCEgsKA20xMhgCIAEoAhILCgNt",
-            "MTMYAyABKAISCwoDbTE0GAQgASgCEgsKA20yMRgFIAEoAhILCgNtMjIYBiAB",
-            "KAISCwoDbTIzGAcgASgCEgsKA20yNBgIIAEoAhILCgNtMzEYCSABKAISCwoD",
-            "bTMyGAogASgCEgsKA20zMxgLIAEoAhILCgNtMzQYDCABKAISCwoDbTQxGA0g",
-            "ASgCEgsKA200MhgOIAEoAhILCgNtNDMYDyABKAISCwoDbTQ0GBAgASgCQh+q",
-            "AhxQaHlzaWNzLlRlbGVtZXRyeS5TZXJpYWxpc2VkYgZwcm90bzM="));
+            "ChBiYXNlX3R5cGVzLnByb3RvEhBQaHlzaWNzVGVsZW1ldHJ5IjAKDVZlY3Rv",
+            "cjNQYWNrZXQSCQoBeBgBIAEoAhIJCgF5GAIgASgCEgkKAXoYAyABKAIiOwoN",
+            "VmVjdG9yNFBhY2tldBIJCgF4GAEgASgCEgkKAXkYAiABKAISCQoBehgDIAEo",
+            "AhIJCgF3GAQgASgCIuEBCg9NYXRyaXg0eDRQYWNrZXQSCwoDbTExGAEgASgC",
+            "EgsKA20xMhgCIAEoAhILCgNtMTMYAyABKAISCwoDbTE0GAQgASgCEgsKA20y",
+            "MRgFIAEoAhILCgNtMjIYBiABKAISCwoDbTIzGAcgASgCEgsKA20yNBgIIAEo",
+            "AhILCgNtMzEYCSABKAISCwoDbTMyGAogASgCEgsKA20zMxgLIAEoAhILCgNt",
+            "MzQYDCABKAISCwoDbTQxGA0gASgCEgsKA200MhgOIAEoAhILCgNtNDMYDyAB",
+            "KAISCwoDbTQ0GBAgASgCQh+qAhxQaHlzaWNzLlRlbGVtZXRyeS5TZXJpYWxp",
+            "c2VkYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.Vector3), global::Physics.Telemetry.Serialised.Vector3.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.Vector4), global::Physics.Telemetry.Serialised.Vector4.Parser, new[]{ "X", "Y", "Z", "W" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.Matrix4x4), global::Physics.Telemetry.Serialised.Matrix4x4.Parser, new[]{ "M11", "M12", "M13", "M14", "M21", "M22", "M23", "M24", "M31", "M32", "M33", "M34", "M41", "M42", "M43", "M44" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.Vector3Packet), global::Physics.Telemetry.Serialised.Vector3Packet.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.Vector4Packet), global::Physics.Telemetry.Serialised.Vector4Packet.Parser, new[]{ "X", "Y", "Z", "W" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.Matrix4x4Packet), global::Physics.Telemetry.Serialised.Matrix4x4Packet.Parser, new[]{ "M11", "M12", "M13", "M14", "M21", "M22", "M23", "M24", "M31", "M32", "M33", "M34", "M41", "M42", "M43", "M44" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class Vector3 : pb::IMessage<Vector3> {
-    private static readonly pb::MessageParser<Vector3> _parser = new pb::MessageParser<Vector3>(() => new Vector3());
+  public sealed partial class Vector3Packet : pb::IMessage<Vector3Packet> {
+    private static readonly pb::MessageParser<Vector3Packet> _parser = new pb::MessageParser<Vector3Packet>(() => new Vector3Packet());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Vector3> Parser { get { return _parser; } }
+    public static pb::MessageParser<Vector3Packet> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -62,14 +63,14 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Vector3() {
+    public Vector3Packet() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Vector3(Vector3 other) : this() {
+    public Vector3Packet(Vector3Packet other) : this() {
       x_ = other.x_;
       y_ = other.y_;
       z_ = other.z_;
@@ -77,8 +78,8 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Vector3 Clone() {
-      return new Vector3(this);
+    public Vector3Packet Clone() {
+      return new Vector3Packet(this);
     }
 
     /// <summary>Field number for the "x" field.</summary>
@@ -116,11 +117,11 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Vector3);
+      return Equals(other as Vector3Packet);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Vector3 other) {
+    public bool Equals(Vector3Packet other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -188,7 +189,7 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Vector3 other) {
+    public void MergeFrom(Vector3Packet other) {
       if (other == null) {
         return;
       }
@@ -230,11 +231,11 @@ namespace Physics.Telemetry.Serialised {
 
   }
 
-  public sealed partial class Vector4 : pb::IMessage<Vector4> {
-    private static readonly pb::MessageParser<Vector4> _parser = new pb::MessageParser<Vector4>(() => new Vector4());
+  public sealed partial class Vector4Packet : pb::IMessage<Vector4Packet> {
+    private static readonly pb::MessageParser<Vector4Packet> _parser = new pb::MessageParser<Vector4Packet>(() => new Vector4Packet());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Vector4> Parser { get { return _parser; } }
+    public static pb::MessageParser<Vector4Packet> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -247,14 +248,14 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Vector4() {
+    public Vector4Packet() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Vector4(Vector4 other) : this() {
+    public Vector4Packet(Vector4Packet other) : this() {
       x_ = other.x_;
       y_ = other.y_;
       z_ = other.z_;
@@ -263,8 +264,8 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Vector4 Clone() {
-      return new Vector4(this);
+    public Vector4Packet Clone() {
+      return new Vector4Packet(this);
     }
 
     /// <summary>Field number for the "x" field.</summary>
@@ -313,11 +314,11 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Vector4);
+      return Equals(other as Vector4Packet);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Vector4 other) {
+    public bool Equals(Vector4Packet other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -394,7 +395,7 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Vector4 other) {
+    public void MergeFrom(Vector4Packet other) {
       if (other == null) {
         return;
       }
@@ -443,11 +444,11 @@ namespace Physics.Telemetry.Serialised {
 
   }
 
-  public sealed partial class Matrix4x4 : pb::IMessage<Matrix4x4> {
-    private static readonly pb::MessageParser<Matrix4x4> _parser = new pb::MessageParser<Matrix4x4>(() => new Matrix4x4());
+  public sealed partial class Matrix4x4Packet : pb::IMessage<Matrix4x4Packet> {
+    private static readonly pb::MessageParser<Matrix4x4Packet> _parser = new pb::MessageParser<Matrix4x4Packet>(() => new Matrix4x4Packet());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Matrix4x4> Parser { get { return _parser; } }
+    public static pb::MessageParser<Matrix4x4Packet> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -460,14 +461,14 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Matrix4x4() {
+    public Matrix4x4Packet() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Matrix4x4(Matrix4x4 other) : this() {
+    public Matrix4x4Packet(Matrix4x4Packet other) : this() {
       m11_ = other.m11_;
       m12_ = other.m12_;
       m13_ = other.m13_;
@@ -488,8 +489,8 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Matrix4x4 Clone() {
-      return new Matrix4x4(this);
+    public Matrix4x4Packet Clone() {
+      return new Matrix4x4Packet(this);
     }
 
     /// <summary>Field number for the "m11" field.</summary>
@@ -670,11 +671,11 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Matrix4x4);
+      return Equals(other as Matrix4x4Packet);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Matrix4x4 other) {
+    public bool Equals(Matrix4x4Packet other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -859,7 +860,7 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Matrix4x4 other) {
+    public void MergeFrom(Matrix4x4Packet other) {
       if (other == null) {
         return;
       }

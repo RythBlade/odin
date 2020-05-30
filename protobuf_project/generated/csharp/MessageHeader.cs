@@ -24,28 +24,28 @@ namespace Physics.Telemetry.Serialised {
     static MessageHeaderReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRtZXNzYWdlX2hlYWRlci5wcm90bxIQUGh5c2ljc1RlbGVtZXRyeSK8AQoN",
-            "TWVzc2FnZUhlYWRlchIPCgdmcmFtZUlkGAEgASgNEkAKC21lc3NhZ2VUeXBl",
-            "GAIgASgOMisuUGh5c2ljc1RlbGVtZXRyeS5NZXNzYWdlSGVhZGVyLk1lc3Nh",
-            "Z2VUeXBlEhAKCGRhdGFTaXplGAMgASgFIkYKC01lc3NhZ2VUeXBlEhMKD1Jp",
-            "Z2lkQm9keVVwZGF0ZRAAEhAKDFNoYXBlQ3JlYXRlZBABEhAKDFNoYXBlQ2hh",
-            "bmdlZBACQh+qAhxQaHlzaWNzLlRlbGVtZXRyeS5TZXJpYWxpc2VkYgZwcm90",
-            "bzM="));
+            "ChRtZXNzYWdlX2hlYWRlci5wcm90bxIQUGh5c2ljc1RlbGVtZXRyeSLKAQoU",
+            "TWVzc2FnZUhlYWRlck1lc3NhZ2USDwoHZnJhbWVJZBgBIAEoDRJHCgttZXNz",
+            "YWdlVHlwZRgCIAEoDjIyLlBoeXNpY3NUZWxlbWV0cnkuTWVzc2FnZUhlYWRl",
+            "ck1lc3NhZ2UuTWVzc2FnZVR5cGUSEAoIZGF0YVNpemUYAyABKAUiRgoLTWVz",
+            "c2FnZVR5cGUSEwoPUmlnaWRCb2R5VXBkYXRlEAASEAoMU2hhcGVDcmVhdGVk",
+            "EAESEAoMU2hhcGVDaGFuZ2VkEAJCH6oCHFBoeXNpY3MuVGVsZW1ldHJ5LlNl",
+            "cmlhbGlzZWRiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.MessageHeader), global::Physics.Telemetry.Serialised.MessageHeader.Parser, new[]{ "FrameId", "MessageType", "DataSize" }, null, new[]{ typeof(global::Physics.Telemetry.Serialised.MessageHeader.Types.MessageType) }, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.MessageHeaderMessage), global::Physics.Telemetry.Serialised.MessageHeaderMessage.Parser, new[]{ "FrameId", "MessageType", "DataSize" }, null, new[]{ typeof(global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType) }, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class MessageHeader : pb::IMessage<MessageHeader> {
-    private static readonly pb::MessageParser<MessageHeader> _parser = new pb::MessageParser<MessageHeader>(() => new MessageHeader());
+  public sealed partial class MessageHeaderMessage : pb::IMessage<MessageHeaderMessage> {
+    private static readonly pb::MessageParser<MessageHeaderMessage> _parser = new pb::MessageParser<MessageHeaderMessage>(() => new MessageHeaderMessage());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<MessageHeader> Parser { get { return _parser; } }
+    public static pb::MessageParser<MessageHeaderMessage> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -58,14 +58,14 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MessageHeader() {
+    public MessageHeaderMessage() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MessageHeader(MessageHeader other) : this() {
+    public MessageHeaderMessage(MessageHeaderMessage other) : this() {
       frameId_ = other.frameId_;
       messageType_ = other.messageType_;
       dataSize_ = other.dataSize_;
@@ -73,8 +73,8 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MessageHeader Clone() {
-      return new MessageHeader(this);
+    public MessageHeaderMessage Clone() {
+      return new MessageHeaderMessage(this);
     }
 
     /// <summary>Field number for the "frameId" field.</summary>
@@ -90,9 +90,9 @@ namespace Physics.Telemetry.Serialised {
 
     /// <summary>Field number for the "messageType" field.</summary>
     public const int MessageTypeFieldNumber = 2;
-    private global::Physics.Telemetry.Serialised.MessageHeader.Types.MessageType messageType_ = global::Physics.Telemetry.Serialised.MessageHeader.Types.MessageType.RigidBodyUpdate;
+    private global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType messageType_ = global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType.RigidBodyUpdate;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Physics.Telemetry.Serialised.MessageHeader.Types.MessageType MessageType {
+    public global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType MessageType {
       get { return messageType_; }
       set {
         messageType_ = value;
@@ -112,11 +112,11 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as MessageHeader);
+      return Equals(other as MessageHeaderMessage);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(MessageHeader other) {
+    public bool Equals(MessageHeaderMessage other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -133,7 +133,7 @@ namespace Physics.Telemetry.Serialised {
     public override int GetHashCode() {
       int hash = 1;
       if (FrameId != 0) hash ^= FrameId.GetHashCode();
-      if (MessageType != global::Physics.Telemetry.Serialised.MessageHeader.Types.MessageType.RigidBodyUpdate) hash ^= MessageType.GetHashCode();
+      if (MessageType != global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType.RigidBodyUpdate) hash ^= MessageType.GetHashCode();
       if (DataSize != 0) hash ^= DataSize.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -152,7 +152,7 @@ namespace Physics.Telemetry.Serialised {
         output.WriteRawTag(8);
         output.WriteUInt32(FrameId);
       }
-      if (MessageType != global::Physics.Telemetry.Serialised.MessageHeader.Types.MessageType.RigidBodyUpdate) {
+      if (MessageType != global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType.RigidBodyUpdate) {
         output.WriteRawTag(16);
         output.WriteEnum((int) MessageType);
       }
@@ -171,7 +171,7 @@ namespace Physics.Telemetry.Serialised {
       if (FrameId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FrameId);
       }
-      if (MessageType != global::Physics.Telemetry.Serialised.MessageHeader.Types.MessageType.RigidBodyUpdate) {
+      if (MessageType != global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType.RigidBodyUpdate) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MessageType);
       }
       if (DataSize != 0) {
@@ -184,14 +184,14 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(MessageHeader other) {
+    public void MergeFrom(MessageHeaderMessage other) {
       if (other == null) {
         return;
       }
       if (other.FrameId != 0) {
         FrameId = other.FrameId;
       }
-      if (other.MessageType != global::Physics.Telemetry.Serialised.MessageHeader.Types.MessageType.RigidBodyUpdate) {
+      if (other.MessageType != global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType.RigidBodyUpdate) {
         MessageType = other.MessageType;
       }
       if (other.DataSize != 0) {
@@ -213,7 +213,7 @@ namespace Physics.Telemetry.Serialised {
             break;
           }
           case 16: {
-            MessageType = (global::Physics.Telemetry.Serialised.MessageHeader.Types.MessageType) input.ReadEnum();
+            MessageType = (global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType) input.ReadEnum();
             break;
           }
           case 24: {
@@ -225,7 +225,7 @@ namespace Physics.Telemetry.Serialised {
     }
 
     #region Nested types
-    /// <summary>Container for nested types declared in the MessageHeader message type.</summary>
+    /// <summary>Container for nested types declared in the MessageHeaderMessage message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public enum MessageType {

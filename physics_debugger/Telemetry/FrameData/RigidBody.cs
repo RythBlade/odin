@@ -14,7 +14,7 @@ namespace Telemetry.FrameData
         public Dictionary<string, IBaseProperty> Properties = new Dictionary<string, IBaseProperty>();
         public List<uint> CollisionShapeIds = new List<uint>();
 
-        public void CopyFromPacket(Physics.Telemetry.Serialised.RigidBody packetBody)
+        public void CopyFromPacket(Physics.Telemetry.Serialised.RigidBodyPacket packetBody)
         {
             if(packetBody != null)
             {

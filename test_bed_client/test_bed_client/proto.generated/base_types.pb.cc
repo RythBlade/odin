@@ -15,60 +15,60 @@
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 namespace PhysicsTelemetry {
-class Vector3DefaultTypeInternal {
+class Vector3PacketDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Vector3> _instance;
-} _Vector3_default_instance_;
-class Vector4DefaultTypeInternal {
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Vector3Packet> _instance;
+} _Vector3Packet_default_instance_;
+class Vector4PacketDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Vector4> _instance;
-} _Vector4_default_instance_;
-class Matrix4x4DefaultTypeInternal {
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Vector4Packet> _instance;
+} _Vector4Packet_default_instance_;
+class Matrix4x4PacketDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Matrix4x4> _instance;
-} _Matrix4x4_default_instance_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Matrix4x4Packet> _instance;
+} _Matrix4x4Packet_default_instance_;
 }  // namespace PhysicsTelemetry
-static void InitDefaultsscc_info_Matrix4x4_base_5ftypes_2eproto() {
+static void InitDefaultsscc_info_Matrix4x4Packet_base_5ftypes_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::PhysicsTelemetry::_Matrix4x4_default_instance_;
-    new (ptr) ::PhysicsTelemetry::Matrix4x4();
+    void* ptr = &::PhysicsTelemetry::_Matrix4x4Packet_default_instance_;
+    new (ptr) ::PhysicsTelemetry::Matrix4x4Packet();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::PhysicsTelemetry::Matrix4x4::InitAsDefaultInstance();
+  ::PhysicsTelemetry::Matrix4x4Packet::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Matrix4x4_base_5ftypes_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Matrix4x4_base_5ftypes_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Matrix4x4Packet_base_5ftypes_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Matrix4x4Packet_base_5ftypes_2eproto}, {}};
 
-static void InitDefaultsscc_info_Vector3_base_5ftypes_2eproto() {
+static void InitDefaultsscc_info_Vector3Packet_base_5ftypes_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::PhysicsTelemetry::_Vector3_default_instance_;
-    new (ptr) ::PhysicsTelemetry::Vector3();
+    void* ptr = &::PhysicsTelemetry::_Vector3Packet_default_instance_;
+    new (ptr) ::PhysicsTelemetry::Vector3Packet();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::PhysicsTelemetry::Vector3::InitAsDefaultInstance();
+  ::PhysicsTelemetry::Vector3Packet::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Vector3_base_5ftypes_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Vector3_base_5ftypes_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Vector3Packet_base_5ftypes_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Vector3Packet_base_5ftypes_2eproto}, {}};
 
-static void InitDefaultsscc_info_Vector4_base_5ftypes_2eproto() {
+static void InitDefaultsscc_info_Vector4Packet_base_5ftypes_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::PhysicsTelemetry::_Vector4_default_instance_;
-    new (ptr) ::PhysicsTelemetry::Vector4();
+    void* ptr = &::PhysicsTelemetry::_Vector4Packet_default_instance_;
+    new (ptr) ::PhysicsTelemetry::Vector4Packet();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::PhysicsTelemetry::Vector4::InitAsDefaultInstance();
+  ::PhysicsTelemetry::Vector4Packet::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Vector4_base_5ftypes_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Vector4_base_5ftypes_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Vector4Packet_base_5ftypes_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Vector4Packet_base_5ftypes_2eproto}, {}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_base_5ftypes_2eproto[3];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_base_5ftypes_2eproto = nullptr;
@@ -76,79 +76,80 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_s
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_base_5ftypes_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector3, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector3Packet, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector3, x_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector3, y_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector3, z_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector3Packet, x_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector3Packet, y_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector3Packet, z_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector4, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector4Packet, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector4, x_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector4, y_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector4, z_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector4, w_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector4Packet, x_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector4Packet, y_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector4Packet, z_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Vector4Packet, w_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m11_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m12_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m13_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m14_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m21_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m22_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m23_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m24_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m31_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m32_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m33_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m34_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m41_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m42_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m43_),
-  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4, m44_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m11_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m12_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m13_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m14_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m21_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m22_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m23_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m24_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m31_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m32_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m33_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m34_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m41_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m42_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m43_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::Matrix4x4Packet, m44_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::PhysicsTelemetry::Vector3)},
-  { 8, -1, sizeof(::PhysicsTelemetry::Vector4)},
-  { 17, -1, sizeof(::PhysicsTelemetry::Matrix4x4)},
+  { 0, -1, sizeof(::PhysicsTelemetry::Vector3Packet)},
+  { 8, -1, sizeof(::PhysicsTelemetry::Vector4Packet)},
+  { 17, -1, sizeof(::PhysicsTelemetry::Matrix4x4Packet)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_Vector3_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_Vector4_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_Matrix4x4_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_Vector3Packet_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_Vector4Packet_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PhysicsTelemetry::_Matrix4x4Packet_default_instance_),
 };
 
 const char descriptor_table_protodef_base_5ftypes_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\020base_types.proto\022\020PhysicsTelemetry\"*\n\007"
-  "Vector3\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002"
-  "\"5\n\007Vector4\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003"
-  " \001(\002\022\t\n\001w\030\004 \001(\002\"\333\001\n\tMatrix4x4\022\013\n\003m11\030\001 \001"
-  "(\002\022\013\n\003m12\030\002 \001(\002\022\013\n\003m13\030\003 \001(\002\022\013\n\003m14\030\004 \001("
-  "\002\022\013\n\003m21\030\005 \001(\002\022\013\n\003m22\030\006 \001(\002\022\013\n\003m23\030\007 \001(\002"
-  "\022\013\n\003m24\030\010 \001(\002\022\013\n\003m31\030\t \001(\002\022\013\n\003m32\030\n \001(\002\022"
-  "\013\n\003m33\030\013 \001(\002\022\013\n\003m34\030\014 \001(\002\022\013\n\003m41\030\r \001(\002\022\013"
-  "\n\003m42\030\016 \001(\002\022\013\n\003m43\030\017 \001(\002\022\013\n\003m44\030\020 \001(\002B\037\252"
-  "\002\034Physics.Telemetry.Serialisedb\006proto3"
+  "\n\020base_types.proto\022\020PhysicsTelemetry\"0\n\r"
+  "Vector3Packet\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z"
+  "\030\003 \001(\002\";\n\rVector4Packet\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030"
+  "\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\t\n\001w\030\004 \001(\002\"\341\001\n\017Matrix4x"
+  "4Packet\022\013\n\003m11\030\001 \001(\002\022\013\n\003m12\030\002 \001(\002\022\013\n\003m13"
+  "\030\003 \001(\002\022\013\n\003m14\030\004 \001(\002\022\013\n\003m21\030\005 \001(\002\022\013\n\003m22\030"
+  "\006 \001(\002\022\013\n\003m23\030\007 \001(\002\022\013\n\003m24\030\010 \001(\002\022\013\n\003m31\030\t"
+  " \001(\002\022\013\n\003m32\030\n \001(\002\022\013\n\003m33\030\013 \001(\002\022\013\n\003m34\030\014 "
+  "\001(\002\022\013\n\003m41\030\r \001(\002\022\013\n\003m42\030\016 \001(\002\022\013\n\003m43\030\017 \001"
+  "(\002\022\013\n\003m44\030\020 \001(\002B\037\252\002\034Physics.Telemetry.Se"
+  "rialisedb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_base_5ftypes_2eproto_deps[1] = {
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_base_5ftypes_2eproto_sccs[3] = {
-  &scc_info_Matrix4x4_base_5ftypes_2eproto.base,
-  &scc_info_Vector3_base_5ftypes_2eproto.base,
-  &scc_info_Vector4_base_5ftypes_2eproto.base,
+  &scc_info_Matrix4x4Packet_base_5ftypes_2eproto.base,
+  &scc_info_Vector3Packet_base_5ftypes_2eproto.base,
+  &scc_info_Vector4Packet_base_5ftypes_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_base_5ftypes_2eproto_once;
 static bool descriptor_table_base_5ftypes_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_base_5ftypes_2eproto = {
-  &descriptor_table_base_5ftypes_2eproto_initialized, descriptor_table_protodef_base_5ftypes_2eproto, "base_types.proto", 398,
+  &descriptor_table_base_5ftypes_2eproto_initialized, descriptor_table_protodef_base_5ftypes_2eproto, "base_types.proto", 416,
   &descriptor_table_base_5ftypes_2eproto_once, descriptor_table_base_5ftypes_2eproto_sccs, descriptor_table_base_5ftypes_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_base_5ftypes_2eproto::offsets,
   file_level_metadata_base_5ftypes_2eproto, 3, file_level_enum_descriptors_base_5ftypes_2eproto, file_level_service_descriptors_base_5ftypes_2eproto,
@@ -160,52 +161,52 @@ namespace PhysicsTelemetry {
 
 // ===================================================================
 
-void Vector3::InitAsDefaultInstance() {
+void Vector3Packet::InitAsDefaultInstance() {
 }
-class Vector3::_Internal {
+class Vector3Packet::_Internal {
  public:
 };
 
-Vector3::Vector3()
+Vector3Packet::Vector3Packet()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PhysicsTelemetry.Vector3)
+  // @@protoc_insertion_point(constructor:PhysicsTelemetry.Vector3Packet)
 }
-Vector3::Vector3(const Vector3& from)
+Vector3Packet::Vector3Packet(const Vector3Packet& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&x_, &from.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&z_) -
     reinterpret_cast<char*>(&x_)) + sizeof(z_));
-  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.Vector3)
+  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.Vector3Packet)
 }
 
-void Vector3::SharedCtor() {
+void Vector3Packet::SharedCtor() {
   ::memset(&x_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&z_) -
       reinterpret_cast<char*>(&x_)) + sizeof(z_));
 }
 
-Vector3::~Vector3() {
-  // @@protoc_insertion_point(destructor:PhysicsTelemetry.Vector3)
+Vector3Packet::~Vector3Packet() {
+  // @@protoc_insertion_point(destructor:PhysicsTelemetry.Vector3Packet)
   SharedDtor();
 }
 
-void Vector3::SharedDtor() {
+void Vector3Packet::SharedDtor() {
 }
 
-void Vector3::SetCachedSize(int size) const {
+void Vector3Packet::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Vector3& Vector3::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Vector3_base_5ftypes_2eproto.base);
+const Vector3Packet& Vector3Packet::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Vector3Packet_base_5ftypes_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void Vector3::Clear() {
-// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.Vector3)
+void Vector3Packet::Clear() {
+// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.Vector3Packet)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -216,7 +217,7 @@ void Vector3::Clear() {
   _internal_metadata_.Clear();
 }
 
-const char* Vector3::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* Vector3Packet::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
@@ -264,9 +265,9 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* Vector3::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* Vector3Packet::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.Vector3)
+  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.Vector3Packet)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -292,12 +293,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.Vector3)
+  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.Vector3Packet)
   return target;
 }
 
-size_t Vector3::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.Vector3)
+size_t Vector3Packet::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.Vector3Packet)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -328,23 +329,23 @@ size_t Vector3::ByteSizeLong() const {
   return total_size;
 }
 
-void Vector3::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.Vector3)
+void Vector3Packet::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.Vector3Packet)
   GOOGLE_DCHECK_NE(&from, this);
-  const Vector3* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Vector3>(
+  const Vector3Packet* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Vector3Packet>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.Vector3)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.Vector3Packet)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.Vector3)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.Vector3Packet)
     MergeFrom(*source);
   }
 }
 
-void Vector3::MergeFrom(const Vector3& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.Vector3)
+void Vector3Packet::MergeFrom(const Vector3Packet& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.Vector3Packet)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -361,25 +362,25 @@ void Vector3::MergeFrom(const Vector3& from) {
   }
 }
 
-void Vector3::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.Vector3)
+void Vector3Packet::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.Vector3Packet)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Vector3::CopyFrom(const Vector3& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.Vector3)
+void Vector3Packet::CopyFrom(const Vector3Packet& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.Vector3Packet)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Vector3::IsInitialized() const {
+bool Vector3Packet::IsInitialized() const {
   return true;
 }
 
-void Vector3::InternalSwap(Vector3* other) {
+void Vector3Packet::InternalSwap(Vector3Packet* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(x_, other->x_);
@@ -387,59 +388,59 @@ void Vector3::InternalSwap(Vector3* other) {
   swap(z_, other->z_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata Vector3::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Vector3Packet::GetMetadata() const {
   return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void Vector4::InitAsDefaultInstance() {
+void Vector4Packet::InitAsDefaultInstance() {
 }
-class Vector4::_Internal {
+class Vector4Packet::_Internal {
  public:
 };
 
-Vector4::Vector4()
+Vector4Packet::Vector4Packet()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PhysicsTelemetry.Vector4)
+  // @@protoc_insertion_point(constructor:PhysicsTelemetry.Vector4Packet)
 }
-Vector4::Vector4(const Vector4& from)
+Vector4Packet::Vector4Packet(const Vector4Packet& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&x_, &from.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&w_) -
     reinterpret_cast<char*>(&x_)) + sizeof(w_));
-  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.Vector4)
+  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.Vector4Packet)
 }
 
-void Vector4::SharedCtor() {
+void Vector4Packet::SharedCtor() {
   ::memset(&x_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&w_) -
       reinterpret_cast<char*>(&x_)) + sizeof(w_));
 }
 
-Vector4::~Vector4() {
-  // @@protoc_insertion_point(destructor:PhysicsTelemetry.Vector4)
+Vector4Packet::~Vector4Packet() {
+  // @@protoc_insertion_point(destructor:PhysicsTelemetry.Vector4Packet)
   SharedDtor();
 }
 
-void Vector4::SharedDtor() {
+void Vector4Packet::SharedDtor() {
 }
 
-void Vector4::SetCachedSize(int size) const {
+void Vector4Packet::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Vector4& Vector4::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Vector4_base_5ftypes_2eproto.base);
+const Vector4Packet& Vector4Packet::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Vector4Packet_base_5ftypes_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void Vector4::Clear() {
-// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.Vector4)
+void Vector4Packet::Clear() {
+// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.Vector4Packet)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -450,7 +451,7 @@ void Vector4::Clear() {
   _internal_metadata_.Clear();
 }
 
-const char* Vector4::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* Vector4Packet::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
@@ -505,9 +506,9 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* Vector4::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* Vector4Packet::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.Vector4)
+  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.Vector4Packet)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -539,12 +540,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.Vector4)
+  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.Vector4Packet)
   return target;
 }
 
-size_t Vector4::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.Vector4)
+size_t Vector4Packet::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.Vector4Packet)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -580,23 +581,23 @@ size_t Vector4::ByteSizeLong() const {
   return total_size;
 }
 
-void Vector4::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.Vector4)
+void Vector4Packet::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.Vector4Packet)
   GOOGLE_DCHECK_NE(&from, this);
-  const Vector4* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Vector4>(
+  const Vector4Packet* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Vector4Packet>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.Vector4)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.Vector4Packet)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.Vector4)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.Vector4Packet)
     MergeFrom(*source);
   }
 }
 
-void Vector4::MergeFrom(const Vector4& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.Vector4)
+void Vector4Packet::MergeFrom(const Vector4Packet& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.Vector4Packet)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -616,25 +617,25 @@ void Vector4::MergeFrom(const Vector4& from) {
   }
 }
 
-void Vector4::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.Vector4)
+void Vector4Packet::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.Vector4Packet)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Vector4::CopyFrom(const Vector4& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.Vector4)
+void Vector4Packet::CopyFrom(const Vector4Packet& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.Vector4Packet)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Vector4::IsInitialized() const {
+bool Vector4Packet::IsInitialized() const {
   return true;
 }
 
-void Vector4::InternalSwap(Vector4* other) {
+void Vector4Packet::InternalSwap(Vector4Packet* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(x_, other->x_);
@@ -643,59 +644,59 @@ void Vector4::InternalSwap(Vector4* other) {
   swap(w_, other->w_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata Vector4::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Vector4Packet::GetMetadata() const {
   return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void Matrix4x4::InitAsDefaultInstance() {
+void Matrix4x4Packet::InitAsDefaultInstance() {
 }
-class Matrix4x4::_Internal {
+class Matrix4x4Packet::_Internal {
  public:
 };
 
-Matrix4x4::Matrix4x4()
+Matrix4x4Packet::Matrix4x4Packet()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PhysicsTelemetry.Matrix4x4)
+  // @@protoc_insertion_point(constructor:PhysicsTelemetry.Matrix4x4Packet)
 }
-Matrix4x4::Matrix4x4(const Matrix4x4& from)
+Matrix4x4Packet::Matrix4x4Packet(const Matrix4x4Packet& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&m11_, &from.m11_,
     static_cast<size_t>(reinterpret_cast<char*>(&m44_) -
     reinterpret_cast<char*>(&m11_)) + sizeof(m44_));
-  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.Matrix4x4)
+  // @@protoc_insertion_point(copy_constructor:PhysicsTelemetry.Matrix4x4Packet)
 }
 
-void Matrix4x4::SharedCtor() {
+void Matrix4x4Packet::SharedCtor() {
   ::memset(&m11_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&m44_) -
       reinterpret_cast<char*>(&m11_)) + sizeof(m44_));
 }
 
-Matrix4x4::~Matrix4x4() {
-  // @@protoc_insertion_point(destructor:PhysicsTelemetry.Matrix4x4)
+Matrix4x4Packet::~Matrix4x4Packet() {
+  // @@protoc_insertion_point(destructor:PhysicsTelemetry.Matrix4x4Packet)
   SharedDtor();
 }
 
-void Matrix4x4::SharedDtor() {
+void Matrix4x4Packet::SharedDtor() {
 }
 
-void Matrix4x4::SetCachedSize(int size) const {
+void Matrix4x4Packet::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Matrix4x4& Matrix4x4::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Matrix4x4_base_5ftypes_2eproto.base);
+const Matrix4x4Packet& Matrix4x4Packet::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Matrix4x4Packet_base_5ftypes_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void Matrix4x4::Clear() {
-// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.Matrix4x4)
+void Matrix4x4Packet::Clear() {
+// @@protoc_insertion_point(message_clear_start:PhysicsTelemetry.Matrix4x4Packet)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -706,7 +707,7 @@ void Matrix4x4::Clear() {
   _internal_metadata_.Clear();
 }
 
-const char* Matrix4x4::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* Matrix4x4Packet::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
@@ -845,9 +846,9 @@ failure:
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* Matrix4x4::_InternalSerialize(
+::PROTOBUF_NAMESPACE_ID::uint8* Matrix4x4Packet::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.Matrix4x4)
+  // @@protoc_insertion_point(serialize_to_array_start:PhysicsTelemetry.Matrix4x4Packet)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -951,12 +952,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.Matrix4x4)
+  // @@protoc_insertion_point(serialize_to_array_end:PhysicsTelemetry.Matrix4x4Packet)
   return target;
 }
 
-size_t Matrix4x4::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.Matrix4x4)
+size_t Matrix4x4Packet::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PhysicsTelemetry.Matrix4x4Packet)
   size_t total_size = 0;
 
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -1052,23 +1053,23 @@ size_t Matrix4x4::ByteSizeLong() const {
   return total_size;
 }
 
-void Matrix4x4::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.Matrix4x4)
+void Matrix4x4Packet::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:PhysicsTelemetry.Matrix4x4Packet)
   GOOGLE_DCHECK_NE(&from, this);
-  const Matrix4x4* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Matrix4x4>(
+  const Matrix4x4Packet* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Matrix4x4Packet>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.Matrix4x4)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PhysicsTelemetry.Matrix4x4Packet)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.Matrix4x4)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:PhysicsTelemetry.Matrix4x4Packet)
     MergeFrom(*source);
   }
 }
 
-void Matrix4x4::MergeFrom(const Matrix4x4& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.Matrix4x4)
+void Matrix4x4Packet::MergeFrom(const Matrix4x4Packet& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PhysicsTelemetry.Matrix4x4Packet)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
@@ -1124,25 +1125,25 @@ void Matrix4x4::MergeFrom(const Matrix4x4& from) {
   }
 }
 
-void Matrix4x4::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.Matrix4x4)
+void Matrix4x4Packet::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:PhysicsTelemetry.Matrix4x4Packet)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Matrix4x4::CopyFrom(const Matrix4x4& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.Matrix4x4)
+void Matrix4x4Packet::CopyFrom(const Matrix4x4Packet& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PhysicsTelemetry.Matrix4x4Packet)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Matrix4x4::IsInitialized() const {
+bool Matrix4x4Packet::IsInitialized() const {
   return true;
 }
 
-void Matrix4x4::InternalSwap(Matrix4x4* other) {
+void Matrix4x4Packet::InternalSwap(Matrix4x4Packet* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(m11_, other->m11_);
@@ -1163,7 +1164,7 @@ void Matrix4x4::InternalSwap(Matrix4x4* other) {
   swap(m44_, other->m44_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata Matrix4x4::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Matrix4x4Packet::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -1171,14 +1172,14 @@ void Matrix4x4::InternalSwap(Matrix4x4* other) {
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace PhysicsTelemetry
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::Vector3* Arena::CreateMaybeMessage< ::PhysicsTelemetry::Vector3 >(Arena* arena) {
-  return Arena::CreateInternal< ::PhysicsTelemetry::Vector3 >(arena);
+template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::Vector3Packet* Arena::CreateMaybeMessage< ::PhysicsTelemetry::Vector3Packet >(Arena* arena) {
+  return Arena::CreateInternal< ::PhysicsTelemetry::Vector3Packet >(arena);
 }
-template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::Vector4* Arena::CreateMaybeMessage< ::PhysicsTelemetry::Vector4 >(Arena* arena) {
-  return Arena::CreateInternal< ::PhysicsTelemetry::Vector4 >(arena);
+template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::Vector4Packet* Arena::CreateMaybeMessage< ::PhysicsTelemetry::Vector4Packet >(Arena* arena) {
+  return Arena::CreateInternal< ::PhysicsTelemetry::Vector4Packet >(arena);
 }
-template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::Matrix4x4* Arena::CreateMaybeMessage< ::PhysicsTelemetry::Matrix4x4 >(Arena* arena) {
-  return Arena::CreateInternal< ::PhysicsTelemetry::Matrix4x4 >(arena);
+template<> PROTOBUF_NOINLINE ::PhysicsTelemetry::Matrix4x4Packet* Arena::CreateMaybeMessage< ::PhysicsTelemetry::Matrix4x4Packet >(Arena* arena) {
+  return Arena::CreateInternal< ::PhysicsTelemetry::Matrix4x4Packet >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

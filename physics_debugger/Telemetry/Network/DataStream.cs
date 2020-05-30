@@ -92,7 +92,7 @@ namespace Telemetry.Network
                     int byteIndex = 0;
                     int headerSize = BitConverter.ToInt32(basePacket.PacketBytes, byteIndex); byteIndex += 4;
 
-                    basePacket.messageHeader = MessageHeader.Parser.ParseFrom(basePacket.PacketBytes, byteIndex, headerSize);
+                    basePacket.messageHeader = MessageHeaderMessage.Parser.ParseFrom(basePacket.PacketBytes, byteIndex, headerSize);
                     basePacket.startOfPacketData = headerSize + 4;
                 }
             }

@@ -47,9 +47,9 @@ namespace Telemetry.Network
 
         private void ProcessRigidBodyFrameUpdate(BasePacketHeader packet, FrameSnapshot snapshot)
         {
-            RigidBodyList rigidBodyList = RigidBodyList.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData, packet.messageHeader.DataSize);
+            RigidBodyListPacket rigidBodyList = RigidBodyListPacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData, packet.messageHeader.DataSize);
 
-            foreach(Physics.Telemetry.Serialised.RigidBody packetBody in rigidBodyList.RigidBodies)
+            foreach(Physics.Telemetry.Serialised.RigidBodyPacket packetBody in rigidBodyList.RigidBodies)
             {
                 FrameData.RigidBody body = new FrameData.RigidBody();
 
@@ -62,13 +62,13 @@ namespace Telemetry.Network
 
         private void ProcessShapeAdded(BasePacketHeader packet)
         {
-            ShapeCreated shapeCreatedPacket = ShapeCreated.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData, packet.messageHeader.DataSize);
+            ShapeCreatedMessage shapeCreatedPacket = ShapeCreatedMessage.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData, packet.messageHeader.DataSize);
 
             switch (shapeCreatedPacket.ShapeType)
             {
                 case Physics.Telemetry.Serialised.ShapeType.Obb:
                     {
-                        OBBShape createdObbPacket = OBBShape.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
+                        ObbShapePacket createdObbPacket = ObbShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
 
                         ObbShape createdObb = new ObbShape();
                         createdObb.CopyFromPacket(createdObbPacket);
@@ -92,7 +92,7 @@ namespace Telemetry.Network
                     break;
                 case Physics.Telemetry.Serialised.ShapeType.ConvexHull:
                     {
-                        Physics.Telemetry.Serialised.ConvexHullShape createdConvexHullPacket = Physics.Telemetry.Serialised.ConvexHullShape.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
+                        Physics.Telemetry.Serialised.ConvexHullShapePacket createdConvexHullPacket = Physics.Telemetry.Serialised.ConvexHullShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
 
                         Telemetry.FrameData.Shapes.ConvexHullShape createdConvexHull = new Telemetry.FrameData.Shapes.ConvexHullShape();
                         createdConvexHull.CopyFromPacket(createdConvexHullPacket);
@@ -112,7 +112,7 @@ namespace Telemetry.Network
                     break;
                 case Physics.Telemetry.Serialised.ShapeType.Tetrahedron:
                     {
-                        Physics.Telemetry.Serialised.TetrahedronShape createdTetrahedronPacket = Physics.Telemetry.Serialised.TetrahedronShape.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
+                        Physics.Telemetry.Serialised.TetrahedronShapePacket createdTetrahedronPacket = Physics.Telemetry.Serialised.TetrahedronShapePacket.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData + shapeCreatedPacket.CalculateSize(), shapeCreatedPacket.ShapeSize);
 
                         Telemetry.FrameData.Shapes.TetrahedronShape createdTetrahedron = new Telemetry.FrameData.Shapes.TetrahedronShape();
                         createdTetrahedron.CopyFromPacket(createdTetrahedronPacket);
@@ -145,12 +145,12 @@ namespace Telemetry.Network
 
                 switch (packet.messageHeader.MessageType)
                 {
-                    case MessageHeader.Types.MessageType.RigidBodyUpdate:
+                    case MessageHeaderMessage.Types.MessageType.RigidBodyUpdate:
                         ProcessRigidBodyFrameUpdate(packet, snapshot);
                         toReturn = true;
                         break;
 
-                    case MessageHeader.Types.MessageType.ShapeCreated:
+                    case MessageHeaderMessage.Types.MessageType.ShapeCreated:
                         ProcessShapeAdded(packet);
                         toReturn = true;
                         break;

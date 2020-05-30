@@ -20,6 +20,6 @@ namespace Telemetry.Network
         public byte[] PacketBytes = new byte[MaxPacketLength];
         public int startOfPacketData = 0;
 
-        public MessageHeader messageHeader;
+        public MessageHeaderMessage messageHeader;
     }
 }

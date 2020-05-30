@@ -25,37 +25,39 @@ namespace Physics.Telemetry.Serialised {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CgxzaGFwZXMucHJvdG8SEFBoeXNpY3NUZWxlbWV0cnkaEGJhc2VfdHlwZXMu",
-            "cHJvdG8ikQEKCVNoYXBlQmFzZRIKCgJJZBgBIAEoDRIWCg5oYXNMb2NhbE1h",
-            "dHJpeBgCIAEoCBIwCgtsb2NhbE1hdHJpeBgDIAEoCzIbLlBoeXNpY3NUZWxl",
-            "bWV0cnkuTWF0cml4NHg0Ei4KCXNoYXBlVHlwZRgEIAEoDjIbLlBoeXNpY3NU",
-            "ZWxlbWV0cnkuU2hhcGVUeXBlImUKCE9CQlNoYXBlEikKBGJhc2UYASABKAsy",
-            "Gy5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBlQmFzZRIuCgtoYWxmRXh0ZW50cxgC",
-            "IAEoCzIZLlBoeXNpY3NUZWxlbWV0cnkuVmVjdG9yMyI9ChBUZXRyYWhlZHJv",
-            "blNoYXBlEikKBGJhc2UYASABKAsyGy5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBl",
-            "QmFzZSLGAgoPQ29udmV4SHVsbFNoYXBlEikKBGJhc2UYASABKAsyGy5QaHlz",
-            "aWNzVGVsZW1ldHJ5LlNoYXBlQmFzZRI6Cgh2ZXJ0aWNlcxgCIAMoCzIoLlBo",
-            "eXNpY3NUZWxlbWV0cnkuQ29udmV4SHVsbFNoYXBlLlZlcnRleBI1CgVmYWNl",
-            "cxgDIAMoCzImLlBoeXNpY3NUZWxlbWV0cnkuQ29udmV4SHVsbFNoYXBlLkZh",
-            "Y2UaYAoGVmVydGV4EisKCHBvc2l0aW9uGAEgASgLMhkuUGh5c2ljc1RlbGVt",
-            "ZXRyeS5WZWN0b3IzEikKBm5vcm1hbBgCIAEoCzIZLlBoeXNpY3NUZWxlbWV0",
-            "cnkuVmVjdG9yMxozCgRGYWNlEg0KBXZlcnQwGAEgASgFEg0KBXZlcnQxGAIg",
-            "ASgFEg0KBXZlcnQyGAMgASgFIlEKDFNoYXBlQ3JlYXRlZBIuCglzaGFwZVR5",
-            "cGUYASABKA4yGy5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBlVHlwZRIRCglzaGFw",
-            "ZVNpemUYAiABKAUiUQoMU2hhcGVDaGFuZ2VkEi4KCXNoYXBlVHlwZRgBIAEo",
-            "DjIbLlBoeXNpY3NUZWxlbWV0cnkuU2hhcGVUeXBlEhEKCXNoYXBlU2l6ZRgC",
-            "IAEoBSpLCglTaGFwZVR5cGUSBwoDT0JCEAASCgoGU3BoZXJlEAESCAoEQ29u",
-            "ZRACEg4KCkNvbnZleEh1bGwQAxIPCgtUZXRyYWhlZHJvbhAEQh+qAhxQaHlz",
-            "aWNzLlRlbGVtZXRyeS5TZXJpYWxpc2VkYgZwcm90bzM="));
+            "cHJvdG8inQEKD1NoYXBlQmFzZVBhY2tldBIKCgJJZBgBIAEoDRIWCg5oYXNM",
+            "b2NhbE1hdHJpeBgCIAEoCBI2Cgtsb2NhbE1hdHJpeBgDIAEoCzIhLlBoeXNp",
+            "Y3NUZWxlbWV0cnkuTWF0cml4NHg0UGFja2V0Ei4KCXNoYXBlVHlwZRgEIAEo",
+            "DjIbLlBoeXNpY3NUZWxlbWV0cnkuU2hhcGVUeXBlIncKDk9iYlNoYXBlUGFj",
+            "a2V0Ei8KBGJhc2UYASABKAsyIS5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBlQmFz",
+            "ZVBhY2tldBI0CgtoYWxmRXh0ZW50cxgCIAEoCzIfLlBoeXNpY3NUZWxlbWV0",
+            "cnkuVmVjdG9yM1BhY2tldCJJChZUZXRyYWhlZHJvblNoYXBlUGFja2V0Ei8K",
+            "BGJhc2UYASABKAsyIS5QaHlzaWNzVGVsZW1ldHJ5LlNoYXBlQmFzZVBhY2tl",
+            "dCLqAgoVQ29udmV4SHVsbFNoYXBlUGFja2V0Ei8KBGJhc2UYASABKAsyIS5Q",
+            "aHlzaWNzVGVsZW1ldHJ5LlNoYXBlQmFzZVBhY2tldBJACgh2ZXJ0aWNlcxgC",
+            "IAMoCzIuLlBoeXNpY3NUZWxlbWV0cnkuQ29udmV4SHVsbFNoYXBlUGFja2V0",
+            "LlZlcnRleBI7CgVmYWNlcxgDIAMoCzIsLlBoeXNpY3NUZWxlbWV0cnkuQ29u",
+            "dmV4SHVsbFNoYXBlUGFja2V0LkZhY2UabAoGVmVydGV4EjEKCHBvc2l0aW9u",
+            "GAEgASgLMh8uUGh5c2ljc1RlbGVtZXRyeS5WZWN0b3IzUGFja2V0Ei8KBm5v",
+            "cm1hbBgCIAEoCzIfLlBoeXNpY3NUZWxlbWV0cnkuVmVjdG9yM1BhY2tldBoz",
+            "CgRGYWNlEg0KBXZlcnQwGAEgASgFEg0KBXZlcnQxGAIgASgFEg0KBXZlcnQy",
+            "GAMgASgFIlgKE1NoYXBlQ3JlYXRlZE1lc3NhZ2USLgoJc2hhcGVUeXBlGAEg",
+            "ASgOMhsuUGh5c2ljc1RlbGVtZXRyeS5TaGFwZVR5cGUSEQoJc2hhcGVTaXpl",
+            "GAIgASgFIlgKE1NoYXBlQ2hhbmdlZE1lc3NhZ2USLgoJc2hhcGVUeXBlGAEg",
+            "ASgOMhsuUGh5c2ljc1RlbGVtZXRyeS5TaGFwZVR5cGUSEQoJc2hhcGVTaXpl",
+            "GAIgASgFKksKCVNoYXBlVHlwZRIHCgNPQkIQABIKCgZTcGhlcmUQARIICgRD",
+            "b25lEAISDgoKQ29udmV4SHVsbBADEg8KC1RldHJhaGVkcm9uEARCH6oCHFBo",
+            "eXNpY3MuVGVsZW1ldHJ5LlNlcmlhbGlzZWRiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Physics.Telemetry.Serialised.BaseTypesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Physics.Telemetry.Serialised.ShapeType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeBase), global::Physics.Telemetry.Serialised.ShapeBase.Parser, new[]{ "Id", "HasLocalMatrix", "LocalMatrix", "ShapeType" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.OBBShape), global::Physics.Telemetry.Serialised.OBBShape.Parser, new[]{ "Base", "HalfExtents" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.TetrahedronShape), global::Physics.Telemetry.Serialised.TetrahedronShape.Parser, new[]{ "Base" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ConvexHullShape), global::Physics.Telemetry.Serialised.ConvexHullShape.Parser, new[]{ "Base", "Vertices", "Faces" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Vertex), global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Vertex.Parser, new[]{ "Position", "Normal" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Face), global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Face.Parser, new[]{ "Vert0", "Vert1", "Vert2" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeCreated), global::Physics.Telemetry.Serialised.ShapeCreated.Parser, new[]{ "ShapeType", "ShapeSize" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeChanged), global::Physics.Telemetry.Serialised.ShapeChanged.Parser, new[]{ "ShapeType", "ShapeSize" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeBasePacket), global::Physics.Telemetry.Serialised.ShapeBasePacket.Parser, new[]{ "Id", "HasLocalMatrix", "LocalMatrix", "ShapeType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ObbShapePacket), global::Physics.Telemetry.Serialised.ObbShapePacket.Parser, new[]{ "Base", "HalfExtents" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.TetrahedronShapePacket), global::Physics.Telemetry.Serialised.TetrahedronShapePacket.Parser, new[]{ "Base" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ConvexHullShapePacket), global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Parser, new[]{ "Base", "Vertices", "Faces" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Vertex), global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Vertex.Parser, new[]{ "Position", "Normal" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Face), global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Face.Parser, new[]{ "Vert0", "Vert1", "Vert2" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeCreatedMessage), global::Physics.Telemetry.Serialised.ShapeCreatedMessage.Parser, new[]{ "ShapeType", "ShapeSize" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeChangedMessage), global::Physics.Telemetry.Serialised.ShapeChangedMessage.Parser, new[]{ "ShapeType", "ShapeSize" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,11 +75,11 @@ namespace Physics.Telemetry.Serialised {
   #endregion
 
   #region Messages
-  public sealed partial class ShapeBase : pb::IMessage<ShapeBase> {
-    private static readonly pb::MessageParser<ShapeBase> _parser = new pb::MessageParser<ShapeBase>(() => new ShapeBase());
+  public sealed partial class ShapeBasePacket : pb::IMessage<ShapeBasePacket> {
+    private static readonly pb::MessageParser<ShapeBasePacket> _parser = new pb::MessageParser<ShapeBasePacket>(() => new ShapeBasePacket());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ShapeBase> Parser { get { return _parser; } }
+    public static pb::MessageParser<ShapeBasePacket> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -90,14 +92,14 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShapeBase() {
+    public ShapeBasePacket() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShapeBase(ShapeBase other) : this() {
+    public ShapeBasePacket(ShapeBasePacket other) : this() {
       id_ = other.id_;
       hasLocalMatrix_ = other.hasLocalMatrix_;
       localMatrix_ = other.localMatrix_ != null ? other.localMatrix_.Clone() : null;
@@ -106,8 +108,8 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShapeBase Clone() {
-      return new ShapeBase(this);
+    public ShapeBasePacket Clone() {
+      return new ShapeBasePacket(this);
     }
 
     /// <summary>Field number for the "Id" field.</summary>
@@ -134,9 +136,9 @@ namespace Physics.Telemetry.Serialised {
 
     /// <summary>Field number for the "localMatrix" field.</summary>
     public const int LocalMatrixFieldNumber = 3;
-    private global::Physics.Telemetry.Serialised.Matrix4x4 localMatrix_;
+    private global::Physics.Telemetry.Serialised.Matrix4x4Packet localMatrix_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Physics.Telemetry.Serialised.Matrix4x4 LocalMatrix {
+    public global::Physics.Telemetry.Serialised.Matrix4x4Packet LocalMatrix {
       get { return localMatrix_; }
       set {
         localMatrix_ = value;
@@ -156,11 +158,11 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as ShapeBase);
+      return Equals(other as ShapeBasePacket);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ShapeBase other) {
+    public bool Equals(ShapeBasePacket other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -237,7 +239,7 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ShapeBase other) {
+    public void MergeFrom(ShapeBasePacket other) {
       if (other == null) {
         return;
       }
@@ -249,7 +251,7 @@ namespace Physics.Telemetry.Serialised {
       }
       if (other.localMatrix_ != null) {
         if (localMatrix_ == null) {
-          LocalMatrix = new global::Physics.Telemetry.Serialised.Matrix4x4();
+          LocalMatrix = new global::Physics.Telemetry.Serialised.Matrix4x4Packet();
         }
         LocalMatrix.MergeFrom(other.LocalMatrix);
       }
@@ -277,7 +279,7 @@ namespace Physics.Telemetry.Serialised {
           }
           case 26: {
             if (localMatrix_ == null) {
-              LocalMatrix = new global::Physics.Telemetry.Serialised.Matrix4x4();
+              LocalMatrix = new global::Physics.Telemetry.Serialised.Matrix4x4Packet();
             }
             input.ReadMessage(LocalMatrix);
             break;
@@ -292,11 +294,11 @@ namespace Physics.Telemetry.Serialised {
 
   }
 
-  public sealed partial class OBBShape : pb::IMessage<OBBShape> {
-    private static readonly pb::MessageParser<OBBShape> _parser = new pb::MessageParser<OBBShape>(() => new OBBShape());
+  public sealed partial class ObbShapePacket : pb::IMessage<ObbShapePacket> {
+    private static readonly pb::MessageParser<ObbShapePacket> _parser = new pb::MessageParser<ObbShapePacket>(() => new ObbShapePacket());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<OBBShape> Parser { get { return _parser; } }
+    public static pb::MessageParser<ObbShapePacket> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -309,29 +311,29 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public OBBShape() {
+    public ObbShapePacket() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public OBBShape(OBBShape other) : this() {
+    public ObbShapePacket(ObbShapePacket other) : this() {
       base_ = other.base_ != null ? other.base_.Clone() : null;
       halfExtents_ = other.halfExtents_ != null ? other.halfExtents_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public OBBShape Clone() {
-      return new OBBShape(this);
+    public ObbShapePacket Clone() {
+      return new ObbShapePacket(this);
     }
 
     /// <summary>Field number for the "base" field.</summary>
     public const int BaseFieldNumber = 1;
-    private global::Physics.Telemetry.Serialised.ShapeBase base_;
+    private global::Physics.Telemetry.Serialised.ShapeBasePacket base_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Physics.Telemetry.Serialised.ShapeBase Base {
+    public global::Physics.Telemetry.Serialised.ShapeBasePacket Base {
       get { return base_; }
       set {
         base_ = value;
@@ -340,9 +342,9 @@ namespace Physics.Telemetry.Serialised {
 
     /// <summary>Field number for the "halfExtents" field.</summary>
     public const int HalfExtentsFieldNumber = 2;
-    private global::Physics.Telemetry.Serialised.Vector3 halfExtents_;
+    private global::Physics.Telemetry.Serialised.Vector3Packet halfExtents_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Physics.Telemetry.Serialised.Vector3 HalfExtents {
+    public global::Physics.Telemetry.Serialised.Vector3Packet HalfExtents {
       get { return halfExtents_; }
       set {
         halfExtents_ = value;
@@ -351,11 +353,11 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as OBBShape);
+      return Equals(other as ObbShapePacket);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(OBBShape other) {
+    public bool Equals(ObbShapePacket other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -414,19 +416,19 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(OBBShape other) {
+    public void MergeFrom(ObbShapePacket other) {
       if (other == null) {
         return;
       }
       if (other.base_ != null) {
         if (base_ == null) {
-          Base = new global::Physics.Telemetry.Serialised.ShapeBase();
+          Base = new global::Physics.Telemetry.Serialised.ShapeBasePacket();
         }
         Base.MergeFrom(other.Base);
       }
       if (other.halfExtents_ != null) {
         if (halfExtents_ == null) {
-          HalfExtents = new global::Physics.Telemetry.Serialised.Vector3();
+          HalfExtents = new global::Physics.Telemetry.Serialised.Vector3Packet();
         }
         HalfExtents.MergeFrom(other.HalfExtents);
       }
@@ -443,14 +445,14 @@ namespace Physics.Telemetry.Serialised {
             break;
           case 10: {
             if (base_ == null) {
-              Base = new global::Physics.Telemetry.Serialised.ShapeBase();
+              Base = new global::Physics.Telemetry.Serialised.ShapeBasePacket();
             }
             input.ReadMessage(Base);
             break;
           }
           case 18: {
             if (halfExtents_ == null) {
-              HalfExtents = new global::Physics.Telemetry.Serialised.Vector3();
+              HalfExtents = new global::Physics.Telemetry.Serialised.Vector3Packet();
             }
             input.ReadMessage(HalfExtents);
             break;
@@ -461,11 +463,11 @@ namespace Physics.Telemetry.Serialised {
 
   }
 
-  public sealed partial class TetrahedronShape : pb::IMessage<TetrahedronShape> {
-    private static readonly pb::MessageParser<TetrahedronShape> _parser = new pb::MessageParser<TetrahedronShape>(() => new TetrahedronShape());
+  public sealed partial class TetrahedronShapePacket : pb::IMessage<TetrahedronShapePacket> {
+    private static readonly pb::MessageParser<TetrahedronShapePacket> _parser = new pb::MessageParser<TetrahedronShapePacket>(() => new TetrahedronShapePacket());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<TetrahedronShape> Parser { get { return _parser; } }
+    public static pb::MessageParser<TetrahedronShapePacket> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -478,28 +480,28 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TetrahedronShape() {
+    public TetrahedronShapePacket() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TetrahedronShape(TetrahedronShape other) : this() {
+    public TetrahedronShapePacket(TetrahedronShapePacket other) : this() {
       base_ = other.base_ != null ? other.base_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TetrahedronShape Clone() {
-      return new TetrahedronShape(this);
+    public TetrahedronShapePacket Clone() {
+      return new TetrahedronShapePacket(this);
     }
 
     /// <summary>Field number for the "base" field.</summary>
     public const int BaseFieldNumber = 1;
-    private global::Physics.Telemetry.Serialised.ShapeBase base_;
+    private global::Physics.Telemetry.Serialised.ShapeBasePacket base_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Physics.Telemetry.Serialised.ShapeBase Base {
+    public global::Physics.Telemetry.Serialised.ShapeBasePacket Base {
       get { return base_; }
       set {
         base_ = value;
@@ -508,11 +510,11 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as TetrahedronShape);
+      return Equals(other as TetrahedronShapePacket);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(TetrahedronShape other) {
+    public bool Equals(TetrahedronShapePacket other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -562,13 +564,13 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(TetrahedronShape other) {
+    public void MergeFrom(TetrahedronShapePacket other) {
       if (other == null) {
         return;
       }
       if (other.base_ != null) {
         if (base_ == null) {
-          Base = new global::Physics.Telemetry.Serialised.ShapeBase();
+          Base = new global::Physics.Telemetry.Serialised.ShapeBasePacket();
         }
         Base.MergeFrom(other.Base);
       }
@@ -585,7 +587,7 @@ namespace Physics.Telemetry.Serialised {
             break;
           case 10: {
             if (base_ == null) {
-              Base = new global::Physics.Telemetry.Serialised.ShapeBase();
+              Base = new global::Physics.Telemetry.Serialised.ShapeBasePacket();
             }
             input.ReadMessage(Base);
             break;
@@ -596,11 +598,11 @@ namespace Physics.Telemetry.Serialised {
 
   }
 
-  public sealed partial class ConvexHullShape : pb::IMessage<ConvexHullShape> {
-    private static readonly pb::MessageParser<ConvexHullShape> _parser = new pb::MessageParser<ConvexHullShape>(() => new ConvexHullShape());
+  public sealed partial class ConvexHullShapePacket : pb::IMessage<ConvexHullShapePacket> {
+    private static readonly pb::MessageParser<ConvexHullShapePacket> _parser = new pb::MessageParser<ConvexHullShapePacket>(() => new ConvexHullShapePacket());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ConvexHullShape> Parser { get { return _parser; } }
+    public static pb::MessageParser<ConvexHullShapePacket> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -613,14 +615,14 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ConvexHullShape() {
+    public ConvexHullShapePacket() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ConvexHullShape(ConvexHullShape other) : this() {
+    public ConvexHullShapePacket(ConvexHullShapePacket other) : this() {
       base_ = other.base_ != null ? other.base_.Clone() : null;
       vertices_ = other.vertices_.Clone();
       faces_ = other.faces_.Clone();
@@ -628,15 +630,15 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ConvexHullShape Clone() {
-      return new ConvexHullShape(this);
+    public ConvexHullShapePacket Clone() {
+      return new ConvexHullShapePacket(this);
     }
 
     /// <summary>Field number for the "base" field.</summary>
     public const int BaseFieldNumber = 1;
-    private global::Physics.Telemetry.Serialised.ShapeBase base_;
+    private global::Physics.Telemetry.Serialised.ShapeBasePacket base_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Physics.Telemetry.Serialised.ShapeBase Base {
+    public global::Physics.Telemetry.Serialised.ShapeBasePacket Base {
       get { return base_; }
       set {
         base_ = value;
@@ -645,31 +647,31 @@ namespace Physics.Telemetry.Serialised {
 
     /// <summary>Field number for the "vertices" field.</summary>
     public const int VerticesFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Vertex> _repeated_vertices_codec
-        = pb::FieldCodec.ForMessage(18, global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Vertex.Parser);
-    private readonly pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Vertex> vertices_ = new pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Vertex>();
+    private static readonly pb::FieldCodec<global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Vertex> _repeated_vertices_codec
+        = pb::FieldCodec.ForMessage(18, global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Vertex.Parser);
+    private readonly pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Vertex> vertices_ = new pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Vertex>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Vertex> Vertices {
+    public pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Vertex> Vertices {
       get { return vertices_; }
     }
 
     /// <summary>Field number for the "faces" field.</summary>
     public const int FacesFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Face> _repeated_faces_codec
-        = pb::FieldCodec.ForMessage(26, global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Face.Parser);
-    private readonly pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Face> faces_ = new pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Face>();
+    private static readonly pb::FieldCodec<global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Face> _repeated_faces_codec
+        = pb::FieldCodec.ForMessage(26, global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Face.Parser);
+    private readonly pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Face> faces_ = new pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Face>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShape.Types.Face> Faces {
+    public pbc::RepeatedField<global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Face> Faces {
       get { return faces_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as ConvexHullShape);
+      return Equals(other as ConvexHullShapePacket);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ConvexHullShape other) {
+    public bool Equals(ConvexHullShapePacket other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -727,13 +729,13 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ConvexHullShape other) {
+    public void MergeFrom(ConvexHullShapePacket other) {
       if (other == null) {
         return;
       }
       if (other.base_ != null) {
         if (base_ == null) {
-          Base = new global::Physics.Telemetry.Serialised.ShapeBase();
+          Base = new global::Physics.Telemetry.Serialised.ShapeBasePacket();
         }
         Base.MergeFrom(other.Base);
       }
@@ -752,7 +754,7 @@ namespace Physics.Telemetry.Serialised {
             break;
           case 10: {
             if (base_ == null) {
-              Base = new global::Physics.Telemetry.Serialised.ShapeBase();
+              Base = new global::Physics.Telemetry.Serialised.ShapeBasePacket();
             }
             input.ReadMessage(Base);
             break;
@@ -770,7 +772,7 @@ namespace Physics.Telemetry.Serialised {
     }
 
     #region Nested types
-    /// <summary>Container for nested types declared in the ConvexHullShape message type.</summary>
+    /// <summary>Container for nested types declared in the ConvexHullShapePacket message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public sealed partial class Vertex : pb::IMessage<Vertex> {
@@ -781,7 +783,7 @@ namespace Physics.Telemetry.Serialised {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::Physics.Telemetry.Serialised.ConvexHullShape.Descriptor.NestedTypes[0]; }
+          get { return global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Descriptor.NestedTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -810,9 +812,9 @@ namespace Physics.Telemetry.Serialised {
 
         /// <summary>Field number for the "position" field.</summary>
         public const int PositionFieldNumber = 1;
-        private global::Physics.Telemetry.Serialised.Vector3 position_;
+        private global::Physics.Telemetry.Serialised.Vector3Packet position_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::Physics.Telemetry.Serialised.Vector3 Position {
+        public global::Physics.Telemetry.Serialised.Vector3Packet Position {
           get { return position_; }
           set {
             position_ = value;
@@ -821,9 +823,9 @@ namespace Physics.Telemetry.Serialised {
 
         /// <summary>Field number for the "normal" field.</summary>
         public const int NormalFieldNumber = 2;
-        private global::Physics.Telemetry.Serialised.Vector3 normal_;
+        private global::Physics.Telemetry.Serialised.Vector3Packet normal_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::Physics.Telemetry.Serialised.Vector3 Normal {
+        public global::Physics.Telemetry.Serialised.Vector3Packet Normal {
           get { return normal_; }
           set {
             normal_ = value;
@@ -901,13 +903,13 @@ namespace Physics.Telemetry.Serialised {
           }
           if (other.position_ != null) {
             if (position_ == null) {
-              Position = new global::Physics.Telemetry.Serialised.Vector3();
+              Position = new global::Physics.Telemetry.Serialised.Vector3Packet();
             }
             Position.MergeFrom(other.Position);
           }
           if (other.normal_ != null) {
             if (normal_ == null) {
-              Normal = new global::Physics.Telemetry.Serialised.Vector3();
+              Normal = new global::Physics.Telemetry.Serialised.Vector3Packet();
             }
             Normal.MergeFrom(other.Normal);
           }
@@ -924,14 +926,14 @@ namespace Physics.Telemetry.Serialised {
                 break;
               case 10: {
                 if (position_ == null) {
-                  Position = new global::Physics.Telemetry.Serialised.Vector3();
+                  Position = new global::Physics.Telemetry.Serialised.Vector3Packet();
                 }
                 input.ReadMessage(Position);
                 break;
               }
               case 18: {
                 if (normal_ == null) {
-                  Normal = new global::Physics.Telemetry.Serialised.Vector3();
+                  Normal = new global::Physics.Telemetry.Serialised.Vector3Packet();
                 }
                 input.ReadMessage(Normal);
                 break;
@@ -950,7 +952,7 @@ namespace Physics.Telemetry.Serialised {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::Physics.Telemetry.Serialised.ConvexHullShape.Descriptor.NestedTypes[1]; }
+          get { return global::Physics.Telemetry.Serialised.ConvexHullShapePacket.Descriptor.NestedTypes[1]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1132,11 +1134,11 @@ namespace Physics.Telemetry.Serialised {
 
   }
 
-  public sealed partial class ShapeCreated : pb::IMessage<ShapeCreated> {
-    private static readonly pb::MessageParser<ShapeCreated> _parser = new pb::MessageParser<ShapeCreated>(() => new ShapeCreated());
+  public sealed partial class ShapeCreatedMessage : pb::IMessage<ShapeCreatedMessage> {
+    private static readonly pb::MessageParser<ShapeCreatedMessage> _parser = new pb::MessageParser<ShapeCreatedMessage>(() => new ShapeCreatedMessage());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ShapeCreated> Parser { get { return _parser; } }
+    public static pb::MessageParser<ShapeCreatedMessage> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -1149,22 +1151,22 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShapeCreated() {
+    public ShapeCreatedMessage() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShapeCreated(ShapeCreated other) : this() {
+    public ShapeCreatedMessage(ShapeCreatedMessage other) : this() {
       shapeType_ = other.shapeType_;
       shapeSize_ = other.shapeSize_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShapeCreated Clone() {
-      return new ShapeCreated(this);
+    public ShapeCreatedMessage Clone() {
+      return new ShapeCreatedMessage(this);
     }
 
     /// <summary>Field number for the "shapeType" field.</summary>
@@ -1191,11 +1193,11 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as ShapeCreated);
+      return Equals(other as ShapeCreatedMessage);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ShapeCreated other) {
+    public bool Equals(ShapeCreatedMessage other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1254,7 +1256,7 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ShapeCreated other) {
+    public void MergeFrom(ShapeCreatedMessage other) {
       if (other == null) {
         return;
       }
@@ -1289,11 +1291,11 @@ namespace Physics.Telemetry.Serialised {
 
   }
 
-  public sealed partial class ShapeChanged : pb::IMessage<ShapeChanged> {
-    private static readonly pb::MessageParser<ShapeChanged> _parser = new pb::MessageParser<ShapeChanged>(() => new ShapeChanged());
+  public sealed partial class ShapeChangedMessage : pb::IMessage<ShapeChangedMessage> {
+    private static readonly pb::MessageParser<ShapeChangedMessage> _parser = new pb::MessageParser<ShapeChangedMessage>(() => new ShapeChangedMessage());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ShapeChanged> Parser { get { return _parser; } }
+    public static pb::MessageParser<ShapeChangedMessage> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -1306,22 +1308,22 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShapeChanged() {
+    public ShapeChangedMessage() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShapeChanged(ShapeChanged other) : this() {
+    public ShapeChangedMessage(ShapeChangedMessage other) : this() {
       shapeType_ = other.shapeType_;
       shapeSize_ = other.shapeSize_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ShapeChanged Clone() {
-      return new ShapeChanged(this);
+    public ShapeChangedMessage Clone() {
+      return new ShapeChangedMessage(this);
     }
 
     /// <summary>Field number for the "shapeType" field.</summary>
@@ -1348,11 +1350,11 @@ namespace Physics.Telemetry.Serialised {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as ShapeChanged);
+      return Equals(other as ShapeChangedMessage);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ShapeChanged other) {
+    public bool Equals(ShapeChangedMessage other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1411,7 +1413,7 @@ namespace Physics.Telemetry.Serialised {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ShapeChanged other) {
+    public void MergeFrom(ShapeChangedMessage other) {
       if (other == null) {
         return;
       }

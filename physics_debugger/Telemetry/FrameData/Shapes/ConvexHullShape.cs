@@ -20,7 +20,7 @@ namespace Telemetry.FrameData.Shapes
                 Index[2] = vert2;
             }
 
-            public Face(Physics.Telemetry.Serialised.ConvexHullShape.Types.Face face)
+            public Face(Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Face face)
             {
                 Index[0] = face.Vert0;
                 Index[1] = face.Vert1;
@@ -39,7 +39,7 @@ namespace Telemetry.FrameData.Shapes
                 Normal = normal;
             }
 
-            public Vertex(Physics.Telemetry.Serialised.ConvexHullShape.Types.Vertex vertex)
+            public Vertex(Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Vertex vertex)
             {
                 Point.X = vertex.Position.X;
                 Point.Y = vertex.Position.Y;
@@ -61,18 +61,18 @@ namespace Telemetry.FrameData.Shapes
             ShapeType = ShapeType.eConvexHull;
         }
 
-        public void CopyFromPacket(Physics.Telemetry.Serialised.ConvexHullShape packetConvexHullShape)
+        public void CopyFromPacket(Physics.Telemetry.Serialised.ConvexHullShapePacket packetConvexHullShape)
         {
             if (packetConvexHullShape != null)
             {
                 base.CopyFromPacket(packetConvexHullShape.Base);
 
-                foreach( Physics.Telemetry.Serialised.ConvexHullShape.Types.Face face in packetConvexHullShape.Faces)
+                foreach( Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Face face in packetConvexHullShape.Faces)
                 {
                     Faces.Add(new Face(face));
                 }
 
-                foreach(Physics.Telemetry.Serialised.ConvexHullShape.Types.Vertex vertex in packetConvexHullShape.Vertices)
+                foreach(Physics.Telemetry.Serialised.ConvexHullShapePacket.Types.Vertex vertex in packetConvexHullShape.Vertices)
                 {
                     Vertices.Add(new Vertex(vertex));
                 }

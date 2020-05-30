@@ -16,7 +16,7 @@ namespace Telemetry.FrameData.Shapes
             ShapeType = ShapeType.eObb;
         }
 
-        public void CopyFromPacket(Physics.Telemetry.Serialised.OBBShape packetObbShape)
+        public void CopyFromPacket(Physics.Telemetry.Serialised.ObbShapePacket packetObbShape)
         {
             if (packetObbShape != null)
             {

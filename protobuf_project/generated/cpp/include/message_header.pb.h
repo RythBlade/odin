@@ -56,60 +56,60 @@ struct TableStruct_message_5fheader_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_message_5fheader_2eproto;
 namespace PhysicsTelemetry {
-class MessageHeader;
-class MessageHeaderDefaultTypeInternal;
-extern MessageHeaderDefaultTypeInternal _MessageHeader_default_instance_;
+class MessageHeaderMessage;
+class MessageHeaderMessageDefaultTypeInternal;
+extern MessageHeaderMessageDefaultTypeInternal _MessageHeaderMessage_default_instance_;
 }  // namespace PhysicsTelemetry
 PROTOBUF_NAMESPACE_OPEN
-template<> ::PhysicsTelemetry::MessageHeader* Arena::CreateMaybeMessage<::PhysicsTelemetry::MessageHeader>(Arena*);
+template<> ::PhysicsTelemetry::MessageHeaderMessage* Arena::CreateMaybeMessage<::PhysicsTelemetry::MessageHeaderMessage>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace PhysicsTelemetry {
 
-enum MessageHeader_MessageType : int {
-  MessageHeader_MessageType_RigidBodyUpdate = 0,
-  MessageHeader_MessageType_ShapeCreated = 1,
-  MessageHeader_MessageType_ShapeChanged = 2,
-  MessageHeader_MessageType_MessageHeader_MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
-  MessageHeader_MessageType_MessageHeader_MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+enum MessageHeaderMessage_MessageType : int {
+  MessageHeaderMessage_MessageType_RigidBodyUpdate = 0,
+  MessageHeaderMessage_MessageType_ShapeCreated = 1,
+  MessageHeaderMessage_MessageType_ShapeChanged = 2,
+  MessageHeaderMessage_MessageType_MessageHeaderMessage_MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  MessageHeaderMessage_MessageType_MessageHeaderMessage_MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
-bool MessageHeader_MessageType_IsValid(int value);
-constexpr MessageHeader_MessageType MessageHeader_MessageType_MessageType_MIN = MessageHeader_MessageType_RigidBodyUpdate;
-constexpr MessageHeader_MessageType MessageHeader_MessageType_MessageType_MAX = MessageHeader_MessageType_ShapeChanged;
-constexpr int MessageHeader_MessageType_MessageType_ARRAYSIZE = MessageHeader_MessageType_MessageType_MAX + 1;
+bool MessageHeaderMessage_MessageType_IsValid(int value);
+constexpr MessageHeaderMessage_MessageType MessageHeaderMessage_MessageType_MessageType_MIN = MessageHeaderMessage_MessageType_RigidBodyUpdate;
+constexpr MessageHeaderMessage_MessageType MessageHeaderMessage_MessageType_MessageType_MAX = MessageHeaderMessage_MessageType_ShapeChanged;
+constexpr int MessageHeaderMessage_MessageType_MessageType_ARRAYSIZE = MessageHeaderMessage_MessageType_MessageType_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageHeader_MessageType_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageHeaderMessage_MessageType_descriptor();
 template<typename T>
-inline const std::string& MessageHeader_MessageType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, MessageHeader_MessageType>::value ||
+inline const std::string& MessageHeaderMessage_MessageType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, MessageHeaderMessage_MessageType>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function MessageHeader_MessageType_Name.");
+    "Incorrect type passed to function MessageHeaderMessage_MessageType_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    MessageHeader_MessageType_descriptor(), enum_t_value);
+    MessageHeaderMessage_MessageType_descriptor(), enum_t_value);
 }
-inline bool MessageHeader_MessageType_Parse(
-    const std::string& name, MessageHeader_MessageType* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<MessageHeader_MessageType>(
-    MessageHeader_MessageType_descriptor(), name, value);
+inline bool MessageHeaderMessage_MessageType_Parse(
+    const std::string& name, MessageHeaderMessage_MessageType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<MessageHeaderMessage_MessageType>(
+    MessageHeaderMessage_MessageType_descriptor(), name, value);
 }
 // ===================================================================
 
-class MessageHeader :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.MessageHeader) */ {
+class MessageHeaderMessage :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PhysicsTelemetry.MessageHeaderMessage) */ {
  public:
-  MessageHeader();
-  virtual ~MessageHeader();
+  MessageHeaderMessage();
+  virtual ~MessageHeaderMessage();
 
-  MessageHeader(const MessageHeader& from);
-  MessageHeader(MessageHeader&& from) noexcept
-    : MessageHeader() {
+  MessageHeaderMessage(const MessageHeaderMessage& from);
+  MessageHeaderMessage(MessageHeaderMessage&& from) noexcept
+    : MessageHeaderMessage() {
     *this = ::std::move(from);
   }
 
-  inline MessageHeader& operator=(const MessageHeader& from) {
+  inline MessageHeaderMessage& operator=(const MessageHeaderMessage& from) {
     CopyFrom(from);
     return *this;
   }
-  inline MessageHeader& operator=(MessageHeader&& from) noexcept {
+  inline MessageHeaderMessage& operator=(MessageHeaderMessage&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -127,37 +127,37 @@ class MessageHeader :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const MessageHeader& default_instance();
+  static const MessageHeaderMessage& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MessageHeader* internal_default_instance() {
-    return reinterpret_cast<const MessageHeader*>(
-               &_MessageHeader_default_instance_);
+  static inline const MessageHeaderMessage* internal_default_instance() {
+    return reinterpret_cast<const MessageHeaderMessage*>(
+               &_MessageHeaderMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(MessageHeader& a, MessageHeader& b) {
+  friend void swap(MessageHeaderMessage& a, MessageHeaderMessage& b) {
     a.Swap(&b);
   }
-  inline void Swap(MessageHeader* other) {
+  inline void Swap(MessageHeaderMessage* other) {
     if (other == this) return;
     InternalSwap(other);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MessageHeader* New() const final {
-    return CreateMaybeMessage<MessageHeader>(nullptr);
+  inline MessageHeaderMessage* New() const final {
+    return CreateMaybeMessage<MessageHeaderMessage>(nullptr);
   }
 
-  MessageHeader* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<MessageHeader>(arena);
+  MessageHeaderMessage* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MessageHeaderMessage>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const MessageHeader& from);
-  void MergeFrom(const MessageHeader& from);
+  void CopyFrom(const MessageHeaderMessage& from);
+  void MergeFrom(const MessageHeaderMessage& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -171,10 +171,10 @@ class MessageHeader :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MessageHeader* other);
+  void InternalSwap(MessageHeaderMessage* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PhysicsTelemetry.MessageHeader";
+    return "PhysicsTelemetry.MessageHeaderMessage";
   }
   private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
@@ -196,36 +196,36 @@ class MessageHeader :
 
   // nested types ----------------------------------------------------
 
-  typedef MessageHeader_MessageType MessageType;
+  typedef MessageHeaderMessage_MessageType MessageType;
   static constexpr MessageType RigidBodyUpdate =
-    MessageHeader_MessageType_RigidBodyUpdate;
+    MessageHeaderMessage_MessageType_RigidBodyUpdate;
   static constexpr MessageType ShapeCreated =
-    MessageHeader_MessageType_ShapeCreated;
+    MessageHeaderMessage_MessageType_ShapeCreated;
   static constexpr MessageType ShapeChanged =
-    MessageHeader_MessageType_ShapeChanged;
+    MessageHeaderMessage_MessageType_ShapeChanged;
   static inline bool MessageType_IsValid(int value) {
-    return MessageHeader_MessageType_IsValid(value);
+    return MessageHeaderMessage_MessageType_IsValid(value);
   }
   static constexpr MessageType MessageType_MIN =
-    MessageHeader_MessageType_MessageType_MIN;
+    MessageHeaderMessage_MessageType_MessageType_MIN;
   static constexpr MessageType MessageType_MAX =
-    MessageHeader_MessageType_MessageType_MAX;
+    MessageHeaderMessage_MessageType_MessageType_MAX;
   static constexpr int MessageType_ARRAYSIZE =
-    MessageHeader_MessageType_MessageType_ARRAYSIZE;
+    MessageHeaderMessage_MessageType_MessageType_ARRAYSIZE;
   static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
   MessageType_descriptor() {
-    return MessageHeader_MessageType_descriptor();
+    return MessageHeaderMessage_MessageType_descriptor();
   }
   template<typename T>
   static inline const std::string& MessageType_Name(T enum_t_value) {
     static_assert(::std::is_same<T, MessageType>::value ||
       ::std::is_integral<T>::value,
       "Incorrect type passed to function MessageType_Name.");
-    return MessageHeader_MessageType_Name(enum_t_value);
+    return MessageHeaderMessage_MessageType_Name(enum_t_value);
   }
   static inline bool MessageType_Parse(const std::string& name,
       MessageType* value) {
-    return MessageHeader_MessageType_Parse(name, value);
+    return MessageHeaderMessage_MessageType_Parse(name, value);
   }
 
   // accessors -------------------------------------------------------
@@ -244,13 +244,13 @@ class MessageHeader :
   void _internal_set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // .PhysicsTelemetry.MessageHeader.MessageType messageType = 2;
+  // .PhysicsTelemetry.MessageHeaderMessage.MessageType messageType = 2;
   void clear_messagetype();
-  ::PhysicsTelemetry::MessageHeader_MessageType messagetype() const;
-  void set_messagetype(::PhysicsTelemetry::MessageHeader_MessageType value);
+  ::PhysicsTelemetry::MessageHeaderMessage_MessageType messagetype() const;
+  void set_messagetype(::PhysicsTelemetry::MessageHeaderMessage_MessageType value);
   private:
-  ::PhysicsTelemetry::MessageHeader_MessageType _internal_messagetype() const;
-  void _internal_set_messagetype(::PhysicsTelemetry::MessageHeader_MessageType value);
+  ::PhysicsTelemetry::MessageHeaderMessage_MessageType _internal_messagetype() const;
+  void _internal_set_messagetype(::PhysicsTelemetry::MessageHeaderMessage_MessageType value);
   public:
 
   // int32 dataSize = 3;
@@ -262,7 +262,7 @@ class MessageHeader :
   void _internal_set_datasize(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.MessageHeader)
+  // @@protoc_insertion_point(class_scope:PhysicsTelemetry.MessageHeaderMessage)
  private:
   class _Internal;
 
@@ -282,66 +282,66 @@ class MessageHeader :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// MessageHeader
+// MessageHeaderMessage
 
 // uint32 frameId = 1;
-inline void MessageHeader::clear_frameid() {
+inline void MessageHeaderMessage::clear_frameid() {
   frameid_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 MessageHeader::_internal_frameid() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 MessageHeaderMessage::_internal_frameid() const {
   return frameid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 MessageHeader::frameid() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.MessageHeader.frameId)
+inline ::PROTOBUF_NAMESPACE_ID::uint32 MessageHeaderMessage::frameid() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.MessageHeaderMessage.frameId)
   return _internal_frameid();
 }
-inline void MessageHeader::_internal_set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void MessageHeaderMessage::_internal_set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   frameid_ = value;
 }
-inline void MessageHeader::set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void MessageHeaderMessage::set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_frameid(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.MessageHeader.frameId)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.MessageHeaderMessage.frameId)
 }
 
-// .PhysicsTelemetry.MessageHeader.MessageType messageType = 2;
-inline void MessageHeader::clear_messagetype() {
+// .PhysicsTelemetry.MessageHeaderMessage.MessageType messageType = 2;
+inline void MessageHeaderMessage::clear_messagetype() {
   messagetype_ = 0;
 }
-inline ::PhysicsTelemetry::MessageHeader_MessageType MessageHeader::_internal_messagetype() const {
-  return static_cast< ::PhysicsTelemetry::MessageHeader_MessageType >(messagetype_);
+inline ::PhysicsTelemetry::MessageHeaderMessage_MessageType MessageHeaderMessage::_internal_messagetype() const {
+  return static_cast< ::PhysicsTelemetry::MessageHeaderMessage_MessageType >(messagetype_);
 }
-inline ::PhysicsTelemetry::MessageHeader_MessageType MessageHeader::messagetype() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.MessageHeader.messageType)
+inline ::PhysicsTelemetry::MessageHeaderMessage_MessageType MessageHeaderMessage::messagetype() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.MessageHeaderMessage.messageType)
   return _internal_messagetype();
 }
-inline void MessageHeader::_internal_set_messagetype(::PhysicsTelemetry::MessageHeader_MessageType value) {
+inline void MessageHeaderMessage::_internal_set_messagetype(::PhysicsTelemetry::MessageHeaderMessage_MessageType value) {
   
   messagetype_ = value;
 }
-inline void MessageHeader::set_messagetype(::PhysicsTelemetry::MessageHeader_MessageType value) {
+inline void MessageHeaderMessage::set_messagetype(::PhysicsTelemetry::MessageHeaderMessage_MessageType value) {
   _internal_set_messagetype(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.MessageHeader.messageType)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.MessageHeaderMessage.messageType)
 }
 
 // int32 dataSize = 3;
-inline void MessageHeader::clear_datasize() {
+inline void MessageHeaderMessage::clear_datasize() {
   datasize_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 MessageHeader::_internal_datasize() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 MessageHeaderMessage::_internal_datasize() const {
   return datasize_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 MessageHeader::datasize() const {
-  // @@protoc_insertion_point(field_get:PhysicsTelemetry.MessageHeader.dataSize)
+inline ::PROTOBUF_NAMESPACE_ID::int32 MessageHeaderMessage::datasize() const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.MessageHeaderMessage.dataSize)
   return _internal_datasize();
 }
-inline void MessageHeader::_internal_set_datasize(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void MessageHeaderMessage::_internal_set_datasize(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   datasize_ = value;
 }
-inline void MessageHeader::set_datasize(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void MessageHeaderMessage::set_datasize(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_datasize(value);
-  // @@protoc_insertion_point(field_set:PhysicsTelemetry.MessageHeader.dataSize)
+  // @@protoc_insertion_point(field_set:PhysicsTelemetry.MessageHeaderMessage.dataSize)
 }
 
 #ifdef __GNUC__
@@ -354,10 +354,10 @@ inline void MessageHeader::set_datasize(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::PhysicsTelemetry::MessageHeader_MessageType> : ::std::true_type {};
+template <> struct is_proto_enum< ::PhysicsTelemetry::MessageHeaderMessage_MessageType> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::PhysicsTelemetry::MessageHeader_MessageType>() {
-  return ::PhysicsTelemetry::MessageHeader_MessageType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::PhysicsTelemetry::MessageHeaderMessage_MessageType>() {
+  return ::PhysicsTelemetry::MessageHeaderMessage_MessageType_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

@@ -15,33 +15,33 @@ enum ShapeType
 	Tetrahedron = 4;
 }
 
-message ShapeBase
+message ShapeBasePacket
 {
 	uint32 Id = 1;
 	
 	bool hasLocalMatrix = 2;
-	PhysicsTelemetry.Matrix4x4 localMatrix = 3;
+	PhysicsTelemetry.Matrix4x4Packet localMatrix = 3;
 	
 	ShapeType shapeType = 4;
 }
 
-message OBBShape
+message ObbShapePacket
 {
-	ShapeBase base = 1;
-	Vector3 halfExtents = 2;
+	ShapeBasePacket base = 1;
+	Vector3Packet halfExtents = 2;
 }
 
-message TetrahedronShape
+message TetrahedronShapePacket
 {
-	ShapeBase base = 1;
+	ShapeBasePacket base = 1;
 }
 
-message ConvexHullShape
+message ConvexHullShapePacket
 {
 	message Vertex
 	{
-		Vector3 position = 1;
-		Vector3 normal = 2;
+		Vector3Packet position = 1;
+		Vector3Packet normal = 2;
 	}
 	
 	message Face
@@ -51,19 +51,19 @@ message ConvexHullShape
 		int32 vert2 = 3;
 	}
 
-	ShapeBase base = 1;
+	ShapeBasePacket base = 1;
 
 	repeated Vertex vertices = 2;
 	repeated Face faces = 3;
 }
 
-message ShapeCreated
+message ShapeCreatedMessage
 {
 	ShapeType shapeType = 1;
 	int32 shapeSize = 2;
 }
 
-message ShapeChanged
+message ShapeChangedMessage
 {
 	ShapeType shapeType = 1;
 	int32 shapeSize = 2;
