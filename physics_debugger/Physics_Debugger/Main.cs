@@ -24,7 +24,7 @@ namespace physics_debugger
         private Telemetry.Network.DataStream dataStream = new Telemetry.Network.DataStream("localhost", 27015);
         private Telemetry.Network.PacketTranslator translator = new Telemetry.Network.PacketTranslator();
 
-        private Telemetry.FrameData.FrameData frameData = new Telemetry.FrameData.FrameData();
+        private FrameData frameData = new FrameData();
         private FrameController controller = new FrameController();
 
         private int CubeMeshId = 0;
