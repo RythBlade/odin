@@ -153,6 +153,16 @@ namespace Renderer
             deviceContext.OutputMerger.SetTargets(depthView, renderTargetView);
         }
 
+        public void SetRenderTargetViews()
+        {
+            RenderTargetView[] renderTargets = new RenderTargetView[]
+            {
+                renderTargetView
+            };
+
+            deviceContext.OutputMerger.SetRenderTargets(depthView, renderTargets);
+        }
+
         public void Present()
         {
             // Present!

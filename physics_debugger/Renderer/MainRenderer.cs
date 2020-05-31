@@ -108,6 +108,7 @@ namespace Renderer
         {
             // Clear the views
             GraphicsDevice.Instance.ClearAndSetMainRenderTarget();
+            GraphicsDevice.Instance.SetRenderTargetViews();
             
             camera.BackBufferResolution = new Vector2(GraphicsDevice.Instance.m_viewport.Width, GraphicsDevice.Instance.m_viewport.Height);
             
