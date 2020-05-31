@@ -126,8 +126,9 @@ int DataServer::closeServer()
 
 int DataServer::sendData( char* dataToSend, unsigned int lengthOfData )
 {
+    // put some space here so I can try to read the frame id as it flies up the console
     printf( 
-        "bytes, %d, %d, %d, %d, %d, %d, %d, %d\n"
+        "                    bytes, %d, %d, %d, %d, %d, %d, %d, %d\n"
         , dataToSend[ 0 ]
         , dataToSend[ 1 ] 
         , dataToSend[ 2 ] 

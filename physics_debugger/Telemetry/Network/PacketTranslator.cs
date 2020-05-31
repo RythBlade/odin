@@ -8,8 +8,14 @@ namespace Telemetry.Network
 {
     public class PacketTranslator
     {
+        public class CollectedFrameShapes
+        {
+            public uint FrameId = 0;
+            public List<BaseShape> Shapes = null;
+        }
+
         public Dictionary<uint, Tuple<bool, FrameSnapshot>> ConstructedSnaphots = new Dictionary<uint, Tuple<bool, FrameSnapshot>>();
-        public Dictionary<uint, List<BaseShape>> AddedShapes = new Dictionary<uint, List<BaseShape>>();
+        public Dictionary<uint, CollectedFrameShapes> AddedShapes = new Dictionary<uint, CollectedFrameShapes>();
 
         public PacketTranslator()
         {
@@ -55,6 +61,24 @@ namespace Telemetry.Network
             }
         }
 
+        private void RegisterNewlyReceivedShape(BasePacketHeader packet, BaseShape createdShape)
+        {
+            CollectedFrameShapes collectedFrameShapes = null;
+            if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out collectedFrameShapes))
+            {
+                collectedFrameShapes.Shapes.Add(createdShape);
+            }
+            else
+            {
+                collectedFrameShapes = new CollectedFrameShapes();
+                collectedFrameShapes.FrameId = packet.messageHeader.FrameId;
+                collectedFrameShapes.Shapes = new List<BaseShape>();
+
+                collectedFrameShapes.Shapes.Add(createdShape);
+                AddedShapes.Add(collectedFrameShapes.FrameId, collectedFrameShapes);
+            }
+        }
+
         private void ProcessShapeAdded(BasePacketHeader packet)
         {
             ShapeCreatedMessage shapeCreatedPacket = ShapeCreatedMessage.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData, packet.messageHeader.DataSize);
@@ -68,17 +92,7 @@ namespace Telemetry.Network
                         ObbShape createdObb = new ObbShape();
                         createdObb.ImportFromPacket(createdObbPacket);
 
-                        List<BaseShape> frameShapeList = null;
-                        if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))
-                        {
-                            frameShapeList.Add(createdObb);
-                        }
-                        else
-                        {
-                            frameShapeList = new List<BaseShape>();
-                            frameShapeList.Add(createdObb);
-                            AddedShapes.Add(packet.messageHeader.FrameId, frameShapeList);
-                        }
+                        RegisterNewlyReceivedShape(packet, createdObb);
                     }
                     break;
                 case ShapeTypePacket.Sphere:
@@ -92,17 +106,8 @@ namespace Telemetry.Network
                         ConvexHullShape createdConvexHull = new ConvexHullShape();
                         createdConvexHull.ImportFromPacket(createdConvexHullPacket);
 
-                        List<BaseShape> frameShapeList = null;
-                        if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))
-                        {
-                            frameShapeList.Add(createdConvexHull);
-                        }
-                        else
-                        {
-                            frameShapeList = new List<BaseShape>();
-                            frameShapeList.Add(createdConvexHull);
-                            AddedShapes.Add(packet.messageHeader.FrameId, frameShapeList);
-                        }
+                        RegisterNewlyReceivedShape(packet, createdConvexHull);
+
                     }
                     break;
                 case ShapeTypePacket.Tetrahedron:
@@ -112,17 +117,7 @@ namespace Telemetry.Network
                         TetrahedronShape createdTetrahedron = new TetrahedronShape();
                         createdTetrahedron.ImportFromPacket(createdTetrahedronPacket);
 
-                        List<BaseShape> frameShapeList = null;
-                        if (AddedShapes.TryGetValue(packet.messageHeader.FrameId, out frameShapeList))
-                        {
-                            frameShapeList.Add(createdTetrahedron);
-                        }
-                        else
-                        {
-                            frameShapeList = new List<BaseShape>();
-                            frameShapeList.Add(createdTetrahedron);
-                            AddedShapes.Add(packet.messageHeader.FrameId, frameShapeList);
-                        }
+                        RegisterNewlyReceivedShape(packet, createdTetrahedron);
                     }
                     break;
                 default:

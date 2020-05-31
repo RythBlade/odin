@@ -79,11 +79,12 @@ namespace Telemetry.Network
         {
             BasePacketHeader basePacket = null;
 
-            if (clientSocket != null && clientSocket.Connected)
+            if (clientSocket != null && clientSocket.Connected && clientSocket.Available > 0)
             {
                 basePacket = new BasePacketHeader();
 
                 int numberOfReadBytes = clientSocket.Receive(basePacket.PacketBytes);
+
 
                 if (numberOfReadBytes > 0)
                 {

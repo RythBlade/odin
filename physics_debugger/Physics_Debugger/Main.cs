@@ -5,10 +5,12 @@ using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Mail;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Telemetry.FrameData;
 using Telemetry.FrameData.Shapes;
+using Telemetry.Network;
 
 namespace physics_debugger
 {
@@ -24,6 +26,8 @@ namespace physics_debugger
         private Telemetry.Network.DataStream dataStream = new Telemetry.Network.DataStream("localhost", 27015);
         private Telemetry.Network.PacketTranslator translator = new Telemetry.Network.PacketTranslator();
 
+        private TelemetryReceiver receiver = null;
+
         private FrameData frameData = new FrameData();
         private FrameController controller = new FrameController();
 
@@ -38,7 +42,9 @@ namespace physics_debugger
         {
             InitializeComponent();
 
-            lastMousePosition = Control.MousePosition;
+            receiver = new TelemetryReceiver(dataStream, translator);
+
+            lastMousePosition = MousePosition;
 
             CubeMeshId = mainViewport.Renderer.Meshes.AddCubeMesh();
             TetrahedronMeshId = mainViewport.Renderer.Meshes.AddTetrahedron();
@@ -166,19 +172,19 @@ namespace physics_debugger
         {
             if (dataStream.Connected)
             {
-                Telemetry.Network.BasePacketHeader basePacket = dataStream.ReceiveData();
-
-                if (translator.TranslatePacket(basePacket))
+                // lock the queues and flush their contents to our render data
+                lock(receiver.LockObject)
                 {
-                    // todo: error - don't pull out packets that aren't complete
-                    foreach (Tuple<bool, FrameSnapshot> snapshot in translator.ConstructedSnaphots.Values)
+                    while(receiver.ReceivedFrameSnapshots.Count > 0)
                     {
-                        frameData.Frames.Add(snapshot.Item2);
+                        frameData.Frames.Add(receiver.ReceivedFrameSnapshots.Dequeue());
                     }
 
-                    foreach(KeyValuePair<uint, List<BaseShape>> frameShapeList in translator.AddedShapes)
+                    while(receiver.ReceivedShapes.Count > 0)
                     {
-                        foreach (BaseShape addedShape in frameShapeList.Value)
+                        PacketTranslator.CollectedFrameShapes collectedShapes = receiver.ReceivedShapes.Dequeue();
+
+                        foreach (BaseShape addedShape in collectedShapes.Shapes)
                         {
                             switch (addedShape.ShapeType)
                             {
@@ -186,7 +192,7 @@ namespace physics_debugger
                                     ConvexHullShape convexShape = (ConvexHullShape)addedShape;
                                     int shapeRenderHandle = GenerateMeshForConvexHull(convexShape);
 
-                                    ShapeFrameIdPair pair = frameData.ShapeData.AddNewShape(frameShapeList.Key, convexShape);
+                                    ShapeFrameIdPair pair = frameData.ShapeData.AddNewShape(collectedShapes.FrameId, convexShape);
 
                                     // store a binding for this mesh version
                                     shapeRenderMeshBindings.Add(pair, shapeRenderHandle);
@@ -196,23 +202,71 @@ namespace physics_debugger
                                 case ShapeType.eCone:
                                 case ShapeType.eTetrahedron:
                                 default:
-                                    frameData.ShapeData.AddNewShape(frameShapeList.Key, addedShape);
+                                    frameData.ShapeData.AddNewShape(collectedShapes.FrameId, addedShape);
                                     break;
                             }
                         }
                     }    
-
-                    translator.ConstructedSnaphots.Clear();
-                    translator.AddedShapes.Clear();
-                }
-                else
-                {
-                    Console.WriteLine($"Error: read unknown packet type: {basePacket.PacketBytes}");
                 }
 
                 FramesAdded();
-
             }
+
+            /*if (dataStream.Connected)
+            {
+                Telemetry.Network.BasePacketHeader basePacket = dataStream.ReceiveData();
+
+                if (basePacket != null)
+                {
+                    if (translator.TranslatePacket(basePacket))
+                    {
+                        // todo: error - don't pull out packets that aren't complete
+                        foreach (Tuple<bool, FrameSnapshot> snapshot in translator.ConstructedSnaphots.Values)
+                        {
+                            frameData.Frames.Add(snapshot.Item2);
+                        }
+
+                        foreach (KeyValuePair<uint, PacketTranslator.CollectedFrameShapes> collectedShapes in translator.AddedShapes)
+                        {
+                            foreach (BaseShape addedShape in collectedShapes.Value.Shapes)
+                            {
+                                switch (addedShape.ShapeType)
+                                {
+                                    case ShapeType.eConvexHull:
+                                        ConvexHullShape convexShape = (ConvexHullShape)addedShape;
+                                        int shapeRenderHandle = GenerateMeshForConvexHull(convexShape);
+
+                                        ShapeFrameIdPair pair = frameData.ShapeData.AddNewShape(collectedShapes.Key, convexShape);
+
+                                        // store a binding for this mesh version
+                                        shapeRenderMeshBindings.Add(pair, shapeRenderHandle);
+                                        break;
+                                    case ShapeType.eObb:
+                                    case ShapeType.eSphere:
+                                    case ShapeType.eCone:
+                                    case ShapeType.eTetrahedron:
+                                    default:
+                                        frameData.ShapeData.AddNewShape(collectedShapes.Key, addedShape);
+                                        break;
+                                }
+                            }
+                        }
+
+                        translator.ConstructedSnaphots.Clear();
+                        translator.AddedShapes.Clear();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: read unknown packet type: {basePacket.PacketBytes}");
+                    }
+
+                    FramesAdded();
+                }
+                else
+                {
+                    Console.WriteLine("No data to receive");
+                }
+            }*/
         }
 
         private void RenderFrame(int frameIndex)
@@ -302,10 +356,18 @@ namespace physics_debugger
 
             if (connectionDialogue.ShowDialog(this) == DialogResult.OK)
             {
+                receiver.StopThread();
+
+                // todo - needs a file save warning
+                // clear the telemetry we currently have
+                DisplayLoadedTelemetry(new FrameData());
+
                 dataStream.HostName = connectionDialogue.HostName;
                 dataStream.Port = connectionDialogue.Port;
-
+                
                 dataStream.Reconnect();
+
+                receiver.StartReceiverThread();
                 controller.State = PlayBackState.eLive;
             }
         }
@@ -388,6 +450,8 @@ namespace physics_debugger
 
         private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            receiver.StopThread();
+
             dataStream.Disconnect();
         }
 
