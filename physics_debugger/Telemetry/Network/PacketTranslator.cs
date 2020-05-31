@@ -136,11 +136,11 @@ namespace Telemetry.Network
 
             if (packet != null)
             {
-                FrameSnapshot snapshot = FindOrCreateSnapshotForFrame(packet.messageHeader.FrameId);
-
                 switch (packet.messageHeader.MessageType)
                 {
                     case MessageHeaderMessage.Types.MessageType.RigidBodyUpdate:
+                        FrameSnapshot snapshot = FindOrCreateSnapshotForFrame(packet.messageHeader.FrameId);
+
                         ProcessRigidBodyFrameUpdate(packet, snapshot);
                         toReturn = true;
                         break;
