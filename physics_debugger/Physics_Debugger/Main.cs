@@ -1,14 +1,14 @@
 ﻿using physics_debugger.FrameControl;
-using Telemetry.FrameData;
 using Renderer;
+using Renderer.Buffers;
 using SharpDX;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Collections.Generic;
+using Telemetry.FrameData;
 using Telemetry.FrameData.Shapes;
-using Renderer.Buffers;
 
 namespace physics_debugger
 {
@@ -102,7 +102,7 @@ namespace physics_debugger
 
             lastMousePosition = currentMousePosition;
 
-            if (Control.MouseButtons == MouseButtons.Right)
+            if (MouseButtons == MouseButtons.Right)
             {
                 mainViewport.Renderer.Camera.Pitch -= mouseDifference.Y * s_cameraScrollSpeed;
                 mainViewport.Renderer.Camera.Yaw += mouseDifference.X * s_cameraScrollSpeed;
@@ -160,8 +160,6 @@ namespace physics_debugger
             }
             
             return mainViewport.Renderer.Meshes.AddMesh(vertices);
-
-            //return mainViewport.Renderer.Meshes.AddPlane(5, 5, new Vector3(-2.0f, 0.0f, -2.0f), new Vector3(2.0f, 0.0f, 2.0f));
         }
 
         private void UpdateTelemetry()
@@ -398,7 +396,7 @@ namespace physics_debugger
             Close();
         }
 
-        private void DisplayLoadedTelemetry(Telemetry.FrameData.FrameData readFrameData)
+        private void DisplayLoadedTelemetry(FrameData readFrameData)
         {
             frameData = readFrameData;
 
@@ -437,7 +435,7 @@ namespace physics_debugger
                 DataSerialiser serialiser = new DataSerialiser();
                 serialiser.Filename = openDialog.FileName;
 
-                Telemetry.FrameData.FrameData readFrameData = new Telemetry.FrameData.FrameData();
+                FrameData readFrameData = new FrameData();
                 bool success = serialiser.OpenTelemetry(readFrameData);
 
                 if( success)
