@@ -62,7 +62,6 @@
     <Compile Include="ConnectionDialogue.Designer.cs">
       <DependentUpon>ConnectionDialogue.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConvexHullRenderable.cs" />
     <Compile Include="DataStream1.cs" />
     <Compile Include="FrameControl\FrameController.cs" />
     <Compile Include="FrameControl\FrameControllerEventHandler.cs" />
@@ -118,6 +117,9 @@
   <ItemGroup>
     <Content Include="Designs.txt" />
     <Content Include="To do.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Rendering\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

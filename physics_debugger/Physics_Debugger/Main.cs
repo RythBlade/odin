@@ -31,6 +31,9 @@ namespace physics_debugger
         private int TetrahedronMeshId = 0;
         private int PlaneMeshId = 0;
 
+        // shape/frame id pair, render mesh handle
+        private Dictionary<ShapeFrameIdPair, int> shapeRenderMeshBindings = new Dictionary<ShapeFrameIdPair, int>();
+
         public Main()
         {
             InitializeComponent();
@@ -179,26 +182,25 @@ namespace physics_debugger
                     {
                         foreach (BaseShape addedShape in frameShapeList.Value)
                         {
-                            BaseShape shapeToPushToFrameData = null;
-
                             switch (addedShape.ShapeType)
                             {
                                 case ShapeType.eConvexHull:
                                     ConvexHullShape convexShape = (ConvexHullShape)addedShape;
                                     int shapeRenderHandle = GenerateMeshForConvexHull(convexShape);
 
-                                    // wrap the convex hull shape to associate it with a render handle
-                                    shapeToPushToFrameData = new ConvexHullRenderable(convexShape, shapeRenderHandle);
+                                    ShapeFrameIdPair pair = frameData.ShapeData.AddNewShape(frameShapeList.Key, convexShape);
+
+                                    // store a binding for this mesh version
+                                    shapeRenderMeshBindings.Add(pair, shapeRenderHandle);
                                     break;
                                 case ShapeType.eObb:
                                 case ShapeType.eSphere:
                                 case ShapeType.eCone:
                                 case ShapeType.eTetrahedron:
                                 default:
-                                    shapeToPushToFrameData = addedShape;
+                                    frameData.ShapeData.AddNewShape(frameShapeList.Key, addedShape);
                                     break;
                             }
-                            frameData.ShapeData.AddNewShape(frameShapeList.Key, shapeToPushToFrameData);
                         }
                     }    
 
@@ -231,9 +233,9 @@ namespace physics_debugger
                     {
                         RenderInstance instanceToRender = null;
 
-                        BaseShape actualShape = frameData.ShapeData.RetrieveShapeForFrame(shapeId, frameData.Frames[frameIndex].FrameId);
+                        ShapeFrameIdPair actualShapePair = frameData.ShapeData.RetrieveShapeForFrame(shapeId, frameData.Frames[frameIndex].FrameId);
 
-                        if (actualShape != null)
+                        if (actualShapePair != null)
                         {
                             if (nextRenderInstanceId < mainViewport.Renderer.InstanceList.Count)
                             {
@@ -246,7 +248,7 @@ namespace physics_debugger
                             }
 
                             // todo - do the rest of the shape types and properly setup the position of the shapes
-                            switch (actualShape.ShapeType)
+                            switch (actualShapePair.Shape.ShapeType)
                             {
                                 case ShapeType.eObb:
                                     instanceToRender.MeshId = CubeMeshId;
@@ -256,12 +258,7 @@ namespace physics_debugger
                                 case ShapeType.eCone:
                                     break;
                                 case ShapeType.eConvexHull:
-                                    ConvexHullRenderable renderable = actualShape as ConvexHullRenderable;
-                                    // todo - but of a hack to make loading from file work - need a proper binding system to ascociate renderable meshes with their shapes :)
-                                    if (renderable != null)
-                                    {
-                                        instanceToRender.MeshId = ((ConvexHullRenderable)actualShape).RenderHandle;
-                                    }
+                                    instanceToRender.MeshId = shapeRenderMeshBindings[actualShapePair];
                                     break;
                                 case ShapeType.eTetrahedron:
                                     instanceToRender.MeshId = TetrahedronMeshId;
@@ -277,12 +274,12 @@ namespace physics_debugger
                                 , rigidBody.WorldMatrix.Translation.Y
                                 , rigidBody.WorldMatrix.Translation.Z);
 
-                            if( actualShape.HasLocalMatrix)
+                            if(actualShapePair.Shape.HasLocalMatrix)
                             {
                                 Matrix localMatrix = Matrix.Translation(
-                                    actualShape.LocalMatrix.Translation.X
-                                    , actualShape.LocalMatrix.Translation.Y
-                                    , actualShape.LocalMatrix.Translation.Z);
+                                    actualShapePair.Shape.LocalMatrix.Translation.X
+                                    , actualShapePair.Shape.LocalMatrix.Translation.Y
+                                    , actualShapePair.Shape.LocalMatrix.Translation.Z);
 
                                 instanceToRender.WorldMatrix = localMatrix * rotationAnimation * translationMatrix;
                             }
@@ -401,6 +398,34 @@ namespace physics_debugger
             Close();
         }
 
+        private void DisplayLoadedTelemetry(Telemetry.FrameData.FrameData readFrameData)
+        {
+            frameData = readFrameData;
+
+            shapeRenderMeshBindings.Clear();
+
+            foreach (ShapeIterations iterations in frameData.ShapeData.ShapeData.Values)
+            {
+                foreach (ShapeFrameIdPair pair in iterations.Iterations)
+                {
+                    if (pair.Shape.ShapeType == ShapeType.eConvexHull)
+                    {
+                        ConvexHullShape convexShape = (ConvexHullShape)pair.Shape;
+                        int shapeRenderHandle = GenerateMeshForConvexHull(convexShape);
+
+                        shapeRenderMeshBindings.Add(pair, shapeRenderHandle);
+                    }
+                    else
+                    {
+                        // all iterations of a shape are still the same shape
+                        break;
+                    }
+                }
+            }
+
+            FramesAdded();
+        }
+
         private void openTelemetryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openDialog = new OpenFileDialog();
@@ -417,7 +442,7 @@ namespace physics_debugger
 
                 if( success)
                 {
-                    frameData = readFrameData;
+                    DisplayLoadedTelemetry(readFrameData);
                 }
                 else 
                 {
@@ -428,11 +453,9 @@ namespace physics_debugger
 
                     if(result == DialogResult.Yes)
                     {
-                        frameData = readFrameData;
+                        DisplayLoadedTelemetry(readFrameData);
                     }
                 }
-
-                FramesAdded();
             }
         }
 

@@ -94,19 +94,23 @@ namespace Telemetry.FrameData.Shapes
         // shape id, set of iterations
         public Dictionary<uint, ShapeIterations> ShapeData = new Dictionary<uint, ShapeIterations>();
 
-        public void AddNewShape(uint frameId, BaseShape addedShape)
+        public ShapeFrameIdPair AddNewShape(uint frameId, BaseShape addedShape)
         {
             ShapeIterations iterations = new ShapeIterations();
 
-            iterations.Iterations.Add(new ShapeFrameIdPair(frameId, addedShape));
+            ShapeFrameIdPair newPair = new ShapeFrameIdPair(frameId, addedShape);
+
+            iterations.Iterations.Add(newPair);
             iterations.Iterations.Sort();
 
             ShapeData.Add(addedShape.Id, iterations);
+
+            return newPair;
         }
 
-        public BaseShape RetrieveShapeForFrame(uint shapeId, uint frameId)
+        public ShapeFrameIdPair RetrieveShapeForFrame(uint shapeId, uint frameId)
         {
-            BaseShape shapeToReturn = null;
+            ShapeFrameIdPair shapePairToReturn = null;
 
             ShapeIterations iterations = null;
 
@@ -117,13 +121,13 @@ namespace Telemetry.FrameData.Shapes
                 {
                     if (iterations.Iterations[i].FrameId == frameId)
                     {
-                        shapeToReturn = iterations.Iterations[i].Shape;
+                        shapePairToReturn = iterations.Iterations[i];
 
                         break;
                     }
                     else if (iterations.Iterations[i].FrameId < frameId)
                     {
-                        shapeToReturn = iterations.Iterations[i].Shape;
+                        shapePairToReturn = iterations.Iterations[i];
                     }
                     else
                     {
@@ -133,7 +137,7 @@ namespace Telemetry.FrameData.Shapes
                 }
             }
 
-            return shapeToReturn;
+            return shapePairToReturn;
         }
 
         public void ImportFromPacket(ShapeDataPacket packet)
