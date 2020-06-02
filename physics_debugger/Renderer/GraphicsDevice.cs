@@ -15,12 +15,21 @@ namespace Renderer
             get { return s_singleton; }
         }
 
+        public uint[,] PixelUserData = new uint[1, 1];
+
         private DeviceContext deviceContext = null;
         private SharpDX.Direct3D11.Device graphicsDevice = null;
         private SwapChain swapChain = null;
 
         private Texture2D backBuffer = null;
         private RenderTargetView renderTargetView = null;
+
+        private Texture2DDescription objectIdDesc = new Texture2DDescription();
+        private Texture2D objectIdBuffer = null;
+        private RenderTargetView objectIdView = null;
+
+        private Texture2DDescription objectIdStagingDesc = new Texture2DDescription();
+        private Texture2D objectIdStagingBuffer = null;
 
         private Texture2D depthBuffer = null;
         private DepthStencilView depthView = null;
@@ -68,6 +77,28 @@ namespace Renderer
             depthBufferDesc.BindFlags = BindFlags.DepthStencil;
             depthBufferDesc.CpuAccessFlags = CpuAccessFlags.None;
             depthBufferDesc.OptionFlags = ResourceOptionFlags.None;
+
+            objectIdDesc.Format = Format.R32_UInt;
+            objectIdDesc.ArraySize = 1;
+            objectIdDesc.MipLevels = 1;
+            objectIdDesc.Width = 1;
+            objectIdDesc.Height = 1;
+            objectIdDesc.SampleDescription = new SampleDescription(1, 0);
+            objectIdDesc.Usage = ResourceUsage.Default;
+            objectIdDesc.BindFlags = BindFlags.RenderTarget;
+            objectIdDesc.CpuAccessFlags = CpuAccessFlags.None;
+            objectIdDesc.OptionFlags = ResourceOptionFlags.None;
+
+            objectIdStagingDesc.Format = Format.R32_UInt;
+            objectIdStagingDesc.ArraySize = 1;
+            objectIdStagingDesc.MipLevels = 1;
+            objectIdStagingDesc.Width = 1;
+            objectIdStagingDesc.Height = 1;
+            objectIdStagingDesc.SampleDescription = new SampleDescription(1, 0);
+            objectIdStagingDesc.Usage = ResourceUsage.Staging;
+            objectIdStagingDesc.BindFlags = BindFlags.None;
+            objectIdStagingDesc.CpuAccessFlags = CpuAccessFlags.Read;
+            objectIdStagingDesc.OptionFlags = ResourceOptionFlags.None;
         }
 
         public void Initialise(IntPtr parentWindowHandle, System.Drawing.Rectangle viewport )
@@ -101,7 +132,11 @@ namespace Renderer
 
             // Create the depth buffer view
             depthView = new DepthStencilView(graphicsDevice, depthBuffer);
-            
+
+            objectIdStagingBuffer = new Texture2D(graphicsDevice, objectIdStagingDesc);
+            objectIdBuffer = new Texture2D(graphicsDevice, objectIdDesc);
+            objectIdView = new RenderTargetView(graphicsDevice, objectIdBuffer);
+
             // Setup targets and viewport for rendering
             m_viewport = new Viewport(
                 viewport.X
@@ -121,6 +156,9 @@ namespace Renderer
             Utilities.Dispose(ref renderTargetView);
             Utilities.Dispose(ref depthBuffer);
             Utilities.Dispose(ref depthView);
+            Utilities.Dispose(ref objectIdStagingBuffer);
+            Utilities.Dispose(ref objectIdBuffer);
+            Utilities.Dispose(ref objectIdView);
 
             // Resize the backbuffer
             swapChain.ResizeBuffers(description.BufferCount, width, height, Format.Unknown, SwapChainFlags.None);
@@ -140,6 +178,19 @@ namespace Renderer
             // Create the depth buffer view
             depthView = new DepthStencilView(graphicsDevice, depthBuffer);
 
+            // recreate the object ID buffer
+            objectIdDesc.Width = width;
+            objectIdDesc.Height = height;
+
+            objectIdStagingDesc.Width = width;
+            objectIdStagingDesc.Height = height;
+
+            PixelUserData = new uint[width, height];
+
+            objectIdStagingBuffer = new Texture2D(graphicsDevice, objectIdStagingDesc);
+            objectIdBuffer = new Texture2D(graphicsDevice, objectIdDesc);
+            objectIdView = new RenderTargetView(graphicsDevice, objectIdBuffer);
+
             // Setup targets and viewport for rendering
             m_viewport.Width = width;
             m_viewport.Height = height;
@@ -149,6 +200,7 @@ namespace Renderer
         {
             deviceContext.ClearDepthStencilView(depthView, DepthStencilClearFlags.Depth, 1.0f, 0);
             deviceContext.ClearRenderTargetView(renderTargetView, Color.OrangeRed);
+            deviceContext.ClearRenderTargetView(objectIdView, Color.Black);
             deviceContext.Rasterizer.SetViewport(m_viewport);
             deviceContext.OutputMerger.SetTargets(depthView, renderTargetView);
         }
@@ -158,15 +210,37 @@ namespace Renderer
             RenderTargetView[] renderTargets = new RenderTargetView[]
             {
                 renderTargetView
+                , objectIdView
             };
 
             deviceContext.OutputMerger.SetRenderTargets(depthView, renderTargets);
+        }
+
+        public void MapObjectId()
+        {
+            DataStream dataStream;
+
+            deviceContext.CopyResource(objectIdBuffer, objectIdStagingBuffer);
+
+            deviceContext.MapSubresource(objectIdStagingBuffer, 0, 0, MapMode.Read, SharpDX.Direct3D11.MapFlags.None, out dataStream);
+
+            for (int i = 0; i < objectIdDesc.Width; ++i)
+            {
+                for (int j = 0; j < objectIdDesc.Height; ++j)
+                {
+                    PixelUserData[i,j] = dataStream.Read<uint>();
+                }
+            }
+
+            deviceContext.UnmapSubresource(objectIdStagingBuffer, 0);
         }
 
         public void Present()
         {
             // Present!
             swapChain.Present(0, PresentFlags.None);
+
+            MapObjectId();
         }
 
         public void Dispose()
@@ -178,6 +252,9 @@ namespace Renderer
             swapChain.Dispose();
             deviceContext.Dispose();
             graphicsDevice.Dispose();
+            objectIdStagingBuffer.Dispose();
+            objectIdBuffer.Dispose();
+            objectIdView.Dispose();
         }
     }
 }

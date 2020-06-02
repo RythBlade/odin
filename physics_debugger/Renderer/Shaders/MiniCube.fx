@@ -10,6 +10,12 @@ struct PS_IN
     float4 col : NORMAL;
 };
 
+struct PS_OUT
+{
+    float4 backBufferColour : SV_Target0;
+    uint objectId : SV_Target1;
+};
+
 cbuffer PerRenderConstantBuffer : register( b0 )
 {
     matrix ViewProjection;
@@ -18,6 +24,11 @@ cbuffer PerRenderConstantBuffer : register( b0 )
 cbuffer PerObjectConstantBuffer : register( b1 )
 {
     matrix World;
+
+    uint objectId;
+    float padding1;
+    float padding2;
+    float padding3;
 }
 
 PS_IN VS( VS_IN input )
@@ -30,7 +41,12 @@ PS_IN VS( VS_IN input )
     return output;
 }
 
-float4 PS( PS_IN input ) : SV_Target
+PS_OUT PS(PS_IN input) : SV_Target
 {
-    return input.col;
+    PS_OUT output;
+    output.backBufferColour = input.col;
+
+    output.objectId = 1;
+
+    return output;
 }

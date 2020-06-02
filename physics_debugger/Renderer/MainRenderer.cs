@@ -1,4 +1,5 @@
-﻿using Renderer.Geometry;
+﻿using Renderer.Buffers;
+using Renderer.Geometry;
 using SharpDX;
 using SharpDX.D3DCompiler;
 using SharpDX.Direct3D;
@@ -124,8 +125,10 @@ namespace Renderer
             deviceContext.VertexShader.SetConstantBuffer(0, perRenderConstantBuffer);
             deviceContext.VertexShader.SetConstantBuffer(1, perObjectConstantBuffer);
             deviceContext.VertexShader.Set(vertexShader);
-            deviceContext.PixelShader.Set(pixelShader);
 
+            deviceContext.PixelShader.SetConstantBuffer(1, perObjectConstantBuffer);
+            deviceContext.PixelShader.Set(pixelShader);
+            
             viewProj.Transpose();
             deviceContext.UpdateSubresource(ref viewProj, perRenderConstantBuffer);
 
@@ -146,9 +149,15 @@ namespace Renderer
                 }
 
                 // Update world matrix
-                Matrix world = instance.WorldMatrix;
-                world.Transpose();
-                deviceContext.UpdateSubresource(ref world, perObjectConstantBuffer);
+                PerObjectConstantbuffer constantBuffer = new PerObjectConstantbuffer();
+                constantBuffer.worldMatrix = instance.WorldMatrix;
+                constantBuffer.worldMatrix.Transpose();
+                constantBuffer.objectId = (uint)instance.MeshId;
+                deviceContext.UpdateSubresource(ref constantBuffer, perObjectConstantBuffer);
+
+                //Matrix world = instance.WorldMatrix;
+                //world.Transpose();
+                //deviceContext.UpdateSubresource(ref world, perObjectConstantBuffer);
 
                 // Draw the cube
                 deviceContext.Draw(nextMesh.numberOfVertices, 0);

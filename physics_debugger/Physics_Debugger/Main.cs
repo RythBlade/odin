@@ -5,6 +5,7 @@ using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Net.Mail;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -46,9 +47,9 @@ namespace physics_debugger
 
             lastMousePosition = MousePosition;
 
+            PlaneMeshId = mainViewport.Renderer.Meshes.AddPlane(10, 10, new Vector3(-10.0f, 0.0f, -10.0f), new Vector3(10.0f, 0.0f, 10.0f));
             CubeMeshId = mainViewport.Renderer.Meshes.AddCubeMesh();
             TetrahedronMeshId = mainViewport.Renderer.Meshes.AddTetrahedron();
-            PlaneMeshId = mainViewport.Renderer.Meshes.AddPlane(10, 10, new Vector3(-10.0f, 0.0f, -10.0f), new Vector3(10.0f, 0.0f, 10.0f));
 
             mainViewport.Renderer.Camera.CameraPosition = new Vector3(0.0f, 0.0f, 15.0f);
 
@@ -98,7 +99,7 @@ namespace physics_debugger
 
             RenderFrame(controller.CurrentFrameId);
         }
-
+        bool test = false;
         private void UpdateInput()
         {
             System.Drawing.Point currentMousePosition = Control.MousePosition;
@@ -107,6 +108,34 @@ namespace physics_debugger
                     , currentMousePosition.Y - lastMousePosition.Y);
 
             lastMousePosition = currentMousePosition;
+
+            System.Drawing.Point pixelCooord = mainViewport.PointToClient(Control.MousePosition);
+            if (pixelCooord.X >= 0 && pixelCooord.Y >= 0 && pixelCooord.X < mainViewport.Size.Width && pixelCooord.Y < mainViewport.Size.Height)
+            {
+                uint meshId = GraphicsDevice.Instance.PixelUserData[pixelCooord.X, pixelCooord.Y];
+
+                Console.WriteLine($"mouse position {pixelCooord.X}  {pixelCooord.Y}       Mesh id {meshId}");
+
+            }
+
+            if(test)
+            {
+                using (StreamWriter writer = System.IO.File.CreateText("test.txt"))
+                {
+                    for (int j = 0; j < mainViewport.Size.Height; ++j)
+                    {
+                        for (int i = 0; i < mainViewport.Size.Width; ++i)
+                        {
+                            writer.Write(GraphicsDevice.Instance.PixelUserData[i, j].ToString());
+                        }
+
+                        writer.Write("\n");
+                    }
+                }
+
+
+                test = false;
+            }
 
             if (MouseButtons == MouseButtons.Right)
             {
