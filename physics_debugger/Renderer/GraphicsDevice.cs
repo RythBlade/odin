@@ -200,7 +200,7 @@ namespace Renderer
         {
             deviceContext.ClearDepthStencilView(depthView, DepthStencilClearFlags.Depth, 1.0f, 0);
             deviceContext.ClearRenderTargetView(renderTargetView, Color.OrangeRed);
-            deviceContext.ClearRenderTargetView(objectIdView, Color.Black);
+            deviceContext.ClearRenderTargetView(objectIdView, Color.FromRgba(0));
             deviceContext.Rasterizer.SetViewport(m_viewport);
             deviceContext.OutputMerger.SetTargets(depthView, renderTargetView);
         }
