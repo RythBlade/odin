@@ -99,7 +99,7 @@ namespace physics_debugger
 
             RenderFrame(controller.CurrentFrameId);
         }
-        bool test = false;
+        
         private void UpdateInput()
         {
             System.Drawing.Point currentMousePosition = Control.MousePosition;
@@ -116,25 +116,6 @@ namespace physics_debugger
 
                 Console.WriteLine($"mouse position {pixelCooord.X}  {pixelCooord.Y}       Mesh id {meshId}");
 
-            }
-
-            if(test)
-            {
-                using (StreamWriter writer = System.IO.File.CreateText("test.txt"))
-                {
-                    for (int j = 0; j < mainViewport.Size.Height; ++j)
-                    {
-                        for (int i = 0; i < mainViewport.Size.Width; ++i)
-                        {
-                            writer.Write(GraphicsDevice.Instance.PixelUserData[i, j].ToString());
-                        }
-
-                        writer.Write("\n");
-                    }
-                }
-
-
-                test = false;
             }
 
             if (MouseButtons == MouseButtons.Right)
@@ -240,62 +221,6 @@ namespace physics_debugger
 
                 FramesAdded();
             }
-
-            /*if (dataStream.Connected)
-            {
-                Telemetry.Network.BasePacketHeader basePacket = dataStream.ReceiveData();
-
-                if (basePacket != null)
-                {
-                    if (translator.TranslatePacket(basePacket))
-                    {
-                        // todo: error - don't pull out packets that aren't complete
-                        foreach (Tuple<bool, FrameSnapshot> snapshot in translator.ConstructedSnaphots.Values)
-                        {
-                            frameData.Frames.Add(snapshot.Item2);
-                        }
-
-                        foreach (KeyValuePair<uint, PacketTranslator.CollectedFrameShapes> collectedShapes in translator.AddedShapes)
-                        {
-                            foreach (BaseShape addedShape in collectedShapes.Value.Shapes)
-                            {
-                                switch (addedShape.ShapeType)
-                                {
-                                    case ShapeType.eConvexHull:
-                                        ConvexHullShape convexShape = (ConvexHullShape)addedShape;
-                                        int shapeRenderHandle = GenerateMeshForConvexHull(convexShape);
-
-                                        ShapeFrameIdPair pair = frameData.ShapeData.AddNewShape(collectedShapes.Key, convexShape);
-
-                                        // store a binding for this mesh version
-                                        shapeRenderMeshBindings.Add(pair, shapeRenderHandle);
-                                        break;
-                                    case ShapeType.eObb:
-                                    case ShapeType.eSphere:
-                                    case ShapeType.eCone:
-                                    case ShapeType.eTetrahedron:
-                                    default:
-                                        frameData.ShapeData.AddNewShape(collectedShapes.Key, addedShape);
-                                        break;
-                                }
-                            }
-                        }
-
-                        translator.ConstructedSnaphots.Clear();
-                        translator.AddedShapes.Clear();
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Error: read unknown packet type: {basePacket.PacketBytes}");
-                    }
-
-                    FramesAdded();
-                }
-                else
-                {
-                    Console.WriteLine("No data to receive");
-                }
-            }*/
         }
 
         private void RenderFrame(int frameIndex)
