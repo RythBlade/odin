@@ -39,6 +39,8 @@ namespace physics_debugger
         // shape/frame id pair, render mesh handle
         private Dictionary<ShapeFrameIdPair, int> shapeRenderMeshBindings = new Dictionary<ShapeFrameIdPair, int>();
 
+        private uint selectedShapeId = uint.MaxValue;
+
         public Main()
         {
             InitializeComponent();
@@ -112,10 +114,11 @@ namespace physics_debugger
             System.Drawing.Point pixelCooord = mainViewport.PointToClient(Control.MousePosition);
             if (pixelCooord.X >= 0 && pixelCooord.Y >= 0 && pixelCooord.X < mainViewport.Size.Width && pixelCooord.Y < mainViewport.Size.Height)
             {
-                uint meshId = GraphicsDevice.Instance.PixelUserData[pixelCooord.X, pixelCooord.Y];
-
-                Console.WriteLine($"mouse position {pixelCooord.X}  {pixelCooord.Y}       Mesh id {meshId}");
-
+                selectedShapeId = GraphicsDevice.Instance.PixelUserData[pixelCooord.X, pixelCooord.Y];
+            }
+            else
+            {
+                selectedShapeId = uint.MaxValue;
             }
 
             if (MouseButtons == MouseButtons.Right)
@@ -273,6 +276,8 @@ namespace physics_debugger
                                     break;
                             }
 
+                            instanceToRender.UserDataValue = actualShapePair.Shape.Id;
+
                             Matrix rotationAnimation = Matrix.RotationX(time) * Matrix.RotationY(time * 2.0f) * Matrix.RotationZ(time * 0.7f);
 
                             Matrix translationMatrix = Matrix.Translation(
@@ -292,6 +297,17 @@ namespace physics_debugger
                             else
                             {
                                 instanceToRender.WorldMatrix = rotationAnimation * translationMatrix; 
+                            }
+
+                            if( actualShapePair.Shape.Id == selectedShapeId)
+                            {
+                                Console.WriteLine($"{selectedShapeId}                -----------------------------------");
+                                instanceToRender.Fill = RenderInstance.FillMode.eWireFrame;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{selectedShapeId}                000000000000000");
+                                instanceToRender.Fill = RenderInstance.FillMode.eFill;
                             }
 
                             ++nextRenderInstanceId;

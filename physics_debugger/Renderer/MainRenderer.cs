@@ -152,7 +152,7 @@ namespace Renderer
                 PerObjectConstantbuffer constantBuffer = new PerObjectConstantbuffer();
                 constantBuffer.worldMatrix = instance.WorldMatrix;
                 constantBuffer.worldMatrix.Transpose();
-                constantBuffer.objectId = (uint)instance.MeshId;
+                constantBuffer.objectId = instance.UserDataValue;
                 deviceContext.UpdateSubresource(ref constantBuffer, perObjectConstantBuffer);
 
                 //Matrix world = instance.WorldMatrix;

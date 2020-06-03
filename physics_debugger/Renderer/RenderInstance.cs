@@ -15,6 +15,8 @@ namespace Renderer
 
         public FillMode Fill { get; set; }
 
+        public uint UserDataValue { get; set; }
+
         public RenderInstance(Matrix worldMatrix, int meshId)
         {
             WorldMatrix = worldMatrix;
