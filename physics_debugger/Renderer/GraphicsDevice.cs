@@ -222,13 +222,16 @@ namespace Renderer
 
             deviceContext.CopyResource(objectIdBuffer, objectIdStagingBuffer);
 
-            deviceContext.MapSubresource(objectIdStagingBuffer, 0, 0, MapMode.Read, SharpDX.Direct3D11.MapFlags.None, out dataStream);
+            DataBox dataBox = deviceContext.MapSubresource(objectIdStagingBuffer, 0, 0, MapMode.Read, SharpDX.Direct3D11.MapFlags.None, out dataStream);
 
-            for (int i = 0; i < objectIdDesc.Width; ++i)
+            for (int j = 0; j < objectIdDesc.Height; ++j)
             {
-                for (int j = 0; j < objectIdDesc.Height; ++j)
+                // rows bytes are padded at the end up RowPitch number of bytes, in the texture data array, so move to the start of each row to read its data
+                dataStream.Position = dataBox.RowPitch * j;
+
+                for (int i = 0; i < objectIdDesc.Width; ++i)
                 {
-                    PixelUserData[i,j] = dataStream.Read<uint>();
+                    PixelUserData[i, j] = dataStream.Read<uint>();
                 }
             }
 

@@ -46,7 +46,7 @@ PS_OUT PS(PS_IN input) : SV_Target
     PS_OUT output;
     output.backBufferColour = input.col;
 
-    output.objectId = 1;
+    output.objectId = objectId;
 
     return output;
 }
