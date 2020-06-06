@@ -91,7 +91,7 @@ namespace Renderer
             
             perObjectConstantBuffer = new SharpDX.Direct3D11.Buffer(
                 GraphicsDevice.Instance.Device
-                , Utilities.SizeOf<Renderer.Buffers.PerObjectVSConstantbuffer>()
+                , Utilities.SizeOf<Renderer.Buffers.PerObjectConstantbuffer>()
                 , ResourceUsage.Default
                 , BindFlags.ConstantBuffer
                 , CpuAccessFlags.None
@@ -100,7 +100,7 @@ namespace Renderer
 
             perRenderConstantBuffer = new SharpDX.Direct3D11.Buffer(
                 GraphicsDevice.Instance.Device
-                , Utilities.SizeOf<Renderer.Buffers.PerRenderVSConstantBuffer>()
+                , Utilities.SizeOf<Renderer.Buffers.PerRenderConstantBuffer>()
                 , ResourceUsage.Default
                 , BindFlags.ConstantBuffer
                 , CpuAccessFlags.None
@@ -118,7 +118,7 @@ namespace Renderer
             
             camera.SetMatrices();
 
-            PerRenderVSConstantBuffer perRenderConstantBufferData = new PerRenderVSConstantBuffer();
+            PerRenderConstantBuffer perRenderConstantBufferData = new PerRenderConstantBuffer();
             perRenderConstantBufferData.viewProject = Matrix.Multiply(camera.ViewMatrix, camera.ProjectionMatrix);
 
             DeviceContext deviceContext = GraphicsDevice.Instance.Context;
@@ -155,7 +155,7 @@ namespace Renderer
                 }
 
                 // Update world matrix
-                PerObjectVSConstantbuffer constantBuffer = new PerObjectVSConstantbuffer();
+                PerObjectConstantbuffer constantBuffer = new PerObjectConstantbuffer();
                 constantBuffer.worldMatrix = instance.WorldMatrix;
                 constantBuffer.worldMatrix.Transpose();
                 constantBuffer.objectId = instance.UserDataValue;

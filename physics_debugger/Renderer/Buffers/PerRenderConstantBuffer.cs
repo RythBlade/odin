@@ -2,7 +2,7 @@
 
 namespace Renderer.Buffers
 {
-    public struct PerRenderVSConstantBuffer
+    public struct PerRenderConstantBuffer
     {
         public Matrix viewProject;
 

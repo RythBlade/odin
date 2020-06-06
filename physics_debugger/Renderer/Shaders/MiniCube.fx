@@ -16,7 +16,7 @@ struct PS_OUT
     uint objectId : SV_Target1;
 };
 
-cbuffer PerRenderVSConstantBuffer : register( b0 )
+cbuffer PerRenderConstantBuffer : register( b0 )
 {
     matrix ViewProjection;
 
@@ -26,7 +26,7 @@ cbuffer PerRenderVSConstantBuffer : register( b0 )
     uint perRender_padding3;
 }
 
-cbuffer PerObjectVSConstantBuffer : register( b1 )
+cbuffer PerObjectConstantBuffer : register( b1 )
 {
     matrix World;
 

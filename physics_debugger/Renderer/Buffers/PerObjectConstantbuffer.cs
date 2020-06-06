@@ -2,7 +2,7 @@
 
 namespace Renderer.Buffers
 {
-    public struct PerObjectVSConstantbuffer
+    public struct PerObjectConstantbuffer
     {
         public Matrix worldMatrix;
 
