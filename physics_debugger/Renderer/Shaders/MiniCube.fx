@@ -1,4 +1,4 @@
-﻿struct VS_IN
+struct VS_IN
 {
     float4 pos : POSITION;
     float4 col : NORMAL;
@@ -19,6 +19,11 @@ struct PS_OUT
 cbuffer PerRenderConstantBuffer : register( b0 )
 {
     matrix ViewProjection;
+
+    uint SelectedId;
+    uint perRender_padding1;
+    uint perRender_padding2;
+    uint perRender_padding3;
 }
 
 cbuffer PerObjectConstantBuffer : register( b1 )
@@ -41,10 +46,12 @@ PS_IN VS( VS_IN input )
     return output;
 }
 
-PS_OUT PS(PS_IN input) : SV_Target
+PS_OUT PS(PS_IN input)
 {
+    float4 colourModifier = SelectedId == objectId ? float4(0.5f, 0.5f, 0.5f, 1.0f) : input.col;
+
     PS_OUT output;
-    output.backBufferColour = input.col;
+    output.backBufferColour = colourModifier * colourModifier;
 
     output.objectId = objectId;
 

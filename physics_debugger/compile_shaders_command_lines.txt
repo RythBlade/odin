@@ -1,0 +1,2 @@
+fxc MiniCube.fx /T VS_5_0 /E VS
+fxc MiniCube.fx /T ps_5_0 /E PS

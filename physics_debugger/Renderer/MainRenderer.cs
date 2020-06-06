@@ -46,6 +46,8 @@ namespace Renderer
             get { return meshManager; }
         }
 
+        public uint SelectedInstance { get; set; }
+
         public MainRenderer()
         {
             rasterizerStateDescFill.FillMode = FillMode.Solid;
@@ -62,6 +64,7 @@ namespace Renderer
             camera.BackBufferResolution = new Vector2(GraphicsDevice.Instance.m_viewport.Width, GraphicsDevice.Instance.m_viewport.Height);
 
             camera.SetMatrices();
+            SelectedInstance = uint.MaxValue;
         }
 
         public void Initialise()
@@ -114,8 +117,9 @@ namespace Renderer
             camera.BackBufferResolution = new Vector2(GraphicsDevice.Instance.m_viewport.Width, GraphicsDevice.Instance.m_viewport.Height);
             
             camera.SetMatrices();
-            
-            Matrix viewProj = Matrix.Multiply(camera.ViewMatrix, camera.ProjectionMatrix);
+
+            PerRenderConstantBuffer perRenderConstantBufferData = new PerRenderConstantBuffer();
+            perRenderConstantBufferData.viewProject = Matrix.Multiply(camera.ViewMatrix, camera.ProjectionMatrix);
 
             DeviceContext deviceContext = GraphicsDevice.Instance.Context;
             
@@ -126,11 +130,13 @@ namespace Renderer
             deviceContext.VertexShader.SetConstantBuffer(1, perObjectConstantBuffer);
             deviceContext.VertexShader.Set(vertexShader);
 
+            deviceContext.PixelShader.SetConstantBuffer(0, perRenderConstantBuffer);
             deviceContext.PixelShader.SetConstantBuffer(1, perObjectConstantBuffer);
             deviceContext.PixelShader.Set(pixelShader);
-            
-            viewProj.Transpose();
-            deviceContext.UpdateSubresource(ref viewProj, perRenderConstantBuffer);
+
+            perRenderConstantBufferData.viewProject.Transpose();
+            perRenderConstantBufferData.selectedId = SelectedInstance;
+            deviceContext.UpdateSubresource(ref perRenderConstantBufferData, perRenderConstantBuffer);
 
             foreach (RenderInstance instance in renderInstanceList)
             {

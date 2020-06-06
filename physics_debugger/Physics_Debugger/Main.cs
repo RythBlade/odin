@@ -121,6 +121,8 @@ namespace physics_debugger
                 selectedShapeId = uint.MaxValue;
             }
 
+            mainViewport.Renderer.SelectedInstance = selectedShapeId;
+
             if (MouseButtons == MouseButtons.Right)
             {
                 mainViewport.Renderer.Camera.Pitch -= mouseDifference.Y * s_cameraScrollSpeed;
@@ -302,12 +304,12 @@ namespace physics_debugger
                             if( actualShapePair.Shape.Id == selectedShapeId)
                             {
                                 Console.WriteLine($"{selectedShapeId}                -----------------------------------");
-                                instanceToRender.Fill = RenderInstance.FillMode.eWireFrame;
+                                //instanceToRender.Fill = RenderInstance.FillMode.eWireFrame;
                             }
                             else
                             {
                                 Console.WriteLine($"{selectedShapeId}                000000000000000");
-                                instanceToRender.Fill = RenderInstance.FillMode.eFill;
+                                //instanceToRender.Fill = RenderInstance.FillMode.eFill;
                             }
 
                             ++nextRenderInstanceId;
