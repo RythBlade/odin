@@ -1,4 +1,5 @@
-﻿using SharpDX;
+﻿using Renderer.Lighting;
+using SharpDX;
 
 namespace Renderer
 {
@@ -17,15 +18,15 @@ namespace Renderer
         public FillMode Fill { get; set; }
 
         public uint UserDataValue { get; set; }
-
-        public Vector4 ColourTint { get; set; }
+                
+        public LightingMaterial Material { get; }
 
         public RenderInstance(Matrix worldMatrix, int meshId)
         {
             WorldMatrix = worldMatrix;
             MeshId = meshId;
 
-            ColourTint = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+            Material = new LightingMaterial();
         }
     }
 }

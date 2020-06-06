@@ -122,8 +122,6 @@ namespace Renderer
             perRenderConstantBufferData.ViewProject.Transpose();
             perRenderConstantBufferData.LightColour = LightSettings.LightColour;
             perRenderConstantBufferData.LightDirection = LightSettings.LightDirection;
-            perRenderConstantBufferData.AmbientLightStrength = LightSettings.AmbientLightStrength;
-            perRenderConstantBufferData.SpecularLightStrength = LightSettings.SpecularLightStrength;
             deviceContext.UpdateSubresource(ref perRenderConstantBufferData, perRenderConstantBuffer);
 
             deviceContext.InputAssembler.InputLayout = inputLayout;
@@ -157,7 +155,11 @@ namespace Renderer
                 PerObjectConstantbuffer constantBuffer = new PerObjectConstantbuffer();
                 constantBuffer.worldMatrix = instance.WorldMatrix;
                 constantBuffer.worldMatrix.Transpose();
-                constantBuffer.ColourTint = instance.ColourTint;
+                constantBuffer.ColourTint = instance.Material.ColourTint;
+                constantBuffer.AmbientLightStrength = instance.Material.AmbientLightStrength;
+                constantBuffer.DiffuseLightStrength = instance.Material.DiffuseLightStrength;
+                constantBuffer.SpecularLightStrength = instance.Material.SpecularLightStrength;
+                constantBuffer.SpecularShininess = instance.Material.SpecularShininess;
                 constantBuffer.userDataValue = instance.UserDataValue;
                 deviceContext.UpdateSubresource(ref constantBuffer, perObjectConstantBuffer);
 

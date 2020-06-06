@@ -55,7 +55,7 @@ namespace physics_debugger
 
             RenderInstance instanceToRender = new RenderInstance(Matrix.Translation(0.0f, 0.0f, 0.0f), PlaneMeshId);
             instanceToRender.Fill = RenderInstance.FillMode.eWireFrame;
-            instanceToRender.ColourTint = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+            instanceToRender.Material.ColourTint = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
             mainViewport.Renderer.InstanceList.Add(instanceToRender);
 
             clock.Start();
@@ -304,11 +304,11 @@ namespace physics_debugger
 
                             if( actualShapePair.Shape.Id == selectedShapeId)
                             {
-                                instanceToRender.ColourTint = new Vector4(1.0f, 0.5f, 0.5f, 1.0f);
+                                instanceToRender.Material.ColourTint = new Vector4(1.0f, 0.5f, 0.5f, 1.0f);
                             }
                             else
                             {
-                                instanceToRender.ColourTint = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+                                instanceToRender.Material.ColourTint = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
                             }
 
                             ++nextRenderInstanceId;

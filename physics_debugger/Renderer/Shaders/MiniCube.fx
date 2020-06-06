@@ -26,11 +26,6 @@ cbuffer PerRenderConstantBuffer : register( b0 )
     float4 LightDirection;
 
     float4 LightColour;
-
-    float AmbientLightStrength;
-    float SpecularLightStrength;
-    float perrender_padding2;
-    float perrender_padding3;
 }
 
 cbuffer PerObjectConstantBuffer : register( b1 )
@@ -43,6 +38,12 @@ cbuffer PerObjectConstantBuffer : register( b1 )
     float perobject_padding3;
 
     float4 ColourTint;
+
+    // material properties
+    float AmbientLightStrength;
+    float DiffuseLightStrength;
+    float SpecularLightStrength;
+    float SpecularShininess;
 }
 
 PS_IN VS( VS_IN input )
@@ -59,8 +60,6 @@ PS_IN VS( VS_IN input )
 
 PS_OUT PS(PS_IN input)
 {
-    float specularShininess = 1;
-
     ////////////////////////////////////////////////////////////
     // Ambient Lights
     ////////////////////////////////////////////////////////////
@@ -75,14 +74,18 @@ PS_OUT PS(PS_IN input)
     // Specular Lighting
     ////////////////////////////////////////////////////////////
     float4 viewDirection = normalize(ViewPosition - input.worldPos);
-    float4 reflectedDirection = reflect(LightDirection, input.normal);
-    float specularFactor = pow(saturate(dot(viewDirection, reflectedDirection)), specularShininess);
-    float specular = specularFactor* SpecularLightStrength* LightColour;
+    float4 reflectedDirection = reflect(-LightDirection, input.normal);
+    float specularFactor = pow(max(dot(viewDirection, reflectedDirection), 0.0f), SpecularShininess);
+    float4 specular = specularFactor * SpecularLightStrength * LightColour;
 
     ////////////////////////////////////////////////////////////
     // Final lighting
     ////////////////////////////////////////////////////////////
-    float4 finalLighting = (ambientLighting + diffuseLighting + specular) * ColourTint;
+    float4 finalLighting = (0.0f
+        + ambientLighting 
+        + diffuseLighting 
+        + specular
+        ) * ColourTint;
 
     ////////////////////////////////////////////////////////////
     // Write to back buffers

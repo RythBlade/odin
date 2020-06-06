@@ -12,5 +12,10 @@ namespace Renderer.Buffers
         public float padding3;
 
         public Vector4 ColourTint;
+
+        public float AmbientLightStrength;
+        public float DiffuseLightStrength;
+        public float SpecularLightStrength;
+        public float SpecularShininess;
     }
 }
