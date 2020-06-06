@@ -122,40 +122,43 @@ namespace physics_debugger
 
             mainViewport.Renderer.SelectedInstance = selectedShapeId;
 
-            if (MouseButtons == MouseButtons.Right)
+            if (ContainsFocus)
             {
-                mainViewport.Renderer.Camera.Pitch -= mouseDifference.Y * s_cameraScrollSpeed;
-                mainViewport.Renderer.Camera.Yaw += mouseDifference.X * s_cameraScrollSpeed;
-            }
+                if (MouseButtons == MouseButtons.Right)
+                {
+                    mainViewport.Renderer.Camera.Pitch -= mouseDifference.Y * s_cameraScrollSpeed;
+                    mainViewport.Renderer.Camera.Yaw += mouseDifference.X * s_cameraScrollSpeed;
+                }
 
-            float modifier = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift) ? s_cameraSpeedModifier : 1.0f;
-            float cameraSpeed = s_cameraMoveSpeed * modifier;
+                float modifier = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift) ? s_cameraSpeedModifier : 1.0f;
+                float cameraSpeed = s_cameraMoveSpeed * modifier;
 
-            if (Keyboard.IsKeyDown(Key.W))
-            {
-                mainViewport.Renderer.Camera.MoveCameraLongitudinal(cameraSpeed);
-            }
-            else if (Keyboard.IsKeyDown(Key.S))
-            {
-                mainViewport.Renderer.Camera.MoveCameraLongitudinal(-cameraSpeed);
-            }
+                if (Keyboard.IsKeyDown(Key.W))
+                {
+                    mainViewport.Renderer.Camera.MoveCameraLongitudinal(cameraSpeed);
+                }
+                else if (Keyboard.IsKeyDown(Key.S))
+                {
+                    mainViewport.Renderer.Camera.MoveCameraLongitudinal(-cameraSpeed);
+                }
 
-            if (Keyboard.IsKeyDown(Key.A))
-            {
-                mainViewport.Renderer.Camera.MoveCameraLateral(-cameraSpeed);
-            }
-            else if (Keyboard.IsKeyDown(Key.D))
-            {
-                mainViewport.Renderer.Camera.MoveCameraLateral(cameraSpeed);
-            }
+                if (Keyboard.IsKeyDown(Key.A))
+                {
+                    mainViewport.Renderer.Camera.MoveCameraLateral(-cameraSpeed);
+                }
+                else if (Keyboard.IsKeyDown(Key.D))
+                {
+                    mainViewport.Renderer.Camera.MoveCameraLateral(cameraSpeed);
+                }
 
-            if (Keyboard.IsKeyDown(Key.E))
-            {
-                mainViewport.Renderer.Camera.MoveCameraUp(cameraSpeed);
-            }
-            else if (Keyboard.IsKeyDown(Key.Q))
-            {
-                mainViewport.Renderer.Camera.MoveCameraUp(-cameraSpeed);
+                if (Keyboard.IsKeyDown(Key.E))
+                {
+                    mainViewport.Renderer.Camera.MoveCameraUp(cameraSpeed);
+                }
+                else if (Keyboard.IsKeyDown(Key.Q))
+                {
+                    mainViewport.Renderer.Camera.MoveCameraUp(-cameraSpeed);
+                }
             }
         }
 
