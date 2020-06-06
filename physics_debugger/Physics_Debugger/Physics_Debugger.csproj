@@ -65,6 +65,12 @@
     <Compile Include="DataStream1.cs" />
     <Compile Include="FrameControl\FrameController.cs" />
     <Compile Include="FrameControl\FrameControllerEventHandler.cs" />
+    <Compile Include="FrameControl\FrameSelectDialogue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrameControl\FrameSelectDialogue.Designer.cs">
+      <DependentUpon>FrameSelectDialogue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="TelemetryReceiver.cs" />
     <EmbeddedResource Include="ConnectionDialogue.resx">
       <DependentUpon>ConnectionDialogue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrameControl\FrameSelectDialogue.resx">
+      <DependentUpon>FrameSelectDialogue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -119,8 +128,6 @@
     <Content Include="Designs.txt" />
     <Content Include="To do.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Rendering\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

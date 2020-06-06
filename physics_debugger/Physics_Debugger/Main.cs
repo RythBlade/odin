@@ -343,10 +343,15 @@ namespace physics_debugger
             }
         }
 
-        private void frameTrackBar_Scroll(object sender, EventArgs e)
+        private void GoToFrame(int frameId)
         {
             controller.State = PlayBackState.eStaticFrame;
-            controller.CurrentFrameId = frameTrackBar.Value;
+            controller.CurrentFrameId = frameId;
+        }
+
+        private void frameTrackBar_Scroll(object sender, EventArgs e)
+        {
+            GoToFrame(frameTrackBar.Value);
         }
 
 
@@ -504,6 +509,16 @@ namespace physics_debugger
                 serialiser.Filename = saveDialog.FileName;
 
                 serialiser.SaveTelemetry(frameData);
+            }
+        }
+
+        private void goToFrameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrameSelectDialogue frameSelect = new FrameSelectDialogue(0, controller.MaxFrameId);
+
+            if(frameSelect.ShowDialog(this) == DialogResult.OK)
+            {
+                GoToFrame(frameSelect.SelectedFrameId);
             }
         }
     }

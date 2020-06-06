@@ -37,7 +37,6 @@
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.mainViewport = new Renderer.DirectXControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.frameDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.settingsTabControl = new System.Windows.Forms.TabControl();
@@ -45,10 +44,22 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTelemetryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveTelemetryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lookAtPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.trackSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.centreSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.commandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goToFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.playForwardsButton = new System.Windows.Forms.Button();
@@ -60,9 +71,7 @@
             this.previousFrameButton = new System.Windows.Forms.Button();
             this.goToFirstFrameButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.openTelemetryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveTelemetryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mainViewport = new Renderer.DirectXControl();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -211,16 +220,6 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // mainViewport
-            // 
-            this.mainViewport.BackColor = System.Drawing.Color.SpringGreen;
-            this.mainViewport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainViewport.Location = new System.Drawing.Point(4, 4);
-            this.mainViewport.Margin = new System.Windows.Forms.Padding(5);
-            this.mainViewport.Name = "mainViewport";
-            this.mainViewport.Size = new System.Drawing.Size(777, 493);
-            this.mainViewport.TabIndex = 0;
-            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
@@ -281,10 +280,12 @@
             this.mainMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.connectionToolStripMenuItem});
+            this.connectionToolStripMenuItem,
+            this.cameraToolStripMenuItem,
+            this.commandsToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(1344, 28);
+            this.mainMenuStrip.Size = new System.Drawing.Size(1344, 30);
             this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -296,13 +297,32 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openTelemetryToolStripMenuItem
+            // 
+            this.openTelemetryToolStripMenuItem.Name = "openTelemetryToolStripMenuItem";
+            this.openTelemetryToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.openTelemetryToolStripMenuItem.Text = "Open Telemetry...";
+            this.openTelemetryToolStripMenuItem.Click += new System.EventHandler(this.openTelemetryToolStripMenuItem_Click);
+            // 
+            // saveTelemetryToolStripMenuItem
+            // 
+            this.saveTelemetryToolStripMenuItem.Name = "saveTelemetryToolStripMenuItem";
+            this.saveTelemetryToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.saveTelemetryToolStripMenuItem.Text = "Save Telemetry...";
+            this.saveTelemetryToolStripMenuItem.Click += new System.EventHandler(this.saveTelemetryToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(203, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -312,22 +332,86 @@
             this.connectToolStripMenuItem,
             this.disconnectToolStripMenuItem});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
             this.connectionToolStripMenuItem.Text = "Connection";
             // 
             // connectToolStripMenuItem
             // 
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.connectToolStripMenuItem.Text = "Connect...";
             this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
             this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
+            // 
+            // cameraToolStripMenuItem
+            // 
+            this.cameraToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lookAtPointToolStripMenuItem,
+            this.resetCameraToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.trackSelectedToolStripMenuItem,
+            this.centreSelectedToolStripMenuItem,
+            this.zoomSelectedToolStripMenuItem});
+            this.cameraToolStripMenuItem.Name = "cameraToolStripMenuItem";
+            this.cameraToolStripMenuItem.Size = new System.Drawing.Size(74, 26);
+            this.cameraToolStripMenuItem.Text = "Camera";
+            // 
+            // lookAtPointToolStripMenuItem
+            // 
+            this.lookAtPointToolStripMenuItem.Name = "lookAtPointToolStripMenuItem";
+            this.lookAtPointToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.lookAtPointToolStripMenuItem.Text = "Look at Point";
+            // 
+            // resetCameraToolStripMenuItem
+            // 
+            this.resetCameraToolStripMenuItem.Name = "resetCameraToolStripMenuItem";
+            this.resetCameraToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.resetCameraToolStripMenuItem.Text = "Reset Camera";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(193, 6);
+            // 
+            // trackSelectedToolStripMenuItem
+            // 
+            this.trackSelectedToolStripMenuItem.Name = "trackSelectedToolStripMenuItem";
+            this.trackSelectedToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.trackSelectedToolStripMenuItem.Text = "Track Selected";
+            // 
+            // centreSelectedToolStripMenuItem
+            // 
+            this.centreSelectedToolStripMenuItem.Name = "centreSelectedToolStripMenuItem";
+            this.centreSelectedToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.centreSelectedToolStripMenuItem.Text = "Centre Selected";
+            // 
+            // zoomSelectedToolStripMenuItem
+            // 
+            this.zoomSelectedToolStripMenuItem.Name = "zoomSelectedToolStripMenuItem";
+            this.zoomSelectedToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.zoomSelectedToolStripMenuItem.Text = "Zoom Selected";
+            // 
+            // commandsToolStripMenuItem
+            // 
+            this.commandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.goToFrameToolStripMenuItem});
+            this.commandsToolStripMenuItem.Name = "commandsToolStripMenuItem";
+            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
+            this.commandsToolStripMenuItem.Text = "Commands";
+            // 
+            // goToFrameToolStripMenuItem
+            // 
+            this.goToFrameToolStripMenuItem.Name = "goToFrameToolStripMenuItem";
+            this.goToFrameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+            this.goToFrameToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.goToFrameToolStripMenuItem.Text = "Go to Frame";
+            this.goToFrameToolStripMenuItem.Click += new System.EventHandler(this.goToFrameToolStripMenuItem_Click);
             // 
             // updateTimer
             // 
@@ -345,7 +429,7 @@
             this.panel1.Controls.Add(this.previousFrameButton);
             this.panel1.Controls.Add(this.goToFirstFrameButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1344, 64);
             this.panel1.TabIndex = 2;
@@ -444,24 +528,15 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // openTelemetryToolStripMenuItem
+            // mainViewport
             // 
-            this.openTelemetryToolStripMenuItem.Name = "openTelemetryToolStripMenuItem";
-            this.openTelemetryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.openTelemetryToolStripMenuItem.Text = "Open Telemetry...";
-            this.openTelemetryToolStripMenuItem.Click += new System.EventHandler(this.openTelemetryToolStripMenuItem_Click);
-            // 
-            // saveTelemetryToolStripMenuItem
-            // 
-            this.saveTelemetryToolStripMenuItem.Name = "saveTelemetryToolStripMenuItem";
-            this.saveTelemetryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.saveTelemetryToolStripMenuItem.Text = "Save Telemetry...";
-            this.saveTelemetryToolStripMenuItem.Click += new System.EventHandler(this.saveTelemetryToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.mainViewport.BackColor = System.Drawing.Color.SpringGreen;
+            this.mainViewport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainViewport.Location = new System.Drawing.Point(4, 4);
+            this.mainViewport.Margin = new System.Windows.Forms.Padding(5);
+            this.mainViewport.Name = "mainViewport";
+            this.mainViewport.Size = new System.Drawing.Size(777, 493);
+            this.mainViewport.TabIndex = 0;
             // 
             // Main
             // 
@@ -541,6 +616,15 @@
         private System.Windows.Forms.ToolStripMenuItem openTelemetryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveTelemetryToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem cameraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lookAtPointToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetCameraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem trackSelectedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem centreSelectedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zoomSelectedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem commandsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem goToFrameToolStripMenuItem;
     }
 }
 
