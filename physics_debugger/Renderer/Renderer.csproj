@@ -79,6 +79,7 @@
     <Compile Include="Geometry\MeshManager.cs" />
     <Compile Include="Geometry\MeshVertices.cs" />
     <Compile Include="GraphicsDevice.cs" />
+    <Compile Include="Lighting\LightSettings.cs" />
     <Compile Include="MainRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Buffers\Vertex.cs" />

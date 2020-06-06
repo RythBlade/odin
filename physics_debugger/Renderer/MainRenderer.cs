@@ -1,5 +1,6 @@
 ﻿using Renderer.Buffers;
 using Renderer.Geometry;
+using Renderer.Lighting;
 using SharpDX;
 using SharpDX.D3DCompiler;
 using SharpDX.Direct3D;
@@ -26,30 +27,23 @@ namespace Renderer
         SharpDX.Direct3D11.Buffer perObjectConstantBuffer = null;
         SharpDX.Direct3D11.Buffer perRenderConstantBuffer = null;
         
-        MeshManager meshManager = new MeshManager();
-        List<RenderInstance> renderInstanceList = new List<RenderInstance>();
+        public Cameras.FirstPersonCamera Camera { get; }
 
-        Cameras.FirstPersonCamera camera = new Cameras.FirstPersonCamera();
+        public List<RenderInstance> InstanceList { get; }
 
-        public Cameras.FirstPersonCamera Camera
-        {
-            get { return camera; }
-        }
+        public MeshManager Meshes { get; }
 
-        public List<RenderInstance> InstanceList
-        {
-            get { return renderInstanceList; }
-        }
-
-        public MeshManager Meshes
-        {
-            get { return meshManager; }
-        }
+        public LightSettings LightSettings { get; set; }
 
         public uint SelectedInstance { get; set; }
 
         public MainRenderer()
         {
+            LightSettings = new LightSettings();
+            Meshes = new MeshManager();
+            InstanceList = new List<RenderInstance>();
+            Camera = new Cameras.FirstPersonCamera();
+
             rasterizerStateDescFill.FillMode = FillMode.Solid;
             rasterizerStateDescFill.CullMode = CullMode.Back;
 
@@ -57,13 +51,13 @@ namespace Renderer
             rasterizerStateDescWireframe.CullMode = CullMode.None;
 
             // Setup new projection matrix with correct aspect ratio
-            camera.CameraPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            camera.NearClipPlane = 0.1f;
-            camera.FarClipPlane = 100.0f;
-            camera.FieldOfView = (float)Math.PI / 4.0f;
-            camera.BackBufferResolution = new Vector2(GraphicsDevice.Instance.m_viewport.Width, GraphicsDevice.Instance.m_viewport.Height);
+            Camera.CameraPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            Camera.NearClipPlane = 0.1f;
+            Camera.FarClipPlane = 100.0f;
+            Camera.FieldOfView = (float)Math.PI / 4.0f;
+            Camera.BackBufferResolution = new Vector2(GraphicsDevice.Instance.m_viewport.Width, GraphicsDevice.Instance.m_viewport.Height);
 
-            camera.SetMatrices();
+            Camera.SetMatrices();
             SelectedInstance = uint.MaxValue;
         }
 
@@ -112,16 +106,26 @@ namespace Renderer
             // Clear the views
             GraphicsDevice.Instance.ClearAndSetMainRenderTarget();
             GraphicsDevice.Instance.SetRenderTargetViews();
-            
-            camera.BackBufferResolution = new Vector2(GraphicsDevice.Instance.m_viewport.Width, GraphicsDevice.Instance.m_viewport.Height);
-            
-            camera.SetMatrices();
 
-            PerRenderConstantBuffer perRenderConstantBufferData = new PerRenderConstantBuffer();
-            perRenderConstantBufferData.viewProject = Matrix.Multiply(camera.ViewMatrix, camera.ProjectionMatrix);
+            Camera.BackBufferResolution = new Vector2(GraphicsDevice.Instance.m_viewport.Width, GraphicsDevice.Instance.m_viewport.Height);
+
+            Camera.SetMatrices();
 
             DeviceContext deviceContext = GraphicsDevice.Instance.Context;
-            
+
+            PerRenderConstantBuffer perRenderConstantBufferData = new PerRenderConstantBuffer();
+            perRenderConstantBufferData.ViewProject = Matrix.Multiply(Camera.ViewMatrix, Camera.ProjectionMatrix);
+            perRenderConstantBufferData.ViewPosition.X = Camera.CameraPosition.X;
+            perRenderConstantBufferData.ViewPosition.Y = Camera.CameraPosition.Y;
+            perRenderConstantBufferData.ViewPosition.Z = Camera.CameraPosition.Z;
+
+            perRenderConstantBufferData.ViewProject.Transpose();
+            perRenderConstantBufferData.LightColour = LightSettings.LightColour;
+            perRenderConstantBufferData.LightDirection = LightSettings.LightDirection;
+            perRenderConstantBufferData.AmbientLightStrength = LightSettings.AmbientLightStrength;
+            perRenderConstantBufferData.SpecularLightStrength = LightSettings.SpecularLightStrength;
+            deviceContext.UpdateSubresource(ref perRenderConstantBufferData, perRenderConstantBuffer);
+
             deviceContext.InputAssembler.InputLayout = inputLayout;
             deviceContext.InputAssembler.PrimitiveTopology = PrimitiveTopology.TriangleList;
 
@@ -133,12 +137,9 @@ namespace Renderer
             deviceContext.PixelShader.SetConstantBuffer(1, perObjectConstantBuffer);
             deviceContext.PixelShader.Set(pixelShader);
 
-            perRenderConstantBufferData.viewProject.Transpose();
-            deviceContext.UpdateSubresource(ref perRenderConstantBufferData, perRenderConstantBuffer);
-
-            foreach (RenderInstance instance in renderInstanceList)
+            foreach (RenderInstance instance in InstanceList)
             {
-                Mesh nextMesh = meshManager.GetMeshInstanceAt(instance.MeshId);
+                Mesh nextMesh = Meshes.GetMeshInstanceAt(instance.MeshId);
                 deviceContext.InputAssembler.SetVertexBuffers(0, nextMesh.vertexBufferBinding);
 
                 switch (instance.Fill)

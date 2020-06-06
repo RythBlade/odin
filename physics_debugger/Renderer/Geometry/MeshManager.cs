@@ -75,6 +75,8 @@ namespace Renderer.Geometry
 
         public int AddMesh(Vertex[] triangleList)
         {
+            CalculateMeshNormals(triangleList);
+
             Mesh newMesh = new Mesh();
             newMesh.numberOfVertices = triangleList.Length;
             newMesh.vertexBuffer = SharpDX.Direct3D11.Buffer.Create(GraphicsDevice.Instance.Device, BindFlags.VertexBuffer, triangleList);
@@ -83,6 +85,32 @@ namespace Renderer.Geometry
             m_meshes.Add(newMesh);
 
             return m_meshes.Count > 0 ? m_meshes.Count - 1 : -1;
+        }
+
+        private void CalculateMeshNormals(Vertex[] triangleList)
+        {
+            for( int i = 0; i < triangleList.Length; i += 3)
+            {
+                Vector4 vertA = triangleList[i].Position;
+                Vector4 vertB = triangleList[i + 1].Position;
+                Vector4 vertC = triangleList[i + 2].Position;
+
+                Vector4 AtoB = (vertB - vertA);
+                Vector4 AtoC = (vertC - vertA);
+
+                Vector3 AtoBVec3 = new Vector3(AtoB.X, AtoB.Y, AtoB.Z);
+                Vector3 AtoCVec3 = new Vector3(AtoC.X, AtoC.Y, AtoC.Z);
+
+                Vector3 normal;
+
+                Vector3.Cross(ref AtoBVec3, ref AtoCVec3, out normal);
+
+                normal.Normalize();
+
+                triangleList[i].SetNormal(normal);
+                triangleList[i + 1].SetNormal(normal);
+                triangleList[i + 2].SetNormal(normal);
+            }
         }
     }
 }

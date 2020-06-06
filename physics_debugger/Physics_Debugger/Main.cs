@@ -5,8 +5,6 @@ using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Net.Mail;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Telemetry.FrameData;
@@ -57,6 +55,7 @@ namespace physics_debugger
 
             RenderInstance instanceToRender = new RenderInstance(Matrix.Translation(0.0f, 0.0f, 0.0f), PlaneMeshId);
             instanceToRender.Fill = RenderInstance.FillMode.eWireFrame;
+            instanceToRender.ColourTint = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
             mainViewport.Renderer.InstanceList.Add(instanceToRender);
 
             clock.Start();
@@ -228,9 +227,11 @@ namespace physics_debugger
             }
         }
 
+        bool animate = true;
+
         private void RenderFrame(int frameIndex)
         {
-            float time = clock.ElapsedMilliseconds / 1000.0f;
+            float time = animate ? clock.ElapsedMilliseconds / 1000.0f : 0.0f;
 
             FrameSnapshot latestFrame = frameData.Frames != null && frameData.Frames.Count > 0 ? frameData.Frames[frameIndex] : null;
 
@@ -303,11 +304,11 @@ namespace physics_debugger
 
                             if( actualShapePair.Shape.Id == selectedShapeId)
                             {
-                                instanceToRender.ColourTint = new Vector4(0.5f, 0.5f, 0.5f, 1.0f);
+                                instanceToRender.ColourTint = new Vector4(1.0f, 0.5f, 0.5f, 1.0f);
                             }
                             else
                             {
-                                instanceToRender.ColourTint = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+                                instanceToRender.ColourTint = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
                             }
 
                             ++nextRenderInstanceId;
