@@ -16,8 +16,9 @@ namespace Renderer.Cameras
         private Vector3 cameraUp;
         private Vector3 cameraLateral;
 
-        private float nearPlane;
-        private float farPlane;
+        public float NearPlane { get; set; }
+        public float FarPlane { get; set; }
+
         private float fieldOfView;
         private Vector2 backBufferResolution;
 
@@ -102,8 +103,8 @@ namespace Renderer.Cameras
             yaw = 0.0f;
             roll = 0.0f;
 
-            nearPlane = 1.0f;
-            farPlane = 1000.0f;
+            NearPlane = 1.0f;
+            FarPlane = 1000.0f;
             fieldOfView = MathUtil.Pi / 4.0f;
 
             backBufferResolution.X = 1.0f;
@@ -128,7 +129,7 @@ namespace Renderer.Cameras
           */
         private void SetProjectionMatrix()
         {
-            projectionMatrix = Matrix.PerspectiveFovLH(fieldOfView, backBufferResolution.X / backBufferResolution.Y, nearPlane, farPlane);
+            projectionMatrix = Matrix.PerspectiveFovLH(fieldOfView, backBufferResolution.X / backBufferResolution.Y, NearPlane, FarPlane);
         }
 
         private void UpdateCameraVectors()
