@@ -36,11 +36,11 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.mainTabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.renderTabPage = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.frameDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.settingsTabControl = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.quickSettingsTabPage = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +71,15 @@
             this.previousFrameButton = new System.Windows.Forms.Button();
             this.goToFirstFrameButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.cameraSpeedTrackBar = new System.Windows.Forms.TrackBar();
+            this.cameraSettingsGroupBox = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.mainViewport = new Renderer.DirectXControl();
+            this.nearPlaneTrackBar = new System.Windows.Forms.TrackBar();
+            this.farPlaneTrackBar = new System.Windows.Forms.TrackBar();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -89,11 +97,16 @@
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
             this.mainTabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.renderTabPage.SuspendLayout();
             this.settingsTabControl.SuspendLayout();
+            this.quickSettingsTabPage.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cameraSpeedTrackBar)).BeginInit();
+            this.cameraSettingsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nearPlaneTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.farPlaneTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // mainSplitContainer
@@ -198,7 +211,7 @@
             // 
             // mainTabControl
             // 
-            this.mainTabControl.Controls.Add(this.tabPage1);
+            this.mainTabControl.Controls.Add(this.renderTabPage);
             this.mainTabControl.Controls.Add(this.tabPage2);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(0, 0);
@@ -208,17 +221,17 @@
             this.mainTabControl.Size = new System.Drawing.Size(793, 530);
             this.mainTabControl.TabIndex = 0;
             // 
-            // tabPage1
+            // renderTabPage
             // 
-            this.tabPage1.Controls.Add(this.mainViewport);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(785, 501);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.renderTabPage.Controls.Add(this.mainViewport);
+            this.renderTabPage.Location = new System.Drawing.Point(4, 25);
+            this.renderTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.renderTabPage.Name = "renderTabPage";
+            this.renderTabPage.Padding = new System.Windows.Forms.Padding(4);
+            this.renderTabPage.Size = new System.Drawing.Size(785, 501);
+            this.renderTabPage.TabIndex = 0;
+            this.renderTabPage.Text = "Render";
+            this.renderTabPage.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -243,7 +256,7 @@
             // 
             // settingsTabControl
             // 
-            this.settingsTabControl.Controls.Add(this.tabPage3);
+            this.settingsTabControl.Controls.Add(this.quickSettingsTabPage);
             this.settingsTabControl.Controls.Add(this.tabPage4);
             this.settingsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingsTabControl.Location = new System.Drawing.Point(0, 0);
@@ -253,16 +266,17 @@
             this.settingsTabControl.Size = new System.Drawing.Size(265, 778);
             this.settingsTabControl.TabIndex = 0;
             // 
-            // tabPage3
+            // quickSettingsTabPage
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Size = new System.Drawing.Size(257, 749);
-            this.tabPage3.TabIndex = 0;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.quickSettingsTabPage.Controls.Add(this.cameraSettingsGroupBox);
+            this.quickSettingsTabPage.Location = new System.Drawing.Point(4, 25);
+            this.quickSettingsTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.quickSettingsTabPage.Name = "quickSettingsTabPage";
+            this.quickSettingsTabPage.Padding = new System.Windows.Forms.Padding(4);
+            this.quickSettingsTabPage.Size = new System.Drawing.Size(257, 749);
+            this.quickSettingsTabPage.TabIndex = 0;
+            this.quickSettingsTabPage.Text = "Quick Settings";
+            this.quickSettingsTabPage.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -285,7 +299,7 @@
             this.commandsToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(1344, 30);
+            this.mainMenuStrip.Size = new System.Drawing.Size(1344, 28);
             this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -297,7 +311,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openTelemetryToolStripMenuItem
@@ -334,7 +348,7 @@
             this.connectToolStripMenuItem,
             this.disconnectToolStripMenuItem});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
             this.connectionToolStripMenuItem.Text = "Connection";
             // 
             // connectToolStripMenuItem
@@ -361,7 +375,7 @@
             this.centreSelectedToolStripMenuItem,
             this.zoomSelectedToolStripMenuItem});
             this.cameraToolStripMenuItem.Name = "cameraToolStripMenuItem";
-            this.cameraToolStripMenuItem.Size = new System.Drawing.Size(74, 26);
+            this.cameraToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.cameraToolStripMenuItem.Text = "Camera";
             // 
             // lookAtPointToolStripMenuItem
@@ -404,7 +418,7 @@
             this.commandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.goToFrameToolStripMenuItem});
             this.commandsToolStripMenuItem.Name = "commandsToolStripMenuItem";
-            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
+            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
             this.commandsToolStripMenuItem.Text = "Commands";
             // 
             // goToFrameToolStripMenuItem
@@ -431,7 +445,7 @@
             this.panel1.Controls.Add(this.previousFrameButton);
             this.panel1.Controls.Add(this.goToFirstFrameButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1344, 64);
             this.panel1.TabIndex = 2;
@@ -530,6 +544,55 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // cameraSpeedTrackBar
+            // 
+            this.cameraSpeedTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cameraSpeedTrackBar.BackColor = System.Drawing.Color.White;
+            this.cameraSpeedTrackBar.Location = new System.Drawing.Point(6, 47);
+            this.cameraSpeedTrackBar.Maximum = 100;
+            this.cameraSpeedTrackBar.Name = "cameraSpeedTrackBar";
+            this.cameraSpeedTrackBar.Size = new System.Drawing.Size(231, 56);
+            this.cameraSpeedTrackBar.TabIndex = 1;
+            this.cameraSpeedTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // cameraSettingsGroupBox
+            // 
+            this.cameraSettingsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cameraSettingsGroupBox.Controls.Add(this.label3);
+            this.cameraSettingsGroupBox.Controls.Add(this.label2);
+            this.cameraSettingsGroupBox.Controls.Add(this.farPlaneTrackBar);
+            this.cameraSettingsGroupBox.Controls.Add(this.nearPlaneTrackBar);
+            this.cameraSettingsGroupBox.Controls.Add(this.checkBox1);
+            this.cameraSettingsGroupBox.Controls.Add(this.label1);
+            this.cameraSettingsGroupBox.Controls.Add(this.cameraSpeedTrackBar);
+            this.cameraSettingsGroupBox.Location = new System.Drawing.Point(7, 0);
+            this.cameraSettingsGroupBox.Name = "cameraSettingsGroupBox";
+            this.cameraSettingsGroupBox.Size = new System.Drawing.Size(243, 417);
+            this.cameraSettingsGroupBox.TabIndex = 2;
+            this.cameraSettingsGroupBox.TabStop = false;
+            this.cameraSettingsGroupBox.Text = "Camera Settings";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Camera Speed:";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(9, 267);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(163, 21);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "Simulation Controlled";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // mainViewport
             // 
             this.mainViewport.BackColor = System.Drawing.Color.SpringGreen;
@@ -539,6 +602,46 @@
             this.mainViewport.Name = "mainViewport";
             this.mainViewport.Size = new System.Drawing.Size(777, 493);
             this.mainViewport.TabIndex = 0;
+            // 
+            // nearPlaneTrackBar
+            // 
+            this.nearPlaneTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nearPlaneTrackBar.BackColor = System.Drawing.Color.White;
+            this.nearPlaneTrackBar.Location = new System.Drawing.Point(6, 126);
+            this.nearPlaneTrackBar.Name = "nearPlaneTrackBar";
+            this.nearPlaneTrackBar.Size = new System.Drawing.Size(231, 56);
+            this.nearPlaneTrackBar.TabIndex = 4;
+            this.nearPlaneTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // farPlaneTrackBar
+            // 
+            this.farPlaneTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.farPlaneTrackBar.BackColor = System.Drawing.Color.White;
+            this.farPlaneTrackBar.Location = new System.Drawing.Point(6, 205);
+            this.farPlaneTrackBar.Name = "farPlaneTrackBar";
+            this.farPlaneTrackBar.Size = new System.Drawing.Size(231, 56);
+            this.farPlaneTrackBar.TabIndex = 5;
+            this.farPlaneTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 106);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Near plane";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 185);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Far plane";
             // 
             // Main
             // 
@@ -570,13 +673,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
             this.mainTabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.renderTabPage.ResumeLayout(false);
             this.settingsTabControl.ResumeLayout(false);
+            this.quickSettingsTabPage.ResumeLayout(false);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cameraSpeedTrackBar)).EndInit();
+            this.cameraSettingsGroupBox.ResumeLayout(false);
+            this.cameraSettingsGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nearPlaneTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.farPlaneTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,12 +700,12 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.TabControl mainTabControl;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage renderTabPage;
         private Renderer.DirectXControl mainViewport;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.RichTextBox frameDetailsRichTextBox;
         private System.Windows.Forms.TabControl settingsTabControl;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage quickSettingsTabPage;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -627,6 +736,14 @@
         private System.Windows.Forms.ToolStripMenuItem zoomSelectedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem commandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goToFrameToolStripMenuItem;
+        private System.Windows.Forms.TrackBar cameraSpeedTrackBar;
+        private System.Windows.Forms.GroupBox cameraSettingsGroupBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar farPlaneTrackBar;
+        private System.Windows.Forms.TrackBar nearPlaneTrackBar;
     }
 }
 
