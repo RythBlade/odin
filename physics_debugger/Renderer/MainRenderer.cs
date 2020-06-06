@@ -69,7 +69,6 @@ namespace Renderer
 
         public void Initialise()
         {
-            DeviceContext deviceContext = GraphicsDevice.Instance.Context;
             rasterizerStateFill = new RasterizerState(GraphicsDevice.Instance.Device, rasterizerStateDescFill);
             rasterizerStateWireFrame = new RasterizerState(GraphicsDevice.Instance.Device, rasterizerStateDescWireframe);
 
@@ -160,10 +159,6 @@ namespace Renderer
                 constantBuffer.ColourTint = instance.ColourTint;
                 constantBuffer.userDataValue = instance.UserDataValue;
                 deviceContext.UpdateSubresource(ref constantBuffer, perObjectConstantBuffer);
-
-                //Matrix world = instance.WorldMatrix;
-                //world.Transpose();
-                //deviceContext.UpdateSubresource(ref world, perObjectConstantBuffer);
 
                 // Draw the cube
                 deviceContext.Draw(nextMesh.numberOfVertices, 0);
