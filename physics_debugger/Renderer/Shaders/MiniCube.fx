@@ -13,27 +13,24 @@ struct PS_IN
 struct PS_OUT
 {
     float4 backBufferColour : SV_Target0;
-    uint objectId : SV_Target1;
+    uint userDataValue : SV_Target1;
 };
 
 cbuffer PerRenderConstantBuffer : register( b0 )
 {
     matrix ViewProjection;
-
-    uint SelectedId;
-    uint perRender_padding1;
-    uint perRender_padding2;
-    uint perRender_padding3;
 }
 
 cbuffer PerObjectConstantBuffer : register( b1 )
 {
     matrix World;
 
-    uint objectId;
+    uint UserDataValue;
     float padding1;
     float padding2;
     float padding3;
+
+    float4 ColourTint;
 }
 
 PS_IN VS( VS_IN input )
@@ -48,12 +45,10 @@ PS_IN VS( VS_IN input )
 
 PS_OUT PS(PS_IN input)
 {
-    float4 colourModifier = SelectedId == objectId ? float4(0.5f, 0.5f, 0.5f, 1.0f) : input.col;
-
     PS_OUT output;
-    output.backBufferColour = colourModifier * colourModifier;
+    output.backBufferColour = ColourTint + input.col;
 
-    output.objectId = objectId;
+    output.userDataValue = UserDataValue;
 
     return output;
 }

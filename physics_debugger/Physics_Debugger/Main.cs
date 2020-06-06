@@ -303,13 +303,11 @@ namespace physics_debugger
 
                             if( actualShapePair.Shape.Id == selectedShapeId)
                             {
-                                Console.WriteLine($"{selectedShapeId}                -----------------------------------");
-                                //instanceToRender.Fill = RenderInstance.FillMode.eWireFrame;
+                                instanceToRender.ColourTint = new Vector4(0.5f, 0.5f, 0.5f, 1.0f);
                             }
                             else
                             {
-                                Console.WriteLine($"{selectedShapeId}                000000000000000");
-                                //instanceToRender.Fill = RenderInstance.FillMode.eFill;
+                                instanceToRender.ColourTint = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
                             }
 
                             ++nextRenderInstanceId;

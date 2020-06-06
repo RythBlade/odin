@@ -135,7 +135,6 @@ namespace Renderer
             deviceContext.PixelShader.Set(pixelShader);
 
             perRenderConstantBufferData.viewProject.Transpose();
-            perRenderConstantBufferData.selectedId = SelectedInstance;
             deviceContext.UpdateSubresource(ref perRenderConstantBufferData, perRenderConstantBuffer);
 
             foreach (RenderInstance instance in renderInstanceList)
@@ -158,7 +157,8 @@ namespace Renderer
                 PerObjectConstantbuffer constantBuffer = new PerObjectConstantbuffer();
                 constantBuffer.worldMatrix = instance.WorldMatrix;
                 constantBuffer.worldMatrix.Transpose();
-                constantBuffer.objectId = instance.UserDataValue;
+                constantBuffer.ColourTint = instance.ColourTint;
+                constantBuffer.userDataValue = instance.UserDataValue;
                 deviceContext.UpdateSubresource(ref constantBuffer, perObjectConstantBuffer);
 
                 //Matrix world = instance.WorldMatrix;
