@@ -66,8 +66,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buffers\PerObjectConstantbuffer.cs" />
-    <Compile Include="Buffers\PerRenderConstantBuffer.cs" />
+    <Compile Include="Buffers\PerObjectVSConstantbuffer.cs" />
+    <Compile Include="Buffers\PerRenderVSConstantBuffer.cs" />
     <Compile Include="Cameras\FirstPersonCamera.cs" />
     <Compile Include="Cameras\ICamera.cs" />
     <Compile Include="DirectXControl.cs">
