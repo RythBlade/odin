@@ -63,6 +63,8 @@
       <DependentUpon>ConnectionDialogue.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\PropertyGridDisplayHelpers\BaseShapePropertyWrapper.cs" />
+    <Compile Include="Controls\PropertyGridDisplayHelpers\Matrix4x4PropertyWrapper.cs" />
+    <Compile Include="Controls\PropertyGridDisplayHelpers\Matrix4x4PropertyWrapperTypeConverter.cs" />
     <Compile Include="Controls\PropertyGridDisplayHelpers\RigidBodyPropertyWrapper.cs" />
     <Compile Include="Controls\SceneGraphView\RigidBodyTreeNode.cs" />
     <Compile Include="Controls\SceneGraphView\SelectionChangedEventHandler.cs" />

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using Telemetry.FrameData;
 using Telemetry.FrameData.Properties;
 
@@ -15,11 +11,14 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
         [BrowsableAttribute(false)]
         public RigidBody BodyToWrap { get; }
 
+        [BrowsableAttribute(false)]
+        public Matrix4x4PropertyWrapper Matrix4x4Wrapper { get; }
+
         [Category("Rigid Body")]
         public uint Id { get { return BodyToWrap.Id; } }
 
         [Category("Rigid Body")]
-        public Matrix4x4 WorldMatrix { get { return BodyToWrap.WorldMatrix; } }
+        public Matrix4x4PropertyWrapper WorldMatrix { get { return Matrix4x4Wrapper; } }
 
         [Category("Rigid Body")]
         public Vector4 Velocity { get { return BodyToWrap.Velocity; } }
@@ -33,6 +32,7 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
         public RigidBodyPropertyWrapper(RigidBody bodyToWrap)
         {
             BodyToWrap = bodyToWrap;
+            Matrix4x4Wrapper = new Matrix4x4PropertyWrapper(BodyToWrap.WorldMatrix);
         }
     }
 }
