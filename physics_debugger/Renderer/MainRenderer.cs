@@ -35,8 +35,6 @@ namespace Renderer
 
         public LightSettings LightSettings { get; set; }
 
-        public uint SelectedInstance { get; set; }
-
         public MainRenderer()
         {
             LightSettings = new LightSettings();
@@ -58,7 +56,6 @@ namespace Renderer
             Camera.BackBufferResolution = new Vector2(GraphicsDevice.Instance.m_viewport.Width, GraphicsDevice.Instance.m_viewport.Height);
 
             Camera.SetMatrices();
-            SelectedInstance = uint.MaxValue;
         }
 
         public void Initialise()
@@ -161,9 +158,10 @@ namespace Renderer
                 constantBuffer.SpecularLightStrength = instance.Material.SpecularLightStrength;
                 constantBuffer.SpecularShininess = instance.Material.SpecularShininess;
                 constantBuffer.userDataValue = instance.UserDataValue;
+
                 deviceContext.UpdateSubresource(ref constantBuffer, perObjectConstantBuffer);
 
-                // Draw the cube
+                // Draw the mesh
                 deviceContext.Draw(nextMesh.numberOfVertices, 0);
             }
             

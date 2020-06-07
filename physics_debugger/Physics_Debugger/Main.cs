@@ -37,6 +37,7 @@ namespace physics_debugger
         // shape/frame id pair, render mesh handle
         private Dictionary<ShapeFrameIdPair, int> shapeRenderMeshBindings = new Dictionary<ShapeFrameIdPair, int>();
 
+        private uint highlightedShapeId = uint.MaxValue;
         private uint selectedShapeId = uint.MaxValue;
 
         public Main()
@@ -137,17 +138,20 @@ namespace physics_debugger
             System.Drawing.Point pixelCooord = mainViewport.PointToClient(Control.MousePosition);
             if (pixelCooord.X >= 0 && pixelCooord.Y >= 0 && pixelCooord.X < mainViewport.Size.Width && pixelCooord.Y < mainViewport.Size.Height)
             {
-                selectedShapeId = GraphicsDevice.Instance.PixelUserData[pixelCooord.X, pixelCooord.Y];
+                highlightedShapeId = GraphicsDevice.Instance.PixelUserData[pixelCooord.X, pixelCooord.Y];
             }
             else
             {
-                selectedShapeId = uint.MaxValue;
+                highlightedShapeId = uint.MaxValue;
             }
-
-            mainViewport.Renderer.SelectedInstance = selectedShapeId;
 
             if (ContainsFocus)
             {
+                if(MouseButtons == MouseButtons.Left)
+                {
+                    selectedShapeId = highlightedShapeId;
+                }
+
                 if (MouseButtons == MouseButtons.Right)
                 {
                     mainViewport.Renderer.Camera.Pitch -= mouseDifference.Y * s_cameraScrollSpeed;
@@ -329,13 +333,20 @@ namespace physics_debugger
                                 instanceToRender.WorldMatrix = rotationAnimation * translationMatrix; 
                             }
 
-                            if( actualShapePair.Shape.Id == selectedShapeId)
+                            if (actualShapePair.Shape.Id == selectedShapeId)
                             {
-                                instanceToRender.Material.ColourTint = new Vector4(1.0f, 0.5f, 0.5f, 1.0f);
+                                instanceToRender.Material.ColourTint = new Vector4(0.5f, 1.0f, 0.5f, 1.0f);
+                                instanceToRender.Material.AmbientLightStrength = 0.6f;
+                            }
+                            else if ( actualShapePair.Shape.Id == highlightedShapeId)
+                            {
+                                instanceToRender.Material.ColourTint = new Vector4(0.5f, 1.0f, 0.5f, 1.0f);
+                                instanceToRender.Material.AmbientLightStrength = 0.3f;
                             }
                             else
                             {
-                                instanceToRender.Material.ColourTint = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+                                instanceToRender.Material.ColourTint = new Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+                                instanceToRender.Material.AmbientLightStrength = 0.1f;
                             }
 
                             ++nextRenderInstanceId;
