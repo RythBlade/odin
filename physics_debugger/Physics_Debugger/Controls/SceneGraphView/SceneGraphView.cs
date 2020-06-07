@@ -43,7 +43,11 @@ namespace physics_debugger.Controls.SceneGraphView
         private void DisplayNewFrame()
         {
             treeView.Nodes.Clear();
-            treeView.Nodes.Add(BuildDisplayTree());
+
+            TreeNode newRoot = BuildDisplayTree();
+            treeView.Nodes.Add(newRoot);
+
+            treeView.SelectedNode = newRoot;
         }
 
         public void SetFrameData(FrameData frameData, int frameIdToDisplay)

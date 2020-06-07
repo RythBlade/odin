@@ -1,4 +1,6 @@
-﻿using physics_debugger.FrameControl;
+﻿using physics_debugger.Controls.PropertyGridDisplayHelpers;
+using physics_debugger.Controls.SceneGraphView;
+using physics_debugger.FrameControl;
 using Renderer;
 using Renderer.Buffers;
 using SharpDX;
@@ -66,7 +68,31 @@ namespace physics_debugger
             controller.MaxFrameChanged += Controller_MaxFrameChanged;
             controller.StateChanged += Controller_StateChanged;
 
-            controller.State = PlayBackState.eStaticFrame;   
+            controller.State = PlayBackState.eStaticFrame;
+
+            sceneGraphView.SelectionChanged += SceneGraphView_SelectionChanged;
+        }
+
+        private void SceneGraphView_SelectionChanged(object sender, TreeViewEventArgs e)
+        {
+            if(e.Node is ShapeTreeNode)
+            {
+                ShapeTreeNode shapeNode = (ShapeTreeNode)e.Node;
+
+                objectDetailsPropertyGrid.SelectedObject = new BaseShapePropertyWrapper(shapeNode.ShapeToDisplay);
+
+                selectedShapeId = shapeNode.ShapeToDisplay.Id;
+            }
+            else if (e.Node is RigidBodyTreeNode)
+            {
+                RigidBodyTreeNode rigidBodyNode = (RigidBodyTreeNode)e.Node;
+
+                objectDetailsPropertyGrid.SelectedObject = new RigidBodyPropertyWrapper(rigidBodyNode.BodyToDisplay);
+            }
+            else
+            {
+                objectDetailsPropertyGrid.SelectedObject = null;
+            }
         }
 
         private void Controller_StateChanged(object sender, EventArgs e)
@@ -150,6 +176,16 @@ namespace physics_debugger
                 if(MouseButtons == MouseButtons.Left)
                 {
                     selectedShapeId = highlightedShapeId;
+
+                    if (selectedShapeId != uint.MaxValue)
+                    {
+                        ShapeFrameIdPair pair = frameData.ShapeData.RetrieveShapeForFrame(selectedShapeId, (uint)controller.CurrentFrameId);
+
+                        if (pair != null)
+                        {
+                            objectDetailsPropertyGrid.SelectedObject = new BaseShapePropertyWrapper(pair.Shape);
+                        }
+                    }
                 }
 
                 if (MouseButtons == MouseButtons.Right)
