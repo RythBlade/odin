@@ -71,6 +71,7 @@ namespace physics_debugger
         private void Controller_StateChanged(object sender, EventArgs e)
         {
             UpdateButtonText();
+            UpdateSceneGraphView();
         }
 
         private void Controller_MaxFrameChanged(object sender, EventArgs e)
@@ -79,10 +80,33 @@ namespace physics_debugger
             frameTrackBar.TickFrequency = controller.MaxFrameId;
         }
 
+        private void UpdateSceneGraphView()
+        {
+            // only update the tree view when displaying a static frame.
+            if (controller.State == PlayBackState.eStaticFrame)
+            {
+                if(sceneGraphView.FrameData == null)
+                {
+                    sceneGraphView.SetFrameData(frameData, controller.CurrentFrameId);
+                }
+                else
+                {
+                    sceneGraphView.FrameIdToDisplay = controller.CurrentFrameId;
+                }
+            }
+            else
+            {
+                sceneGraphView.SetFrameData(null, 0);
+            }
+        }
+
         private void Controller_FrameChanged(object sender, EventArgs e)
         {
             frameCounterTextBox.Text = controller.CurrentFrameId.ToString();
             frameTrackBar.Value = controller.CurrentFrameId;
+
+            UpdateSceneGraphView();
+
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
@@ -442,6 +466,10 @@ namespace physics_debugger
         private void DisplayLoadedTelemetry(FrameData readFrameData)
         {
             frameData = readFrameData;
+
+            sceneGraphView.SetFrameData(null, 0);
+
+            UpdateSceneGraphView();
 
             shapeRenderMeshBindings.Clear();
 
