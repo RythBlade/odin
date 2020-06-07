@@ -33,6 +33,8 @@ namespace physics_debugger.Controls.SceneGraphView
             } 
         }
 
+        public event SelectionChangedEventHandler SelectionChanged;
+
         public SceneGraphView()
         {
             InitializeComponent();
@@ -109,5 +111,9 @@ namespace physics_debugger.Controls.SceneGraphView
             return rootNode;
         }
 
+        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            SelectionChanged?.Invoke(sender, e);
+        }
     }
 }

@@ -63,6 +63,7 @@
       <DependentUpon>ConnectionDialogue.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\SceneGraphView\RigidBodyTreeNode.cs" />
+    <Compile Include="Controls\SceneGraphView\SelectionChangedEventHandler.cs" />
     <Compile Include="Controls\SceneGraphView\ShapeFrameIdPairTreeNode.cs" />
     <Compile Include="Controls\SceneGraphView\ShapeTreeNode.cs" />
     <Compile Include="DataStream1.cs" />
