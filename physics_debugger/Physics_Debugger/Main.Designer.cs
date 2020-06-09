@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.sceneGraphView = new physics_debugger.Controls.SceneGraphView.SceneGraphView();
+            this.objectDetailsPropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.mainTabControl = new System.Windows.Forms.TabControl();
@@ -78,8 +80,6 @@
             this.previousFrameButton = new System.Windows.Forms.Button();
             this.goToFirstFrameButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.objectDetailsPropertyGrid = new System.Windows.Forms.PropertyGrid();
-            this.sceneGraphView = new physics_debugger.Controls.SceneGraphView.SceneGraphView();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -149,6 +149,25 @@
             this.splitContainer3.SplitterDistance = 406;
             this.splitContainer3.SplitterWidth = 5;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // sceneGraphView
+            // 
+            this.sceneGraphView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sceneGraphView.FrameIdToDisplay = 0;
+            this.sceneGraphView.Location = new System.Drawing.Point(0, 0);
+            this.sceneGraphView.Name = "sceneGraphView";
+            this.sceneGraphView.Size = new System.Drawing.Size(250, 406);
+            this.sceneGraphView.TabIndex = 0;
+            // 
+            // objectDetailsPropertyGrid
+            // 
+            this.objectDetailsPropertyGrid.DisabledItemForeColor = System.Drawing.SystemColors.ControlText;
+            this.objectDetailsPropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.objectDetailsPropertyGrid.HelpVisible = false;
+            this.objectDetailsPropertyGrid.Location = new System.Drawing.Point(0, 0);
+            this.objectDetailsPropertyGrid.Name = "objectDetailsPropertyGrid";
+            this.objectDetailsPropertyGrid.Size = new System.Drawing.Size(250, 367);
+            this.objectDetailsPropertyGrid.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -378,7 +397,7 @@
             this.commandsToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(1344, 30);
+            this.mainMenuStrip.Size = new System.Drawing.Size(1344, 28);
             this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -390,7 +409,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openTelemetryToolStripMenuItem
@@ -427,7 +446,7 @@
             this.connectToolStripMenuItem,
             this.disconnectToolStripMenuItem});
             this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
             this.connectionToolStripMenuItem.Text = "Connection";
             // 
             // connectToolStripMenuItem
@@ -454,7 +473,7 @@
             this.centreSelectedToolStripMenuItem,
             this.zoomSelectedToolStripMenuItem});
             this.cameraToolStripMenuItem.Name = "cameraToolStripMenuItem";
-            this.cameraToolStripMenuItem.Size = new System.Drawing.Size(74, 26);
+            this.cameraToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.cameraToolStripMenuItem.Text = "Camera";
             // 
             // lookAtPointToolStripMenuItem
@@ -497,7 +516,7 @@
             this.commandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.goToFrameToolStripMenuItem});
             this.commandsToolStripMenuItem.Name = "commandsToolStripMenuItem";
-            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
+            this.commandsToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
             this.commandsToolStripMenuItem.Text = "Commands";
             // 
             // goToFrameToolStripMenuItem
@@ -524,7 +543,7 @@
             this.panel1.Controls.Add(this.previousFrameButton);
             this.panel1.Controls.Add(this.goToFirstFrameButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1344, 64);
             this.panel1.TabIndex = 2;
@@ -622,25 +641,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(1344, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // objectDetailsPropertyGrid
-            // 
-            this.objectDetailsPropertyGrid.DisabledItemForeColor = System.Drawing.SystemColors.ControlText;
-            this.objectDetailsPropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.objectDetailsPropertyGrid.HelpVisible = false;
-            this.objectDetailsPropertyGrid.Location = new System.Drawing.Point(0, 0);
-            this.objectDetailsPropertyGrid.Name = "objectDetailsPropertyGrid";
-            this.objectDetailsPropertyGrid.Size = new System.Drawing.Size(250, 367);
-            this.objectDetailsPropertyGrid.TabIndex = 0;
-            // 
-            // sceneGraphView
-            // 
-            this.sceneGraphView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sceneGraphView.FrameIdToDisplay = 0;
-            this.sceneGraphView.Location = new System.Drawing.Point(0, 0);
-            this.sceneGraphView.Name = "sceneGraphView";
-            this.sceneGraphView.Size = new System.Drawing.Size(250, 406);
-            this.sceneGraphView.TabIndex = 0;
             // 
             // Main
             // 

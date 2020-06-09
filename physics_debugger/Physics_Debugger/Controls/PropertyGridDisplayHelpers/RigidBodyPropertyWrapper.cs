@@ -14,6 +14,9 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
         [BrowsableAttribute(false)]
         public Matrix4x4PropertyWrapper Matrix4x4Wrapper { get; }
 
+        [BrowsableAttribute(false)]
+        public ShapeListWrapper ShapeListWrapper { get; }
+
         [Category("Rigid Body")]
         public uint Id { get { return BodyToWrap.Id; } }
 
@@ -27,12 +30,13 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
         public Dictionary<string, IBaseProperty> Properties { get { return BodyToWrap.Properties; } }
 
         [Category("Rigid Body")]
-        public List<uint> CollisionShapeIds { get { return BodyToWrap.CollisionShapeIds; } }
+        public ShapeListWrapper CollisionShapeIds { get { return ShapeListWrapper; } }
 
         public RigidBodyPropertyWrapper(RigidBody bodyToWrap)
         {
             BodyToWrap = bodyToWrap;
             Matrix4x4Wrapper = new Matrix4x4PropertyWrapper(BodyToWrap.WorldMatrix);
+            ShapeListWrapper = new ShapeListWrapper(bodyToWrap.CollisionShapeIds);
         }
     }
 }
