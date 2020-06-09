@@ -75,25 +75,7 @@ namespace physics_debugger
 
         private void DisplayShapeInObjectDetailsPropertyGrid(BaseShape shapeToDisplay)
         {
-            switch (shapeToDisplay.ShapeType)
-            {
-                case ShapeType.eObb:
-                    objectDetailsPropertyGrid.SelectedObject = new ObbPropertyWrapper((ObbShape)shapeToDisplay);
-                    break;
-                case ShapeType.eSphere:
-                    break;
-                case ShapeType.eCone:
-                    break;
-                case ShapeType.eConvexHull:
-                    objectDetailsPropertyGrid.SelectedObject = new ConvexHullPropertyWrapper((ConvexHullShape)shapeToDisplay);
-                    break;
-                case ShapeType.eTetrahedron:
-                    objectDetailsPropertyGrid.SelectedObject = new TetrahedronPropertyWrapper((TetrahedronShape)shapeToDisplay);
-                    break;
-                default:
-                    objectDetailsPropertyGrid.SelectedObject = new BaseShapePropertyWrapper(shapeToDisplay);
-                    break;
-            }
+            objectDetailsPropertyGrid.SelectedObject = ShapeWrapperFactory.BuildPropertyWrapperForShape(shapeToDisplay);
         }
 
         private void SceneGraphView_SelectionChanged(object sender, TreeViewEventArgs e)

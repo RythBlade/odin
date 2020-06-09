@@ -26,7 +26,7 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
         public ShapePropertyDescriptor(BaseShape shapdeToDescribe, string displayName)
             : base("Shape", null)
         {
-            ShapdeToDescribe = new BaseShapePropertyWrapper(shapdeToDescribe);
+            ShapdeToDescribe = ShapeWrapperFactory.BuildPropertyWrapperForShape(shapdeToDescribe);
             DisplayName = displayName;
         }
 
