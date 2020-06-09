@@ -17,6 +17,13 @@ namespace physics_debugger
 {
     public partial class Main : Form
     {
+        private const string c_applicationHeaderString = "Physics Debugger";
+        private const string c_applicationHeaderStringFormat = "{0} v{1}.{2}";
+        private const string c_headerStringFileNameFormat = "{0} - {1}";
+
+        private const int c_applicationVersion = 0;
+        private const int c_applicationSubVersion = 0;
+
         private static float s_cameraMoveSpeed = 0.2f;
         private static float s_cameraSpeedModifier = 3.0f;
         private static float s_cameraScrollSpeed = (MathUtil.Pi / 360.0f);
@@ -41,6 +48,8 @@ namespace physics_debugger
 
         private uint highlightedShapeId = uint.MaxValue;
         private uint selectedShapeId = uint.MaxValue;
+
+        private string loadedTelemetryFileName = string.Empty;
 
         public Main()
         {
@@ -71,7 +80,23 @@ namespace physics_debugger
             controller.State = PlayBackState.eStaticFrame;
 
             sceneGraphView.SelectionChanged += SceneGraphView_SelectionChanged;
+
+            BuildAndSetApplicationTitleString();
         }
+
+        private void BuildAndSetApplicationTitleString()
+        {
+            string applicationTitle = string.Format(c_applicationHeaderStringFormat, c_applicationHeaderString, c_applicationVersion, c_applicationSubVersion);
+
+            if(string.IsNullOrWhiteSpace(loadedTelemetryFileName))
+            {
+                Text = applicationTitle;
+            }
+            else
+            {
+                Text = string.Format(c_headerStringFileNameFormat, applicationTitle, loadedTelemetryFileName);
+            }
+    }
 
         private void DisplayShapeInObjectDetailsPropertyGrid(BaseShape shapeToDisplay)
         {
@@ -519,6 +544,7 @@ namespace physics_debugger
 
         private void DisplayLoadedTelemetry(FrameData readFrameData)
         {
+            BuildAndSetApplicationTitleString();
             frameData = readFrameData;
 
             sceneGraphView.SetFrameData(null, 0);
@@ -565,6 +591,7 @@ namespace physics_debugger
 
                 if( success)
                 {
+                    loadedTelemetryFileName = openDialog.FileName;
                     DisplayLoadedTelemetry(readFrameData);
                 }
                 else 
@@ -576,6 +603,7 @@ namespace physics_debugger
 
                     if(result == DialogResult.Yes)
                     {
+                        loadedTelemetryFileName = openDialog.FileName;
                         DisplayLoadedTelemetry(readFrameData);
                     }
                 }
