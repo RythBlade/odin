@@ -87,7 +87,7 @@ namespace physics_debugger
             {
                 RigidBodyTreeNode rigidBodyNode = (RigidBodyTreeNode)e.Node;
 
-                objectDetailsPropertyGrid.SelectedObject = new RigidBodyPropertyWrapper(rigidBodyNode.BodyToDisplay);
+                objectDetailsPropertyGrid.SelectedObject = new RigidBodyPropertyWrapper(rigidBodyNode.BodyToDisplay, frameData.ShapeData, controller.CurrentFrameId);
             }
             else
             {

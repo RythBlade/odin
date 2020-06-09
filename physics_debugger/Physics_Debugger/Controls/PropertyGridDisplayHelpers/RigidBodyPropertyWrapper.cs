@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Numerics;
 using Telemetry.FrameData;
 using Telemetry.FrameData.Properties;
+using Telemetry.FrameData.Shapes;
 
 namespace physics_debugger.Controls.PropertyGridDisplayHelpers
 {
@@ -32,11 +33,11 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
         [Category("Rigid Body")]
         public ShapeListWrapper CollisionShapeIds { get { return ShapeListWrapper; } }
 
-        public RigidBodyPropertyWrapper(RigidBody bodyToWrap)
+        public RigidBodyPropertyWrapper(RigidBody bodyToWrap, ShapeDataManager shapeDataManager, int frameId)
         {
             BodyToWrap = bodyToWrap;
             Matrix4x4Wrapper = new Matrix4x4PropertyWrapper(BodyToWrap.WorldMatrix);
-            ShapeListWrapper = new ShapeListWrapper(bodyToWrap.CollisionShapeIds);
+            ShapeListWrapper = new ShapeListWrapper(bodyToWrap.CollisionShapeIds, shapeDataManager, frameId);
         }
     }
 }

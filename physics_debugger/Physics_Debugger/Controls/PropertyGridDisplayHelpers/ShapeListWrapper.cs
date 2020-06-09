@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Telemetry.FrameData.Shapes;
 
 namespace physics_debugger.Controls.PropertyGridDisplayHelpers
 {
@@ -8,11 +9,20 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
     [TypeConverter(typeof(ExpandableObjectConverter))]
     public class ShapeListWrapper : ICustomTypeDescriptor
     {
+        [BrowsableAttribute(false)]
         public List<uint> WrappedShapeIds { get; }
 
-        public ShapeListWrapper(List<uint> shapeIds)
+        [BrowsableAttribute(false)]
+        public ShapeDataManager ShapeDataManager { get; }
+
+        [BrowsableAttribute(false)]
+        public int FrameId { get; }
+
+        public ShapeListWrapper(List<uint> shapeIds, ShapeDataManager shapeDataManager, int frameId)
         {
             WrappedShapeIds = shapeIds;
+            ShapeDataManager = shapeDataManager;
+            FrameId = frameId;
         }
 
         #region Custom type descriptor
@@ -83,11 +93,9 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
             // Iterate the list of employees
             for (int i = 0; i < WrappedShapeIds.Count; i++)
             {
-                // For each employee create a property descriptor 
-                // and add it to the 
-                // PropertyDescriptorCollection instance
-                //ShapePropertyDescriptor pd = new ShapePropertyDescriptor(WrappedShapeIds, i);
-                ShapePropertyDescriptor pd = new ShapePropertyDescriptor(WrappedShapeIds[i], $"[{i}]");
+                ShapeFrameIdPair pair = ShapeDataManager.RetrieveShapeForFrame(WrappedShapeIds[i], (uint)FrameId);
+
+                ShapePropertyDescriptor pd = new ShapePropertyDescriptor(pair.Shape, $"[{i}]");
                 pds.Add(pd);
             }
             return pds;

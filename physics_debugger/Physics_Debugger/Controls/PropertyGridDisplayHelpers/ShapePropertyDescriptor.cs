@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Telemetry.FrameData.Shapes;
 
 namespace physics_debugger.Controls.PropertyGridDisplayHelpers
 {
     public class ShapePropertyDescriptor : PropertyDescriptor
     {
         [BrowsableAttribute(false)]
-        public uint ShapdeIdToDescribe { get; }
+        public BaseShapePropertyWrapper ShapdeToDescribe { get; }
 
         public override AttributeCollection Attributes { get { return new AttributeCollection(null); } }
         
-        public override Type ComponentType { get { return ShapdeIdToDescribe.GetType(); } }
+        public override Type ComponentType { get { return ShapdeToDescribe.GetType(); } }
 
         public override string DisplayName { get; }
 
@@ -24,12 +21,12 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
 
         public override string Name { get { return "ShapeName"; } }
 
-        public override Type PropertyType { get { return ShapdeIdToDescribe.GetType(); } }
+        public override Type PropertyType { get { return ShapdeToDescribe.GetType(); } }
 
-        public ShapePropertyDescriptor(uint shapeIdToDescribe, string displayName)
+        public ShapePropertyDescriptor(BaseShape shapdeToDescribe, string displayName)
             : base("Shape", null)
         {
-            ShapdeIdToDescribe = shapeIdToDescribe;
+            ShapdeToDescribe = new BaseShapePropertyWrapper(shapdeToDescribe);
             DisplayName = displayName;
         }
 
@@ -40,7 +37,7 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
 
         public override object GetValue(object component)
         {
-            return ShapdeIdToDescribe;
+            return ShapdeToDescribe;
         }
 
         public override void ResetValue(object component)

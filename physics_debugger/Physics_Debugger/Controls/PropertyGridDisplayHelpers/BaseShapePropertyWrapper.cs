@@ -3,6 +3,8 @@ using Telemetry.FrameData.Shapes;
 
 namespace physics_debugger.Controls.PropertyGridDisplayHelpers
 {
+    // tag the class with it's type converter so it can be expanded in a property grid view
+    [TypeConverter(typeof(ExpandableObjectConverter))]
     public class BaseShapePropertyWrapper
     {
         [BrowsableAttribute(false)]
