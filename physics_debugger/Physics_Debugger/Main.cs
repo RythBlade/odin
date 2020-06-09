@@ -73,13 +73,38 @@ namespace physics_debugger
             sceneGraphView.SelectionChanged += SceneGraphView_SelectionChanged;
         }
 
+        private void DisplayShapeInObjectDetailsPropertyGrid(BaseShape shapeToDisplay)
+        {
+            switch (shapeToDisplay.ShapeType)
+            {
+                case ShapeType.eObb:
+                    objectDetailsPropertyGrid.SelectedObject = new ObbPropertyWrapper((ObbShape)shapeToDisplay);
+                    break;
+                case ShapeType.eSphere:
+                    break;
+                case ShapeType.eCone:
+                    break;
+                case ShapeType.eConvexHull:
+                    objectDetailsPropertyGrid.SelectedObject = new ConvexHullPropertyWrapper((ConvexHullShape)shapeToDisplay);
+                    break;
+                case ShapeType.eTetrahedron:
+                    objectDetailsPropertyGrid.SelectedObject = new TetrahedronPropertyWrapper((TetrahedronShape)shapeToDisplay);
+                    break;
+                default:
+                    objectDetailsPropertyGrid.SelectedObject = new BaseShapePropertyWrapper(shapeToDisplay);
+                    break;
+            }
+        }
+
         private void SceneGraphView_SelectionChanged(object sender, TreeViewEventArgs e)
         {
             if(e.Node is ShapeTreeNode)
             {
                 ShapeTreeNode shapeNode = (ShapeTreeNode)e.Node;
 
-                objectDetailsPropertyGrid.SelectedObject = new BaseShapePropertyWrapper(shapeNode.ShapeToDisplay);
+                BaseShape shapeToDisplay = shapeNode.ShapeToDisplay;
+
+                DisplayShapeInObjectDetailsPropertyGrid(shapeToDisplay);
 
                 selectedShapeId = shapeNode.ShapeToDisplay.Id;
             }
@@ -183,7 +208,7 @@ namespace physics_debugger
 
                         if (pair != null)
                         {
-                            objectDetailsPropertyGrid.SelectedObject = new BaseShapePropertyWrapper(pair.Shape);
+                            DisplayShapeInObjectDetailsPropertyGrid(pair.Shape);
                         }
                     }
                 }
