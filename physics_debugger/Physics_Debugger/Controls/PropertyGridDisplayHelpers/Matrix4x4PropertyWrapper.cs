@@ -31,5 +31,14 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
         {
             MatrixToWrap = toWrap;
         }
+
+        // Override ToString so it appears nicely in the property grid
+        public override string ToString()
+        {
+            return $"({ MatrixToWrap.M11 }, { MatrixToWrap.M12 }, { MatrixToWrap.M13 }, { MatrixToWrap.M14 }), "
+                 + $"({ MatrixToWrap.M21 }, { MatrixToWrap.M22 }, { MatrixToWrap.M23 }, { MatrixToWrap.M24 }), "
+                 + $"({ MatrixToWrap.M31 }, { MatrixToWrap.M32 }, { MatrixToWrap.M33 }, { MatrixToWrap.M34 }), "
+                 + $"({ MatrixToWrap.M41 }, { MatrixToWrap.M42 }, { MatrixToWrap.M43 }, { MatrixToWrap.M44 })";
+        }
     }
 }
