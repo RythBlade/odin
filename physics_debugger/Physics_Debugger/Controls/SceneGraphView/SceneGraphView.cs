@@ -94,7 +94,9 @@ namespace physics_debugger.Controls.SceneGraphView
 
                     foreach (KeyValuePair<uint, ShapeIterations> iterationPair in FrameData.ShapeData.ShapeData)
                     {
-                        TreeNode iterationNode = shapeIterationRoot.Nodes.Add($"Shape ID: {iterationPair.Key}");
+                        string objectTypeString = iterationPair.Value.Iterations.Count > 0 ? iterationPair.Value.Iterations[0].Shape.ShapeType.ToString() : "Unknown";
+
+                        TreeNode iterationNode = shapeIterationRoot.Nodes.Add($"ID: {iterationPair.Key}, {objectTypeString}");
 
                         foreach (ShapeFrameIdPair shapePair in iterationPair.Value.Iterations)
                         {
