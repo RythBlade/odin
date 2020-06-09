@@ -27,5 +27,35 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
             BaseShape = baseShape;
             Matrix4x4Wrapper = new Matrix4x4PropertyWrapper(baseShape.LocalMatrix);
         }
+
+        // Override ToString so it appears nicely in the property grid
+        public override string ToString()
+        {
+            string buildName = $"ID: {Id.ToString()}, ";
+
+            switch (ShapeType)
+            {
+                case ShapeType.eObb:
+                    buildName += "Obb";
+                    break;
+                case ShapeType.eSphere:
+                    buildName +=  "Sphere";
+                    break;
+                case ShapeType.eCone:
+                    buildName += "Cone";
+                    break;
+                case ShapeType.eConvexHull:
+                    buildName += "Convex Hull";
+                    break;
+                case ShapeType.eTetrahedron:
+                    buildName += "Tetrahedron";
+                    break;
+                default:
+                    buildName += "Uknown";
+                    break;
+            }
+
+            return buildName;
+        }
     }
 }

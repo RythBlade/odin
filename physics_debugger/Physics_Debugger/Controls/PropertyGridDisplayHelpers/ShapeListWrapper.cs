@@ -25,6 +25,12 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
             FrameId = frameId;
         }
 
+        // Override ToString so it appears nicely in the property grid
+        public override string ToString()
+        {
+            return $"Count = {WrappedShapeIds.Count}";
+        }
+
         #region Custom type descriptor
         // implement the Custom Type Descriptor so that the shape list appears as an expandable list of sub objects, rather than appear as a
         // list edit dialog. Can also override it so it shows the actual shape instead of just the IDs.
