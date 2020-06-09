@@ -20,6 +20,7 @@ namespace physics_debugger
         private const string c_applicationHeaderString = "Physics Debugger";
         private const string c_applicationHeaderStringFormat = "{0} v{1}.{2}";
         private const string c_headerStringFileNameFormat = "{0} - {1}";
+        private const string c_unsavedString = "Unsaved";
 
         private const int c_applicationVersion = 0;
         private const int c_applicationSubVersion = 0;
@@ -50,6 +51,7 @@ namespace physics_debugger
         private uint selectedShapeId = uint.MaxValue;
 
         private string loadedTelemetryFileName = string.Empty;
+        private bool isTelemetryDataDirty = false;
 
         public Main()
         {
@@ -88,7 +90,11 @@ namespace physics_debugger
         {
             string applicationTitle = string.Format(c_applicationHeaderStringFormat, c_applicationHeaderString, c_applicationVersion, c_applicationSubVersion);
 
-            if(string.IsNullOrWhiteSpace(loadedTelemetryFileName))
+            if(isTelemetryDataDirty)
+            {
+                Text = string.Format(c_headerStringFileNameFormat, applicationTitle, c_unsavedString);
+            }
+            else if(string.IsNullOrWhiteSpace(loadedTelemetryFileName))
             {
                 Text = applicationTitle;
             }
@@ -285,17 +291,22 @@ namespace physics_debugger
         {
             if (dataStream.Connected)
             {
+                bool dataIsDirty = isTelemetryDataDirty;
+
                 // lock the queues and flush their contents to our render data
-                lock(receiver.LockObject)
+                lock (receiver.LockObject)
                 {
+
                     while(receiver.ReceivedFrameSnapshots.Count > 0)
                     {
                         frameData.Frames.Add(receiver.ReceivedFrameSnapshots.Dequeue());
+                        isTelemetryDataDirty = true;
                     }
 
                     while(receiver.ReceivedShapes.Count > 0)
                     {
                         PacketTranslator.CollectedFrameShapes collectedShapes = receiver.ReceivedShapes.Dequeue();
+                        isTelemetryDataDirty = true;
 
                         foreach (BaseShape addedShape in collectedShapes.Shapes)
                         {
@@ -320,6 +331,11 @@ namespace physics_debugger
                             }
                         }
                     }    
+                }
+
+                if(dataIsDirty != isTelemetryDataDirty)
+                {
+                    BuildAndSetApplicationTitleString();
                 }
 
                 FramesAdded();
@@ -577,34 +593,51 @@ namespace physics_debugger
 
         private void openTelemetryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openDialog = new OpenFileDialog();
-            openDialog.Filter = "Physics Telemetry | *.ptm";
-            openDialog.Title = "Open Telemetry";
+            bool shouldProceed = false;
 
-            if( openDialog.ShowDialog() == DialogResult.OK)
+            if(isTelemetryDataDirty)
             {
-                DataSerialiser serialiser = new DataSerialiser();
-                serialiser.Filename = openDialog.FileName;
+                DialogResult result = MessageBox.Show("You have unsaved telemetry data. Are you want to open another file and lose this data?", "Are you sure?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 
-                FrameData readFrameData = new FrameData();
-                bool success = serialiser.OpenTelemetry(readFrameData);
-
-                if( success)
+                if(result == DialogResult.Yes)
                 {
-                    loadedTelemetryFileName = openDialog.FileName;
-                    DisplayLoadedTelemetry(readFrameData);
+                    shouldProceed = true;
                 }
-                else 
+            }
+
+            if(shouldProceed)
+            {
+                OpenFileDialog openDialog = new OpenFileDialog();
+                openDialog.Filter = "Physics Telemetry | *.ptm";
+                openDialog.Title = "Open Telemetry";
+
+                if (openDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string errorMessage = "Failed to properly read in the telemetry file. It could be corrupt. Would you like to try and use what data was successfully read?\n";
-                    errorMessage += $"Potentially corrupt frames read: {readFrameData.Frames.Count}";
+                    DataSerialiser serialiser = new DataSerialiser();
+                    serialiser.Filename = openDialog.FileName;
 
-                    DialogResult result = MessageBox.Show(errorMessage, "Error", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+                    FrameData readFrameData = new FrameData();
+                    bool success = serialiser.OpenTelemetry(readFrameData);
 
-                    if(result == DialogResult.Yes)
+                    if (success)
                     {
+                        isTelemetryDataDirty = false;
                         loadedTelemetryFileName = openDialog.FileName;
                         DisplayLoadedTelemetry(readFrameData);
+                    }
+                    else
+                    {
+                        string errorMessage = "Failed to properly read in the telemetry file. It could be corrupt. Would you like to try and use what data was successfully read?\n";
+                        errorMessage += $"Potentially corrupt frames read: {readFrameData.Frames.Count}";
+
+                        DialogResult result = MessageBox.Show(errorMessage, "Error", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            isTelemetryDataDirty = false;
+                            loadedTelemetryFileName = openDialog.FileName;
+                            DisplayLoadedTelemetry(readFrameData);
+                        }
                     }
                 }
             }
@@ -621,7 +654,19 @@ namespace physics_debugger
                 DataSerialiser serialiser = new DataSerialiser();
                 serialiser.Filename = saveDialog.FileName;
 
-                serialiser.SaveTelemetry(frameData);
+                bool success = serialiser.SaveTelemetry(frameData);
+
+                if (success)
+                {
+                    isTelemetryDataDirty = false;
+                    loadedTelemetryFileName = saveDialog.FileName;
+                }
+                else
+                {
+                    MessageBox.Show($"An error occurred saving the telemetry to the file: {saveDialog.FileName}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                BuildAndSetApplicationTitleString();
             }
         }
 
