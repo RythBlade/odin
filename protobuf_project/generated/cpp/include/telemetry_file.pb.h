@@ -207,13 +207,13 @@ class FrameSnapshotPacket :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBodyPacket >&
       rigidbodies() const;
 
-  // uint32 frameId = 1;
+  // int32 frameId = 1;
   void clear_frameid();
-  ::PROTOBUF_NAMESPACE_ID::uint32 frameid() const;
-  void set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 frameid() const;
+  void set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_frameid() const;
-  void _internal_set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_frameid() const;
+  void _internal_set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:PhysicsTelemetry.FrameSnapshotPacket)
@@ -222,7 +222,7 @@ class FrameSnapshotPacket :
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::RigidBodyPacket > rigidbodies_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 frameid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 frameid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_telemetry_5ffile_2eproto;
 };
@@ -385,13 +385,13 @@ class ShapeFrameIterationPacket :
   ::PhysicsTelemetry::ConvexHullShapePacket* _internal_mutable_convexhullshape();
   public:
 
-  // uint32 frameId = 1;
+  // int32 frameId = 1;
   void clear_frameid();
-  ::PROTOBUF_NAMESPACE_ID::uint32 frameid() const;
-  void set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 frameid() const;
+  void set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_frameid() const;
-  void _internal_set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_frameid() const;
+  void _internal_set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // .PhysicsTelemetry.ShapeTypePacket shapeType = 2;
@@ -411,7 +411,7 @@ class ShapeFrameIterationPacket :
   ::PhysicsTelemetry::ObbShapePacket* obbshape_;
   ::PhysicsTelemetry::TetrahedronShapePacket* tetrahedronshape_;
   ::PhysicsTelemetry::ConvexHullShapePacket* convexhullshape_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 frameid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 frameid_;
   int shapetype_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_telemetry_5ffile_2eproto;
@@ -718,22 +718,22 @@ class FrameDataPacket :
 #endif  // __GNUC__
 // FrameSnapshotPacket
 
-// uint32 frameId = 1;
+// int32 frameId = 1;
 inline void FrameSnapshotPacket::clear_frameid() {
-  frameid_ = 0u;
+  frameid_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 FrameSnapshotPacket::_internal_frameid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 FrameSnapshotPacket::_internal_frameid() const {
   return frameid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 FrameSnapshotPacket::frameid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 FrameSnapshotPacket::frameid() const {
   // @@protoc_insertion_point(field_get:PhysicsTelemetry.FrameSnapshotPacket.frameId)
   return _internal_frameid();
 }
-inline void FrameSnapshotPacket::_internal_set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void FrameSnapshotPacket::_internal_set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   frameid_ = value;
 }
-inline void FrameSnapshotPacket::set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void FrameSnapshotPacket::set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_frameid(value);
   // @@protoc_insertion_point(field_set:PhysicsTelemetry.FrameSnapshotPacket.frameId)
 }
@@ -778,22 +778,22 @@ FrameSnapshotPacket::rigidbodies() const {
 
 // ShapeFrameIterationPacket
 
-// uint32 frameId = 1;
+// int32 frameId = 1;
 inline void ShapeFrameIterationPacket::clear_frameid() {
-  frameid_ = 0u;
+  frameid_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ShapeFrameIterationPacket::_internal_frameid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 ShapeFrameIterationPacket::_internal_frameid() const {
   return frameid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 ShapeFrameIterationPacket::frameid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 ShapeFrameIterationPacket::frameid() const {
   // @@protoc_insertion_point(field_get:PhysicsTelemetry.ShapeFrameIterationPacket.frameId)
   return _internal_frameid();
 }
-inline void ShapeFrameIterationPacket::_internal_set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void ShapeFrameIterationPacket::_internal_set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   frameid_ = value;
 }
-inline void ShapeFrameIterationPacket::set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void ShapeFrameIterationPacket::set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_frameid(value);
   // @@protoc_insertion_point(field_set:PhysicsTelemetry.ShapeFrameIterationPacket.frameId)
 }

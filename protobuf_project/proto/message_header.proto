@@ -6,7 +6,7 @@ option csharp_namespace = "Physics.Telemetry.Serialised";
 
 message MessageHeaderMessage
 {
-	uint32 frameId = 1;
+	int32 frameId = 1;
 	
 	enum MessageType
 	{

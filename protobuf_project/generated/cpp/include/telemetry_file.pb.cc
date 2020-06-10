@@ -155,10 +155,10 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_telemetry_5ffile_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\024telemetry_file.proto\022\020PhysicsTelemetry"
   "\032\020rigid_body.proto\032\014shapes.proto\"^\n\023Fram"
-  "eSnapshotPacket\022\017\n\007frameId\030\001 \001(\r\0226\n\013rigi"
+  "eSnapshotPacket\022\017\n\007frameId\030\001 \001(\005\0226\n\013rigi"
   "dBodies\030\002 \003(\0132!.PhysicsTelemetry.RigidBo"
   "dyPacket\"\234\002\n\031ShapeFrameIterationPacket\022\017"
-  "\n\007frameId\030\001 \001(\r\0224\n\tshapeType\030\002 \001(\0162!.Phy"
+  "\n\007frameId\030\001 \001(\005\0224\n\tshapeType\030\002 \001(\0162!.Phy"
   "sicsTelemetry.ShapeTypePacket\0222\n\010obbShap"
   "e\030\003 \001(\0132 .PhysicsTelemetry.ObbShapePacke"
   "t\022B\n\020tetrahedronShape\030\004 \001(\0132(.PhysicsTel"
@@ -222,7 +222,7 @@ FrameSnapshotPacket::FrameSnapshotPacket(const FrameSnapshotPacket& from)
 
 void FrameSnapshotPacket::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_FrameSnapshotPacket_telemetry_5ffile_2eproto.base);
-  frameid_ = 0u;
+  frameid_ = 0;
 }
 
 FrameSnapshotPacket::~FrameSnapshotPacket() {
@@ -249,7 +249,7 @@ void FrameSnapshotPacket::Clear() {
   (void) cached_has_bits;
 
   rigidbodies_.Clear();
-  frameid_ = 0u;
+  frameid_ = 0;
   _internal_metadata_.Clear();
 }
 
@@ -260,7 +260,7 @@ const char* FrameSnapshotPacket::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 frameId = 1;
+      // int32 frameId = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           frameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
@@ -305,10 +305,10 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 frameId = 1;
+  // int32 frameId = 1;
   if (this->frameid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_frameid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_frameid(), target);
   }
 
   // repeated .PhysicsTelemetry.RigidBodyPacket rigidBodies = 2;
@@ -342,10 +342,10 @@ size_t FrameSnapshotPacket::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // uint32 frameId = 1;
+  // int32 frameId = 1;
   if (this->frameid() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_frameid());
   }
 
@@ -551,7 +551,7 @@ const char* ShapeFrameIterationPacket::_InternalParse(const char* ptr, ::PROTOBU
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 frameId = 1;
+      // int32 frameId = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           frameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
@@ -613,10 +613,10 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 frameId = 1;
+  // int32 frameId = 1;
   if (this->frameid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_frameid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_frameid(), target);
   }
 
   // .PhysicsTelemetry.ShapeTypePacket shapeType = 2;
@@ -687,10 +687,10 @@ size_t ShapeFrameIterationPacket::ByteSizeLong() const {
         *convexhullshape_);
   }
 
-  // uint32 frameId = 1;
+  // int32 frameId = 1;
   if (this->frameid() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_frameid());
   }
 

@@ -10,14 +10,14 @@ option csharp_namespace = "Physics.Telemetry.Serialised";
 
 message FrameSnapshotPacket
 {
-	uint32 frameId = 1;
+	int32 frameId = 1;
 	
 	repeated RigidBodyPacket rigidBodies = 2;
 }
 
 message ShapeFrameIterationPacket
 {
-	uint32 frameId = 1;
+	int32 frameId = 1;
 	ShapeTypePacket shapeType = 2;
 	
 	ObbShapePacket obbShape = 3;

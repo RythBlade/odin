@@ -235,13 +235,13 @@ class MessageHeaderMessage :
     kMessageTypeFieldNumber = 2,
     kDataSizeFieldNumber = 3,
   };
-  // uint32 frameId = 1;
+  // int32 frameId = 1;
   void clear_frameid();
-  ::PROTOBUF_NAMESPACE_ID::uint32 frameid() const;
-  void set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 frameid() const;
+  void set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_frameid() const;
-  void _internal_set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_frameid() const;
+  void _internal_set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // .PhysicsTelemetry.MessageHeaderMessage.MessageType messageType = 2;
@@ -267,7 +267,7 @@ class MessageHeaderMessage :
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 frameid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 frameid_;
   int messagetype_;
   ::PROTOBUF_NAMESPACE_ID::int32 datasize_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -284,22 +284,22 @@ class MessageHeaderMessage :
 #endif  // __GNUC__
 // MessageHeaderMessage
 
-// uint32 frameId = 1;
+// int32 frameId = 1;
 inline void MessageHeaderMessage::clear_frameid() {
-  frameid_ = 0u;
+  frameid_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 MessageHeaderMessage::_internal_frameid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 MessageHeaderMessage::_internal_frameid() const {
   return frameid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint32 MessageHeaderMessage::frameid() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 MessageHeaderMessage::frameid() const {
   // @@protoc_insertion_point(field_get:PhysicsTelemetry.MessageHeaderMessage.frameId)
   return _internal_frameid();
 }
-inline void MessageHeaderMessage::_internal_set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void MessageHeaderMessage::_internal_set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
   frameid_ = value;
 }
-inline void MessageHeaderMessage::set_frameid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+inline void MessageHeaderMessage::set_frameid(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_frameid(value);
   // @@protoc_insertion_point(field_set:PhysicsTelemetry.MessageHeaderMessage.frameId)
 }

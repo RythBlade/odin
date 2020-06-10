@@ -26,9 +26,9 @@ namespace Physics.Telemetry.Serialised {
           string.Concat(
             "ChR0ZWxlbWV0cnlfZmlsZS5wcm90bxIQUGh5c2ljc1RlbGVtZXRyeRoQcmln",
             "aWRfYm9keS5wcm90bxoMc2hhcGVzLnByb3RvIl4KE0ZyYW1lU25hcHNob3RQ",
-            "YWNrZXQSDwoHZnJhbWVJZBgBIAEoDRI2CgtyaWdpZEJvZGllcxgCIAMoCzIh",
+            "YWNrZXQSDwoHZnJhbWVJZBgBIAEoBRI2CgtyaWdpZEJvZGllcxgCIAMoCzIh",
             "LlBoeXNpY3NUZWxlbWV0cnkuUmlnaWRCb2R5UGFja2V0IpwCChlTaGFwZUZy",
-            "YW1lSXRlcmF0aW9uUGFja2V0Eg8KB2ZyYW1lSWQYASABKA0SNAoJc2hhcGVU",
+            "YW1lSXRlcmF0aW9uUGFja2V0Eg8KB2ZyYW1lSWQYASABKAUSNAoJc2hhcGVU",
             "eXBlGAIgASgOMiEuUGh5c2ljc1RlbGVtZXRyeS5TaGFwZVR5cGVQYWNrZXQS",
             "MgoIb2JiU2hhcGUYAyABKAsyIC5QaHlzaWNzVGVsZW1ldHJ5Lk9iYlNoYXBl",
             "UGFja2V0EkIKEHRldHJhaGVkcm9uU2hhcGUYBCABKAsyKC5QaHlzaWNzVGVs",
@@ -90,9 +90,9 @@ namespace Physics.Telemetry.Serialised {
 
     /// <summary>Field number for the "frameId" field.</summary>
     public const int FrameIdFieldNumber = 1;
-    private uint frameId_;
+    private int frameId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint FrameId {
+    public int FrameId {
       get { return frameId_; }
       set {
         frameId_ = value;
@@ -147,7 +147,7 @@ namespace Physics.Telemetry.Serialised {
     public void WriteTo(pb::CodedOutputStream output) {
       if (FrameId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(FrameId);
+        output.WriteInt32(FrameId);
       }
       rigidBodies_.WriteTo(output, _repeated_rigidBodies_codec);
       if (_unknownFields != null) {
@@ -159,7 +159,7 @@ namespace Physics.Telemetry.Serialised {
     public int CalculateSize() {
       int size = 0;
       if (FrameId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FrameId);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FrameId);
       }
       size += rigidBodies_.CalculateSize(_repeated_rigidBodies_codec);
       if (_unknownFields != null) {
@@ -189,7 +189,7 @@ namespace Physics.Telemetry.Serialised {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            FrameId = input.ReadUInt32();
+            FrameId = input.ReadInt32();
             break;
           }
           case 18: {
@@ -242,9 +242,9 @@ namespace Physics.Telemetry.Serialised {
 
     /// <summary>Field number for the "frameId" field.</summary>
     public const int FrameIdFieldNumber = 1;
-    private uint frameId_;
+    private int frameId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint FrameId {
+    public int FrameId {
       get { return frameId_; }
       set {
         frameId_ = value;
@@ -339,7 +339,7 @@ namespace Physics.Telemetry.Serialised {
     public void WriteTo(pb::CodedOutputStream output) {
       if (FrameId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(FrameId);
+        output.WriteInt32(FrameId);
       }
       if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         output.WriteRawTag(16);
@@ -366,7 +366,7 @@ namespace Physics.Telemetry.Serialised {
     public int CalculateSize() {
       int size = 0;
       if (FrameId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FrameId);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FrameId);
       }
       if (ShapeType != global::Physics.Telemetry.Serialised.ShapeTypePacket.Obb) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ShapeType);
@@ -427,7 +427,7 @@ namespace Physics.Telemetry.Serialised {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            FrameId = input.ReadUInt32();
+            FrameId = input.ReadInt32();
             break;
           }
           case 16: {

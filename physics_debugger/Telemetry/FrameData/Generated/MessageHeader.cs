@@ -25,7 +25,7 @@ namespace Physics.Telemetry.Serialised {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRtZXNzYWdlX2hlYWRlci5wcm90bxIQUGh5c2ljc1RlbGVtZXRyeSLKAQoU",
-            "TWVzc2FnZUhlYWRlck1lc3NhZ2USDwoHZnJhbWVJZBgBIAEoDRJHCgttZXNz",
+            "TWVzc2FnZUhlYWRlck1lc3NhZ2USDwoHZnJhbWVJZBgBIAEoBRJHCgttZXNz",
             "YWdlVHlwZRgCIAEoDjIyLlBoeXNpY3NUZWxlbWV0cnkuTWVzc2FnZUhlYWRl",
             "ck1lc3NhZ2UuTWVzc2FnZVR5cGUSEAoIZGF0YVNpemUYAyABKAUiRgoLTWVz",
             "c2FnZVR5cGUSEwoPUmlnaWRCb2R5VXBkYXRlEAASEAoMU2hhcGVDcmVhdGVk",
@@ -79,9 +79,9 @@ namespace Physics.Telemetry.Serialised {
 
     /// <summary>Field number for the "frameId" field.</summary>
     public const int FrameIdFieldNumber = 1;
-    private uint frameId_;
+    private int frameId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint FrameId {
+    public int FrameId {
       get { return frameId_; }
       set {
         frameId_ = value;
@@ -150,7 +150,7 @@ namespace Physics.Telemetry.Serialised {
     public void WriteTo(pb::CodedOutputStream output) {
       if (FrameId != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(FrameId);
+        output.WriteInt32(FrameId);
       }
       if (MessageType != global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType.RigidBodyUpdate) {
         output.WriteRawTag(16);
@@ -169,7 +169,7 @@ namespace Physics.Telemetry.Serialised {
     public int CalculateSize() {
       int size = 0;
       if (FrameId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FrameId);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FrameId);
       }
       if (MessageType != global::Physics.Telemetry.Serialised.MessageHeaderMessage.Types.MessageType.RigidBodyUpdate) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MessageType);
@@ -209,7 +209,7 @@ namespace Physics.Telemetry.Serialised {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            FrameId = input.ReadUInt32();
+            FrameId = input.ReadInt32();
             break;
           }
           case 16: {

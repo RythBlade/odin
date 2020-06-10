@@ -7,10 +7,10 @@ namespace Telemetry.FrameData.Shapes
 {
     public class ShapeFrameIdPair : IComparable<ShapeFrameIdPair>
     {
-        public uint FrameId = 0;
+        public int FrameId = 0;
         public BaseShape Shape = null;
 
-        public ShapeFrameIdPair(uint frameId, BaseShape shape)
+        public ShapeFrameIdPair(int frameId, BaseShape shape)
         {
             FrameId = frameId;
             Shape = shape;
@@ -94,7 +94,7 @@ namespace Telemetry.FrameData.Shapes
         // shape id, set of iterations
         public Dictionary<uint, ShapeIterations> ShapeData = new Dictionary<uint, ShapeIterations>();
 
-        public ShapeFrameIdPair AddNewShape(uint frameId, BaseShape addedShape)
+        public ShapeFrameIdPair AddNewShape(int frameId, BaseShape addedShape)
         {
             ShapeIterations iterations = new ShapeIterations();
 
@@ -108,7 +108,7 @@ namespace Telemetry.FrameData.Shapes
             return newPair;
         }
 
-        public ShapeFrameIdPair RetrieveShapeForFrame(uint shapeId, uint frameId)
+        public ShapeFrameIdPair RetrieveShapeForFrame(uint shapeId, int frameId)
         {
             ShapeFrameIdPair shapePairToReturn = null;
 

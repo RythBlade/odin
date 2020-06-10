@@ -11,7 +11,7 @@ namespace Telemetry.FrameData
 
     public class FrameSnapshot
     {
-        public uint FrameId { get; set; }
+        public int FrameId { get; set; }
 
         public Dictionary<uint, RigidBody> RigidBodies = new Dictionary<uint, RigidBody>();
 

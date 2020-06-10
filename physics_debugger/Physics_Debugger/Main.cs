@@ -217,7 +217,7 @@ namespace physics_debugger
 
                     if (selectedShapeId != uint.MaxValue)
                     {
-                        ShapeFrameIdPair pair = frameData.ShapeData.RetrieveShapeForFrame(selectedShapeId, (uint)controller.CurrentFrameId);
+                        ShapeFrameIdPair pair = frameData.ShapeData.RetrieveShapeForFrame(selectedShapeId, controller.CurrentFrameId);
 
                         if (pair != null)
                         {

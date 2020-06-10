@@ -99,7 +99,7 @@ namespace physics_debugger.Controls.PropertyGridDisplayHelpers
             // Iterate the list of employees
             for (int i = 0; i < WrappedShapeIds.Count; i++)
             {
-                ShapeFrameIdPair pair = ShapeDataManager.RetrieveShapeForFrame(WrappedShapeIds[i], (uint)FrameId);
+                ShapeFrameIdPair pair = ShapeDataManager.RetrieveShapeForFrame(WrappedShapeIds[i], FrameId);
 
                 ShapePropertyDescriptor pd = new ShapePropertyDescriptor(pair.Shape, $"[{i}]");
                 pds.Add(pd);

@@ -10,18 +10,18 @@ namespace Telemetry.Network
     {
         public class CollectedFrameShapes
         {
-            public uint FrameId = 0;
+            public int FrameId = 0;
             public List<BaseShape> Shapes = null;
         }
 
-        public Dictionary<uint, Tuple<bool, FrameSnapshot>> ConstructedSnaphots = new Dictionary<uint, Tuple<bool, FrameSnapshot>>();
-        public Dictionary<uint, CollectedFrameShapes> AddedShapes = new Dictionary<uint, CollectedFrameShapes>();
+        public Dictionary<int, Tuple<bool, FrameSnapshot>> ConstructedSnaphots = new Dictionary<int, Tuple<bool, FrameSnapshot>>();
+        public Dictionary<int, CollectedFrameShapes> AddedShapes = new Dictionary<int, CollectedFrameShapes>();
 
         public PacketTranslator()
         {
         }
 
-        public FrameSnapshot FindOrCreateSnapshotForFrame(uint frameId)
+        public FrameSnapshot FindOrCreateSnapshotForFrame(int frameId)
         {
             FrameSnapshot snapshot = FindSnapshotForFrame(frameId);
 
@@ -35,7 +35,7 @@ namespace Telemetry.Network
             return snapshot;
         }
 
-        public FrameSnapshot FindSnapshotForFrame(uint frameId)
+        public FrameSnapshot FindSnapshotForFrame(int frameId)
         {
             FrameSnapshot snapshot = null;
 

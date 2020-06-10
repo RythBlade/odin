@@ -59,7 +59,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_message_5fheader_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\024message_header.proto\022\020PhysicsTelemetry"
   "\"\312\001\n\024MessageHeaderMessage\022\017\n\007frameId\030\001 \001"
-  "(\r\022G\n\013messageType\030\002 \001(\01622.PhysicsTelemet"
+  "(\005\022G\n\013messageType\030\002 \001(\01622.PhysicsTelemet"
   "ry.MessageHeaderMessage.MessageType\022\020\n\010d"
   "ataSize\030\003 \001(\005\"F\n\013MessageType\022\023\n\017RigidBod"
   "yUpdate\020\000\022\020\n\014ShapeCreated\020\001\022\020\n\014ShapeChan"
@@ -172,7 +172,7 @@ const char* MessageHeaderMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAM
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // uint32 frameId = 1;
+      // int32 frameId = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           frameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
@@ -220,10 +220,10 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 frameId = 1;
+  // int32 frameId = 1;
   if (this->frameid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_frameid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_frameid(), target);
   }
 
   // .PhysicsTelemetry.MessageHeaderMessage.MessageType messageType = 2;
@@ -255,10 +255,10 @@ size_t MessageHeaderMessage::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint32 frameId = 1;
+  // int32 frameId = 1;
   if (this->frameid() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_frameid());
   }
 
