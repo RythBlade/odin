@@ -16,6 +16,7 @@ namespace Telemetry.Network
 
         public Dictionary<int, Tuple<bool, FrameSnapshot>> ConstructedSnaphots = new Dictionary<int, Tuple<bool, FrameSnapshot>>();
         public Dictionary<int, CollectedFrameShapes> AddedShapes = new Dictionary<int, CollectedFrameShapes>();
+        public Dictionary<int, FrameStats> ConstructedFrameStats = new Dictionary<int, FrameStats>();
 
         public PacketTranslator()
         {
@@ -125,6 +126,17 @@ namespace Telemetry.Network
             }
         }
 
+        private void ProcessFrameStats(BasePacketHeader packet)
+        {
+            FrameStatsMessage frameStatsMessage = FrameStatsMessage.Parser.ParseFrom(packet.PacketBytes, packet.startOfPacketData, packet.messageHeader.DataSize);
+
+            FrameStats frameStats = new FrameStats();
+
+            frameStats.ImportFromPacket(frameStatsMessage);
+
+            ConstructedFrameStats.Add(packet.messageHeader.FrameId, frameStats);
+        }
+
         public bool TranslatePacket(BasePacketHeader packet)
         {
             bool toReturn = false;
@@ -144,6 +156,14 @@ namespace Telemetry.Network
                         ProcessShapeAdded(packet);
                         toReturn = true;
                         break;
+
+                    case MessageHeaderMessage.Types.MessageType.FrameStats:
+                        ProcessFrameStats(packet);
+
+
+                        toReturn = true;
+                        break;
+
                     default:
                         break;
                 }

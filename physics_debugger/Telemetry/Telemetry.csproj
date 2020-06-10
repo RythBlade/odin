@@ -63,7 +63,9 @@
     <Compile Include="FrameData\DataSerialiser.cs" />
     <Compile Include="FrameData\FrameData.cs" />
     <Compile Include="FrameData\FrameSnapshot.cs" />
+    <Compile Include="FrameData\FrameStats.cs" />
     <Compile Include="FrameData\Generated\BaseTypes.cs" />
+    <Compile Include="FrameData\Generated\FrameStatsMessage.cs" />
     <Compile Include="FrameData\Generated\MessageHeader.cs" />
     <Compile Include="FrameData\Generated\RigidBody.cs" />
     <Compile Include="FrameData\Generated\Shapes.cs" />

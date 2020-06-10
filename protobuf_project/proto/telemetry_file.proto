@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package PhysicsTelemetry;
 
-//import "base_types.proto";
 import "rigid_body.proto";
 import "shapes.proto";
+import "frame_stats_message.proto";
 
 option csharp_namespace = "Physics.Telemetry.Serialised";
 
@@ -33,6 +33,7 @@ message ShapeDataPacket
 message FrameDataPacket
 {
 	repeated FrameSnapshotPacket frames = 1;
+	repeated FrameStatsMessage frameStats = 2;
 	
-	ShapeDataPacket shapeData = 2;
+	ShapeDataPacket shapeData = 3;
 }

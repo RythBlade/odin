@@ -16,6 +16,7 @@ namespace physics_debugger
 
         public Queue<FrameSnapshot> ReceivedFrameSnapshots { get; }
         public Queue<PacketTranslator.CollectedFrameShapes> ReceivedShapes { get; }
+        public Queue<FrameStats> ReceivedFrameStats { get; }
 
         public bool StopThreadSwitch = false;
 
@@ -27,6 +28,7 @@ namespace physics_debugger
             LockObject = new object();
             ReceivedFrameSnapshots = new Queue<FrameSnapshot>();
             ReceivedShapes = new Queue<PacketTranslator.CollectedFrameShapes>();
+            ReceivedFrameStats = new Queue<FrameStats>();
         }
 
         public void StartReceiverThread()
@@ -76,6 +78,14 @@ namespace physics_debugger
                             }
                         }
 
+                        foreach (FrameStats stats in payload.Translator.ConstructedFrameStats.Values)
+                        {
+                            lock (payload.LockObject)
+                            {
+                                payload.ReceivedFrameStats.Enqueue(stats);
+                            }
+                        }
+
                         foreach (PacketTranslator.CollectedFrameShapes frameShapeList in payload.Translator.AddedShapes.Values)
                         {
                             lock (payload.LockObject)
@@ -86,6 +96,7 @@ namespace physics_debugger
 
                         payload.Translator.ConstructedSnaphots.Clear();
                         payload.Translator.AddedShapes.Clear();
+                        payload.Translator.ConstructedFrameStats.Clear();
                     }
                     else
                     {

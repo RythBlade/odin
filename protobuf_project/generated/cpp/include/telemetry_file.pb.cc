@@ -16,6 +16,7 @@
 #include <google/protobuf/port_def.inc>
 extern PROTOBUF_INTERNAL_EXPORT_shapes_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_ConvexHullShapePacket_shapes_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_telemetry_5ffile_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_FrameSnapshotPacket_telemetry_5ffile_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_frame_5fstats_5fmessage_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_FrameStatsMessage_frame_5fstats_5fmessage_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_shapes_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_ObbShapePacket_shapes_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_rigid_5fbody_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_RigidBodyPacket_rigid_5fbody_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_telemetry_5ffile_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ShapeDataPacket_telemetry_5ffile_2eproto;
@@ -50,9 +51,10 @@ static void InitDefaultsscc_info_FrameDataPacket_telemetry_5ffile_2eproto() {
   ::PhysicsTelemetry::FrameDataPacket::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_FrameDataPacket_telemetry_5ffile_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_FrameDataPacket_telemetry_5ffile_2eproto}, {
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_FrameDataPacket_telemetry_5ffile_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 3, 0, InitDefaultsscc_info_FrameDataPacket_telemetry_5ffile_2eproto}, {
       &scc_info_FrameSnapshotPacket_telemetry_5ffile_2eproto.base,
+      &scc_info_FrameStatsMessage_frame_5fstats_5fmessage_2eproto.base,
       &scc_info_ShapeDataPacket_telemetry_5ffile_2eproto.base,}};
 
 static void InitDefaultsscc_info_FrameSnapshotPacket_telemetry_5ffile_2eproto() {
@@ -136,6 +138,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_telemetry_5ffile_2eproto::offs
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::FrameDataPacket, frames_),
+  PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::FrameDataPacket, framestats_),
   PROTOBUF_FIELD_OFFSET(::PhysicsTelemetry::FrameDataPacket, shapedata_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -154,25 +157,28 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_telemetry_5ffile_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\024telemetry_file.proto\022\020PhysicsTelemetry"
-  "\032\020rigid_body.proto\032\014shapes.proto\"^\n\023Fram"
-  "eSnapshotPacket\022\017\n\007frameId\030\001 \001(\005\0226\n\013rigi"
-  "dBodies\030\002 \003(\0132!.PhysicsTelemetry.RigidBo"
-  "dyPacket\"\234\002\n\031ShapeFrameIterationPacket\022\017"
-  "\n\007frameId\030\001 \001(\005\0224\n\tshapeType\030\002 \001(\0162!.Phy"
-  "sicsTelemetry.ShapeTypePacket\0222\n\010obbShap"
-  "e\030\003 \001(\0132 .PhysicsTelemetry.ObbShapePacke"
-  "t\022B\n\020tetrahedronShape\030\004 \001(\0132(.PhysicsTel"
-  "emetry.TetrahedronShapePacket\022@\n\017convexH"
-  "ullShape\030\005 \001(\0132\'.PhysicsTelemetry.Convex"
-  "HullShapePacket\"N\n\017ShapeDataPacket\022;\n\006sh"
-  "apes\030\001 \003(\0132+.PhysicsTelemetry.ShapeFrame"
-  "IterationPacket\"~\n\017FrameDataPacket\0225\n\006fr"
-  "ames\030\001 \003(\0132%.PhysicsTelemetry.FrameSnaps"
-  "hotPacket\0224\n\tshapeData\030\002 \001(\0132!.PhysicsTe"
-  "lemetry.ShapeDataPacketB\037\252\002\034Physics.Tele"
-  "metry.Serialisedb\006proto3"
+  "\032\020rigid_body.proto\032\014shapes.proto\032\031frame_"
+  "stats_message.proto\"^\n\023FrameSnapshotPack"
+  "et\022\017\n\007frameId\030\001 \001(\005\0226\n\013rigidBodies\030\002 \003(\013"
+  "2!.PhysicsTelemetry.RigidBodyPacket\"\234\002\n\031"
+  "ShapeFrameIterationPacket\022\017\n\007frameId\030\001 \001"
+  "(\005\0224\n\tshapeType\030\002 \001(\0162!.PhysicsTelemetry"
+  ".ShapeTypePacket\0222\n\010obbShape\030\003 \001(\0132 .Phy"
+  "sicsTelemetry.ObbShapePacket\022B\n\020tetrahed"
+  "ronShape\030\004 \001(\0132(.PhysicsTelemetry.Tetrah"
+  "edronShapePacket\022@\n\017convexHullShape\030\005 \001("
+  "\0132\'.PhysicsTelemetry.ConvexHullShapePack"
+  "et\"N\n\017ShapeDataPacket\022;\n\006shapes\030\001 \003(\0132+."
+  "PhysicsTelemetry.ShapeFrameIterationPack"
+  "et\"\267\001\n\017FrameDataPacket\0225\n\006frames\030\001 \003(\0132%"
+  ".PhysicsTelemetry.FrameSnapshotPacket\0227\n"
+  "\nframeStats\030\002 \003(\0132#.PhysicsTelemetry.Fra"
+  "meStatsMessage\0224\n\tshapeData\030\003 \001(\0132!.Phys"
+  "icsTelemetry.ShapeDataPacketB\037\252\002\034Physics"
+  ".Telemetry.Serialisedb\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_telemetry_5ffile_2eproto_deps[2] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_telemetry_5ffile_2eproto_deps[3] = {
+  &::descriptor_table_frame_5fstats_5fmessage_2eproto,
   &::descriptor_table_rigid_5fbody_2eproto,
   &::descriptor_table_shapes_2eproto,
 };
@@ -185,8 +191,8 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_tel
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_telemetry_5ffile_2eproto_once;
 static bool descriptor_table_telemetry_5ffile_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_telemetry_5ffile_2eproto = {
-  &descriptor_table_telemetry_5ffile_2eproto_initialized, descriptor_table_protodef_telemetry_5ffile_2eproto, "telemetry_file.proto", 704,
-  &descriptor_table_telemetry_5ffile_2eproto_once, descriptor_table_telemetry_5ffile_2eproto_sccs, descriptor_table_telemetry_5ffile_2eproto_deps, 4, 2,
+  &descriptor_table_telemetry_5ffile_2eproto_initialized, descriptor_table_protodef_telemetry_5ffile_2eproto, "telemetry_file.proto", 789,
+  &descriptor_table_telemetry_5ffile_2eproto_once, descriptor_table_telemetry_5ffile_2eproto_sccs, descriptor_table_telemetry_5ffile_2eproto_deps, 4, 3,
   schemas, file_default_instances, TableStruct_telemetry_5ffile_2eproto::offsets,
   file_level_metadata_telemetry_5ffile_2eproto, 4, file_level_enum_descriptors_telemetry_5ffile_2eproto, file_level_service_descriptors_telemetry_5ffile_2eproto,
 };
@@ -987,6 +993,9 @@ const ::PhysicsTelemetry::ShapeDataPacket&
 FrameDataPacket::_Internal::shapedata(const FrameDataPacket* msg) {
   return *msg->shapedata_;
 }
+void FrameDataPacket::clear_framestats() {
+  framestats_.Clear();
+}
 FrameDataPacket::FrameDataPacket()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
@@ -995,7 +1004,8 @@ FrameDataPacket::FrameDataPacket()
 FrameDataPacket::FrameDataPacket(const FrameDataPacket& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr),
-      frames_(from.frames_) {
+      frames_(from.frames_),
+      framestats_(from.framestats_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from._internal_has_shapedata()) {
     shapedata_ = new ::PhysicsTelemetry::ShapeDataPacket(*from.shapedata_);
@@ -1035,6 +1045,7 @@ void FrameDataPacket::Clear() {
   (void) cached_has_bits;
 
   frames_.Clear();
+  framestats_.Clear();
   if (GetArenaNoVirtual() == nullptr && shapedata_ != nullptr) {
     delete shapedata_;
   }
@@ -1061,9 +1072,21 @@ const char* FrameDataPacket::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else goto handle_unusual;
         continue;
-      // .PhysicsTelemetry.ShapeDataPacket shapeData = 2;
+      // repeated .PhysicsTelemetry.FrameStatsMessage frameStats = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_framestats(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // .PhysicsTelemetry.ShapeDataPacket shapeData = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           ptr = ctx->ParseMessage(_internal_mutable_shapedata(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -1102,12 +1125,20 @@ failure:
       InternalWriteMessage(1, this->_internal_frames(i), target, stream);
   }
 
-  // .PhysicsTelemetry.ShapeDataPacket shapeData = 2;
+  // repeated .PhysicsTelemetry.FrameStatsMessage frameStats = 2;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_framestats_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_framestats(i), target, stream);
+  }
+
+  // .PhysicsTelemetry.ShapeDataPacket shapeData = 3;
   if (this->has_shapedata()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        2, _Internal::shapedata(this), target, stream);
+        3, _Internal::shapedata(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1133,7 +1164,14 @@ size_t FrameDataPacket::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // .PhysicsTelemetry.ShapeDataPacket shapeData = 2;
+  // repeated .PhysicsTelemetry.FrameStatsMessage frameStats = 2;
+  total_size += 1UL * this->_internal_framestats_size();
+  for (const auto& msg : this->framestats_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // .PhysicsTelemetry.ShapeDataPacket shapeData = 3;
   if (this->has_shapedata()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -1172,6 +1210,7 @@ void FrameDataPacket::MergeFrom(const FrameDataPacket& from) {
   (void) cached_has_bits;
 
   frames_.MergeFrom(from.frames_);
+  framestats_.MergeFrom(from.framestats_);
   if (from.has_shapedata()) {
     _internal_mutable_shapedata()->::PhysicsTelemetry::ShapeDataPacket::MergeFrom(from._internal_shapedata());
   }
@@ -1199,6 +1238,7 @@ void FrameDataPacket::InternalSwap(FrameDataPacket* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   frames_.InternalSwap(&other->frames_);
+  framestats_.InternalSwap(&other->framestats_);
   swap(shapedata_, other->shapedata_);
 }
 

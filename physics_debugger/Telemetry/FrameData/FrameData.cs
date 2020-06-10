@@ -7,6 +7,7 @@ namespace Telemetry.FrameData
     public class FrameData
     {
         public List<FrameSnapshot> Frames = new List<FrameSnapshot>();
+        public List<FrameStats> FrameStats = new List<FrameStats>();
 
         public ShapeDataManager ShapeData = new ShapeDataManager();
 
@@ -21,6 +22,15 @@ namespace Telemetry.FrameData
                     newFrame.ImportFromPacket(frame);
 
                     Frames.Add(newFrame);
+                }
+
+                foreach (FrameStatsMessage stat in packet.FrameStats)
+                {
+                    FrameStats newStat = new FrameStats();
+
+                    newStat.ImportFromPacket(stat);
+
+                    FrameStats.Add(newStat);
                 }
 
                 ShapeData.ImportFromPacket(packet.ShapeData);
@@ -43,6 +53,11 @@ namespace Telemetry.FrameData
                 foreach (FrameSnapshot frame in Frames)
                 {
                     packet.Frames.Add(frame.ExportToPacket());
+                }
+
+                foreach (FrameStats stat in FrameStats)
+                {
+                    packet.FrameStats.Add(stat.ExportToPacket());
                 }
 
                 packet.ShapeData = ShapeData.ExportToPacket();

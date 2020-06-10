@@ -39,6 +39,9 @@
     <ClCompile Include="proto.generated\telemetry_file.pb.cc">
       <Filter>proto.generated</Filter>
     </ClCompile>
+    <ClCompile Include="proto.generated\frame_stats_message.pb.cc">
+      <Filter>proto.generated</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataServer.h">
@@ -75,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="proto.generated\telemetry_file.pb.h">
+      <Filter>proto.generated</Filter>
+    </ClInclude>
+    <ClInclude Include="proto.generated\frame_stats_message.pb.h">
       <Filter>proto.generated</Filter>
     </ClInclude>
   </ItemGroup>

@@ -69,12 +69,13 @@ enum MessageHeaderMessage_MessageType : int {
   MessageHeaderMessage_MessageType_RigidBodyUpdate = 0,
   MessageHeaderMessage_MessageType_ShapeCreated = 1,
   MessageHeaderMessage_MessageType_ShapeChanged = 2,
+  MessageHeaderMessage_MessageType_FrameStats = 3,
   MessageHeaderMessage_MessageType_MessageHeaderMessage_MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   MessageHeaderMessage_MessageType_MessageHeaderMessage_MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool MessageHeaderMessage_MessageType_IsValid(int value);
 constexpr MessageHeaderMessage_MessageType MessageHeaderMessage_MessageType_MessageType_MIN = MessageHeaderMessage_MessageType_RigidBodyUpdate;
-constexpr MessageHeaderMessage_MessageType MessageHeaderMessage_MessageType_MessageType_MAX = MessageHeaderMessage_MessageType_ShapeChanged;
+constexpr MessageHeaderMessage_MessageType MessageHeaderMessage_MessageType_MessageType_MAX = MessageHeaderMessage_MessageType_FrameStats;
 constexpr int MessageHeaderMessage_MessageType_MessageType_ARRAYSIZE = MessageHeaderMessage_MessageType_MessageType_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MessageHeaderMessage_MessageType_descriptor();
@@ -203,6 +204,8 @@ class MessageHeaderMessage :
     MessageHeaderMessage_MessageType_ShapeCreated;
   static constexpr MessageType ShapeChanged =
     MessageHeaderMessage_MessageType_ShapeChanged;
+  static constexpr MessageType FrameStats =
+    MessageHeaderMessage_MessageType_FrameStats;
   static inline bool MessageType_IsValid(int value) {
     return MessageHeaderMessage_MessageType_IsValid(value);
   }

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package PhysicsTelemetry;
+
+option csharp_namespace = "Physics.Telemetry.Serialised";
+
+message FrameStatsMessage
+{
+	int32 frameId = 1;
+
+	float consumedFrameTime = 2;
+	float frameProcessingTime = 3;
+}

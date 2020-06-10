@@ -34,6 +34,7 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "rigid_body.pb.h"
 #include "shapes.pb.h"
+#include "frame_stats_message.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_telemetry_5ffile_2eproto
@@ -662,7 +663,8 @@ class FrameDataPacket :
 
   enum : int {
     kFramesFieldNumber = 1,
-    kShapeDataFieldNumber = 2,
+    kFrameStatsFieldNumber = 2,
+    kShapeDataFieldNumber = 3,
   };
   // repeated .PhysicsTelemetry.FrameSnapshotPacket frames = 1;
   int frames_size() const;
@@ -682,7 +684,25 @@ class FrameDataPacket :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::FrameSnapshotPacket >&
       frames() const;
 
-  // .PhysicsTelemetry.ShapeDataPacket shapeData = 2;
+  // repeated .PhysicsTelemetry.FrameStatsMessage frameStats = 2;
+  int framestats_size() const;
+  private:
+  int _internal_framestats_size() const;
+  public:
+  void clear_framestats();
+  ::PhysicsTelemetry::FrameStatsMessage* mutable_framestats(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::FrameStatsMessage >*
+      mutable_framestats();
+  private:
+  const ::PhysicsTelemetry::FrameStatsMessage& _internal_framestats(int index) const;
+  ::PhysicsTelemetry::FrameStatsMessage* _internal_add_framestats();
+  public:
+  const ::PhysicsTelemetry::FrameStatsMessage& framestats(int index) const;
+  ::PhysicsTelemetry::FrameStatsMessage* add_framestats();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::FrameStatsMessage >&
+      framestats() const;
+
+  // .PhysicsTelemetry.ShapeDataPacket shapeData = 3;
   bool has_shapedata() const;
   private:
   bool _internal_has_shapedata() const;
@@ -703,6 +723,7 @@ class FrameDataPacket :
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::FrameSnapshotPacket > frames_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::FrameStatsMessage > framestats_;
   ::PhysicsTelemetry::ShapeDataPacket* shapedata_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_telemetry_5ffile_2eproto;
@@ -1066,7 +1087,43 @@ FrameDataPacket::frames() const {
   return frames_;
 }
 
-// .PhysicsTelemetry.ShapeDataPacket shapeData = 2;
+// repeated .PhysicsTelemetry.FrameStatsMessage frameStats = 2;
+inline int FrameDataPacket::_internal_framestats_size() const {
+  return framestats_.size();
+}
+inline int FrameDataPacket::framestats_size() const {
+  return _internal_framestats_size();
+}
+inline ::PhysicsTelemetry::FrameStatsMessage* FrameDataPacket::mutable_framestats(int index) {
+  // @@protoc_insertion_point(field_mutable:PhysicsTelemetry.FrameDataPacket.frameStats)
+  return framestats_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::FrameStatsMessage >*
+FrameDataPacket::mutable_framestats() {
+  // @@protoc_insertion_point(field_mutable_list:PhysicsTelemetry.FrameDataPacket.frameStats)
+  return &framestats_;
+}
+inline const ::PhysicsTelemetry::FrameStatsMessage& FrameDataPacket::_internal_framestats(int index) const {
+  return framestats_.Get(index);
+}
+inline const ::PhysicsTelemetry::FrameStatsMessage& FrameDataPacket::framestats(int index) const {
+  // @@protoc_insertion_point(field_get:PhysicsTelemetry.FrameDataPacket.frameStats)
+  return _internal_framestats(index);
+}
+inline ::PhysicsTelemetry::FrameStatsMessage* FrameDataPacket::_internal_add_framestats() {
+  return framestats_.Add();
+}
+inline ::PhysicsTelemetry::FrameStatsMessage* FrameDataPacket::add_framestats() {
+  // @@protoc_insertion_point(field_add:PhysicsTelemetry.FrameDataPacket.frameStats)
+  return _internal_add_framestats();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PhysicsTelemetry::FrameStatsMessage >&
+FrameDataPacket::framestats() const {
+  // @@protoc_insertion_point(field_list:PhysicsTelemetry.FrameDataPacket.frameStats)
+  return framestats_;
+}
+
+// .PhysicsTelemetry.ShapeDataPacket shapeData = 3;
 inline bool FrameDataPacket::_internal_has_shapedata() const {
   return this != internal_default_instance() && shapedata_ != nullptr;
 }

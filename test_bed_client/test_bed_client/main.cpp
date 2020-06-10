@@ -14,6 +14,7 @@
 #include "proto.generated/rigid_body.pb.h"
 #include "proto.generated/message_header.pb.h"
 #include "proto.generated/shapes.pb.h"
+#include "proto.generated/frame_stats_message.pb.h"
 
 unsigned int const numberOfParticles = 10;
 
@@ -363,70 +364,136 @@ void main()
 
         while ( timeAccumulator > frameTime )
         {
+            //////////////////////////////////////////////////////////////////////////
+            // Start the frame performance timer
+            //////////////////////////////////////////////////////////////////////////
+            LARGE_INTEGER StartingTime, EndingTime, ElapsedMicroseconds;
+            LARGE_INTEGER Frequency;
+
+            QueryPerformanceFrequency(&Frequency);
+            QueryPerformanceCounter(&StartingTime);
+
+
             timeAccumulator -= frameTime;
             totalTime += frameTime;
 
             updateParticles( &particles, frameTime );
 
-            PhysicsTelemetry::RigidBodyListPacket bodyList;
-            
-            for (int i = 0; i < numberOfParticles; ++i)
+            //////////////////////////////////////////////////////////////////////////
+            // End the frame performance timer
+            //////////////////////////////////////////////////////////////////////////
+            QueryPerformanceCounter(&EndingTime);
+            ElapsedMicroseconds.QuadPart = EndingTime.QuadPart - StartingTime.QuadPart;
+
+            //
+            // We now have the elapsed number of ticks, along with the
+            // number of ticks-per-second. We use these values
+            // to convert to the number of elapsed microseconds.
+            // To guard against loss-of-precision, we convert
+            // to microseconds *before* dividing by ticks-per-second.
+            //
+
+            ElapsedMicroseconds.QuadPart *= 1000000;
+            ElapsedMicroseconds.QuadPart /= Frequency.QuadPart;
+
+            //////////////////////////////////////////////////////////////////////////
+            // send the data to the debug tool
+            //////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////
+            // Rigid body data
+            //////////////////////////////////////////////////////////////////////////
             {
-                PhysicsTelemetry::RigidBodyPacket* rigidBody = bodyList.add_rigidbodies();
+                PhysicsTelemetry::RigidBodyListPacket bodyList;
 
-                rigidBody->set_id(i);
-
-                PhysicsTelemetry::Vector4Packet position;
-                rigidBody->mutable_position()->set_m11(1.0f);
-                rigidBody->mutable_position()->set_m12(0.0f);
-                rigidBody->mutable_position()->set_m13(0.0f);
-                rigidBody->mutable_position()->set_m14(0.0f);
-
-                rigidBody->mutable_position()->set_m21(0.0f);
-                rigidBody->mutable_position()->set_m22(1.0f);
-                rigidBody->mutable_position()->set_m23(0.0f);
-                rigidBody->mutable_position()->set_m24(0.0f);
-
-                rigidBody->mutable_position()->set_m31(0.0f);
-                rigidBody->mutable_position()->set_m32(0.0f);
-                rigidBody->mutable_position()->set_m33(1.0f);
-                rigidBody->mutable_position()->set_m34(0.0f);
-
-                rigidBody->mutable_position()->set_m41(particles.particles[i].m_position[0]);
-                rigidBody->mutable_position()->set_m42(particles.particles[i].m_position[1]);
-                rigidBody->mutable_position()->set_m43(particles.particles[i].m_position[2]);
-                rigidBody->mutable_position()->set_m44(particles.particles[i].m_position[3]);
-
-                PhysicsTelemetry::Vector4Packet velocity;
-                rigidBody->mutable_velocity()->set_x(particles.particles[i].m_velocity[0]);
-                rigidBody->mutable_velocity()->set_y(particles.particles[i].m_velocity[1]);
-                rigidBody->mutable_velocity()->set_z(particles.particles[i].m_velocity[2]);
-
-                for (int shapeIndex = 0; shapeIndex < particles.particles[i].m_collisionShapes.size(); ++shapeIndex)
+                for (int i = 0; i < numberOfParticles; ++i)
                 {
-                    rigidBody->add_collisionshapes(particles.particles[i].m_collisionShapes[shapeIndex]->m_id);
+                    PhysicsTelemetry::RigidBodyPacket* rigidBody = bodyList.add_rigidbodies();
+
+                    rigidBody->set_id(i);
+
+                    PhysicsTelemetry::Vector4Packet position;
+                    rigidBody->mutable_position()->set_m11(1.0f);
+                    rigidBody->mutable_position()->set_m12(0.0f);
+                    rigidBody->mutable_position()->set_m13(0.0f);
+                    rigidBody->mutable_position()->set_m14(0.0f);
+
+                    rigidBody->mutable_position()->set_m21(0.0f);
+                    rigidBody->mutable_position()->set_m22(1.0f);
+                    rigidBody->mutable_position()->set_m23(0.0f);
+                    rigidBody->mutable_position()->set_m24(0.0f);
+
+                    rigidBody->mutable_position()->set_m31(0.0f);
+                    rigidBody->mutable_position()->set_m32(0.0f);
+                    rigidBody->mutable_position()->set_m33(1.0f);
+                    rigidBody->mutable_position()->set_m34(0.0f);
+
+                    rigidBody->mutable_position()->set_m41(particles.particles[i].m_position[0]);
+                    rigidBody->mutable_position()->set_m42(particles.particles[i].m_position[1]);
+                    rigidBody->mutable_position()->set_m43(particles.particles[i].m_position[2]);
+                    rigidBody->mutable_position()->set_m44(particles.particles[i].m_position[3]);
+
+                    PhysicsTelemetry::Vector4Packet velocity;
+                    rigidBody->mutable_velocity()->set_x(particles.particles[i].m_velocity[0]);
+                    rigidBody->mutable_velocity()->set_y(particles.particles[i].m_velocity[1]);
+                    rigidBody->mutable_velocity()->set_z(particles.particles[i].m_velocity[2]);
+
+                    for (int shapeIndex = 0; shapeIndex < particles.particles[i].m_collisionShapes.size(); ++shapeIndex)
+                    {
+                        rigidBody->add_collisionshapes(particles.particles[i].m_collisionShapes[shapeIndex]->m_id);
+                    }
                 }
+
+
+                size_t bodyListPacketSize = bodyList.ByteSizeLong();
+
+                PhysicsTelemetry::MessageHeaderMessage messageHeader;
+                messageHeader.set_frameid(frameCounter);
+                messageHeader.set_messagetype(PhysicsTelemetry::MessageHeaderMessage_MessageType_RigidBodyUpdate);
+                messageHeader.set_datasize(bodyListPacketSize);
+
+                char networkPacket[c_defaultPacketSize];
+                char* bufferPointer = networkPacket;
+
+                int headerLength = messageHeader.ByteSizeLong();
+                memcpy(bufferPointer, &headerLength, sizeof(int)); bufferPointer += sizeof(int);
+
+                messageHeader.SerializePartialToArray(bufferPointer, c_defaultPacketSize);
+                bufferPointer += headerLength;
+
+                bodyList.SerializePartialToArray(bufferPointer, c_defaultPacketSize - headerLength);
+
+                server.sendData(reinterpret_cast<char*>(&networkPacket), c_defaultPacketSize);
             }
 
-            size_t bodyListPacketSize = bodyList.ByteSizeLong();
+            //////////////////////////////////////////////////////////////////////////
+            // Frame stats
+            //////////////////////////////////////////////////////////////////////////
+            {
+                PhysicsTelemetry::FrameStatsMessage frameStatsPacket;
+                frameStatsPacket.set_frameid(frameCounter);
+                frameStatsPacket.set_consumedframetime(frameTime);
+                frameStatsPacket.set_frameprocessingtime(static_cast<float>(ElapsedMicroseconds.QuadPart));
 
-            PhysicsTelemetry::MessageHeaderMessage messageHeader;
-            messageHeader.set_frameid(frameCounter);
-            messageHeader.set_messagetype(PhysicsTelemetry::MessageHeaderMessage_MessageType_RigidBodyUpdate);
-            messageHeader.set_datasize(bodyListPacketSize);
+                size_t frameDataPacketSize = frameStatsPacket.ByteSizeLong();
 
-            char networkPacket[c_defaultPacketSize];
-            char* bufferPointer = networkPacket;
+                PhysicsTelemetry::MessageHeaderMessage messageHeader;
+                messageHeader.set_frameid(frameCounter);
+                messageHeader.set_messagetype(PhysicsTelemetry::MessageHeaderMessage_MessageType_FrameStats);
+                messageHeader.set_datasize(frameDataPacketSize);
 
-            int headerLength = messageHeader.ByteSizeLong();
-            memcpy(bufferPointer, &headerLength, sizeof(int)); bufferPointer += sizeof(int);
+                char networkPacket[c_defaultPacketSize];
+                char* bufferPointer = networkPacket;
 
-            messageHeader.SerializePartialToArray(bufferPointer, c_defaultPacketSize);
-            bufferPointer += headerLength;
+                int headerLength = messageHeader.ByteSizeLong();
+                memcpy(bufferPointer, &headerLength, sizeof(int)); bufferPointer += sizeof(int);
 
-            bodyList.SerializePartialToArray(bufferPointer, c_defaultPacketSize - headerLength);
+                messageHeader.SerializePartialToArray(bufferPointer, c_defaultPacketSize);
+                bufferPointer += headerLength;
 
-            server.sendData(reinterpret_cast<char*>(&networkPacket), c_defaultPacketSize);
+                frameStatsPacket.SerializePartialToArray(bufferPointer, c_defaultPacketSize - headerLength);
+
+                server.sendData(reinterpret_cast<char*>(&networkPacket), c_defaultPacketSize);
+            }
 
             ++frameCounter;
         }

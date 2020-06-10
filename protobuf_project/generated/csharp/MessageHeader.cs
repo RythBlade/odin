@@ -24,13 +24,13 @@ namespace Physics.Telemetry.Serialised {
     static MessageHeaderReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRtZXNzYWdlX2hlYWRlci5wcm90bxIQUGh5c2ljc1RlbGVtZXRyeSLKAQoU",
+            "ChRtZXNzYWdlX2hlYWRlci5wcm90bxIQUGh5c2ljc1RlbGVtZXRyeSLaAQoU",
             "TWVzc2FnZUhlYWRlck1lc3NhZ2USDwoHZnJhbWVJZBgBIAEoBRJHCgttZXNz",
             "YWdlVHlwZRgCIAEoDjIyLlBoeXNpY3NUZWxlbWV0cnkuTWVzc2FnZUhlYWRl",
-            "ck1lc3NhZ2UuTWVzc2FnZVR5cGUSEAoIZGF0YVNpemUYAyABKAUiRgoLTWVz",
+            "ck1lc3NhZ2UuTWVzc2FnZVR5cGUSEAoIZGF0YVNpemUYAyABKAUiVgoLTWVz",
             "c2FnZVR5cGUSEwoPUmlnaWRCb2R5VXBkYXRlEAASEAoMU2hhcGVDcmVhdGVk",
-            "EAESEAoMU2hhcGVDaGFuZ2VkEAJCH6oCHFBoeXNpY3MuVGVsZW1ldHJ5LlNl",
-            "cmlhbGlzZWRiBnByb3RvMw=="));
+            "EAESEAoMU2hhcGVDaGFuZ2VkEAISDgoKRnJhbWVTdGF0cxADQh+qAhxQaHlz",
+            "aWNzLlRlbGVtZXRyeS5TZXJpYWxpc2VkYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -232,6 +232,7 @@ namespace Physics.Telemetry.Serialised {
         [pbr::OriginalName("RigidBodyUpdate")] RigidBodyUpdate = 0,
         [pbr::OriginalName("ShapeCreated")] ShapeCreated = 1,
         [pbr::OriginalName("ShapeChanged")] ShapeChanged = 2,
+        [pbr::OriginalName("FrameStats")] FrameStats = 3,
       }
 
     }

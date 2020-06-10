@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="Controls\PropertyGridDisplayHelpers\BaseShapePropertyWrapper.cs" />
     <Compile Include="Controls\PropertyGridDisplayHelpers\ConvexHullPropertyWrapper.cs" />
+    <Compile Include="Controls\PropertyGridDisplayHelpers\FrameStatsPropertyWrapper.cs" />
     <Compile Include="Controls\PropertyGridDisplayHelpers\Matrix4x4PropertyWrapper.cs" />
     <Compile Include="Controls\PropertyGridDisplayHelpers\Matrix4x4PropertyWrapperTypeConverter.cs" />
     <Compile Include="Controls\PropertyGridDisplayHelpers\ObbPropertyWrapper.cs" />

@@ -39,7 +39,6 @@
             this.renderTabPage = new System.Windows.Forms.TabPage();
             this.mainViewport = new Renderer.DirectXControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.frameDetailsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.settingsTabControl = new System.Windows.Forms.TabControl();
             this.quickSettingsTabPage = new System.Windows.Forms.TabPage();
             this.cameraSettingsGroupBox = new System.Windows.Forms.GroupBox();
@@ -80,6 +79,7 @@
             this.previousFrameButton = new System.Windows.Forms.Button();
             this.goToFirstFrameButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.frameStatsPropertyGrid = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -202,7 +202,7 @@
             // 
             // splitContainer4.Panel2
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.frameDetailsRichTextBox);
+            this.splitContainer4.Panel2.Controls.Add(this.frameStatsPropertyGrid);
             this.splitContainer4.Size = new System.Drawing.Size(793, 778);
             this.splitContainer4.SplitterDistance = 530;
             this.splitContainer4.SplitterWidth = 5;
@@ -252,16 +252,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // frameDetailsRichTextBox
-            // 
-            this.frameDetailsRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frameDetailsRichTextBox.Location = new System.Drawing.Point(0, 0);
-            this.frameDetailsRichTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.frameDetailsRichTextBox.Name = "frameDetailsRichTextBox";
-            this.frameDetailsRichTextBox.Size = new System.Drawing.Size(793, 243);
-            this.frameDetailsRichTextBox.TabIndex = 0;
-            this.frameDetailsRichTextBox.Text = "Frame properties prototype";
             // 
             // settingsTabControl
             // 
@@ -642,6 +632,16 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // frameStatsPropertyGrid
+            // 
+            this.frameStatsPropertyGrid.DisabledItemForeColor = System.Drawing.SystemColors.ControlText;
+            this.frameStatsPropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frameStatsPropertyGrid.HelpVisible = false;
+            this.frameStatsPropertyGrid.Location = new System.Drawing.Point(0, 0);
+            this.frameStatsPropertyGrid.Name = "frameStatsPropertyGrid";
+            this.frameStatsPropertyGrid.Size = new System.Drawing.Size(793, 243);
+            this.frameStatsPropertyGrid.TabIndex = 0;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -700,7 +700,6 @@
         private System.Windows.Forms.TabPage renderTabPage;
         private Renderer.DirectXControl mainViewport;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.RichTextBox frameDetailsRichTextBox;
         private System.Windows.Forms.TabControl settingsTabControl;
         private System.Windows.Forms.TabPage quickSettingsTabPage;
         private System.Windows.Forms.TabPage tabPage4;
@@ -743,6 +742,7 @@
         private System.Windows.Forms.TrackBar nearPlaneTrackBar;
         private physics_debugger.Controls.SceneGraphView.SceneGraphView sceneGraphView;
         private System.Windows.Forms.PropertyGrid objectDetailsPropertyGrid;
+        private System.Windows.Forms.PropertyGrid frameStatsPropertyGrid;
     }
 }
 

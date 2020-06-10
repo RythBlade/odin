@@ -21,8 +21,6 @@ namespace Telemetry.FrameData
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public List<FrameItem> Shapes = new List<FrameItem>();
-
         public void AddRigidBody(RigidBody body)
         {
             // todo: error handle - what if the rigid body already exists?

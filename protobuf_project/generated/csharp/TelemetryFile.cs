@@ -25,28 +25,30 @@ namespace Physics.Telemetry.Serialised {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChR0ZWxlbWV0cnlfZmlsZS5wcm90bxIQUGh5c2ljc1RlbGVtZXRyeRoQcmln",
-            "aWRfYm9keS5wcm90bxoMc2hhcGVzLnByb3RvIl4KE0ZyYW1lU25hcHNob3RQ",
-            "YWNrZXQSDwoHZnJhbWVJZBgBIAEoBRI2CgtyaWdpZEJvZGllcxgCIAMoCzIh",
-            "LlBoeXNpY3NUZWxlbWV0cnkuUmlnaWRCb2R5UGFja2V0IpwCChlTaGFwZUZy",
-            "YW1lSXRlcmF0aW9uUGFja2V0Eg8KB2ZyYW1lSWQYASABKAUSNAoJc2hhcGVU",
-            "eXBlGAIgASgOMiEuUGh5c2ljc1RlbGVtZXRyeS5TaGFwZVR5cGVQYWNrZXQS",
-            "MgoIb2JiU2hhcGUYAyABKAsyIC5QaHlzaWNzVGVsZW1ldHJ5Lk9iYlNoYXBl",
-            "UGFja2V0EkIKEHRldHJhaGVkcm9uU2hhcGUYBCABKAsyKC5QaHlzaWNzVGVs",
-            "ZW1ldHJ5LlRldHJhaGVkcm9uU2hhcGVQYWNrZXQSQAoPY29udmV4SHVsbFNo",
-            "YXBlGAUgASgLMicuUGh5c2ljc1RlbGVtZXRyeS5Db252ZXhIdWxsU2hhcGVQ",
-            "YWNrZXQiTgoPU2hhcGVEYXRhUGFja2V0EjsKBnNoYXBlcxgBIAMoCzIrLlBo",
-            "eXNpY3NUZWxlbWV0cnkuU2hhcGVGcmFtZUl0ZXJhdGlvblBhY2tldCJ+Cg9G",
-            "cmFtZURhdGFQYWNrZXQSNQoGZnJhbWVzGAEgAygLMiUuUGh5c2ljc1RlbGVt",
-            "ZXRyeS5GcmFtZVNuYXBzaG90UGFja2V0EjQKCXNoYXBlRGF0YRgCIAEoCzIh",
-            "LlBoeXNpY3NUZWxlbWV0cnkuU2hhcGVEYXRhUGFja2V0Qh+qAhxQaHlzaWNz",
-            "LlRlbGVtZXRyeS5TZXJpYWxpc2VkYgZwcm90bzM="));
+            "aWRfYm9keS5wcm90bxoMc2hhcGVzLnByb3RvGhlmcmFtZV9zdGF0c19tZXNz",
+            "YWdlLnByb3RvIl4KE0ZyYW1lU25hcHNob3RQYWNrZXQSDwoHZnJhbWVJZBgB",
+            "IAEoBRI2CgtyaWdpZEJvZGllcxgCIAMoCzIhLlBoeXNpY3NUZWxlbWV0cnku",
+            "UmlnaWRCb2R5UGFja2V0IpwCChlTaGFwZUZyYW1lSXRlcmF0aW9uUGFja2V0",
+            "Eg8KB2ZyYW1lSWQYASABKAUSNAoJc2hhcGVUeXBlGAIgASgOMiEuUGh5c2lj",
+            "c1RlbGVtZXRyeS5TaGFwZVR5cGVQYWNrZXQSMgoIb2JiU2hhcGUYAyABKAsy",
+            "IC5QaHlzaWNzVGVsZW1ldHJ5Lk9iYlNoYXBlUGFja2V0EkIKEHRldHJhaGVk",
+            "cm9uU2hhcGUYBCABKAsyKC5QaHlzaWNzVGVsZW1ldHJ5LlRldHJhaGVkcm9u",
+            "U2hhcGVQYWNrZXQSQAoPY29udmV4SHVsbFNoYXBlGAUgASgLMicuUGh5c2lj",
+            "c1RlbGVtZXRyeS5Db252ZXhIdWxsU2hhcGVQYWNrZXQiTgoPU2hhcGVEYXRh",
+            "UGFja2V0EjsKBnNoYXBlcxgBIAMoCzIrLlBoeXNpY3NUZWxlbWV0cnkuU2hh",
+            "cGVGcmFtZUl0ZXJhdGlvblBhY2tldCK3AQoPRnJhbWVEYXRhUGFja2V0EjUK",
+            "BmZyYW1lcxgBIAMoCzIlLlBoeXNpY3NUZWxlbWV0cnkuRnJhbWVTbmFwc2hv",
+            "dFBhY2tldBI3CgpmcmFtZVN0YXRzGAIgAygLMiMuUGh5c2ljc1RlbGVtZXRy",
+            "eS5GcmFtZVN0YXRzTWVzc2FnZRI0CglzaGFwZURhdGEYAyABKAsyIS5QaHlz",
+            "aWNzVGVsZW1ldHJ5LlNoYXBlRGF0YVBhY2tldEIfqgIcUGh5c2ljcy5UZWxl",
+            "bWV0cnkuU2VyaWFsaXNlZGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Physics.Telemetry.Serialised.RigidBodyReflection.Descriptor, global::Physics.Telemetry.Serialised.ShapesReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Physics.Telemetry.Serialised.RigidBodyReflection.Descriptor, global::Physics.Telemetry.Serialised.ShapesReflection.Descriptor, global::Physics.Telemetry.Serialised.FrameStatsMessageReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.FrameSnapshotPacket), global::Physics.Telemetry.Serialised.FrameSnapshotPacket.Parser, new[]{ "FrameId", "RigidBodies" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeFrameIterationPacket), global::Physics.Telemetry.Serialised.ShapeFrameIterationPacket.Parser, new[]{ "FrameId", "ShapeType", "ObbShape", "TetrahedronShape", "ConvexHullShape" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.ShapeDataPacket), global::Physics.Telemetry.Serialised.ShapeDataPacket.Parser, new[]{ "Shapes" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.FrameDataPacket), global::Physics.Telemetry.Serialised.FrameDataPacket.Parser, new[]{ "Frames", "ShapeData" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Physics.Telemetry.Serialised.FrameDataPacket), global::Physics.Telemetry.Serialised.FrameDataPacket.Parser, new[]{ "Frames", "FrameStats", "ShapeData" }, null, null, null, null)
           }));
     }
     #endregion
@@ -608,6 +610,7 @@ namespace Physics.Telemetry.Serialised {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public FrameDataPacket(FrameDataPacket other) : this() {
       frames_ = other.frames_.Clone();
+      frameStats_ = other.frameStats_.Clone();
       shapeData_ = other.shapeData_ != null ? other.shapeData_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -627,8 +630,18 @@ namespace Physics.Telemetry.Serialised {
       get { return frames_; }
     }
 
+    /// <summary>Field number for the "frameStats" field.</summary>
+    public const int FrameStatsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Physics.Telemetry.Serialised.FrameStatsMessage> _repeated_frameStats_codec
+        = pb::FieldCodec.ForMessage(18, global::Physics.Telemetry.Serialised.FrameStatsMessage.Parser);
+    private readonly pbc::RepeatedField<global::Physics.Telemetry.Serialised.FrameStatsMessage> frameStats_ = new pbc::RepeatedField<global::Physics.Telemetry.Serialised.FrameStatsMessage>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Physics.Telemetry.Serialised.FrameStatsMessage> FrameStats {
+      get { return frameStats_; }
+    }
+
     /// <summary>Field number for the "shapeData" field.</summary>
-    public const int ShapeDataFieldNumber = 2;
+    public const int ShapeDataFieldNumber = 3;
     private global::Physics.Telemetry.Serialised.ShapeDataPacket shapeData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Physics.Telemetry.Serialised.ShapeDataPacket ShapeData {
@@ -652,6 +665,7 @@ namespace Physics.Telemetry.Serialised {
         return true;
       }
       if(!frames_.Equals(other.frames_)) return false;
+      if(!frameStats_.Equals(other.frameStats_)) return false;
       if (!object.Equals(ShapeData, other.ShapeData)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -660,6 +674,7 @@ namespace Physics.Telemetry.Serialised {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= frames_.GetHashCode();
+      hash ^= frameStats_.GetHashCode();
       if (shapeData_ != null) hash ^= ShapeData.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -675,8 +690,9 @@ namespace Physics.Telemetry.Serialised {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       frames_.WriteTo(output, _repeated_frames_codec);
+      frameStats_.WriteTo(output, _repeated_frameStats_codec);
       if (shapeData_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(ShapeData);
       }
       if (_unknownFields != null) {
@@ -688,6 +704,7 @@ namespace Physics.Telemetry.Serialised {
     public int CalculateSize() {
       int size = 0;
       size += frames_.CalculateSize(_repeated_frames_codec);
+      size += frameStats_.CalculateSize(_repeated_frameStats_codec);
       if (shapeData_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ShapeData);
       }
@@ -703,6 +720,7 @@ namespace Physics.Telemetry.Serialised {
         return;
       }
       frames_.Add(other.frames_);
+      frameStats_.Add(other.frameStats_);
       if (other.shapeData_ != null) {
         if (shapeData_ == null) {
           ShapeData = new global::Physics.Telemetry.Serialised.ShapeDataPacket();
@@ -725,6 +743,10 @@ namespace Physics.Telemetry.Serialised {
             break;
           }
           case 18: {
+            frameStats_.AddEntriesFrom(input, _repeated_frameStats_codec);
+            break;
+          }
+          case 26: {
             if (shapeData_ == null) {
               ShapeData = new global::Physics.Telemetry.Serialised.ShapeDataPacket();
             }

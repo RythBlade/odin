@@ -137,6 +137,7 @@ namespace physics_debugger
         {
             UpdateButtonText();
             UpdateSceneGraphView();
+            UpdateFrameStatsPropertyGrid();
         }
 
         private void Controller_MaxFrameChanged(object sender, EventArgs e)
@@ -171,7 +172,26 @@ namespace physics_debugger
             frameTrackBar.Value = controller.CurrentFrameId;
 
             UpdateSceneGraphView();
+            UpdateFrameStatsPropertyGrid();
+        }
 
+        private void UpdateFrameStatsPropertyGrid()
+        {
+            if (controller.State == PlayBackState.eStaticFrame)
+            {
+                foreach (FrameStats stats in frameData.FrameStats)
+                {
+                    if (stats.FrameId == controller.CurrentFrameId)
+                    {
+                        frameStatsPropertyGrid.SelectedObject = new FrameStatsPropertyWrapper(stats);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                frameStatsPropertyGrid.SelectedObject = null;
+            }
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
@@ -296,10 +316,15 @@ namespace physics_debugger
                 // lock the queues and flush their contents to our render data
                 lock (receiver.LockObject)
                 {
-
                     while(receiver.ReceivedFrameSnapshots.Count > 0)
                     {
                         frameData.Frames.Add(receiver.ReceivedFrameSnapshots.Dequeue());
+                        isTelemetryDataDirty = true;
+                    }
+
+                    while(receiver.ReceivedFrameStats.Count > 0)
+                    {
+                        frameData.FrameStats.Add(receiver.ReceivedFrameStats.Dequeue());
                         isTelemetryDataDirty = true;
                     }
 
@@ -566,6 +591,7 @@ namespace physics_debugger
             sceneGraphView.SetFrameData(null, 0);
 
             UpdateSceneGraphView();
+            UpdateFrameStatsPropertyGrid();
 
             shapeRenderMeshBindings.Clear();
 
