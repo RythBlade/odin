@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.sceneGraphView = new physics_debugger.Controls.SceneGraphView.SceneGraphView();
             this.objectDetailsPropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.renderTabPage = new System.Windows.Forms.TabPage();
             this.mainViewport = new Renderer.DirectXControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.graphTabPage = new System.Windows.Forms.TabPage();
             this.settingsTabControl = new System.Windows.Forms.TabControl();
             this.quickSettingsTabPage = new System.Windows.Forms.TabPage();
             this.cameraSettingsGroupBox = new System.Windows.Forms.GroupBox();
@@ -80,6 +81,9 @@
             this.goToFirstFrameButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.frameStatsPropertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.sceneGraphView = new physics_debugger.Controls.SceneGraphView.SceneGraphView();
+            this.mainGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.plotPerformanceGraphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -98,6 +102,7 @@
             this.splitContainer4.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.renderTabPage.SuspendLayout();
+            this.graphTabPage.SuspendLayout();
             this.settingsTabControl.SuspendLayout();
             this.quickSettingsTabPage.SuspendLayout();
             this.cameraSettingsGroupBox.SuspendLayout();
@@ -107,6 +112,7 @@
             this.mainMenuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainGraph)).BeginInit();
             this.SuspendLayout();
             // 
             // mainSplitContainer
@@ -149,15 +155,6 @@
             this.splitContainer3.SplitterDistance = 406;
             this.splitContainer3.SplitterWidth = 5;
             this.splitContainer3.TabIndex = 0;
-            // 
-            // sceneGraphView
-            // 
-            this.sceneGraphView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sceneGraphView.FrameIdToDisplay = 0;
-            this.sceneGraphView.Location = new System.Drawing.Point(0, 0);
-            this.sceneGraphView.Name = "sceneGraphView";
-            this.sceneGraphView.Size = new System.Drawing.Size(250, 406);
-            this.sceneGraphView.TabIndex = 0;
             // 
             // objectDetailsPropertyGrid
             // 
@@ -211,7 +208,7 @@
             // mainTabControl
             // 
             this.mainTabControl.Controls.Add(this.renderTabPage);
-            this.mainTabControl.Controls.Add(this.tabPage2);
+            this.mainTabControl.Controls.Add(this.graphTabPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(0, 0);
             this.mainTabControl.Margin = new System.Windows.Forms.Padding(4);
@@ -242,16 +239,17 @@
             this.mainViewport.Size = new System.Drawing.Size(777, 493);
             this.mainViewport.TabIndex = 0;
             // 
-            // tabPage2
+            // graphTabPage
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(785, 501);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.graphTabPage.Controls.Add(this.mainGraph);
+            this.graphTabPage.Location = new System.Drawing.Point(4, 25);
+            this.graphTabPage.Margin = new System.Windows.Forms.Padding(4);
+            this.graphTabPage.Name = "graphTabPage";
+            this.graphTabPage.Padding = new System.Windows.Forms.Padding(4);
+            this.graphTabPage.Size = new System.Drawing.Size(785, 501);
+            this.graphTabPage.TabIndex = 1;
+            this.graphTabPage.Text = "Graph";
+            this.graphTabPage.UseVisualStyleBackColor = true;
             // 
             // settingsTabControl
             // 
@@ -504,7 +502,8 @@
             // commandsToolStripMenuItem
             // 
             this.commandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.goToFrameToolStripMenuItem});
+            this.goToFrameToolStripMenuItem,
+            this.plotPerformanceGraphToolStripMenuItem});
             this.commandsToolStripMenuItem.Name = "commandsToolStripMenuItem";
             this.commandsToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
             this.commandsToolStripMenuItem.Text = "Commands";
@@ -513,7 +512,7 @@
             // 
             this.goToFrameToolStripMenuItem.Name = "goToFrameToolStripMenuItem";
             this.goToFrameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-            this.goToFrameToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.goToFrameToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
             this.goToFrameToolStripMenuItem.Text = "Go to Frame";
             this.goToFrameToolStripMenuItem.Click += new System.EventHandler(this.goToFrameToolStripMenuItem_Click);
             // 
@@ -642,6 +641,36 @@
             this.frameStatsPropertyGrid.Size = new System.Drawing.Size(793, 243);
             this.frameStatsPropertyGrid.TabIndex = 0;
             // 
+            // sceneGraphView
+            // 
+            this.sceneGraphView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sceneGraphView.FrameIdToDisplay = 0;
+            this.sceneGraphView.Location = new System.Drawing.Point(0, 0);
+            this.sceneGraphView.Name = "sceneGraphView";
+            this.sceneGraphView.Size = new System.Drawing.Size(250, 406);
+            this.sceneGraphView.TabIndex = 0;
+            // 
+            // mainGraph
+            // 
+            chartArea1.AxisX.Title = "Frame Id";
+            chartArea1.AxisY.Title = "Frame time (us)";
+            chartArea1.Name = "ChartArea1";
+            this.mainGraph.ChartAreas.Add(chartArea1);
+            this.mainGraph.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.mainGraph.Legends.Add(legend1);
+            this.mainGraph.Location = new System.Drawing.Point(4, 4);
+            this.mainGraph.Name = "mainGraph";
+            this.mainGraph.Size = new System.Drawing.Size(777, 493);
+            this.mainGraph.TabIndex = 0;
+            // 
+            // plotPerformanceGraphToolStripMenuItem
+            // 
+            this.plotPerformanceGraphToolStripMenuItem.Name = "plotPerformanceGraphToolStripMenuItem";
+            this.plotPerformanceGraphToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.plotPerformanceGraphToolStripMenuItem.Text = "Plot Performance Graph";
+            this.plotPerformanceGraphToolStripMenuItem.Click += new System.EventHandler(this.plotPerformanceGraphToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -673,6 +702,7 @@
             this.splitContainer4.ResumeLayout(false);
             this.mainTabControl.ResumeLayout(false);
             this.renderTabPage.ResumeLayout(false);
+            this.graphTabPage.ResumeLayout(false);
             this.settingsTabControl.ResumeLayout(false);
             this.quickSettingsTabPage.ResumeLayout(false);
             this.cameraSettingsGroupBox.ResumeLayout(false);
@@ -685,6 +715,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainGraph)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -699,7 +730,7 @@
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage renderTabPage;
         private Renderer.DirectXControl mainViewport;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage graphTabPage;
         private System.Windows.Forms.TabControl settingsTabControl;
         private System.Windows.Forms.TabPage quickSettingsTabPage;
         private System.Windows.Forms.TabPage tabPage4;
@@ -743,6 +774,8 @@
         private physics_debugger.Controls.SceneGraphView.SceneGraphView sceneGraphView;
         private System.Windows.Forms.PropertyGrid objectDetailsPropertyGrid;
         private System.Windows.Forms.PropertyGrid frameStatsPropertyGrid;
+        private System.Windows.Forms.DataVisualization.Charting.Chart mainGraph;
+        private System.Windows.Forms.ToolStripMenuItem plotPerformanceGraphToolStripMenuItem;
     }
 }
 

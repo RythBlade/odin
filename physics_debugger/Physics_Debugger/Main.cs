@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Input;
 using Telemetry.FrameData;
 using Telemetry.FrameData.Shapes;
@@ -18,12 +19,13 @@ namespace physics_debugger
     public partial class Main : Form
     {
         private const string c_applicationHeaderString = "Physics Debugger";
-        private const string c_applicationHeaderStringFormat = "{0} v{1}.{2}";
+        private const string c_applicationHeaderStringFormat = "{0} v{1}.{2}.{3}";
         private const string c_headerStringFileNameFormat = "{0} - {1}";
         private const string c_unsavedString = "Unsaved";
 
         private const int c_applicationVersion = 0;
         private const int c_applicationSubVersion = 0;
+        private const int c_applicationBuildVersion = 1;
 
         private static float s_cameraMoveSpeed = 0.2f;
         private static float s_cameraSpeedModifier = 3.0f;
@@ -88,7 +90,12 @@ namespace physics_debugger
 
         private void BuildAndSetApplicationTitleString()
         {
-            string applicationTitle = string.Format(c_applicationHeaderStringFormat, c_applicationHeaderString, c_applicationVersion, c_applicationSubVersion);
+            string applicationTitle = string.Format(
+                c_applicationHeaderStringFormat
+                , c_applicationHeaderString
+                , c_applicationVersion
+                , c_applicationSubVersion
+                , c_applicationBuildVersion);
 
             if(isTelemetryDataDirty)
             {
@@ -708,6 +715,22 @@ namespace physics_debugger
             {
                 GoToFrame(frameSelect.SelectedFrameId);
             }
+        }
+
+        private void plotPerformanceGraphToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainGraph.Series.Clear();
+            Series frameTimeSeries = new Series();
+
+            frameTimeSeries.ChartType = SeriesChartType.Line;
+            frameTimeSeries.LegendText = "Frame time";
+
+            foreach(FrameStats stat in frameData.FrameStats)
+            {
+                frameTimeSeries.Points.AddXY(stat.FrameId, stat.FrameProcessingTime);
+            }
+
+            mainGraph.Series.Add(frameTimeSeries);
         }
     }
 }
