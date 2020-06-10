@@ -604,6 +604,10 @@ namespace physics_debugger
                     shouldProceed = true;
                 }
             }
+            else
+            {
+                shouldProceed = true;
+            }
 
             if(shouldProceed)
             {
