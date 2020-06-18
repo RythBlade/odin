@@ -1,4 +1,6 @@
-﻿---- TO DO ----
+﻿------------------------------------------------------------------------------------------------------------------------------
+---- TO DO ----
+------------------------------------------------------------------------------------------------------------------------------
 - Proper error handling in the network layer
 - Packets broken into chunks
 - Cope with fixed packet size, and breaking down the data into multiple packets for transmission - and reconstruct them on the other end
@@ -19,16 +21,12 @@
 	- save data to a file
 	- load data from a file and playback?
 	- Rigid body ID's
+	- Need an ID generator
 - Save telemetry to file - debugger
 - Save telemetry to file - game side library
 - Open telemetry from file - debugger
 - Open telemetry from file - game side library
-- Display object properties in the debugger
-- Scene explorer tree view in the debugger?
-- Clickable objects in the viewport to select them to display their data in the debugger
 - Send more data types
-	- Shape information - meshes + arbitrary meshes
-	- Compound shapes
 	- Contacts
 	- Forces added
 	- Physics engine function calls?
@@ -36,9 +34,7 @@
 - Axis marker on rigid bodies
 - Make render instances 1:1 with their rigid body, so they're directly ascociated?
 	- Need proper render bindings so arbitrary meshes can be rendered without hacks
-- Thread network communication in the client and visual debugger.
 - Disconnect option and handling a forced disconnection if the "game" drops out
-- Swap telemetry data source to protobuff?
 - Proper error handling in the file handling (common exceptions)
 - Align network transmission format and file save/load so they're the same format?
 - Export a subset of frames to file? If you have a big run, but only need a bit of it? Or you want to share a snapshot.
@@ -49,7 +45,7 @@ but also so you could record a really long run! Would need some special logic in
 	- Syncronise the frame timestep size, so on playback, we use the same animation rate - cope with varying and fixed update rates
 	- Capture when multiple physics frames run in a game frame?
 - Camera Speed adjuster
-- Allow "game" to send an idea camera position to the viewer so it can mirror the game play camera
+- Allow "game" to send a camera position to the debug viewer so it can mirror the game play camera
 - Mesh Types
 	- Sphere
 	- Cone
@@ -57,10 +53,11 @@ but also so you could record a really long run! Would need some special logic in
 	- Cylinder
 	- Arbitrary mesh (triangle list)
 - Connecting to an "in progress" session
+------------------------------------------------------------------------------------------------------------------------------
 
-- Optimise the debugger so it can keep up more with the data it's getting sent
-
+------------------------------------------------------------------------------------------------------------------------------
 ---- DONE ----
+------------------------------------------------------------------------------------------------------------------------------
 - Proper frame scrubbing controls
 - Draw a wireframe ground plane to help with orientation
 - Playback modes
@@ -69,8 +66,21 @@ but also so you could record a really long run! Would need some special logic in
 - Mesh types
 	- Tetrahedron
 	- OBB
+- Scene explorer tree view in the debugger?
+- Display object properties in the debugger
+- Clickable objects in the viewport to select them to display their data in the debugger
+- Send more data types
+	- Shape information - meshes + arbitrary meshes
+	- Compound shapes
+- Thread network communication in the client and visual debugger.
+- Swap telemetry data source to protobuff?
+- Optimise the debugger so it can keep up more with the data it's getting sent
 
+------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------
 ----Notes----
+------------------------------------------------------------------------------------------------------------------------------
 Packets are prescriptive now, but the version when we can generate the serialisation/deserialisation code, I'm thinking about using shader style Semantics, to infer/retrieve what I NEED to render the scene. You can mark the 
 properties that should be interpretted as semantic values so I know what they are so can use them for rendering purposes - e.g. position/orientation/velocity etc.
 
@@ -78,8 +88,11 @@ What about multi-world games - where they have multiple physics worlds you might
 rates. Should they use the same network connection and the packet translator splits it up into the correct world, so there's only 1 data stream? Or, create a data stream for each world and exchange ports to use for each
 one on initial connection - or via some sort of connection manager? The base packet could have a world ID or world name. The debugger could then allow the user to select which world to collect data for - defaulting to 
 collect all channels though, so no data is missed.
+------------------------------------------------------------------------------------------------------------------------------
 
--- Network/data source structuring --
+------------------------------------------------------------------------------------------------------------------------------
+---- Network/data source structuring ----
+------------------------------------------------------------------------------------------------------------------------------
 
 |----------------Telemetry source-------------------|
 |DataStream ---> Packet Accumulator? ---> Translator|  --queue-> Frame Data
@@ -90,6 +103,11 @@ pipeline for each source, or to dump all data whenever you swap source as there'
 Memory snooping is another "telemetry source", so it should be interfaced, so you can swap between them as a mode of running - e.g. when the target application hits a break point, you can swap to snoop mode, where
 it can continue to process data for the same physics engine instance, except it's data source is a memory snooper.
 Files may also be another source of data?
+------------------------------------------------------------------------------------------------------------------------------
 
+------------------------------------------------------------------------------------------------------------------------------
 ----Bugs----
-Drag the splitters to make the DirectX control have zero height causes an assert - likely the same thing happens if you do it to the width too.
+------------------------------------------------------------------------------------------------------------------------------
+- Drag the splitters to make the DirectX control have zero height causes an assert - likely the same thing happens if you do it to the width too.
+- Can't initialise the "object id" render target use the clear colour - need to write to render target manually - so the target isn't properly initialised to uint.max, so clicking an empty space selects id 1.
+------------------------------------------------------------------------------------------------------------------------------
