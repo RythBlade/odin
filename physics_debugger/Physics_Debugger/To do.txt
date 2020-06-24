@@ -53,6 +53,11 @@ but also so you could record a really long run! Would need some special logic in
 	- Cylinder
 	- Arbitrary mesh (triangle list)
 - Connecting to an "in progress" session
+- Graph
+	- "Telemetry view" that displays live data?
+	- Able to adjust the axis ranges to zoom in on a zone - x and y axis
+	- Axis lables need data driving properly
+	- Mouseover render that tells you about the current data points you've mosted over
 ------------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------------
