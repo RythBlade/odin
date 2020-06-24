@@ -63,6 +63,9 @@
     <Compile Include="ConnectionDialogue.Designer.cs">
       <DependentUpon>ConnectionDialogue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Graph\GraphChannel.cs" />
+    <Compile Include="Controls\Graph\GraphChannelCollection.cs" />
+    <Compile Include="Controls\Graph\GraphChannelPropertyDescription.cs" />
     <Compile Include="Controls\PropertyGridDisplayHelpers\BaseShapePropertyWrapper.cs" />
     <Compile Include="Controls\PropertyGridDisplayHelpers\ConvexHullPropertyWrapper.cs" />
     <Compile Include="Controls\PropertyGridDisplayHelpers\FrameStatsPropertyWrapper.cs" />

@@ -1,4 +1,5 @@
-﻿using physics_debugger.Controls.PropertyGridDisplayHelpers;
+﻿using physics_debugger.Controls.Graph;
+using physics_debugger.Controls.PropertyGridDisplayHelpers;
 using physics_debugger.Controls.SceneGraphView;
 using physics_debugger.FrameControl;
 using Renderer;
@@ -55,6 +56,8 @@ namespace physics_debugger
         private string loadedTelemetryFileName = string.Empty;
         private bool isTelemetryDataDirty = false;
 
+        GraphChannelCollection channelCollection = new GraphChannelCollection();
+
         public Main()
         {
             InitializeComponent();
@@ -86,6 +89,13 @@ namespace physics_debugger
             sceneGraphView.SelectionChanged += SceneGraphView_SelectionChanged;
 
             BuildAndSetApplicationTitleString();
+
+            channelCollection.Channels.Add(new GraphChannel("Channel 1", GraphChannel.Axis.Hidden));
+            channelCollection.Channels.Add(new GraphChannel("Another channel", GraphChannel.Axis.Hidden));
+            channelCollection.Channels.Add(new GraphChannel("Something", GraphChannel.Axis.Hidden));
+            channelCollection.Channels.Add(new GraphChannel("Just a channel", GraphChannel.Axis.Hidden));
+
+            graphChannelPropertyGrid.SelectedObject = channelCollection;
         }
 
         private void BuildAndSetApplicationTitleString()

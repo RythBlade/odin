@@ -49,7 +49,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cameraSpeedTrackBar = new System.Windows.Forms.TrackBar();
             this.graphTabPage = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.mainGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.graphChannelPropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.frameStatsPropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +72,10 @@
             this.zoomSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.commandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.plotPerformanceGraphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportDataToCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAllPlottedDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.playForwardsButton = new System.Windows.Forms.Button();
@@ -80,13 +87,6 @@
             this.previousFrameButton = new System.Windows.Forms.Button();
             this.goToFirstFrameButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.graphChannelPropertyGrid = new System.Windows.Forms.PropertyGrid();
-            this.graphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.plotPerformanceGraphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportDataToCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearAllPlottedDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -110,15 +110,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.nearPlaneTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cameraSpeedTrackBar)).BeginInit();
             this.graphTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainGraph)).BeginInit();
-            this.mainMenuStrip.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.frameTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainGraph)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.mainMenuStrip.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.frameTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // mainSplitContainer
@@ -353,6 +353,24 @@
             this.graphTabPage.Text = "Graph";
             this.graphTabPage.UseVisualStyleBackColor = true;
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(4, 4);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.mainGraph);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer2.Size = new System.Drawing.Size(1047, 495);
+            this.splitContainer2.SplitterDistance = 681;
+            this.splitContainer2.SplitterWidth = 10;
+            this.splitContainer2.TabIndex = 1;
+            // 
             // mainGraph
             // 
             chartArea1.AxisX.Title = "Frame Id";
@@ -366,6 +384,28 @@
             this.mainGraph.Name = "mainGraph";
             this.mainGraph.Size = new System.Drawing.Size(681, 495);
             this.mainGraph.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.graphChannelPropertyGrid);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(356, 495);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Settings";
+            // 
+            // graphChannelPropertyGrid
+            // 
+            this.graphChannelPropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.graphChannelPropertyGrid.HelpVisible = false;
+            this.graphChannelPropertyGrid.Location = new System.Drawing.Point(3, 18);
+            this.graphChannelPropertyGrid.Name = "graphChannelPropertyGrid";
+            this.graphChannelPropertyGrid.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
+            this.graphChannelPropertyGrid.Size = new System.Drawing.Size(350, 474);
+            this.graphChannelPropertyGrid.TabIndex = 0;
+            this.graphChannelPropertyGrid.ToolbarVisible = false;
             // 
             // frameStatsPropertyGrid
             // 
@@ -518,6 +558,35 @@
             this.goToFrameToolStripMenuItem.Text = "Go to Frame";
             this.goToFrameToolStripMenuItem.Click += new System.EventHandler(this.goToFrameToolStripMenuItem_Click);
             // 
+            // graphToolStripMenuItem
+            // 
+            this.graphToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.plotPerformanceGraphToolStripMenuItem,
+            this.exportDataToCSVToolStripMenuItem,
+            this.clearAllPlottedDataToolStripMenuItem});
+            this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
+            this.graphToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.graphToolStripMenuItem.Text = "Graph";
+            // 
+            // plotPerformanceGraphToolStripMenuItem
+            // 
+            this.plotPerformanceGraphToolStripMenuItem.Name = "plotPerformanceGraphToolStripMenuItem";
+            this.plotPerformanceGraphToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.plotPerformanceGraphToolStripMenuItem.Text = "Plot Performance Graph";
+            this.plotPerformanceGraphToolStripMenuItem.Click += new System.EventHandler(this.plotPerformanceGraphToolStripMenuItem_Click);
+            // 
+            // exportDataToCSVToolStripMenuItem
+            // 
+            this.exportDataToCSVToolStripMenuItem.Name = "exportDataToCSVToolStripMenuItem";
+            this.exportDataToCSVToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.exportDataToCSVToolStripMenuItem.Text = "Export data to CSV...";
+            // 
+            // clearAllPlottedDataToolStripMenuItem
+            // 
+            this.clearAllPlottedDataToolStripMenuItem.Name = "clearAllPlottedDataToolStripMenuItem";
+            this.clearAllPlottedDataToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.clearAllPlottedDataToolStripMenuItem.Text = "Clear all plotted data";
+            // 
             // updateTimer
             // 
             this.updateTimer.Interval = 16;
@@ -633,72 +702,6 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(4, 4);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.mainGraph);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer2.Size = new System.Drawing.Size(1047, 495);
-            this.splitContainer2.SplitterDistance = 681;
-            this.splitContainer2.SplitterWidth = 10;
-            this.splitContainer2.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.graphChannelPropertyGrid);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(356, 495);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Settings";
-            // 
-            // graphChannelPropertyGrid
-            // 
-            this.graphChannelPropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.graphChannelPropertyGrid.Location = new System.Drawing.Point(3, 18);
-            this.graphChannelPropertyGrid.Name = "graphChannelPropertyGrid";
-            this.graphChannelPropertyGrid.Size = new System.Drawing.Size(350, 474);
-            this.graphChannelPropertyGrid.TabIndex = 0;
-            // 
-            // graphToolStripMenuItem
-            // 
-            this.graphToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.plotPerformanceGraphToolStripMenuItem,
-            this.exportDataToCSVToolStripMenuItem,
-            this.clearAllPlottedDataToolStripMenuItem});
-            this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
-            this.graphToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
-            this.graphToolStripMenuItem.Text = "Graph";
-            // 
-            // plotPerformanceGraphToolStripMenuItem
-            // 
-            this.plotPerformanceGraphToolStripMenuItem.Name = "plotPerformanceGraphToolStripMenuItem";
-            this.plotPerformanceGraphToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
-            this.plotPerformanceGraphToolStripMenuItem.Text = "Plot Performance Graph";
-            this.plotPerformanceGraphToolStripMenuItem.Click += new System.EventHandler(this.plotPerformanceGraphToolStripMenuItem_Click);
-            // 
-            // exportDataToCSVToolStripMenuItem
-            // 
-            this.exportDataToCSVToolStripMenuItem.Name = "exportDataToCSVToolStripMenuItem";
-            this.exportDataToCSVToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
-            this.exportDataToCSVToolStripMenuItem.Text = "Export data to CSV...";
-            // 
-            // clearAllPlottedDataToolStripMenuItem
-            // 
-            this.clearAllPlottedDataToolStripMenuItem.Name = "clearAllPlottedDataToolStripMenuItem";
-            this.clearAllPlottedDataToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
-            this.clearAllPlottedDataToolStripMenuItem.Text = "Clear all plotted data";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -736,17 +739,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.nearPlaneTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cameraSpeedTrackBar)).EndInit();
             this.graphTabPage.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainGraph)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frameTrackBar)).EndInit();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
