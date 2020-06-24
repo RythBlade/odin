@@ -90,11 +90,6 @@ namespace physics_debugger
 
             BuildAndSetApplicationTitleString();
 
-            channelCollection.Channels.Add(new GraphChannel("Channel 1", GraphChannel.Axis.Hidden));
-            channelCollection.Channels.Add(new GraphChannel("Another channel", GraphChannel.Axis.Hidden));
-            channelCollection.Channels.Add(new GraphChannel("Something", GraphChannel.Axis.Hidden));
-            channelCollection.Channels.Add(new GraphChannel("Just a channel", GraphChannel.Axis.Hidden));
-
             graphChannelPropertyGrid.SelectedObject = channelCollection;
         }
 
@@ -606,6 +601,9 @@ namespace physics_debugger
             frameData = readFrameData;
 
             sceneGraphView.SetFrameData(null, 0);
+            mainGraph.Series.Clear();
+            channelCollection.Channels.Clear();
+            graphChannelPropertyGrid.SelectedObject = channelCollection;
 
             UpdateSceneGraphView();
             UpdateFrameStatsPropertyGrid();
@@ -730,17 +728,35 @@ namespace physics_debugger
         private void plotPerformanceGraphToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mainGraph.Series.Clear();
-            Series frameTimeSeries = new Series();
+            channelCollection.Channels.Clear();
 
-            frameTimeSeries.ChartType = SeriesChartType.Line;
-            frameTimeSeries.LegendText = "Frame time";
-
-            foreach(FrameStats stat in frameData.FrameStats)
+            // frame time channel
             {
-                frameTimeSeries.Points.AddXY(stat.FrameId, stat.FrameProcessingTime);
+                List<DataPoint> points = new List<DataPoint>();
+
+                foreach (FrameStats stat in frameData.FrameStats)
+                {
+                    points.Add(new DataPoint(stat.FrameId, stat.FrameProcessingTime));
+                }
+
+                GraphChannel channel = new GraphChannel("Frame Time", mainGraph, points, GraphChannel.Axis.PrimaryAxis);
+                channelCollection.Channels.Add(channel);
             }
 
-            mainGraph.Series.Add(frameTimeSeries);
+            // frame time step
+            {
+                List<DataPoint> points = new List<DataPoint>();
+
+                foreach (FrameStats stat in frameData.FrameStats)
+                {
+                    points.Add(new DataPoint(stat.FrameId, stat.ConsumedFrameTime));
+                }
+
+                GraphChannel channel = new GraphChannel("Time step", mainGraph, points, GraphChannel.Axis.SecondaryAxis);
+                channelCollection.Channels.Add(channel);
+            }
+
+            graphChannelPropertyGrid.SelectedObject = channelCollection;
         }
     }
 }
