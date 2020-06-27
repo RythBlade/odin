@@ -375,6 +375,8 @@
             // 
             chartArea1.AxisX.Title = "Frame Id";
             chartArea1.AxisY.Title = "Frame time (us)";
+            chartArea1.CursorX.IsUserEnabled = true;
+            chartArea1.CursorX.IsUserSelectionEnabled = true;
             chartArea1.Name = "ChartArea1";
             this.mainGraph.ChartAreas.Add(chartArea1);
             this.mainGraph.Dock = System.Windows.Forms.DockStyle.Fill;

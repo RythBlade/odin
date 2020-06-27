@@ -55,7 +55,6 @@ but also so you could record a really long run! Would need some special logic in
 - Connecting to an "in progress" session
 - Graph
 	- "Telemetry view" that displays live data?
-	- Able to adjust the axis ranges to zoom in on a zone - x and y axis
 	- Axis lables need data driving properly
 	- Mouseover render that tells you about the current data points you've mosted over
 ------------------------------------------------------------------------------------------------------------------------------
@@ -80,6 +79,8 @@ but also so you could record a really long run! Would need some special logic in
 - Thread network communication in the client and visual debugger.
 - Swap telemetry data source to protobuff?
 - Optimise the debugger so it can keep up more with the data it's getting sent
+- Graph
+	- Able to adjust the axis ranges to zoom in on a zone - x and y axis - use a region select and mouse scroll.
 
 ------------------------------------------------------------------------------------------------------------------------------
 
