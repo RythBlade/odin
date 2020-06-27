@@ -40,7 +40,7 @@ float const particleRadius = 0.5f;
 ParticlePacket particles;
 
 float const nextNudge = 5.0f;
-float const dampingConstant = 1.0f;
+float const dampingConstant = 0.99f;
 float const restitution = 0.8f;
 float const frameTime = 1.0f / 60.0f;
 
@@ -326,6 +326,8 @@ void main()
             particle.m_position[ comp ] = -worldAABB[ comp ] + particleRadius + random * ( worldAABB[ comp ] * 2.0f - 2.0f * particleRadius );
         }
 
+        particle.m_dampingConstant = dampingConstant;
+
         nextShapeId = addObb(nextShapeId, particle, server, false, 0.0f, 0.0f, 0.0f);
 
         // extra collision shapes on some of the objects
@@ -546,22 +548,90 @@ void updateParticles( ParticlePacket* particles, float timeStep )
             }
             else
             {
-                particles->particles[i].m_velocity[comp] *= dampingConstant;
+                particles->particles[i].m_velocity[comp] *= particles->particles[i].m_dampingConstant;
             }
 
             // integrate
             particles->particles[ i ].m_position[ comp ] += particles->particles[ i ].m_velocity[ comp ] * timeStep;
+        }
+    }
 
-            // bounds check
-            if ( particles->particles[ i ].m_position[ comp ] > worldAABB[ comp ] )
+    // collision checks with each other
+    for (int i = 0; i < numberOfParticles; ++i)
+    {
+        for (int j = i + 1; j < numberOfParticles; ++j)
+        {
+            float xDiff = particles->particles[i].m_position[0] - particles->particles[j].m_position[0];
+            float yDiff = particles->particles[i].m_position[1] - particles->particles[j].m_position[1];
+            float zDiff = particles->particles[i].m_position[2] - particles->particles[j].m_position[2];
+
+            float lengthSquared = xDiff * xDiff + yDiff * yDiff + zDiff * zDiff;
+
+            float radius = 1.0f;
+            float minDistance = 2.0f * radius;
+            float minDistanceSquared = minDistance * minDistance;
+
+            if (lengthSquared < minDistanceSquared)
             {
-                particles->particles[ i ].m_position[ comp ] = worldAABB[ comp ];
-                particles->particles[ i ].m_velocity[ comp ] *= -1.0f * restitution;
+                float distance = sqrt(lengthSquared);
+                float xDiffNormalised = xDiff / distance;
+                float yDiffNormalised = yDiff / distance;
+                float zDiffNormalised = zDiff / distance;
+
+                float normalisedLength = xDiffNormalised * xDiffNormalised + yDiffNormalised * yDiffNormalised + zDiffNormalised * zDiffNormalised;
+
+                float correctionAmount = minDistanceSquared - distance;
+                float sharedCorrection = (correctionAmount / 2.0f) * 1.1f;
+
+                particles->particles[i].m_position[0] += sharedCorrection * xDiffNormalised;
+                particles->particles[i].m_position[1] += sharedCorrection * yDiffNormalised;
+                particles->particles[i].m_position[2] += sharedCorrection * zDiffNormalised;
+
+                particles->particles[j].m_position[0] -= sharedCorrection * xDiffNormalised;
+                particles->particles[j].m_position[1] -= sharedCorrection * yDiffNormalised;
+                particles->particles[j].m_position[2] -= sharedCorrection * zDiffNormalised;
+
+                {
+                    float iSpeedSquared =
+                        particles->particles[i].m_velocity[0] * particles->particles[i].m_velocity[0]
+                        + particles->particles[i].m_velocity[1] * particles->particles[i].m_velocity[1]
+                        + particles->particles[i].m_velocity[2] * particles->particles[i].m_velocity[2];
+                    float iSpeed = sqrt(iSpeedSquared);
+
+                    particles->particles[i].m_velocity[0] = iSpeed * xDiffNormalised * particles->particles[i].m_dampingConstant;
+                    particles->particles[i].m_velocity[1] = iSpeed * yDiffNormalised * particles->particles[i].m_dampingConstant;
+                    particles->particles[i].m_velocity[2] = iSpeed * zDiffNormalised * particles->particles[i].m_dampingConstant;
+                }
+
+                {
+                    float jSpeedSquared =
+                        particles->particles[j].m_velocity[0] * particles->particles[j].m_velocity[0]
+                        + particles->particles[j].m_velocity[1] * particles->particles[j].m_velocity[1]
+                        + particles->particles[j].m_velocity[2] * particles->particles[j].m_velocity[2];
+                    float jSpeed = sqrt(jSpeedSquared);
+
+                    particles->particles[j].m_velocity[0] = jSpeed * xDiffNormalised * particles->particles[j].m_dampingConstant;
+                    particles->particles[j].m_velocity[1] = jSpeed * yDiffNormalised * particles->particles[j].m_dampingConstant;
+                    particles->particles[j].m_velocity[2] = jSpeed * zDiffNormalised * particles->particles[j].m_dampingConstant;
+                }
             }
-            else if ( particles->particles[ i ].m_position[ comp ] < -worldAABB[ comp ] )
+        }
+    }
+
+    // bounds check
+    for (int i = 0; i < numberOfParticles; ++i)
+    {
+        for (int comp = 0; comp < 3; ++comp)
+        {
+            if (particles->particles[i].m_position[comp] > worldAABB[comp])
             {
-                particles->particles[ i ].m_position[ comp ] = -worldAABB[ comp ];
-                particles->particles[ i ].m_velocity[ comp ] *= -1.0f * restitution;
+                particles->particles[i].m_position[comp] = worldAABB[comp];
+                particles->particles[i].m_velocity[comp] *= -1.0f * restitution;
+            }
+            else if (particles->particles[i].m_position[comp] < -worldAABB[comp])
+            {
+                particles->particles[i].m_position[comp] = -worldAABB[comp];
+                particles->particles[i].m_velocity[comp] *= -1.0f * restitution;
             }
         }
     }
