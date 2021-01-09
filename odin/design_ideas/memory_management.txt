@@ -37,3 +37,5 @@ Memory manager requirements:
 	- Do we need to pass around pools or can some sort of push/pop mechanic work, which causes allocations to get grouped based on the current pushed value on the "stack"?
 	
 - push allocators into STL, so that it's memory is also tracked.
+
+- when we run out of memory - continue to track a "high water mark" so users have what they know to expand the memory allocation :)
