@@ -1,0 +1,39 @@
+Memory manager requirements:
+
+- Physics debugger can just pass all allocations to the OS and not worry about memory allocation strategies too much. As long as things can be tracked, monitored and pooled - we're good.
+
+- Game side memory allocation will need to be much tighter than the physics debugger application.
+	- Game side needs to manage it's own memory
+	- Will need an interface for passing in either a block of memory that it can use exclusively, or a method/API/interface implemtation/etc that it should to use to allocate memory.
+
+- Track allocations
+	- callstack + line number
+	- memory leaks and unreleased memory
+	- group allocations into pools so memory usage in different areas can be tracked and monitored
+	- guard bytes to track memory stomps
+	- allocation headers detailing the allocation so it can be properly released
+
+- memory profiling 
+	- current memory usage
+	- Free bytes/blocks
+	- memory fragmentation - debug render. A large bar showing allocated and unallocated memory
+	- total unused bytes across all allocation blocks if applicable
+	- Largest free block
+	- Total free bytes
+	
+- Scratch memory allocator
+	- use a "bump allocator" as it's the fastest to return bytes for quick usage, that are reset at the end of each frame.
+
+- heap allocator is for more permanent things
+	- will typically be a slower allocation method than the bump allocator as it needs to reduce memory fragmentation
+
+- Ease of use
+	- How is memory allocation wrapper enforced?
+		- Can new/delete be overriden in a generic way so the rest of the code looks simple?
+		- Can we avoid passing pool objects/variables around?
+			- Can classes be decorated with their allocation pool in code? - with a tag?
+		- Can we error when people use invalid memory allocation, creating un-tracked memory?
+		- Overriding new/delete - can these be considered "generic" allocations, that while unsorted, can at least be tracked.
+	- Do we need to pass around pools or can some sort of push/pop mechanic work, which causes allocations to get grouped based on the current pushed value on the "stack"?
+	
+- push allocators into STL, so that it's memory is also tracked.
