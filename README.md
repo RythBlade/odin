@@ -1,4 +1,4 @@
-# project_probe
+# Odin
 ## Project goal
 A generic physics debug tool to capture and visual physics data from a physics engine. It should provide the ability to capture and query the state of the physics engine at every frame of the simulation, in adition to profiling data.
 ## Folder structure
