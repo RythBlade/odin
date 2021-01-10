@@ -6,10 +6,10 @@
 #include <SDL.h>
 #include <SDL_syswm.h>
 
-class ID3D11Device;
-class ID3D11DeviceContext;
-class IDXGISwapChain;
-class ID3D11RenderTargetView;
+struct ID3D11Device;
+struct ID3D11DeviceContext;
+struct IDXGISwapChain;
+struct ID3D11RenderTargetView;
 
 namespace odin
 {
@@ -33,12 +33,12 @@ namespace odin
 
     private:
         // Data
-        ID3D11Device* g_pd3dDevice = nullptr;
-        ID3D11DeviceContext* g_pd3dDeviceContext = nullptr;
-        IDXGISwapChain* g_pSwapChain = nullptr;
-        ID3D11RenderTargetView* g_mainRenderTargetView = nullptr;
+        ID3D11Device* m_device = nullptr;
+        ID3D11DeviceContext* m_deviceContext = nullptr;
+        IDXGISwapChain* m_swapChain = nullptr;
+        ID3D11RenderTargetView* m_mainRenderTargetView = nullptr;
 
-        SDL_Window* window = nullptr;
+        SDL_Window* m_window = nullptr;
     };
 }
 

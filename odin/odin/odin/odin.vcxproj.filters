@@ -9,17 +9,29 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{b26a21de-4d7d-4a11-8573-355c29b6cc17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core\memory">
+      <UniqueIdentifier>{b1bc3788-2de6-4476-89a7-cb4c91e560b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Application.cpp">
+    <ClCompile Include="source\application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\Application.h">
+    <ClInclude Include="source\core\memory\allocator.h">
+      <Filter>Source Files\core\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\memory\allocator.inl">
+      <Filter>Source Files\core\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="source\application.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -31,22 +31,22 @@ bool Application::initialise(std::string const& windowTitle)
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
     {
         printf("Error: %s\n", SDL_GetError());
-        return -1;
+        return false;
     }
 
     // Setup window
-    SDL_WindowFlags window_flags = (SDL_WindowFlags)(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
-    window = SDL_CreateWindow("Odin", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, window_flags);
+    SDL_WindowFlags window_flags = static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
+    m_window = SDL_CreateWindow("Odin", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, window_flags);
     SDL_SysWMinfo wmInfo;
     SDL_VERSION(&wmInfo.version);
-    SDL_GetWindowWMInfo(window, &wmInfo);
-    HWND hwnd = (HWND)wmInfo.info.win.window;
+    SDL_GetWindowWMInfo(m_window, &wmInfo);
+    HWND hwnd = static_cast<HWND>(wmInfo.info.win.window);
 
     // Initialize Direct3D
     if (!CreateDeviceD3D(hwnd))
     {
         CleanupDeviceD3D();
-        return 1;
+        return false;
     }
 
     // Setup Dear ImGui context
@@ -73,8 +73,10 @@ bool Application::initialise(std::string const& windowTitle)
     }
 
     // Setup Platform/Renderer bindings
-    ImGui_ImplSDL2_InitForD3D(window);
-    ImGui_ImplDX11_Init(g_pd3dDevice, g_pd3dDeviceContext);
+    ImGui_ImplSDL2_InitForD3D(m_window);
+    ImGui_ImplDX11_Init(m_device, m_deviceContext);
+
+    return true;
 }
 
 void Application::run()
@@ -116,23 +118,23 @@ void Application::run()
                 done = true;
             }
 
-            if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE && event.window.windowID == SDL_GetWindowID(window))
+            if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE && event.window.windowID == SDL_GetWindowID(m_window))
             {
                 done = true;
             }
 
-            if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED && event.window.windowID == SDL_GetWindowID(window))
+            if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED && event.window.windowID == SDL_GetWindowID(m_window))
             {
                 // Release all outstanding references to the swap chain's buffers before resizing.
                 CleanupRenderTarget();
-                g_pSwapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0);
+                m_swapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0);
                 CreateRenderTarget();
             }
         }
 
         // Start the Dear ImGui frame
         ImGui_ImplDX11_NewFrame();
-        ImGui_ImplSDL2_NewFrame(window);
+        ImGui_ImplSDL2_NewFrame(m_window);
         ImGui::NewFrame();
 
         // dockspace goes first so that all of the imgui windows we make for the entire application can dock anywhere in the application
@@ -173,8 +175,8 @@ void Application::run()
 
         // Rendering
         ImGui::Render();
-        g_pd3dDeviceContext->OMSetRenderTargets(1, &g_mainRenderTargetView, NULL);
-        g_pd3dDeviceContext->ClearRenderTargetView(g_mainRenderTargetView, (float*)&clear_color);
+        m_deviceContext->OMSetRenderTargets(1, &m_mainRenderTargetView, NULL);
+        m_deviceContext->ClearRenderTargetView(m_mainRenderTargetView, (float*)&clear_color);
         ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
         ImGuiIO& io = ImGui::GetIO();
@@ -186,7 +188,7 @@ void Application::run()
             ImGui::RenderPlatformWindowsDefault();
         }
 
-        g_pSwapChain->Present(1, 0); // Present with vsync
+        m_swapChain->Present(1, 0); // Present with vsync
         //g_pSwapChain->Present(0, 0); // Present without vsync
     }
 }
@@ -199,7 +201,7 @@ void Application::shutdown()
     ImGui::DestroyContext();
 
     CleanupDeviceD3D();
-    SDL_DestroyWindow(window);
+    SDL_DestroyWindow(m_window);
     SDL_Quit();
 }
 
@@ -226,7 +228,7 @@ bool Application::CreateDeviceD3D(HWND hWnd)
     //createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
     D3D_FEATURE_LEVEL featureLevel;
     const D3D_FEATURE_LEVEL featureLevelArray[2] = { D3D_FEATURE_LEVEL_11_0, D3D_FEATURE_LEVEL_10_0, };
-    if (D3D11CreateDeviceAndSwapChain(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, createDeviceFlags, featureLevelArray, 2, D3D11_SDK_VERSION, &sd, &g_pSwapChain, &g_pd3dDevice, &featureLevel, &g_pd3dDeviceContext) != S_OK)
+    if (D3D11CreateDeviceAndSwapChain(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, createDeviceFlags, featureLevelArray, 2, D3D11_SDK_VERSION, &sd, &m_swapChain, &m_device, &featureLevel, &m_deviceContext) != S_OK)
     {
         return false;
     }
@@ -238,22 +240,22 @@ bool Application::CreateDeviceD3D(HWND hWnd)
 void Application::CleanupDeviceD3D()
 {
     CleanupRenderTarget();
-    if (g_pSwapChain) { g_pSwapChain->Release(); g_pSwapChain = NULL; }
-    if (g_pd3dDeviceContext) { g_pd3dDeviceContext->Release(); g_pd3dDeviceContext = NULL; }
-    if (g_pd3dDevice) { g_pd3dDevice->Release(); g_pd3dDevice = NULL; }
+    if (m_swapChain) { m_swapChain->Release(); m_swapChain = NULL; }
+    if (m_deviceContext) { m_deviceContext->Release(); m_deviceContext = NULL; }
+    if (m_device) { m_device->Release(); m_device = NULL; }
 }
 
 void Application::CreateRenderTarget()
 {
     ID3D11Texture2D* pBackBuffer;
-    g_pSwapChain->GetBuffer(0, IID_PPV_ARGS(&pBackBuffer));
-    g_pd3dDevice->CreateRenderTargetView(pBackBuffer, NULL, &g_mainRenderTargetView);
+    m_swapChain->GetBuffer(0, IID_PPV_ARGS(&pBackBuffer));
+    m_device->CreateRenderTargetView(pBackBuffer, NULL, &m_mainRenderTargetView);
     pBackBuffer->Release();
 }
 
 void Application::CleanupRenderTarget()
 {
-    if (g_mainRenderTargetView) { g_mainRenderTargetView->Release(); g_mainRenderTargetView = NULL; }
+    if (m_mainRenderTargetView) { m_mainRenderTargetView->Release(); m_mainRenderTargetView = NULL; }
 }
 
 }
