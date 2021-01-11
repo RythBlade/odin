@@ -9,6 +9,8 @@
 #include <SDL.h>
 #include <SDL_syswm.h>
 
+#include "imgui_wrappers.h"
+
 extern ID3D11ShaderResourceView* g_pViewportView = NULL;
 
 namespace odin
@@ -33,6 +35,8 @@ bool Application::initialise(std::string const& windowTitle)
         printf("Error: %s\n", SDL_GetError());
         return false;
     }
+
+    ImGui::SetAllocatorFunctions(ImguiWrappers::MallocWrapper, ImguiWrappers::FreeWrapper, nullptr);
 
     // Setup window
     SDL_WindowFlags window_flags = static_cast<SDL_WindowFlags>(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);

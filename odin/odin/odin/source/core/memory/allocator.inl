@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <new.h>
 
 namespace odin {
 namespace core {

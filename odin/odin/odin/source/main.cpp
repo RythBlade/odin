@@ -10,44 +10,26 @@
 
 #include "Application.h"
 
-#include "core/memory/allocator.h"
+//#include "core/memory/allocator.h"
 
 odin::Application g_application;
-
-odin::core::Allocator g_imguiAllocator;
-
-static void* MallocWrapper(size_t size, void* user_data) 
-{
-    return g_imguiAllocator.allocate(size, __FILE__, __LINE__);
-}
-
-static void FreeWrapper(void* ptr, void* user_data) 
-{ 
-    if (ptr)
-    {
-        IM_UNUSED(user_data);
-        g_imguiAllocator.release(ptr);
-    }
-}
 
 // Main code
 int main(int, char**)
 {
-    ImGui::SetAllocatorFunctions(MallocWrapper, FreeWrapper, nullptr);
-
-    odin::core::Allocator allocator;
-
-    void* someMemory0 = allocator.allocate(10, __FILE__, __LINE__);
-    void* someMemory1 = allocator.allocate(55, __FILE__, __LINE__);
-    void* someMemory2 = allocator.allocate(22, __FILE__, __LINE__);
-    void* someMemory3 = allocator.allocate(67, __FILE__, __LINE__);
-    void* someMemory4 = allocator.allocate(99, __FILE__, __LINE__);
-
-    allocator.release(someMemory0);
-    allocator.release(someMemory1);
-    allocator.release(someMemory2);
-    allocator.release(someMemory3);
-    allocator.release(someMemory4);
+    //odin::core::Allocator allocator;
+    //
+    //void* someMemory0 = allocator.allocate(10, __FILE__, __LINE__);
+    //void* someMemory1 = allocator.allocate(55, __FILE__, __LINE__);
+    //void* someMemory2 = allocator.allocate(22, __FILE__, __LINE__);
+    //void* someMemory3 = allocator.allocate(67, __FILE__, __LINE__);
+    //void* someMemory4 = allocator.allocate(99, __FILE__, __LINE__);
+    //
+    //allocator.release(someMemory0);
+    //allocator.release(someMemory1);
+    //allocator.release(someMemory2);
+    //allocator.release(someMemory3);
+    //allocator.release(someMemory4);
 
     g_application.initialise("");
     g_application.run();
