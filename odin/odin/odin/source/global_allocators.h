@@ -5,7 +5,11 @@
 
 namespace odin
 {
-    core::Allocator g_imguiAllocator;
+    class GlobalAllocators
+    {
+    public:
+        static core::Allocator g_imguiAllocator;
+    };
 }
 
 #endif

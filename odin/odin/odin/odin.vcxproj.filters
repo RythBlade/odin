@@ -26,6 +26,9 @@
     <ClCompile Include="source\imgui_wrappers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\global_allocators.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\memory\allocator.h">
@@ -37,7 +40,11 @@
     <ClInclude Include="source\application.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\global_allocators.h" />
-    <ClInclude Include="source\imgui_wrappers.h" />
+    <ClInclude Include="source\global_allocators.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\imgui_wrappers.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

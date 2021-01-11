@@ -10,6 +10,8 @@
 #include <SDL_syswm.h>
 
 #include "imgui_wrappers.h"
+#include "core\memory\allocator.h"
+#include "global_allocators.h"
 
 extern ID3D11ShaderResourceView* g_pViewportView = NULL;
 
@@ -102,6 +104,7 @@ void Application::run()
 
     // Our state
     bool show_demo_window = true;
+    bool show_memory_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // Main loop
@@ -168,6 +171,12 @@ void Application::run()
                 if (ImGui::MenuItem("Show ImGui Demo", "", &show_demo_window)) {}
                 ImGui::EndMenu();
             }
+            
+            if (ImGui::BeginMenu("Odin"))
+            {
+                if (ImGui::MenuItem("Show memory window", "", &show_memory_window)) {}
+                ImGui::EndMenu();
+            }
             ImGui::EndMainMenuBar();
         }
 
@@ -175,6 +184,39 @@ void Application::run()
         if (show_demo_window)
         {
             ImGui::ShowDemoWindow(&show_demo_window);
+        }
+
+        if (show_memory_window)
+        {
+            ImGui::SetNextWindowSize(ImVec2(550, 680), ImGuiCond_FirstUseEver);
+            ImGui::Begin("Dear ImGui Style Editor");
+
+            odin::core::AllocationInfo const* nextAllocation = GlobalAllocators::g_imguiAllocator.getAllocationListHead();
+            ImGui::Columns(3);
+            ImGui::Text("Location");
+            ImGui::NextColumn();
+            ImGui::Text("Line number");
+            ImGui::NextColumn();
+            ImGui::Text("Size (bytes)");
+            ImGui::NextColumn();
+
+            ImGui::Separator();
+
+            while (nextAllocation)
+            {
+                ImGui::Text("%s", nextAllocation->m_sourceFileName);
+                ImGui::NextColumn();
+
+                ImGui::Text("%d", nextAllocation->m_lineNumber);
+                ImGui::NextColumn();
+
+                ImGui::Text("%d", nextAllocation->m_sizeOfAllocation);
+                ImGui::NextColumn();
+
+                nextAllocation = nextAllocation->m_next;
+            }
+
+            ImGui::End();
         }
 
         // Rendering
