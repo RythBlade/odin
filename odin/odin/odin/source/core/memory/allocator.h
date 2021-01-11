@@ -33,7 +33,7 @@ namespace core {
     class Allocator
     {
     public:
-        Allocator();
+        inline Allocator();
 
         template< typename Type>
         inline void* allocate(
@@ -56,7 +56,7 @@ namespace core {
         inline size_t getTotalAllocatedMemory() const { return m_totalAllocation; }
         inline size_t getNumberOfAllocations() const { return m_numberOfAllocations; }
 
-        AllocationInfo const* getAllocationListHead() const { return m_allocationHead; }
+        inline AllocationInfo const* getAllocationListHead() const { return m_allocationHead; }
 
     private:
         inline void addToAllocationList(AllocationInfo* allocation);

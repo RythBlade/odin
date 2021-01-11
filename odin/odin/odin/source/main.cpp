@@ -10,26 +10,26 @@
 
 #include "Application.h"
 
-//#include "core/memory/allocator.h"
+#include "core/memory/allocator.h"
 
 odin::Application g_application;
 
 // Main code
 int main(int, char**)
 {
-    //odin::core::Allocator allocator;
-    //
-    //void* someMemory0 = allocator.allocate(10, __FILE__, __LINE__);
-    //void* someMemory1 = allocator.allocate(55, __FILE__, __LINE__);
-    //void* someMemory2 = allocator.allocate(22, __FILE__, __LINE__);
-    //void* someMemory3 = allocator.allocate(67, __FILE__, __LINE__);
-    //void* someMemory4 = allocator.allocate(99, __FILE__, __LINE__);
-    //
-    //allocator.release(someMemory0);
-    //allocator.release(someMemory1);
-    //allocator.release(someMemory2);
-    //allocator.release(someMemory3);
-    //allocator.release(someMemory4);
+    odin::core::Allocator allocator;
+    
+    void* someMemory0 = allocator.allocate(10, __FILE__, __LINE__);
+    void* someMemory1 = allocator.allocate(55, __FILE__, __LINE__);
+    void* someMemory2 = allocator.allocate(22, __FILE__, __LINE__);
+    void* someMemory3 = allocator.allocate(67, __FILE__, __LINE__);
+    void* someMemory4 = allocator.allocate(99, __FILE__, __LINE__);
+    
+    allocator.release(someMemory0);
+    allocator.release(someMemory1);
+    allocator.release(someMemory2);
+    allocator.release(someMemory3);
+    allocator.release(someMemory4);
 
     g_application.initialise("");
     g_application.run();
