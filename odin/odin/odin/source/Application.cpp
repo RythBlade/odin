@@ -12,6 +12,7 @@
 #include "imgui_wrappers.h"
 #include "core\memory\allocator.h"
 #include "global_allocators.h"
+#include <vector>
 
 extern ID3D11ShaderResourceView* g_pViewportView = NULL;
 
@@ -188,32 +189,55 @@ void Application::run()
 
         if (show_memory_window)
         {
+            size_t const totalAllocatedMemory = GlobalAllocators::g_imguiAllocator.getTotalAllocatedMemory();
+            size_t const numberOfAllocations = GlobalAllocators::g_imguiAllocator.getNumberOfAllocations();
+
+            std::vector< odin::core::AllocationInfo > allocationSnapshot;
+            allocationSnapshot.reserve(GlobalAllocators::g_imguiAllocator.getNumberOfAllocations());
+
+            {
+                // take a snapshot of the memory allocations so far. We CAN'T do it while we output to IMGUI, as IMGUI uses the allocator, so it'll allocate and deallocate as we output
+                // which will stomp the allocation pointers.
+                odin::core::AllocationInfo const* nextAllocation = GlobalAllocators::g_imguiAllocator.getAllocationListHead();
+                while (nextAllocation)
+                {
+                    allocationSnapshot.push_back(odin::core::AllocationInfo(nextAllocation->m_sourceFileName, nextAllocation->m_lineNumber, nextAllocation->m_sizeOfAllocation, nullptr));
+                    nextAllocation = nextAllocation->m_next;
+                }
+            }
+
             ImGui::SetNextWindowSize(ImVec2(550, 680), ImGuiCond_FirstUseEver);
             ImGui::Begin("Dear ImGui Style Editor");
 
-            odin::core::AllocationInfo const* nextAllocation = GlobalAllocators::g_imguiAllocator.getAllocationListHead();
-            ImGui::Columns(3);
-            ImGui::Text("Location");
-            ImGui::NextColumn();
-            ImGui::Text("Line number");
-            ImGui::NextColumn();
-            ImGui::Text("Size (bytes)");
-            ImGui::NextColumn();
+            ImGui::Separator();
+
+            ImGui::Columns(2);
+            ImGui::Text("Total allocated (bytes):"); ImGui::NextColumn();
+            ImGui::Text("%d", totalAllocatedMemory); ImGui::NextColumn();
+            
+            ImGui::Text("Number of allocations:"); ImGui::NextColumn();
+            ImGui::Text("%d", numberOfAllocations); ImGui::NextColumn();
 
             ImGui::Separator();
 
-            while (nextAllocation)
+            ImGui::Columns(3);
+            ImGui::Text("Location"); ImGui::NextColumn();
+            ImGui::Text("Line number"); ImGui::NextColumn();
+            ImGui::Text("Size (bytes)"); ImGui::NextColumn();
+
+            ImGui::Separator();
+
+            for( odin::core::AllocationInfo& info : allocationSnapshot )
             {
-                ImGui::Text("%s", nextAllocation->m_sourceFileName);
+                // use a selecteable element so that the row highlights on mouse over :)
+                ImGui::Selectable(info.m_sourceFileName, false, ImGuiSelectableFlags_SpanAllColumns);
                 ImGui::NextColumn();
 
-                ImGui::Text("%d", nextAllocation->m_lineNumber);
+                ImGui::Text("%d", info.m_lineNumber);
                 ImGui::NextColumn();
 
-                ImGui::Text("%d", nextAllocation->m_sizeOfAllocation);
+                ImGui::Text("%d", info.m_sizeOfAllocation);
                 ImGui::NextColumn();
-
-                nextAllocation = nextAllocation->m_next;
             }
 
             ImGui::End();
