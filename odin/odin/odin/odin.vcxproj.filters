@@ -29,6 +29,9 @@
     <ClCompile Include="source\global_allocators.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\world_viewport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\memory\allocator.h">
@@ -44,6 +47,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="source\imgui_wrappers.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\world_viewport.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

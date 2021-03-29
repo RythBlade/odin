@@ -163,6 +163,7 @@
     <ClCompile Include="source\global_allocators.cpp" />
     <ClCompile Include="source\imgui_wrappers.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\world_viewport.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\application.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="source\core\memory\allocator.inl" />
     <ClInclude Include="source\global_allocators.h" />
     <ClInclude Include="source\imgui_wrappers.h" />
+    <ClInclude Include="source\world_viewport.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

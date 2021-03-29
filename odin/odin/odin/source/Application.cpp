@@ -83,6 +83,8 @@ bool Application::initialise(std::string const& windowTitle)
     ImGui_ImplSDL2_InitForD3D(m_window);
     ImGui_ImplDX11_Init(m_device, m_deviceContext);
 
+    m_viewport.init(m_device);
+
     return true;
 }
 
@@ -208,6 +210,13 @@ void Application::run()
 
             ImGui::SetNextWindowSize(ImVec2(550, 680), ImGuiCond_FirstUseEver);
             ImGui::Begin("Dear ImGui Style Editor");
+
+            ImVec2 pos = ImGui::GetCursorScreenPos();
+            ImVec2 uv_min = ImVec2(0.0f, 0.0f);                 // Top-left
+            ImVec2 uv_max = ImVec2(1.0f, 1.0f);                 // Lower-right
+            ImVec4 tint_col = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);   // No tint
+            ImVec4 border_col = ImVec4(1.0f, 1.0f, 1.0f, 0.5f); // 50% opaque white
+            ImGui::Image(m_viewport.m_viewportTextureView, ImVec2(800, 600), uv_min, uv_max, tint_col, border_col);
 
             ImGui::Separator();
 

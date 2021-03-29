@@ -6,6 +6,8 @@
 #include <SDL.h>
 #include <SDL_syswm.h>
 
+#include "world_viewport.h"
+
 struct ID3D11Device;
 struct ID3D11DeviceContext;
 struct IDXGISwapChain;
@@ -39,6 +41,7 @@ namespace odin
         ID3D11RenderTargetView* m_mainRenderTargetView = nullptr;
 
         SDL_Window* m_window = nullptr;
+        WorldViewport m_viewport;
     };
 }
 
